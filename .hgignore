@@ -1,5 +1,0 @@
-syntax: regexp
-^.idea/
-^assets/(?!.*\.hgkeep$).+
-^uploads/(?!.*\.hgkeep$).+
-^protected/runtime/(?!.*\.hgkeep$).+

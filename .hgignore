@@ -2,5 +2,4 @@ syntax: regexp
 ^.idea/
 ^assets/(?!.*\.hgkeep$).+
 ^uploads/(?!.*\.hgkeep$).+
-^uploads/thumbnails/(?!.*\.hgkeep$).+
 ^protected/runtime/(?!.*\.hgkeep$).+

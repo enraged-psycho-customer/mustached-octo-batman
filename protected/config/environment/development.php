@@ -11,10 +11,10 @@ return CMap::mergeArray(
         ),
         'components' => array(
             'db' => array(
-                'connectionString' => 'mysql:host=localhost;dbname=hellclients',
+                'connectionString' => 'mysql:host=localhost;dbname=clfh',
                 'emulatePrepare' => true,
-                'username' => 'root',
-                'password' => '',
+                'username' => 'clfh',
+                'password' => 'fjkl3498F#$',
                 'charset' => 'utf8',
                 'tablePrefix' => '',
                 'enableProfiling' => true,

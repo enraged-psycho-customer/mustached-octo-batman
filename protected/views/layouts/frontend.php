@@ -65,7 +65,9 @@
     <div class="clear"></div>
 </div>
 
-<div id="age"></div>
+<div id="age">
+    <i class="sprite sprite_age"></i>
+</div>
 <div id="companion"></div>
 <div id="balloon">
     <div id="balloon_text"></div>

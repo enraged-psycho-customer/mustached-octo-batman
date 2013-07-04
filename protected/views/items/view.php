@@ -16,21 +16,20 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Items #<?php echo $model->id; ?></h1>
+<div class="item">
+    <div class="number">
+        <?php echo CHtml::link('№' . $model->id, array('view', 'id' => $model->id)); ?>
+    </div>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'content',
-		'category',
-		'state',
-		'image',
-		'slug',
-		'rating',
-		'published_at',
-		'created_at',
-		'updated_at',
-		'planned_at',
-	),
-)); ?>
+    <div class="comments">
+        <a href="javascript:void(0)">
+            <span class="comments_count active"><?php echo $model->commentsCount; ?></span>
+            <i class="sprite sprite_comments_active"></i>
+        </a>
+    </div>
+
+    <div class="quote">
+        <?php echo nl2br($model->content); ?>
+    </div>
+</div>
+<div class="clear"></div>

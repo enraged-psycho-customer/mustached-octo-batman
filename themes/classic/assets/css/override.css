@@ -1,0 +1,29 @@
+.list-view .pager {
+    margin-top: 50px;
+    width: 500px;
+}
+
+ul.yiiPager a:link,
+ul.yiiPager a:visited {
+    border: solid 1px #EC1F23;
+    font-weight: bold;
+    color: #EC1F23;
+    padding: 1px 6px;
+    text-decoration: none;
+}
+
+ul.yiiPager a:hover {
+    border: solid 1px #EF6164;
+    color: #EF6164;
+}
+
+ul.yiiPager .selected a {
+    background: #EC1F23;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+ul.yiiPager .hidden a {
+    border: solid 1px #DEDEDE;
+    color: #888888;
+}

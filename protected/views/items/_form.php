@@ -40,23 +40,10 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'slug'); ?>
-		<?php echo $form->textField($model,'slug',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'slug'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'rating'); ?>
 		<?php echo $form->textField($model,'rating'); ?>
 		<?php echo $form->error($model,'rating'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'published_at'); ?>
-		<?php echo $form->textField($model,'published_at'); ?>
-		<?php echo $form->error($model,'published_at'); ?>
-	</div>
-
 	<div class="row">
 		<?php echo $form->labelEx($model,'created_at'); ?>
 		<?php echo $form->textField($model,'created_at'); ?>
@@ -67,12 +54,6 @@
 		<?php echo $form->labelEx($model,'updated_at'); ?>
 		<?php echo $form->textField($model,'updated_at'); ?>
 		<?php echo $form->error($model,'updated_at'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'planned_at'); ?>
-		<?php echo $form->textField($model,'planned_at'); ?>
-		<?php echo $form->error($model,'planned_at'); ?>
 	</div>
 
 	<div class="row buttons">

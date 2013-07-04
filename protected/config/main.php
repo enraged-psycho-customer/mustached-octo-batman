@@ -4,6 +4,7 @@ return array(
     'name' => 'Clients From Hell',
     'language' => 'ru',
     'theme' => 'classic',
+    'defaultController' => 'items',
 
     // preloading 'log' component
     'preload' => array('log'),
@@ -29,6 +30,7 @@ return array(
             'urlFormat' => 'path',
             'showScriptName' => false,
             'rules' => array(
+                '<id:\d+>' => 'items/view',
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',

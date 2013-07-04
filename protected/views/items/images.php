@@ -12,14 +12,8 @@ $this->menu = array(
 );
 ?>
 
-<?php $this->renderPartial('_filters'); ?>
-
 <?php $this->widget('zii.widgets.CListView', array(
     'dataProvider' => $dataProvider,
-    'itemView' => '_quote',
-    'pager' => array(
-        'class' => 'CLinkPager',
-        'maxButtonCount' => 7,
-    ),
+    'itemView' => '_image',
     'template' => '{items}{pager}'
 )); ?>

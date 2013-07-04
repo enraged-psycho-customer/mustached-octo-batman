@@ -9,15 +9,20 @@
  * @property integer $category
  * @property integer $state
  * @property string $image
- * @property string $slug
  * @property integer $rating
- * @property string $published_at
  * @property string $created_at
  * @property string $updated_at
- * @property string $planned_at
  */
 class Items extends CActiveRecord
 {
+    const CATEGORY_QUOTES = 1;
+    const CATEGORY_IMAGES = 3;
+
+    const STATE_SUBMITTED = 0;
+    const STATE_AWAITING_MODERATION = 1;
+    const STATE_PUBLISHED = 2;
+    const STATE_JUNK = 3;
+
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
@@ -45,11 +50,11 @@ class Items extends CActiveRecord
         // will receive user inputs.
         return array(
             array('category, state, rating', 'numerical', 'integerOnly' => true),
-            array('image, slug', 'length', 'max' => 255),
-            array('content, published_at, created_at, updated_at, planned_at', 'safe'),
+            array('image', 'length', 'max' => 255),
+            array('content, created_at, updated_at', 'safe'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, content, category, state, image, slug, rating, published_at, created_at, updated_at, planned_at', 'safe', 'on' => 'search'),
+            array('id, content, category, state, image, slug, rating, created_at, updated_at', 'safe', 'on' => 'search'),
         );
     }
 
@@ -60,7 +65,10 @@ class Items extends CActiveRecord
     {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
-        return array();
+        return array(
+            'comments' => array(self::HAS_MANY, 'Comments', 'item_id'),
+            'commentsCount' => array(self::STAT, 'Comments', 'item_id'),
+        );
     }
 
     /**
@@ -74,12 +82,9 @@ class Items extends CActiveRecord
             'category' => 'Category',
             'state' => 'State',
             'image' => 'Image',
-            'slug' => 'Slug',
             'rating' => 'Rating',
-            'published_at' => 'Published At',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
-            'planned_at' => 'Planned At',
         );
     }
 
@@ -99,15 +104,33 @@ class Items extends CActiveRecord
         $criteria->compare('category', $this->category);
         $criteria->compare('state', $this->state);
         $criteria->compare('image', $this->image, true);
-        $criteria->compare('slug', $this->slug, true);
         $criteria->compare('rating', $this->rating);
-        $criteria->compare('published_at', $this->published_at, true);
         $criteria->compare('created_at', $this->created_at, true);
         $criteria->compare('updated_at', $this->updated_at, true);
-        $criteria->compare('planned_at', $this->planned_at, true);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
         ));
+    }
+
+    public function scopes()
+    {
+        return array(
+            'published' => array(
+                'condition' => 'state = :state',
+                'params' => array(':state' => self::STATE_PUBLISHED),
+            ),
+            'quotes' => array(
+                'condition' => 'category = :category',
+                'params' => array(':category' => self::CATEGORY_QUOTES),
+            ),
+            'images' => array(
+                'condition' => 'category = :category',
+                'params' => array(':category' => self::CATEGORY_IMAGES),
+            ),
+            'latest' => array(
+                'order' => 'updated_at DESC'
+            ),
+        );
     }
 }

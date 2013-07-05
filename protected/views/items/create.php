@@ -98,7 +98,7 @@ Yii::app()->clientScript->registerScript('scrollSelect', $script, CClientScript:
 
     <div class="buttons">
         <div>
-            <button id="agreement" type="submit"><i class="sprite sprite_checkbox"></i></button>
+            <button class="checkbox" type="submit"><i class="sprite sprite_checkbox"></i></button>
         </div>
         <div class="agreement">
             <span class="hint">Я прочитал <?php echo CHtml::link('правила', array('/site/page', 'view' => 'rules'), array('class' => 'hint')) ?>, и гарантирую,<br/> что не буду визжать как сучка</span>

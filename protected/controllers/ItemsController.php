@@ -47,12 +47,29 @@ class ItemsController extends Controller
      */
     public function actionView($id)
     {
+        $modal = false;
         if (isset($_GET['modal'])) {
+            $modal = true;
             $this->layout = '//layouts/modal';
+        }
+
+        $comment = new Comments('create');
+        $comment->item_id = $id;
+        $comment->is_admin = (int)!Yii::app()->user->isGuest;
+        //$this->performAjaxValidation($model);
+
+        if (isset($_POST['Comments'])) {
+            $comment->attributes = $_POST['Comments'];
+            if ($comment->save()) {
+                Yii::app()->user->setFlash('success', "Ваша комментарий отправлен!");
+                $this->redirect(array('/items/view/id/' . $id));
+            }
         }
 
         $this->render('view', array(
             'model' => $this->loadModel($id)->with('comments'),
+            'modal' => $modal,
+            'commentModel' => $comment
         ));
     }
 
@@ -64,13 +81,14 @@ class ItemsController extends Controller
     {
         $model = new Items('create');
 
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
+        //$this->performAjaxValidation($model);
 
         if (isset($_POST['Items'])) {
             $model->attributes = $_POST['Items'];
-            if ($model->save())
-                $this->redirect(array('view', 'id' => $model->id));
+            if ($model->save()) {
+                Yii::app()->user->setFlash('success', "Ваша цитата отправлена!");
+                $this->redirect(array('/items/index'));
+            }
         }
 
         $this->render('create', array(

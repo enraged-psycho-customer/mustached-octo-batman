@@ -113,6 +113,18 @@ class Items extends CActiveRecord
         );
     }
 
+    public function getComments()
+    {
+        $result = array(0 => array());
+        if (!count($this->comments)) return $result;
+
+        foreach ($this->comments as $comment) {
+            $result[$comment->parent_id][] = $comment;
+        }
+
+        return $result;
+    }
+
     /**
      * @return array customized attribute labels (name=>label)
      */

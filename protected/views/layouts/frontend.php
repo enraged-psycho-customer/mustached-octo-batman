@@ -60,6 +60,14 @@
         </div>
     </div>
 
+    <div id="flashes">
+    <?php
+    foreach (Yii::app()->user->getFlashes() as $key => $message) {
+        echo '<div class="flash-' . $key . '">' . $message . "</div>\n";
+    }
+    ?>
+    </div>
+
     <div id="content">
         <?php echo $content; ?>
     </div>

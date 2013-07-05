@@ -14,7 +14,7 @@ $this->menu = array(
 
 <?php
 $script = <<< EOD
-    $("div.item a").live("click", function(e) {
+    $("div.item a.expand").live("click", function(e) {
         e.preventDefault();
         var itemId = $(this).parent().parent().parent().attr('data-id');
         var itemSelector = '#item_' + itemId;

@@ -8,5 +8,5 @@
         </div>
     </div>
 
-    <?php if (count($comments[$comment->id])) $this->renderPartial('_comments', array('comments' => $comments, 'index' => $comment->id)); ?>
+    <?php if (isset($comments[$comment->id])) $this->renderPartial('_comments', array('comments' => $comments, 'index' => $comment->id)); ?>
 <?php endforeach; ?>

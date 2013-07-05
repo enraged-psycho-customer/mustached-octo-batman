@@ -10,7 +10,7 @@
 
     <div class="comments">
         <a href="<?php echo $this->createUrl('/items/view/', array('id' => $data->id)); ?>">
-            <span class="comments_count">555</span>
+            <span class="comments_count"><?php echo $data->comments_count; ?></span>
             <i class="sprite sprite_comments"></i>
         </a>
     </div>

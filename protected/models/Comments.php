@@ -11,9 +11,27 @@
  * @property string $created_at
  * @property string $updated_at
  * @property integer $is_admin
+ * @property integer $avatar
  */
 class Comments extends CActiveRecord
 {
+    const AVATAR_BOY = 1;
+    const AVATAR_GIRL = 2;
+
+    private $avatars = array(
+        self::AVATAR_BOY => 'boy',
+        self::AVATAR_GIRL => 'girl',
+    );
+
+    public function getAvatarClass()
+    {
+        $parts = array('sprite', 'avatar');
+        if ($this->is_admin) $parts[] = 'admin';
+        else $parts[] = isset($this->avatars[$this->avatar]) ? $this->avatars[$this->avatar] : 'boy';
+
+        return implode("_", $parts);
+    }
+
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.

@@ -143,17 +143,17 @@ div.item .comments {
 
 div.item .comments a {
     color: #B9B9B9;
-    font-size: 12px;
 }
 
-div.item .comments a span {
+div.item .comments span {
+    font-size: 12px;
     display: inline-block;
     padding-bottom: 5px;
     width: 20px;
     text-align: center;
 }
 
-div.item .comments a span.active {
+div.item .comments span.active {
     color: #EC1F23;
 }
 
@@ -161,13 +161,47 @@ div.item .comments a:hover {
     color: #EC1F23;
 }
 
-div.item .comments a:hover i {
-    background-position: -98px 0;
-}
-
 div.item .quote {
     float: left;
     width: 500px;
+}
+
+/* Comments */
+div.comments_list {
+    margin-top: 25px;
+}
+
+div.comments_list .comment {
+    border-top: 1px solid #E5E5E5;
+    width: 555px;
+    clear: both;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.comment div {
+    padding: 25px 0px;
+}
+
+.comment .avatar {
+    float: left;
+    width: 30px;
+    margin-right: 25px;
+    vertical-align: top;
+}
+
+.comment .text {
+    float: left;
+    width: 500px;
+}
+
+/* Active */
+div.item.active {
+    background: #F2F2F2 url(../images/item_top.png) repeat-x top;
+}
+
+div.comments_list.active {
+    background: #F2F2F2 url(../images/item_bottom.png) repeat-x bottom;
 }
 
 /* Shades */
@@ -180,12 +214,22 @@ div#shades .shade {
     margin-right: 15px;
 }
 
+div#shades > .active {
+    position: relative;
+    top: -30px;
+}
+
 .shade .inner {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
     width: 48px;
     height: 87px;
+    padding: 0;
+}
+
+.shade > .active {
+    padding-top: 15px;
 }
 
 .shade .inner a {
@@ -196,4 +240,10 @@ div#shades .shade {
 /* Helpers */
 div.clear {
     clear: both;
+}
+
+div.loader {
+    width: 16px;
+    height: 16px;
+    background: url(../images/loader.gif) no-repeat;
 }

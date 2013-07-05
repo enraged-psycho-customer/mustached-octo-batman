@@ -12,16 +12,24 @@
  * @property integer $rating
  * @property string $created_at
  * @property string $updated_at
+ * @property string $published_at
+ * @property int $comments_count
  */
 class Items extends CActiveRecord
 {
     const CATEGORY_QUOTES = 1;
-    const CATEGORY_IMAGES = 3;
+    const CATEGORY_IMAGES = 2;
 
     const STATE_SUBMITTED = 0;
     const STATE_AWAITING_MODERATION = 1;
     const STATE_PUBLISHED = 2;
     const STATE_JUNK = 3;
+
+    const DEFAULT_SORT_TYPE = 'published_at';
+    const DEFAULT_SORT_DIR = 'desc';
+
+    private $sort_types = array('published_at', 'updated_at', 'comments_count');
+    private $sort_dirs = array('asc', 'desc');
 
     /**
      * Returns the static model of the specified AR class.
@@ -51,10 +59,10 @@ class Items extends CActiveRecord
         return array(
             array('category, state, rating', 'numerical', 'integerOnly' => true),
             array('image', 'length', 'max' => 255),
-            array('content, created_at, updated_at', 'safe'),
+            array('content, created_at, updated_at, published_at, comments_count', 'safe'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, content, category, state, image, slug, rating, created_at, updated_at', 'safe', 'on' => 'search'),
+            array('id, content, category, state, image, slug, rating, created_at, updated_at, published_at, comments_count', 'safe', 'on' => 'search'),
         );
     }
 
@@ -107,6 +115,8 @@ class Items extends CActiveRecord
         $criteria->compare('rating', $this->rating);
         $criteria->compare('created_at', $this->created_at, true);
         $criteria->compare('updated_at', $this->updated_at, true);
+        $criteria->compare('published_at', $this->published_at, true);
+        $criteria->compare('comments_count', $this->comments_count, true);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
@@ -128,9 +138,19 @@ class Items extends CActiveRecord
                 'condition' => 'category = :category',
                 'params' => array(':category' => self::CATEGORY_IMAGES),
             ),
-            'latest' => array(
-                'order' => 'updated_at DESC'
-            ),
         );
+    }
+
+    public function sortBy($type, $direction)
+    {
+        if (is_null($type) || !in_array($type, $this->sort_types)) $type = self::DEFAULT_SORT_TYPE;
+        if (is_null($direction) || !in_array($direction, $this->sort_dirs)) $direction = self::DEFAULT_SORT_DIR;
+        $order = implode(" ", array($type, $direction));
+
+        $this->getDbCriteria()->mergeWith(array(
+            'order' => $order,
+
+        ));
+        return $this;
     }
 }

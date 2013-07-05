@@ -45,4 +45,9 @@ class Controller extends CController
     {
         $this->pageTitle = $this->pageTitle . " - " . $title;
     }
+
+    public function purify($content)
+    {
+        return nl2br(strip_tags($content, '<br><b><strong>'));
+    }
 }

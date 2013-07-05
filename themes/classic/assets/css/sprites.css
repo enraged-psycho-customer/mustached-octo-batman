@@ -7,8 +7,11 @@
 .sprite_age{ background-position: 0 0; width: 21px; height: 10px; }
 .sprite_arrow_white_bottom{ background-position: -31px 0; width: 9px; height: 9px; }
 .sprite_arrow_white_top{ background-position: -50px 0; width: 9px; height: 9px; }
-.sprite_comments{ background-position: -69px 0; width: 19px; height: 20px; }
-.sprite_comments_active{ background-position: -98px 0; width: 19px; height: 20px; }
-.sprite_comments_time{ background-position: -127px 0; width: 26px; height: 27px; }
-.sprite_comments_white{ background-position: -163px 0; width: 26px; height: 27px; }
-.sprite_time_white{ background-position: -199px 0; width: 19px; height: 19px; }
+.sprite_avatar_admin{ background-position: -69px 0; width: 29px; height: 30px; }
+.sprite_avatar_boy{ background-position: -108px 0; width: 25px; height: 32px; }
+.sprite_avatar_girl{ background-position: -143px 0; width: 25px; height: 32px; }
+.sprite_comments{ background-position: -178px 0; width: 19px; height: 20px; }
+.sprite_comments_active{ background-position: -207px 0; width: 19px; height: 20px; }
+.sprite_comments_time{ background-position: -236px 0; width: 26px; height: 27px; }
+.sprite_comments_white{ background-position: -272px 0; width: 26px; height: 27px; }
+.sprite_time_white{ background-position: -308px 0; width: 19px; height: 19px; }

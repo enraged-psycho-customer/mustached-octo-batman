@@ -20,15 +20,15 @@ class ItemsController extends Controller
     }
 
     /**
-     * Specifies the access control rules.
-     * This method is used by the 'accessControl' filter.
-     * @return array access control rules
-     */
+ * Specifies the access control rules.
+ * This method is used by the 'accessControl' filter.
+ * @return array access control rules
+ */
     public function accessRules()
     {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'images'),
+                'actions' => array('index', 'view'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -51,8 +51,12 @@ class ItemsController extends Controller
      */
     public function actionView($id)
     {
+        if (isset($_GET['modal'])) {
+            $this->layout = '//layouts/modal';
+        }
+
         $this->render('view', array(
-            'model' => $this->loadModel($id),
+            'model' => $this->loadModel($id)->with('comments'),
         ));
     }
 
@@ -116,26 +120,42 @@ class ItemsController extends Controller
     }
 
     /**
-     * Lists all models.
+     * Prepare list of models with sorting
+     * @return mixed
+     */
+    private function getItemsList()
+    {
+        $model = Items::model()->published();
+        $sortType = isset($_GET['sort_type']) ? $_GET['sort_type'] : null;
+        $sortDirection = isset($_GET['sort_dir']) ? $_GET['sort_dir'] : null;
+        $model->sortBy($sortType, $sortDirection);
+
+        return $model;
+    }
+
+    /**
+     * Lists all quotes.
      */
     public function actionIndex()
     {
-        $model = Items::model()->quotes()->published()->latest()->with('commentsCount');
+        $model = $this->getItemsList()->quotes();
         $dataProvider = new CActiveDataProvider($model);
-        $this->render('index', array(
+        $this->render('list', array(
             'dataProvider' => $dataProvider,
+            'itemTemplate' => '_quote'
         ));
     }
 
     /**
-     * Lists all models.
+     * Lists all images.
      */
     public function actionImages()
     {
-        $model = Items::model()->images()->published()->latest()->with('commentsCount');
+        $model = $this->getItemsList()->images();
         $dataProvider = new CActiveDataProvider($model);
-        $this->render('images', array(
+        $this->render('list', array(
             'dataProvider' => $dataProvider,
+            'itemTemplate' => '_image'
         ));
     }
 

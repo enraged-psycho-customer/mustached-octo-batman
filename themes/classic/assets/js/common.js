@@ -3,11 +3,11 @@ $(document).ready(function() {
     var commentsIcon = 'div.item .comments a';
 
     // Comments icon hover
-    $(commentsIcon).mouseover(function() {
+    $(commentsIcon).live("mouseover", function() {
         $(this).find('i').addClass('sprite_comments_active');
     });
 
-    $(commentsIcon).mouseout(function() {
+    $(commentsIcon).live("mouseout", function() {
         $(this).find('i').removeClass('sprite_comments_active');
     });
 

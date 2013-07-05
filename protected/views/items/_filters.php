@@ -1,6 +1,6 @@
 <?php
 $script = <<< EOD
-    $("a.sortBy").on("click", function(e) {
+    $("a.sortBy").live("click", function(e) {
         e.preventDefault();
         $('#itemsForm #sort_type').val($(this).attr('data-type'));
         $('#itemsForm #sort_dir').val($(this).attr('data-dir'));

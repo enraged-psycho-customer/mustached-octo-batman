@@ -14,6 +14,7 @@
  * @property string $updated_at
  * @property string $published_at
  * @property int $comments_count
+ * @property string $email
  */
 class Items extends CActiveRecord
 {
@@ -28,8 +29,21 @@ class Items extends CActiveRecord
     const DEFAULT_SORT_TYPE = 'published_at';
     const DEFAULT_SORT_DIR = 'desc';
 
-    private $sort_types = array('published_at', 'updated_at', 'comments_count');
-    private $sort_dirs = array('asc', 'desc');
+    private $categories = array(
+        self::CATEGORY_QUOTES,
+        self::CATEGORY_IMAGES
+    );
+
+    private $sort_types = array(
+        'published_at',
+        'updated_at',
+        'comments_count'
+    );
+
+    private $sort_dirs = array(
+        'asc',
+        'desc'
+    );
 
     /**
      * Returns the static model of the specified AR class.
@@ -60,9 +74,21 @@ class Items extends CActiveRecord
             array('category, state, rating', 'numerical', 'integerOnly' => true),
             array('image', 'length', 'max' => 255),
             array('content, created_at, updated_at, published_at, comments_count', 'safe'),
+
+            // Create scenario
+            array('category', 'in', 'range' => $this->categories, 'allowEmpty' => false, 'on' => 'create'),
+            array('content', 'length', 'min' => 10, 'max' => 2000, 'allowEmpty' => false, 'on' => 'create'),
+
+            array('email', 'length', 'max' => 255, 'allowEmpty' => false, 'on' => 'create'),
+            array('email', 'email', 'allowEmpty' => false, 'on' => 'create'),
+
+            array('state', 'default', 'value' => self::STATE_SUBMITTED, 'on' => 'create'),
+            array('created_at', 'default', 'value' => new CDbException('NOW()'), 'on' => 'create'),
+            array('rating', 'default', 'value' => 0, 'on' => 'create'),
+
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, content, category, state, image, slug, rating, created_at, updated_at, published_at, comments_count', 'safe', 'on' => 'search'),
+            array('id, content, category, state, image, rating, created_at, updated_at, published_at, comments_count', 'safe', 'on' => 'search'),
         );
     }
 
@@ -79,6 +105,14 @@ class Items extends CActiveRecord
         );
     }
 
+    public function getCategories()
+    {
+        return array(
+            self::CATEGORY_QUOTES => 'Новая цитата',
+            self::CATEGORY_IMAGES => 'Новая картинка',
+        );
+    }
+
     /**
      * @return array customized attribute labels (name=>label)
      */
@@ -86,13 +120,14 @@ class Items extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'content' => 'Content',
+            'content' => 'Текст',
             'category' => 'Category',
             'state' => 'State',
             'image' => 'Image',
             'rating' => 'Rating',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'email' => 'E-mail'
         );
     }
 
@@ -117,6 +152,7 @@ class Items extends CActiveRecord
         $criteria->compare('updated_at', $this->updated_at, true);
         $criteria->compare('published_at', $this->published_at, true);
         $criteria->compare('comments_count', $this->comments_count, true);
+        $criteria->compare('email', $this->email, true);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,

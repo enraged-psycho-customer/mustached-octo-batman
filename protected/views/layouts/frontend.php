@@ -11,9 +11,11 @@
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/css/sprites.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/css/override.css"/>
 
+
     <!-- JavaScript -->
     <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/common.js"></script>
     <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/teletype.js"></script>
+    <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/expanding.js"></script>
 
     <script type="text/javascript">
         var teletypeText = '#$%^@#$!';

@@ -16,7 +16,7 @@ $this->menu = array(
 $script = <<< EOD
     $("div.item a").live("click", function(e) {
         e.preventDefault();
-        var itemId = $(this).parent().parent().attr('data-id');
+        var itemId = $(this).parent().parent().parent().attr('data-id');
         var itemSelector = '#item_' + itemId;
         var commentsSelector = '#comments_' + itemId;
         var requestUrl = $(this).attr('href') + '?modal';
@@ -27,6 +27,7 @@ $script = <<< EOD
             .done(function(data){
                 $(itemSelector).replaceWith(data);
                 $(itemSelector).addClass('active');
+                $(itemSelector).find('div.container').addClass('active');
                 $(commentsSelector).addClass('active');
 
                 var target_offset = $(commentsSelector).offset();

@@ -197,6 +197,7 @@ div.comments_list .comment {
 
 .comment.level {
     padding-left: 80px;
+    cursor: pointer;
 }
 
 .comment.admin .text {
@@ -378,6 +379,14 @@ div.flash-success {
 span.hint {
     color: #B0B0B0;
     font-size: 14px;
+}
+
+span.small {
+    font-size: 12px;
+}
+
+.pad {
+    padding-left: 70px;
 }
 
 a.hint {

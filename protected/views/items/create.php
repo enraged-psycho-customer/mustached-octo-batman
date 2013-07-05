@@ -94,6 +94,7 @@ Yii::app()->clientScript->registerScript('scrollSelect', $script, CClientScript:
     <div class="email">
         <label for="email"><span class="hint">Ваш e-mail:</span></label>
         <?php echo $form->textField($model, 'email', array('id' => 'email')); ?>
+        <span class="pad hint small">На него будут приходить уведомления о новых комментариях</span>
     </div>
 
     <div class="buttons">

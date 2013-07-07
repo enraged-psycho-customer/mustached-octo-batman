@@ -223,10 +223,10 @@ div.comments_list .comment {
     padding: 25px 0px;
 }
 
-.comment .avatar {
+.comment div.avatar {
     float: left;
-    width: 30px;
-    margin-right: 25px;
+    width: 45px;
+    margin-right: 10px;
     text-align: center;
 }
 
@@ -309,6 +309,7 @@ div#createForm select#category {
 }
 
 div#createForm div.selectText {
+    padding: 5px 0px;
     font-size: 24px;
     color: #B0B0B0;
 }
@@ -369,9 +370,6 @@ div.commentsForm .avatar span, div.commentsForm .avatar a {
     display: block;
 }
 
-div.commentsForm span {
-    float: left;
-}
 
 #commentsFormSecond {
     display: none;

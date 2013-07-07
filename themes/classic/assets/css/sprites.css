@@ -3,6 +3,8 @@
     background: url(../images/sprites.png) no-repeat top left;
 }
 
+.icon-comments_active{ background-position: 0 -272px; width: 19px; height: 20px; }
+
 .icon-age{ background-position: 0 0; width: 22px; height: 9px; }
 .icon-arrow_white_bottom{ background-position: 0 -19px; width: 9px; height: 9px; }
 .icon-arrow_white_top{ background-position: 0 -38px; width: 9px; height: 9px; }
@@ -13,6 +15,7 @@
 .icon-checkbox:hover{ background-position: 0 -202px; width: 14px; height: 11px; }
 .icon-close{ background-position: 0 -223px; width: 9px; height: 9px; }
 .icon-comments{ background-position: 0 -242px; width: 19px; height: 20px; }
+.icon-comments_active{ background-position: 0 -272px; width: 19px; height: 20px; }
 .icon-comments:hover{ background-position: 0 -272px; width: 19px; height: 20px; }
 .icon-comments_time{ background-position: 0 -302px; width: 26px; height: 27px; }
 .icon-comments_white{ background-position: 0 -339px; width: 26px; height: 27px; }

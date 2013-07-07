@@ -4,7 +4,6 @@
  * This is the model class for table "votes".
  *
  * The followings are the available columns in table 'votes':
- * @property integer $id
  * @property integer $item_id
  * @property string $ip
  * @property string $created_at
@@ -38,9 +37,10 @@ class Votes extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('id, item_id', 'numerical', 'integerOnly' => true),
+            array('item_id', 'numerical', 'integerOnly' => true),
             array('ip', 'length', 'max' => 255),
             array('created_at, updated_at', 'safe'),
+            array('created_at, updated_at', 'default', 'value' => new CDbExpression('NOW()')),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
             array('id, item_id, ip, created_at, updated_at', 'safe', 'on' => 'search'),
@@ -63,7 +63,6 @@ class Votes extends CActiveRecord
     public function attributeLabels()
     {
         return array(
-            'id' => 'ID',
             'item_id' => 'Item',
             'ip' => 'Ip',
             'created_at' => 'Created At',
@@ -82,7 +81,6 @@ class Votes extends CActiveRecord
 
         $criteria = new CDbCriteria;
 
-        $criteria->compare('id', $this->id);
         $criteria->compare('item_id', $this->item_id);
         $criteria->compare('ip', $this->ip, true);
         $criteria->compare('created_at', $this->created_at, true);

@@ -73,8 +73,7 @@ div#balloon {
     bottom: 30px;
     background: url(../images/balloon.png) no-repeat;
     color: #FFF;
-    font-size: 10px;
-    font-weight: bold;
+    font-size: 12px;
     width: 71px;
     height: 54px;
 }
@@ -139,7 +138,7 @@ div.social {
     width: 60px;
 }
 
-div.social a {
+div.social a, div.social span {
     display: block;
     width: 16px;
     text-align: center;

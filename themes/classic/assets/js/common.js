@@ -1,6 +1,14 @@
 $(document).ready(function() {
     var balloonId = '#balloon';
 
+    $('div.comments a.expand').live("mouseover", function() {
+        $(this).find('i').removeClass('icon-comments').addClass('icon-comments_active');
+    });
+
+    $('div.comments a.expand').live("mouseout", function() {
+        $(this).find('i').removeClass('icon-comments_active').addClass('icon-comments');
+    });
+
     // Bird
     $('#companion').click(function(){
         var displayFlag = ($(balloonId).css('display') == 'none');

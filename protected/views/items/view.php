@@ -20,7 +20,7 @@ $this->menu = array(
 
 <div class="item" id="item_<?php echo $model->id; ?>" data-id="<?php echo $model->id; ?>">
     <?php if ($modal): ?>
-        <?php $this->renderPartial('_social', array('model' => $model)); ?>
+        <?php $this->renderPartial('_social', array('model' => $model, 'hasVoted' => $hasVoted)); ?>
     <?php endif; ?>
 
     <div class="container">

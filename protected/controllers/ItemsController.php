@@ -28,7 +28,7 @@ class ItemsController extends Controller
     {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'images', 'view', 'create'),
+                'actions' => array('index', 'images', 'view', 'create', 'vote'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -56,6 +56,10 @@ class ItemsController extends Controller
         $comment = new Comments('create');
         $comment->item_id = $id;
         $comment->is_admin = (int)!Yii::app()->user->isGuest;
+
+        $params = array('item_id' => $id, 'ip' => Yii::app()->request->userHostAddress);
+        $hasVoted = (int)Votes::model()->count('item_id = :item_id AND ip = :ip', $params);
+
         //$this->performAjaxValidation($model);
 
         if (isset($_POST['Comments'])) {
@@ -69,7 +73,8 @@ class ItemsController extends Controller
         $this->render('view', array(
             'model' => $this->loadModel($id)->with('comments'),
             'modal' => $modal,
-            'commentModel' => $comment
+            'commentModel' => $comment,
+            'hasVoted' => $hasVoted
         ));
     }
 
@@ -186,6 +191,45 @@ class ItemsController extends Controller
         $this->render('admin', array(
             'model' => $model,
         ));
+    }
+
+    public function actionVote($id)
+    {
+        if (!Yii::app()->request->isAjaxRequest) {
+            $this->redirect('/items');
+        }
+
+        $ip = Yii::app()->request->userHostAddress;
+        $params = array(
+            'item_id' => $id,
+            'ip' => $ip,
+        );
+
+        $votes = (int)Votes::model()->count('item_id = :item_id AND ip = :ip', $params);
+
+        if ($votes > 0) {
+            $msg = "Ошибка: вы уже голосовали за данный контент";
+            $error = true;
+        } else {
+            $votes = new Votes();
+            $votes->attributes = $params;
+            if ($votes->save()) {
+                $msg = "Ваш голос учтен!";
+                $error = false;
+            } else {
+                $msg = "Произошла ошибка, повторите свой запрос позднее";
+                $error = true;
+            }
+        }
+
+        $response = json_encode(array(
+            'msg' => $msg,
+            'error' => $error,
+        ));
+
+        echo $response;
+
+        Yii::app()->end();
     }
 
     /**

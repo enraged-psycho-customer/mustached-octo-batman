@@ -23,6 +23,7 @@ class Controller extends CController
 
     // Shared resources
     public $assetsUrl = null;
+    public $votes = array();
 
     /**
      * Initialization

@@ -65,8 +65,17 @@ $this->menu = array(
 
                         <?php echo $form->hiddenField($commentModel, 'avatar', array('class' => 'avatar_field')); ?>
                         <?php echo $form->hiddenField($commentModel, 'parent_id', array('id' => 'parent_id')); ?>
-                        <?php echo $form->textArea($commentModel, 'content'); ?>
-                        <span><button class="checkbox" type="submit"><i class="icon icon-checkbox"></i></button></span>
+
+                        <div class="textarea">
+                            <?php echo $form->textArea($commentModel, 'content'); ?>
+                            <span><button class="checkbox" type="button"><i class="icon icon-checkbox"></i></button></span>
+                        </div>
+
+                        <div class="captcha">
+                            <?php $this->widget('CCaptcha', array('captchaAction' => 'site/captcha', 'showRefreshButton' => false)); ?>
+                            <?php echo $form->textField($commentModel, 'captcha'); ?>
+                            <span><button class="checkbox" type="submit"><i class="icon icon-checkbox"></i></button></span>
+                        </div>
                         <?php $this->endWidget(); ?>
                     </div>
                 </div>
@@ -92,8 +101,17 @@ $this->menu = array(
 
                         <?php echo $form->hiddenField($commentModel, 'avatar', array('class' => 'avatar_field')); ?>
                         <?php echo $form->hiddenField($commentModel, 'parent_id', array('id' => 'parent_id')); ?>
-                        <?php echo $form->textArea($commentModel, 'content'); ?>
-                        <span><button class="checkbox" type="submit"><i class="icon icon-checkbox"></i></button></span>
+
+                        <div class="textarea">
+                            <?php echo $form->textArea($commentModel, 'content'); ?>
+                            <span><button class="checkbox" type="button"><i class="icon icon-checkbox"></i></button></span>
+                        </div>
+
+                        <div class="captcha">
+                            <?php $this->widget('CCaptcha', array('captchaAction' => 'site/captcha', 'showRefreshButton' => false)); ?>
+                            <?php echo $form->textField($commentModel, 'captcha'); ?>
+                            <span><button class="checkbox" type="submit"><i class="icon icon-checkbox"></i></button></span>
+                        </div>
                         <?php $this->endWidget(); ?>
                     </div>
                 </div>

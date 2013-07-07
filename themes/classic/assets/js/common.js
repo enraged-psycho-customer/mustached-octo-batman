@@ -36,12 +36,17 @@ $(document).ready(function() {
     });
 
     // Items
-    $("div.comment.real").live("click", function(e) {
+    $("div.comment.real, div.comment.level").live("click", function(e) {
         e.preventDefault();
         $('#commentsFormSecond').show();
         $('#commentsFormSecond').insertAfter(this);
         $('#commentsFormSecond input#parent_id').val($(this).attr('data-id'));
         return false;
+    });
+
+    $('.commentsForm div.textarea button.checkbox').live('click', function(e) {
+        $(this).parent().parent().hide();
+        $(this).parent().parent().parent().find('div.captcha').show();
     });
 
     $("div.social a.close").live("click", function(e) {

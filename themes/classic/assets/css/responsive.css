@@ -452,6 +452,11 @@
         height: 110px;
     }
 
+    div.commentsForm div.captcha {
+        height: 100px;
+        line-height: 100px;
+    }
+
     #commentsFormSecond {
         padding-left: 80px;
     }

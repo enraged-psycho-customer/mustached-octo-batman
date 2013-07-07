@@ -9,6 +9,19 @@ $(document).ready(function() {
         $(this).find('i').removeClass('icon-comments_active').addClass('icon-comments');
     });
 
+    $('div.commentsForm a.avatar_switch').live("click", function() {
+        var currentAvatar = $(this).parent().find('i.avatar');
+        var hiddenField = $(this).parent().parent().parent().find('input.avatar_field');
+
+        if (currentAvatar.hasClass('icon-avatar_boy')) {
+            hiddenField.val(2);
+            currentAvatar.addClass('icon-avatar_girl').removeClass('icon-avatar_boy');
+        } else {
+            hiddenField.val(1);
+            currentAvatar.removeClass('icon-avatar_girl').addClass('icon-avatar_boy');
+        }
+    });
+
     // Bird
     $('#companion').click(function(){
         var displayFlag = ($(balloonId).css('display') == 'none');

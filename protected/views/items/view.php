@@ -49,20 +49,21 @@ $this->menu = array(
             <div id="commentsFormSecond" class="commentsForm">
                 <div class="comment">
                     <div class="avatar">
-                        <a href="javascript:void(0)">
+                        <a href="javascript:void(0)" class="avatar_switch">
                             <i class="icon icon-form_arrow_up"></i>
                         </a>
-                        <i class="icon icon-avatar_boy"></i>
-                        <a href="javascript:void(0)">
+                        <span><i class="avatar icon icon-avatar_boy"></i></span>
+                        <a href="javascript:void(0)" class="avatar_switch">
                             <i class="icon icon-form_arrow_down"></i>
                         </a>
                     </div>
                     <div class="text">
                         <?php $form = $this->beginWidget('CActiveForm', array(
-                            'id' => 'comment-form',
+                            'id' => 'comment-form-inner',
                             'enableAjaxValidation' => false,
                         )); ?>
 
+                        <?php echo $form->hiddenField($commentModel, 'avatar', array('class' => 'avatar_field')); ?>
                         <?php echo $form->hiddenField($commentModel, 'parent_id', array('id' => 'parent_id')); ?>
                         <?php echo $form->textArea($commentModel, 'content'); ?>
                         <span><button class="checkbox" type="submit"><i class="icon icon-checkbox"></i></button></span>
@@ -75,11 +76,11 @@ $this->menu = array(
             <div class="commentsForm">
                 <div class="comment">
                     <div class="avatar">
-                        <a href="javascript:void(0)">
+                        <a href="javascript:void(0)" class="avatar_switch">
                             <i class="icon icon-form_arrow_up"></i>
                         </a>
-                        <i class="icon icon-avatar_boy"></i>
-                        <a href="javascript:void(0)">
+                        <span><i class="avatar icon icon-avatar_boy"></i></span>
+                        <a href="javascript:void(0)" class="avatar_switch">
                             <i class="icon icon-form_arrow_down"></i>
                         </a>
                     </div>
@@ -89,6 +90,8 @@ $this->menu = array(
                             'enableAjaxValidation' => false,
                         )); ?>
 
+                        <?php echo $form->hiddenField($commentModel, 'avatar', array('class' => 'avatar_field')); ?>
+                        <?php echo $form->hiddenField($commentModel, 'parent_id', array('id' => 'parent_id')); ?>
                         <?php echo $form->textArea($commentModel, 'content'); ?>
                         <span><button class="checkbox" type="submit"><i class="icon icon-checkbox"></i></button></span>
                         <?php $this->endWidget(); ?>

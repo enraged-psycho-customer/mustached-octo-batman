@@ -365,6 +365,10 @@ div.commentsForm textarea {
     float: left;
 }
 
+div.commentsForm .avatar span, div.commentsForm .avatar a {
+    display: block;
+}
+
 div.commentsForm span {
     float: left;
 }

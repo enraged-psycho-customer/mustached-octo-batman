@@ -19,6 +19,8 @@ class Comments extends CActiveRecord
     const AVATAR_BOY = 1;
     const AVATAR_GIRL = 2;
 
+    public $avatar = 1;
+
     private $avatars = array(
         self::AVATAR_BOY => 'boy',
         self::AVATAR_GIRL => 'girl',

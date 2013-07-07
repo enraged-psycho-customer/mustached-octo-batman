@@ -1,8 +1,15 @@
-body {
-    background: #F2F2F2;
+/* Common */
+* {
     margin: 0;
     padding: 0;
 }
+
+body {
+    background: #F2F2F2;
+    font-family: 'corporateacyrregular', "Times New Roman", Times, sans-serif;
+    height: 100%;
+}
+
 
 a {
     text-decoration: none;
@@ -10,26 +17,35 @@ a {
 
 /* Layout */
 div#wrapper {
-    font-family: "Times New Roman", sans-serif;
     margin: 0 auto;
-    width: 1024px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+div#container {
+    float: left;
 }
 
 div#sidebar {
-    background: #E6E6E6;
+    font-family: 'corporateacyrdemi_italic', Times New Roman, sans-serif;
+    border-left: 1px solid #B1B1B1;
     border-right: 1px solid #B1B1B1;
-    padding: 30px;
-    float: left;
+    position: fixed;
+    background: #E6E6E6;
+    height: 100%;
+    text-align: center;
+    /* padding: 30px; */
     width: 100px;
-    min-height: 700px;
 }
 
 div#content {
-    float: left;
     font-size: 16px;
     width: 400px;
+    /*
     padding-left: 200px;
     padding-right: 200px;
+    */
     padding-bottom: 30px;
 }
 
@@ -76,10 +92,6 @@ div#create {
     margin-top: 40px;
 }
 
-div#create ul li a {
-    font-size: 12px;
-}
-
 div#contest {
     margin-top: 60px;
 }
@@ -105,12 +117,11 @@ div.menu ul li {
 
 div.menu ul li a {
     color: #282828;
-    font-size: 14px;
     text-decoration: none;
     text-shadow: 1px 1px 1px #FFF;
 }
 
-div.menu ul li.active a {
+div.menu ul li.active a, div.menu ul li a:hover {
     color: #EC444B;
 }
 
@@ -119,7 +130,13 @@ div.item {
     font-size: 16px;
     color: #272727;
     margin-top: 40px;
-    width: 575px;
+    /* width: 575px; */
+}
+
+div.social {
+    float: right;
+    margin-top: 35px;
+    width: 60px;
 }
 
 div.social a {
@@ -134,8 +151,9 @@ div.social a:first-child {
 }
 
 div.item .number {
-    margin-left: 55px;
-    padding-bottom: 10px;
+    font-family: 'corporateacyrdemi', "Times New Roman", Times, sans-serif;
+    margin-left: 60px;
+    padding-bottom: 20px;
 }
 
 div.item .number a {
@@ -149,8 +167,8 @@ div.item .number a:hover {
 
 div.item .comments {
     float: left;
-    width: 30px;
-    margin-right: 25px;
+    text-align: center;
+    width: 60px;
 }
 
 div.item .comments a {
@@ -158,7 +176,6 @@ div.item .comments a {
 }
 
 div.item .comments span {
-    font-size: 12px;
     display: inline-block;
     padding-bottom: 5px;
     width: 20px;
@@ -175,7 +192,7 @@ div.item .comments a:hover {
 
 div.item .quote {
     float: left;
-    width: 500px;
+    /* width: 500px; */
 }
 
 /* Comments */
@@ -185,10 +202,9 @@ div.comments_list {
 
 div.comments_list .comment {
     border-top: 1px solid #E5E5E5;
-    width: 555px;
     clear: both;
     font-size: 14px;
-    font-style: italic;
+    font-family: 'corporateacyrdemi_italic', Times New Roman, sans-serif;
 }
 
 .comment.real {
@@ -213,7 +229,6 @@ div.comments_list .comment {
     width: 30px;
     margin-right: 25px;
     text-align: center;
-    vertical-align: top;
 }
 
 .comment .avatar i {
@@ -222,7 +237,6 @@ div.comments_list .comment {
 
 .comment .text {
     float: left;
-    width: 500px;
 }
 
 /* Active */
@@ -280,20 +294,24 @@ div#createForm {
 }
 
 div#createForm div.errors {
-    text-align: left;
+    margin-top: 20px;
     color: #B0B0B0;
-    font-size: 14px;
+}
+
+div#createForm div.errors ul {
+    list-style: none;
+    color: #ED1B23;
 }
 
 div#createForm select#category {
-    background: transparent;
-    border: 0px none;
     font-size: 24px;
     color: #B0B0B0;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
     padding-left: 30px;
+}
+
+div#createForm div.selectText {
+    font-size: 24px;
+    color: #B0B0B0;
 }
 
 div#createForm div.text {
@@ -302,61 +320,62 @@ div#createForm div.text {
 
 div#createForm textarea {
     border: 0px none;
-    background: transparent;
-    width: 485px;
-    height: 244px;
-    font-size: 16px;
+    width: 480px;
+    background: url(../images/textarea.png) repeat-y;
     color: #272727;
+    display: inline-block;
     overflow: hidden;
+    line-height: 26px;
+}
+
+div#createForm div.textareaScrollbar {
+    display: inline-block;
+    vertical-align: top;
+}
+
+div#createForm div.textareaScrollbar a {
+    display: inline-block;
+}
+
+
+div#createForm div.label {
+    display: inline-block;
+    color: #B0B0B0;
 }
 
 div#createForm input#email {
-    width: 330px;
     border: 0px none;
     background: transparent;
-    font-size: 16px;
+    width: 450px;
     color: #272727;
 }
 
-div#createForm div.buttons {
-    margin-left: 88px;
-}
-
 div#createForm div.buttons div {
-    float: left;
+    display: inline-block;
+    vertical-align: top;
 }
 
 div#createForm div.buttons div.agreement {
     text-align: left;
-}
-
-div#createForm div.email {
-    text-align: left;
-    margin-bottom: 75px;
+    color: #B0B0B0;
 }
 
 div.commentsForm textarea {
     background: #E5E5E5;
     border: 0px none;
-    width: 450px;
-    height: 80px;
     float: left;
 }
 
 div.commentsForm span {
     float: left;
-    height: 80px;
-    line-height: 80px;
 }
 
 #commentsFormSecond {
     display: none;
-    padding-left: 80px;
 }
 
 #commentsFormSecond textarea {
     float: left;
-    width: 370px;
 }
 
 button.checkbox {
@@ -378,20 +397,15 @@ div.flash-success {
 /* Helpers */
 span.hint {
     color: #B0B0B0;
-    font-size: 14px;
-}
-
-span.small {
-    font-size: 12px;
-}
-
-.pad {
-    padding-left: 70px;
 }
 
 a.hint {
     color: #B0B0B0;
     text-decoration: underline;
+}
+
+a.hint:hover {
+    color: #ED1B23;
 }
 
 div.clear {

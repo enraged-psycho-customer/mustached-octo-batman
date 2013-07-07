@@ -26,7 +26,7 @@ class Comments extends CActiveRecord
 
     public function getAvatarClass()
     {
-        $parts = array('sprite', 'avatar');
+        $parts = array('avatar');
         if ($this->is_admin) $parts[] = 'admin';
         else $parts[] = isset($this->avatars[$this->avatar]) ? $this->avatars[$this->avatar] : 'boy';
 

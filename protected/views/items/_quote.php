@@ -11,8 +11,12 @@
 
         <div class="comments">
             <a class="expand" href="<?php echo $this->createUrl('/items/view/', array('id' => $data->id)); ?>">
-                <span class="comments_count"><?php echo $data->comments_count; ?></span>
-                <i class="sprite sprite_comments"></i>
+                <div>
+                    <span class="comments_count"><?php echo $data->comments_count; ?></span>
+                </div>
+                <div>
+                    <i class="icon icon-comments"></i>
+                </div>
             </a>
         </div>
 

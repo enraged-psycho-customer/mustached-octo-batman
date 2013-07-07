@@ -22,15 +22,27 @@ $script = <<< EOD
 
         if (direction == 'up') {
             optionValue = $('select#category option:selected').prev().val();
+            optionText = $('select#category option:selected').prev().html();
+
             if (typeof optionValue === 'undefined') {
                 optionValue = $('select#category option').last().val();
+                optionText = $('select#category option').last().html();
             }
         }
         else {
             optionValue = $('select#category option:selected').next().val();
+            optionText = $('select#category option:selected').next().html();
+
+            if (typeof optionValue === 'undefined') {
+                optionValue = $('select#category option').first().val();
+                optionText = $('select#category option').first().html();
+            }
         }
 
+        console.log(optionValue + " / " + optionText);
+
         $('select#category').val(optionValue);
+        $('div.selectText').html(optionText);
 
         return false;
     });
@@ -39,14 +51,16 @@ $script = <<< EOD
         e.preventDefault();
         var direction = $(this).attr('data-dir');
         var element = $('textarea#text');
+        var scrollDelta = parseInt(Math.floor(element.get(0).scrollHeight / 10));
 
         if (direction == 'up') {
-            var scrollValue = -1 * $('textarea#text').height();
+            var scrollValue = element.scrollTop() - scrollDelta;
         }
         else {
-            var scrollValue = $('textarea#text').height();
+            var scrollValue = element.scrollTop() + scrollDelta;
         }
 
+        element.scrollTop(scrollValue);
 
         return false;
     });
@@ -64,13 +78,14 @@ Yii::app()->clientScript->registerScript('scrollSelect', $script, CClientScript:
 
     <div class="category">
         <div>
-            <a class="scroll" data-dir="up" href="javascript:void(0)"><i class="sprite sprite_form_arrow_up"></i></a>
+            <a class="scroll" data-dir="up" href="javascript:void(0)"><i class="icon icon-form_arrow_up"></i></a>
         </div>
         <div>
-            <?php echo $form->dropDownList($model, 'category', $model->getCategories(), array('id' => 'category', 'disabled' => 'disabled')); ?>
+            <div class="selectText">Новая цитата</div>
+            <?php echo $form->dropDownList($model, 'category', $model->getCategories(), array('id' => 'category', 'style' => 'display: none')); ?>
         </div>
         <div>
-            <a class="scroll" data-dir="down" href="javascript:void(0)"><i class="sprite sprite_form_arrow_down"></i></a>
+            <a class="scroll" data-dir="down" href="javascript:void(0)"><i class="icon icon-form_arrow_down"></i></a>
         </div>
     </div>
 
@@ -81,28 +96,35 @@ Yii::app()->clientScript->registerScript('scrollSelect', $script, CClientScript:
     <div class="text">
         <?php echo $form->textArea($model, 'content', array('id' => 'text')); ?>
 
-        <!--
-        <a class="scrollbar" data-dir="up" href="javascript:void(0)">
-            <i class="sprite sprite_scroll_up"></i>
-        </a>
-        <a class="scrollbar" data-dir="down" href="javascript:void(0)">
-            <i class="sprite sprite_scroll_down"></i>
-        </a>
-        -->
+        <div class="textareaScrollbar">
+            <a class="scrollbar" data-dir="up" href="javascript:void(0)">
+                <i class="icon icon-scroll_up"></i>
+            </a>
+            <br>
+            <a class="scrollbar" data-dir="down" href="javascript:void(0)">
+                <i class="icon icon-scroll_down"></i>
+            </a>
+        </div>
     </div>
 
+    <div class="clear"></div>
+
     <div class="email">
-        <label for="email"><span class="hint">Ваш e-mail:</span></label>
+        <div class="label">
+            <label for="email">Ваш e-mail:</label>
+        </div>
         <?php echo $form->textField($model, 'email', array('id' => 'email')); ?>
-        <span class="pad hint small">На него будут приходить уведомления о новых комментариях</span>
+        <div>
+            <span class="pad hint small">На него будут приходить уведомления о новых комментариях</span>
+        </div>
     </div>
 
     <div class="buttons">
         <div>
-            <button class="checkbox" type="submit"><i class="sprite sprite_checkbox"></i></button>
+            <button class="checkbox" type="submit"><i class="icon icon-checkbox"></i></button>
         </div>
         <div class="agreement">
-            <span class="hint">Я прочитал <?php echo CHtml::link('правила', array('/site/page', 'view' => 'rules'), array('class' => 'hint')) ?>, и гарантирую,<br/> что не буду визжать как сучка</span>
+            Я прочитал <?php echo CHtml::link('правила', array('/site/page', 'view' => 'rules'), array('class' => 'hint')) ?>, и гарантирую,<br/> что не буду визжать как сучка
         </div>
     </div>
 

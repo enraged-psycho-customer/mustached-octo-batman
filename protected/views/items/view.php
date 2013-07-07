@@ -18,31 +18,23 @@ $this->menu = array(
 );
 ?>
 
-<?php
-$script = <<< EOD
-    $("div.comment.real").live("click", function(e) {
-        e.preventDefault();
-        $('#commentsFormSecond').show();
-        $('#commentsFormSecond').insertAfter(this);
-        $('#commentsFormSecond input#parent_id').val($(this).attr('data-id'));
-        return false;
-    });
-EOD;
-
-Yii::app()->clientScript->registerScript('comments', $script, CClientScript::POS_END);
-?>
-
 <div class="item" id="item_<?php echo $model->id; ?>" data-id="<?php echo $model->id; ?>">
+    <?php if ($modal): ?>
+        <?php $this->renderPartial('_social', array('model' => $model)); ?>
+    <?php endif; ?>
+
     <div class="container">
         <div class="number">
             <?php echo CHtml::link('№' . $model->id, array('view', 'id' => $model->id)); ?>
         </div>
 
         <div class="comments">
-            <span>
-                <span class="comments_count active"><?php echo $model->comments_count; ?></span>
-                <i class="sprite sprite_comments_active"></i>
-            </span>
+            <a class="expanded" href="javascript:void(0)">
+                <span>
+                    <span class="comments_count active"><?php echo $model->comments_count; ?></span>
+                    <i class="icon icon-comments_active"></i>
+                </span>
+            </a>
         </div>
 
         <div class="quote">
@@ -58,11 +50,11 @@ Yii::app()->clientScript->registerScript('comments', $script, CClientScript::POS
                 <div class="comment">
                     <div class="avatar">
                         <a href="javascript:void(0)">
-                            <i class="sprite sprite_form_arrow_up"></i>
+                            <i class="icon icon-form_arrow_up"></i>
                         </a>
-                        <i class="sprite sprite_avatar_boy"></i>
+                        <i class="icon icon-avatar_boy"></i>
                         <a href="javascript:void(0)">
-                            <i class="sprite sprite_form_arrow_down"></i>
+                            <i class="icon icon-form_arrow_down"></i>
                         </a>
                     </div>
                     <div class="text">
@@ -73,7 +65,7 @@ Yii::app()->clientScript->registerScript('comments', $script, CClientScript::POS
 
                         <?php echo $form->hiddenField($commentModel, 'parent_id', array('id' => 'parent_id')); ?>
                         <?php echo $form->textArea($commentModel, 'content'); ?>
-                        <span><button class="checkbox" type="submit"><i class="sprite sprite_checkbox"></i></button></span>
+                        <span><button class="checkbox" type="submit"><i class="icon icon-checkbox"></i></button></span>
                         <?php $this->endWidget(); ?>
                     </div>
                 </div>
@@ -84,11 +76,11 @@ Yii::app()->clientScript->registerScript('comments', $script, CClientScript::POS
                 <div class="comment">
                     <div class="avatar">
                         <a href="javascript:void(0)">
-                            <i class="sprite sprite_form_arrow_up"></i>
+                            <i class="icon icon-form_arrow_up"></i>
                         </a>
-                        <i class="sprite sprite_avatar_boy"></i>
+                        <i class="icon icon-avatar_boy"></i>
                         <a href="javascript:void(0)">
-                            <i class="sprite sprite_form_arrow_down"></i>
+                            <i class="icon icon-form_arrow_down"></i>
                         </a>
                     </div>
                     <div class="text">
@@ -98,7 +90,7 @@ Yii::app()->clientScript->registerScript('comments', $script, CClientScript::POS
                         )); ?>
 
                         <?php echo $form->textArea($commentModel, 'content'); ?>
-                        <span><button class="checkbox" type="submit"><i class="sprite sprite_checkbox"></i></button></span>
+                        <span><button class="checkbox" type="submit"><i class="icon icon-checkbox"></i></button></span>
                         <?php $this->endWidget(); ?>
                     </div>
                 </div>
@@ -108,22 +100,3 @@ Yii::app()->clientScript->registerScript('comments', $script, CClientScript::POS
 </div>
 
 <div class="clear"></div>
-<!--
-<div class="social">
-    <a href="javascript:void(0)">
-        <i class="sprite sprite_close"></i>
-    </a>
-    <a href="javascript:void(0)">
-        <i class="sprite sprite_like"></i>
-    </a>
-    <a href="javascript:void(0)">
-        <i class="sprite sprite_vk"></i>
-    </a>
-    <a href="javascript:void(0)">
-        <i class="sprite sprite_twitter"></i>
-    </a>
-    <a href="javascript:void(0)">
-        <i class="sprite sprite_facebook"></i>
-    </a>
-</div>
--->

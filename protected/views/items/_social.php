@@ -30,13 +30,14 @@
             ?>
         <?php endif; ?>
     </span>
-    <a href="https://vk.com/share.php?url=<?php echo Yii::app()->createAbsoluteUrl('/' . $model->id); ?>&title=Адовые клиенты!" title="Поделиться на VK" target="_blank">
+    <?php $absoluteUrl = Yii::app()->createAbsoluteUrl('/' . $model->id); ?>
+    <a href="https://vk.com/share.php?url=<?php echo $absoluteUrl; ?>&title=Адовые клиенты!" title="Поделиться на VK" target="_blank">
         <i class="icon icon-vk"></i>
     </a>
-    <a href="https://twitter.com/share/?url=<?php echo Yii::app()->createAbsoluteUrl('/' . $model->id); ?>&text=Адовые клиенты!" title="Поделиться на Twitter" target="_blank">
+    <a href="https://twitter.com/share/?url=<?php echo $absoluteUrl; ?>&text=Адовые клиенты!" title="Поделиться на Twitter" target="_blank">
         <i class="icon icon-twitter"></i>
     </a>
-    <a href="javascript:void(0)" title="Поделиться на Facebook">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($absoluteUrl); ?>" title="Поделиться на Facebook">
         <i class="icon icon-facebook"></i>
     </a>
 </div>

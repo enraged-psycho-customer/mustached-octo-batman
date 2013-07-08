@@ -381,6 +381,10 @@ div.commentsForm div.captcha {
     text-align: center;
 }
 
+div.captcha img {
+    cursor: pointer;
+}
+
 div.captcha input {
     border: 1px solid #B0B0B0;
     background: transparent;
@@ -403,11 +407,12 @@ div.commentsForm .captcha {
 }
 
 
-#commentsFormSecond {
+.commentsFormNested {
     display: none;
+    padding-left: 80px;
 }
 
-#commentsFormSecond textarea {
+.commentsFormNested textarea {
     float: left;
 }
 

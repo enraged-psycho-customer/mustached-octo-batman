@@ -38,9 +38,9 @@ $(document).ready(function() {
     // Items
     $("div.comment.real, div.comment.level").live("click", function(e) {
         e.preventDefault();
-        $('#commentsFormSecond').show();
-        $('#commentsFormSecond').insertAfter(this);
-        $('#commentsFormSecond input#parent_id').val($(this).attr('data-id'));
+        $('.commentsFormNested').show();
+        $('.commentsFormNested').insertAfter(this);
+        $('.commentsFormNested input.parent_id').val($(this).attr('data-id'));
         return false;
     });
 

@@ -20,6 +20,7 @@ class Comments extends CActiveRecord
     const AVATAR_GIRL = 2;
 
     public $avatar = 1;
+    public $parent_id = 0;
     public $captcha;
 
     private $avatars = array(

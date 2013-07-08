@@ -45,77 +45,8 @@ $this->menu = array(
 
         <div class="comments_list" id="comments_<?php echo $model->id; ?>">
             <?php $this->renderPartial('_comments', array('comments' => $model->getComments(), 'index' => 0)); ?>
-
-            <div id="commentsFormSecond" class="commentsForm">
-                <div class="comment">
-                    <div class="avatar">
-                        <a href="javascript:void(0)" class="avatar_switch">
-                            <i class="icon icon-form_arrow_up"></i>
-                        </a>
-                        <span><i class="avatar icon icon-avatar_boy"></i></span>
-                        <a href="javascript:void(0)" class="avatar_switch">
-                            <i class="icon icon-form_arrow_down"></i>
-                        </a>
-                    </div>
-                    <div class="text">
-                        <?php $form = $this->beginWidget('CActiveForm', array(
-                            'id' => 'comment-form-inner',
-                            'enableAjaxValidation' => false,
-                        )); ?>
-
-                        <?php echo $form->hiddenField($commentModel, 'avatar', array('class' => 'avatar_field')); ?>
-                        <?php echo $form->hiddenField($commentModel, 'parent_id', array('id' => 'parent_id')); ?>
-
-                        <div class="textarea">
-                            <?php echo $form->textArea($commentModel, 'content'); ?>
-                            <span><button class="checkbox" type="button"><i class="icon icon-checkbox"></i></button></span>
-                        </div>
-
-                        <div class="captcha">
-                            <?php $this->widget('CCaptcha', array('captchaAction' => 'site/captcha', 'showRefreshButton' => false)); ?>
-                            <?php echo $form->textField($commentModel, 'captcha'); ?>
-                            <span><button class="checkbox" type="submit"><i class="icon icon-checkbox"></i></button></span>
-                        </div>
-                        <?php $this->endWidget(); ?>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="commentsForm">
-                <div class="comment">
-                    <div class="avatar">
-                        <a href="javascript:void(0)" class="avatar_switch">
-                            <i class="icon icon-form_arrow_up"></i>
-                        </a>
-                        <span><i class="avatar icon icon-avatar_boy"></i></span>
-                        <a href="javascript:void(0)" class="avatar_switch">
-                            <i class="icon icon-form_arrow_down"></i>
-                        </a>
-                    </div>
-                    <div class="text">
-                        <?php $form = $this->beginWidget('CActiveForm', array(
-                            'id' => 'comment-form',
-                            'enableAjaxValidation' => false,
-                        )); ?>
-
-                        <?php echo $form->hiddenField($commentModel, 'avatar', array('class' => 'avatar_field')); ?>
-                        <?php echo $form->hiddenField($commentModel, 'parent_id', array('id' => 'parent_id')); ?>
-
-                        <div class="textarea">
-                            <?php echo $form->textArea($commentModel, 'content'); ?>
-                            <span><button class="checkbox" type="button"><i class="icon icon-checkbox"></i></button></span>
-                        </div>
-
-                        <div class="captcha">
-                            <?php $this->widget('CCaptcha', array('captchaAction' => 'site/captcha', 'showRefreshButton' => false)); ?>
-                            <?php echo $form->textField($commentModel, 'captcha'); ?>
-                            <span><button class="checkbox" type="submit"><i class="icon icon-checkbox"></i></button></span>
-                        </div>
-                        <?php $this->endWidget(); ?>
-                    </div>
-                </div>
-            </div>
+            <?php $this->renderPartial('_commentsForm', array('model' => $commentModel, 'class' => 'commentsForm commentsFormNested')); ?>
+            <?php $this->renderPartial('_commentsForm', array('model' => $commentModel, 'class' => 'commentsForm')); ?>
         </div>
     </div>
 </div>

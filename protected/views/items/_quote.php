@@ -21,7 +21,7 @@
         </div>
 
         <div class="quote">
-            <?php echo $this->purify($data->content); ?>
+            <?php echo $data->content; ?>
         </div>
     </div>
 </div>

@@ -5,7 +5,7 @@
             <i class="icon icon-<?php echo $comment->getAvatarClass(); ?>"></i>
         </div>
         <div class="text">
-            <?php echo $this->purify($comment->content); ?>
+            <?php echo $comment->content; ?>
         </div>
     </div>
 

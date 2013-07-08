@@ -17,7 +17,7 @@
         </div>
 
         <div class="quote">
-            <?php echo $this->purify($data->image); ?>
+            <?php echo $data->image; ?>
         </div>
     </div>
 </div>

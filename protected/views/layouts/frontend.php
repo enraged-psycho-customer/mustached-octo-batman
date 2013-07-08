@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/css/responsive.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/fonts/stylesheet.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/css/sprites.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/css/flashes.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/css/override.css"/>
 
     <!-- JavaScript -->
@@ -64,8 +65,6 @@
 
     <div id="container">
         <div id="content">
-            <?php Yii::app()->user->setFlash('success','Save data successfully'); ?>
-            <?php $this->widget('Flashes'); ?>
             <?php echo $content; ?>
         </div>
     </div>
@@ -74,6 +73,7 @@
     <div class="clear"></div>
 </div>
 
+<?php $this->widget('Flashes'); ?>
 <div id="age">
     <i class="icon icon-age"></i>
 </div>
@@ -81,7 +81,6 @@
 <div id="balloon">
     <div id="balloon_text"></div>
 </div>
-
 
 </body>
 </html>

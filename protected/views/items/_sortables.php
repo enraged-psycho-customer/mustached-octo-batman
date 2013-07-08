@@ -42,13 +42,13 @@ Yii::app()->clientScript->registerScript('filters', $script, CClientScript::POS_
 <div id="shades">
     <div class="shade">
         <div class="inner">
-            <a class="sortBy" data-type="published_at" data-dir="asc" href="<?php echo Yii::app()->createUrl($this->route, array('sort_type' => 'published_at', 'sort_dir' => 'asc')); ?>">
+            <a class="sortBy" data-type="created_at" data-dir="asc" href="<?php echo Yii::app()->createUrl($this->route, array('sort_type' => 'created_at', 'sort_dir' => 'asc')); ?>">
                 <i class="icon icon-arrow_white_top" title="Сортировать по-возрастанию"></i>
             </a>
             <span>
                 <i class="icon icon-time_white" title="Сортировать по времени"></i>
             </span>
-            <a class="sortBy" data-type="published_at" data-dir="desc" href="<?php echo Yii::app()->createUrl($this->route, array('sort_type' => 'published_at', 'sort_dir' => 'desc')); ?>">
+            <a class="sortBy" data-type="created_at" data-dir="desc" href="<?php echo Yii::app()->createUrl($this->route, array('sort_type' => 'created_at', 'sort_dir' => 'desc')); ?>">
                 <i class="icon icon-arrow_white_bottom" title="Сортировать по-убыванию"></i>
             </a>
         </div>

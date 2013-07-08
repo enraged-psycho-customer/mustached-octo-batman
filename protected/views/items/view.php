@@ -38,7 +38,7 @@ $this->menu = array(
         </div>
 
         <div class="quote">
-            <?php echo $this->purify($model->content); ?>
+            <?php echo $model->content; ?>
         </div>
 
         <div class="clear"></div>

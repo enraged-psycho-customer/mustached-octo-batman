@@ -1,0 +1,26 @@
+div.flashes {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    display: block;
+    text-align:center;
+    margin: 30px 10px 0px 21px;
+}
+
+div.flashes div {
+    padding: 10px 10px;
+    border-radius: 3px;
+    margin-top: 10px;
+    max-width: 160px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+div.flashes div.flash-success {
+    color: #282828;
+    background-color: #E6E6E6;
+}
+
+div.flashes div.flash-error {
+    color: #FFF;
+    background-color: #ED1B23;
+}

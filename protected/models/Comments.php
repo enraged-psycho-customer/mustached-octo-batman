@@ -68,13 +68,28 @@ class Comments extends CActiveRecord
 
             // Create scenario
             array('content', 'length', 'min' => 1, 'max' => 500, 'allowEmpty' => false, 'on' => 'create'),
-            array('created_at', 'default', 'value' => new CDbException('NOW()'), 'on' => 'create'),
+            array('created_at', 'default', 'value' => new CDbExpression('NOW()'), 'on' => 'create'),
             array('parent_id', 'default', 'value' => 0, 'setOnEmpty' => true, 'on' => 'create'),
             array('avatar', 'default', 'value' => self::AVATAR_BOY, 'setOnEmpty' => true, 'on' => 'create'),
 
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
             array('id, content, mode, item_id, created_at, updated_at, is_admin', 'safe', 'on' => 'search'),
+        );
+    }
+
+    public function behaviors()
+    {
+        return array(
+            'PurifyText' => array(
+                'class' => 'DPurifyTextBehavior',
+                'sourceAttribute' => 'content',
+                'destinationAttribute' => 'content',
+                'purifierOptions' => array(
+                    'HTML.Allowed'=> '',
+                ),
+                'processOnBeforeSave' => true,
+            )
         );
     }
 

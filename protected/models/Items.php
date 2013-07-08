@@ -12,7 +12,6 @@
  * @property integer $rating
  * @property string $created_at
  * @property string $updated_at
- * @property string $published_at
  * @property int $comments_count
  * @property string $email
  */
@@ -26,7 +25,7 @@ class Items extends CActiveRecord
     const STATE_PUBLISHED = 2;
     const STATE_JUNK = 3;
 
-    const DEFAULT_SORT_TYPE = 'published_at';
+    const DEFAULT_SORT_TYPE = 'created_at';
     const DEFAULT_SORT_DIR = 'desc';
 
     private $categories = array(
@@ -35,7 +34,7 @@ class Items extends CActiveRecord
     );
 
     private $sort_types = array(
-        'published_at',
+        'created_at',
         'updated_at',
         'comments_count'
     );
@@ -71,9 +70,9 @@ class Items extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('category, state, rating', 'numerical', 'integerOnly' => true),
+            // Default validators
+            array('category, rating', 'numerical', 'integerOnly' => true),
             array('image', 'length', 'max' => 255),
-            array('content, created_at, updated_at, published_at, comments_count', 'safe'),
 
             // Create scenario
             array('category', 'in', 'range' => $this->categories, 'allowEmpty' => false, 'on' => 'create'),
@@ -82,15 +81,37 @@ class Items extends CActiveRecord
             array('email', 'length', 'max' => 255, 'allowEmpty' => false, 'on' => 'create'),
             array('email', 'email', 'allowEmpty' => false, 'on' => 'create'),
 
-            array('state', 'default', 'value' => self::STATE_SUBMITTED, 'on' => 'create'),
-            array('created_at', 'default', 'value' => new CDbException('NOW()'), 'on' => 'create'),
+            array('state', 'default', 'value' => self::STATE_PUBLISHED, 'setOnEmpty' => false, 'on' => 'create'),
+            array('created_at', 'default', 'value' => new CDbExpression('NOW()'), 'on' => 'create'),
             array('rating', 'default', 'value' => 0, 'on' => 'create'),
 
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, content, category, state, image, rating, created_at, updated_at, published_at, comments_count', 'safe', 'on' => 'search'),
+            array('id, content, category, state, image, rating, created_at, updated_at, comments_count', 'safe', 'on' => 'search'),
         );
     }
+
+    public function behaviors()
+    {
+        return array(
+            'PurifyText' => array(
+                'class' => 'DPurifyTextBehavior',
+                'sourceAttribute' => 'content',
+                'destinationAttribute' => 'content',
+                'purifierOptions' => array(
+                    'HTML.Allowed'=> 'b,strong,br',
+                ),
+                'processOnBeforeSave' => true,
+            )
+        );
+    }
+
+    public function beforeSave()
+    {
+        $this->content = nl2br($this->content);
+        return parent::beforeSave();
+    }
+
 
     /**
      * @return array relational rules.
@@ -162,7 +183,6 @@ class Items extends CActiveRecord
         $criteria->compare('rating', $this->rating);
         $criteria->compare('created_at', $this->created_at, true);
         $criteria->compare('updated_at', $this->updated_at, true);
-        $criteria->compare('published_at', $this->published_at, true);
         $criteria->compare('comments_count', $this->comments_count, true);
         $criteria->compare('email', $this->email, true);
 

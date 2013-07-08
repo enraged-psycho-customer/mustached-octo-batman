@@ -92,7 +92,7 @@ class ItemsController extends Controller
             $model->attributes = $_POST['Items'];
             if ($model->save()) {
                 Yii::app()->user->setFlash('success', "Ваша цитата отправлена!");
-                $this->redirect(array('/items/index'));
+                $this->redirect(array('/' . $model->id));
             }
         }
 

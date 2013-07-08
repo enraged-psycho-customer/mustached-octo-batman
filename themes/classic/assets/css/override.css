@@ -26,3 +26,7 @@ ul.yiiPager .hidden a {
     border: solid 1px #DEDEDE;
     color: #888888;
 }
+
+.list-view-loading {
+    background: url(../images/loader.gif) no-repeat center top;
+}

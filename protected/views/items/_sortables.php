@@ -1,35 +1,3 @@
-<?php
-$script = <<< EOD
-    $("a.sortBy").live("click", function(e) {
-        e.preventDefault();
-        $('#itemsForm #sort_type').val($(this).attr('data-type'));
-        $('#itemsForm #sort_dir').val($(this).attr('data-dir'));
-
-        $('#shades .shade .inner a.sortBy').show();
-        $(this).hide();
-
-        $('#shades .shade').removeClass('active');
-        $(this).parent().parent().addClass('active');
-
-        $('#shades .shade .inner').removeClass('active');
-        $(this).parent().addClass('active');
-
-        $('#itemsForm').submit();
-        return false;
-    });
-
-    $('#itemsForm').submit(function(){
-        $.fn.yiiListView.update('itemsList', {
-            data: $(this).serialize()
-        });
-        return false;
-    });
-EOD;
-
-Yii::app()->clientScript->registerScript('filters', $script, CClientScript::POS_END);
-?>
-
-
 <?php $form = $this->beginWidget('CActiveForm', array(
     'id' => 'itemsForm',
     'action' => Yii::app()->createUrl($this->route),

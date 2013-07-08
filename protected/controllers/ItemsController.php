@@ -9,6 +9,24 @@ class ItemsController extends Controller
     public $layout = '//layouts/frontend';
 
     /**
+     * Declares class-based actions.
+     */
+    public function actions()
+    {
+        return array(
+            // captcha action renders the CAPTCHA image displayed on the contact page
+            'captcha' => array(
+                'class' => 'CCaptchaAction',
+                'backColor' => 0xF2F2F2,
+                'foreColor' => 0xED1B23,
+                'transparent' => true,
+                'testLimit' => 1,
+                'height' => 50,
+            ),
+        );
+    }
+
+    /**
      * @return array action filters
      */
     public function filters()
@@ -28,7 +46,7 @@ class ItemsController extends Controller
     {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'images', 'view', 'create', 'vote'),
+                'actions' => array('index', 'images', 'view', 'create', 'vote', 'captcha'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -50,7 +68,6 @@ class ItemsController extends Controller
         $modal = false;
         if (isset($_GET['modal'])) {
             $modal = true;
-            $this->layout = '//layouts/modal';
         }
 
         $comment = new Comments('create');
@@ -66,16 +83,35 @@ class ItemsController extends Controller
             $comment->attributes = $_POST['Comments'];
             if ($comment->save()) {
                 Yii::app()->user->setFlash('success', "Ваша комментарий отправлен!");
-                $this->redirect(array('/items/view/id/' . $id));
+            } else {
+                $errors = $comment->getErrors();
+                foreach ($errors as $attribute => $attributeErrors) {
+                    foreach ($attributeErrors as $error) {
+                        Yii::app()->user->setFlash('error', $error);
+                    }
+                }
             }
+
+            $this->redirect('/' . $id);
         }
 
-        $this->render('view', array(
-            'model' => $this->loadModel($id)->with('comments'),
-            'modal' => $modal,
-            'commentModel' => $comment,
-            'hasVoted' => $hasVoted
-        ));
+        if ($modal) {
+            $this->renderPartial('view', array(
+                'model' => $this->loadModel($id)->with('comments'),
+                'modal' => $modal,
+                'commentModel' => $comment,
+                'hasVoted' => $hasVoted
+            ));
+        } else {
+            $this->render('view', array(
+                'model' => $this->loadModel($id)->with('comments'),
+                'modal' => $modal,
+                'commentModel' => $comment,
+                'hasVoted' => $hasVoted
+            ));
+        }
+
+
     }
 
     /**

@@ -71,6 +71,7 @@ class Comments extends CActiveRecord
             array('created_at', 'default', 'value' => new CDbExpression('NOW()'), 'on' => 'create'),
             array('parent_id', 'default', 'value' => 0, 'setOnEmpty' => true, 'on' => 'create'),
             array('avatar', 'default', 'value' => self::AVATAR_BOY, 'setOnEmpty' => true, 'on' => 'create'),
+            array('captcha', 'captcha', 'allowEmpty' => !CCaptcha::checkRequirements()),
 
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.

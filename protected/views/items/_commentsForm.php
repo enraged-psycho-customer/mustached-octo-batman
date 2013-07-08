@@ -1,15 +1,15 @@
 <div class="<?php echo $class; ?>">
-    <div class="comment">
+    <div class="containerForm">
         <div class="avatar">
             <a href="javascript:void(0)" class="avatar_switch">
                 <i class="icon icon-form_arrow_up"></i>
             </a>
-            <span><i class="avatar icon icon-avatar_boy"></i></span>
+            <a href="javascript:void(0)" title="Аватар"><i class="avatar icon icon-avatar_boy"></i></a>
             <a href="javascript:void(0)" class="avatar_switch">
                 <i class="icon icon-form_arrow_down"></i>
             </a>
         </div>
-        <div class="text">
+        <div class="form">
             <?php $form = $this->beginWidget('CActiveForm', array(
                 'id' => 'comment-form',
                 'enableAjaxValidation' => false,
@@ -18,26 +18,34 @@
             <?php echo $form->hiddenField($model, 'avatar', array('class' => 'avatar_field')); ?>
             <?php echo $form->hiddenField($model, 'parent_id', array('class' => 'parent_id')); ?>
 
-            <div class="textarea">
-                <?php echo $form->textArea($model, 'content'); ?>
-                <span><button class="checkbox" type="button"><i class="icon icon-checkbox"></i></button></span>
+            <div class="controls">
+                <div class="textarea">
+                    <img src="<?php echo $this->assetsUrl; ?>/images/comment_arrow.png"/>
+                    <?php echo $form->textArea($model, 'content'); ?>
+                </div>
+
+                <div class="button">
+                    <button type="button"><i class="icon icon-checkbox"></i></button>
+                </div>
             </div>
 
             <div class="captcha">
-                <?php
-                $this->widget('CCaptcha',
-                    array(
-                        'captchaAction' => 'site/captcha',
-                        'showRefreshButton' => false,
-                        'clickableImage' => true,
-                        'imageOptions' => array(
-                            'title' => 'Кликните для обновления изображение'
-                        ),
-                    )
-                );
-                ?>
-                <?php echo $form->textField($model, 'captcha'); ?>
-                <span><button class="checkbox" type="submit"><i class="icon icon-checkbox"></i></button></span>
+                <div><?php echo $form->textField($model, 'captcha'); ?></div>
+                <div>
+                    <?php
+                    $this->widget('CCaptcha',
+                        array(
+                            'captchaAction' => 'items/captcha',
+                            'showRefreshButton' => false,
+                            'clickableImage' => true,
+                            'imageOptions' => array(
+                                'title' => 'Кликните для обновления изображения'
+                            ),
+                        )
+                    );
+                    ?>
+                </div>
+                <div class="submit"><button class="checkbox" type="submit"><i class="icon icon-checkbox"></i></button></div>
             </div>
             <?php $this->endWidget(); ?>
         </div>

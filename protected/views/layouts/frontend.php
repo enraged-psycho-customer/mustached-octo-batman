@@ -45,6 +45,10 @@
                     'items' => array(
                         array('label' => 'Цитаты', 'url' => array('/items/index')),
                         array('label' => 'Картинки', 'url' => array('/items/images')),
+                        array('label' => 'Сражения', 'url' => array('/items/battles')),
+                        array('label' => 'Инкивизиция', 'url' => array('/items/inquisition')),
+                        array('label' => 'Магазинчик', 'url' => array('/shop')),
+                        array('label' => 'Ништяки', 'url' => array('/goodies')),
                     ),
                 )); ?>
             </div>

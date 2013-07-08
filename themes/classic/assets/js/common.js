@@ -31,7 +31,7 @@ $(document).ready(function() {
 
     $(places.expandAjaxLink).live("click", function(e) {
         e.preventDefault();
-        var itemId = $(this).parent().parent().parent().attr('data-id');
+        var itemId = $(this).parents('.item').attr('data-id');
         var itemSelector = '#item_' + itemId;
         var commentsSelector = '#comments_' + itemId;
         var requestUrl = $(this).attr('href') + '?modal';

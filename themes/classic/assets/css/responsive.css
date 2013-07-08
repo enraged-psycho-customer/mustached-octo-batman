@@ -113,13 +113,13 @@
     }
 
     div#container {
-        max-width: 480px;
+        /*max-width: 1080px;*/
     }
 
     div#content {
         margin-left: 140px;
         /*padding-left: 60px;*/
-        max-width: 480px;
+        /*max-width: 480px;*/
     }
 
     /* Font sizes */
@@ -137,7 +137,7 @@
 
     div.item div.quote {
         font-size: 16px;
-        max-width: 360px;
+        /*max-width: 360px;*/
     }
 
     div.item .number a {
@@ -212,13 +212,13 @@
     }
 
     div#container {
-        max-width: 1080px;
+        /*max-width: 1440px;*/
     }
 
     div#content {
         margin-left: 100px;
         /*padding-left: 160px;*/
-        max-width: 860px;
+        /*max-width: 1340px;*/
     }
 
     /* Font sizes */
@@ -236,7 +236,7 @@
 
     div.item div.quote {
         font-size: 20px;
-        max-width: 740px;
+        /*max-width: 1080px;*/
     }
 
     div.item .number a {
@@ -311,13 +311,13 @@
     }
 
     div#container {
-        max-width: 1215px;
+       /* max-width: 1525px;*/
     }
 
     div#content {
         margin-left: 225px;
         /*padding-left: 180px;*/
-        width: 860px;
+       /* width: 860px;*/
     }
 
     /* Font sizes */
@@ -335,7 +335,7 @@
 
     div.item div.quote {
         font-size: 22px;
-        width: 740px;
+       /* width: 740px;*/
     }
 
     div.item .number a {
@@ -411,13 +411,13 @@
     }
 
     div#container {
-        max-width: 1525px;
+       /* max-width: 1525px;*/
     }
 
     div#content {
         margin-left: 375px;
         /*padding-left: 180px;*/
-        width: 860px;
+        /*width: 860px;*/
     }
 
     /* Font sizes */
@@ -435,7 +435,7 @@
 
     div.item div.quote {
         font-size: 22px;
-        width: 740px;
+       /* width: 740px;*/
     }
 
     div.item .number a {

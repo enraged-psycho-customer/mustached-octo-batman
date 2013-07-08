@@ -82,7 +82,7 @@ class ItemsController extends Controller
         if (isset($_POST['Comments'])) {
             $comment->attributes = $_POST['Comments'];
             if ($comment->save()) {
-                Yii::app()->user->setFlash('success', "Ваша комментарий отправлен!");
+                Yii::app()->user->setFlash('success', "Ваш комментарий отправлен!");
             } else {
                 $errors = $comment->getErrors();
                 foreach ($errors as $attribute => $attributeErrors) {

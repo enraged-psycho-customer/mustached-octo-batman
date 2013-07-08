@@ -80,8 +80,11 @@ class Comments extends CActiveRecord
 
     public function afterSave()
     {
+        /* @var $item Items */
         $item = Items::model()->findByPk($this->item_id);
-        $item->saveCounters(array('comments_count' => 1));
+        $item->comments_count = $item->comments_count + 1;
+        $item->updated_at = new CDbExpression('NOW()');
+        $item->save();
 
         parent::afterSave();
     }

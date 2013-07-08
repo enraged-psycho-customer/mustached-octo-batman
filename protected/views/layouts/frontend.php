@@ -62,16 +62,10 @@
         </div>
     </div>
 
-    <div id="flashes">
-    <?php
-    foreach (Yii::app()->user->getFlashes() as $key => $message) {
-        echo '<div class="flash-' . $key . '">' . $message . "</div>\n";
-    }
-    ?>
-    </div>
-
     <div id="container">
         <div id="content">
+            <?php Yii::app()->user->setFlash('success','Save data successfully'); ?>
+            <?php $this->widget('Flashes'); ?>
             <?php echo $content; ?>
         </div>
     </div>

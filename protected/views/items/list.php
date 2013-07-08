@@ -44,7 +44,7 @@ EOD;
 Yii::app()->clientScript->registerScript('itemLive', $script, CClientScript::POS_END);
 ?>
 
-<?php $this->renderPartial('_filters'); ?>
+<?php $this->renderPartial('_sortables'); ?>
 <?php
 $this->widget('zii.widgets.CListView', array(
     'id' => 'itemsList',

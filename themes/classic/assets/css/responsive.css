@@ -1,5 +1,5 @@
 /* 320px */
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 640px) {
     div#sidebar {
         position: static;
         width: 320px;
@@ -105,7 +105,7 @@
 }
 
 /* 640px */
-@media screen and (min-width: 321px) and (max-width: 640px) {
+@media screen and (min-width: 641px) and (max-width: 1280px) {
     div#sidebar {
         left: 0;
         padding-top: 32px;
@@ -113,13 +113,13 @@
     }
 
     div#container {
-        width: 480px;
+        max-width: 480px;
     }
 
     div#content {
         margin-left: 140px;
-        padding-left: 32px;
-        width: 480px;
+        /*padding-left: 60px;*/
+        max-width: 480px;
     }
 
     /* Font sizes */
@@ -137,7 +137,7 @@
 
     div.item div.quote {
         font-size: 16px;
-        width: 360px;
+        max-width: 360px;
     }
 
     div.item .number a {
@@ -204,7 +204,7 @@
 }
 
 /* 1280px */
-@media screen and (min-width: 641px) and (max-width: 1280px) {
+@media screen and (min-width: 1281px) and (max-width: 1440px) {
     div#sidebar {
         left: 0;
         padding-top: 40px;
@@ -212,13 +212,13 @@
     }
 
     div#container {
-        width: 1080px;
+        max-width: 1080px;
     }
 
     div#content {
         margin-left: 100px;
-        padding-left: 160px;
-        width: 860px;
+        /*padding-left: 160px;*/
+        max-width: 860px;
     }
 
     /* Font sizes */
@@ -236,7 +236,7 @@
 
     div.item div.quote {
         font-size: 20px;
-        width: 740px;
+        max-width: 740px;
     }
 
     div.item .number a {
@@ -303,7 +303,7 @@
 }
 
 /* 1440px */
-@media screen and (min-width: 1281px) and (max-width: 1440px) {
+@media screen and (min-width: 1441px) and (max-width: 1899px) {
     div#sidebar {
         left: 0;
         padding-top: 45px;
@@ -311,12 +311,12 @@
     }
 
     div#container {
-        width: 1215px;
+        max-width: 1215px;
     }
 
     div#content {
         margin-left: 225px;
-        padding-left: 180px;
+        /*padding-left: 180px;*/
         width: 860px;
     }
 
@@ -402,7 +402,7 @@
 }
 
 /* 1920px */
-@media screen and (min-width: 1441px) and (max-width: 1920px) {
+@media screen and (min-width: 1900px) {
     /* Layout size */
     div#sidebar {
         left: 150px;
@@ -411,12 +411,12 @@
     }
 
     div#container {
-        width: 1525px;
+        max-width: 1525px;
     }
 
     div#content {
         margin-left: 375px;
-        padding-left: 180px;
+        /*padding-left: 180px;*/
         width: 860px;
     }
 

@@ -53,7 +53,7 @@ $this->widget('zii.widgets.CListView', array(
     'template' => '{items}{pager}',
     'pager' => array(
         'class' => 'CLinkPager',
-        'maxButtonCount' => 10,
+        'maxButtonCount' => 5,
     ),
 ));
 ?>

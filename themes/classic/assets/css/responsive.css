@@ -24,6 +24,25 @@
         width: 290px;
     }
 
+    div#createForm textarea {
+        height: 240px;
+        width: 240px;
+        font-size: 16px;
+    }
+
+    div#createForm div.textareaScrollbar {
+        margin-left: 10px;
+        height: 240px;
+    }
+
+    div#createForm input#email {
+        width: 240px;
+    }
+
+    div#createForm div.textareaScrollbar a {
+        padding-top: 60px;
+    }
+
     /* Font sizes */
     div#nav, div#hall_of_fame {
         font-size: 12px;
@@ -43,6 +62,18 @@
 
     div.item .number a {
         font-size: 12px;
+    }
+
+    div.email label, div.email input, div.buttons div.agreement, div.errors {
+        font-size: 16px;
+    }
+
+    span.small {
+        font-size: 10px;
+    }
+
+    .pad {
+        padding-left: 0px;
     }
 
 }
@@ -77,6 +108,25 @@
         max-width: 520px;
     }
 
+    div#createForm textarea {
+        height: 320px;
+        width: 320px;
+        font-size: 18px;
+    }
+
+    div#createForm div.textareaScrollbar {
+        margin-left: 20px;
+        height: 320px;
+    }
+
+    div#createForm div.textareaScrollbar a {
+        padding-top: 100px;
+    }
+
+    div#createForm input#email {
+        width: 320px;
+    }
+
     /* Font sizes */
     div#nav, div#hall_of_fame {
         font-size: 12px;
@@ -100,6 +150,18 @@
 
     div.comments_list .comment {
         font-size: 14px;
+    }
+
+    div.email label, div.email input, div.buttons div.agreement, div.errors {
+        font-size: 18px;
+    }
+
+    span.small {
+        font-size: 12px;
+    }
+
+    .pad {
+        padding-left: 75px;
     }
 }
 
@@ -152,6 +214,18 @@
 
     div.item .number a {
         font-size: 15px;
+    }
+
+    div.email label, div.email input, div.buttons div.agreement, div.errors {
+        font-size: 20px;
+    }
+
+    span.small {
+        font-size: 16px;
+    }
+
+    .pad {
+        padding-left: 65px;
     }
 }
 
@@ -208,6 +282,18 @@
 
     div.comments_list .comment {
         font-size: 20px;
+    }
+
+    div.email label, div.email input, div.buttons div.agreement, div.errors {
+        font-size: 20px;
+    }
+
+    span.small {
+        font-size: 16px;
+    }
+
+    .pad {
+        padding-left: 65px;
     }
 }
 
@@ -268,25 +354,6 @@
 
     div.comments_list .comment {
         font-size: 20px;
-    }
-
-    /* Item sizes */
-    div#createForm textarea {
-        height: 468px;
-        font-size: 22px;
-    }
-
-    div#createForm div.textareaScrollbar {
-        margin-left: 40px;
-        height: 468px;
-    }
-
-    div#createForm div.textareaScrollbar a {
-        padding-top: 160px;
-    }
-
-    div#createForm div.email {
-        margin-bottom: 35px;
     }
 
     div.email label, div.email input, div.buttons div.agreement, div.errors {

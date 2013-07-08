@@ -462,6 +462,25 @@ div#createForm div.buttons div.agreement {
     color: #B0B0B0;
 }
 
+/* Item sizes */
+div#createForm textarea {
+    height: 468px;
+    font-size: 22px;
+}
+
+div#createForm div.textareaScrollbar {
+    margin-left: 40px;
+    height: 468px;
+}
+
+div#createForm div.textareaScrollbar a {
+    padding-top: 160px;
+}
+
+div#createForm div.email {
+    margin-bottom: 35px;
+}
+
 /* Helpers */
 span.hint {
     color: #B0B0B0;

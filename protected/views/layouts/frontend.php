@@ -34,6 +34,7 @@
         <div id="sidebar_inner">
             <div id="create" class="menu">
                 <?php $this->widget('zii.widgets.CMenu', array(
+                    'itemTemplate' => '<i class="icon left icon-vig_left"></i>{menu}<i class="icon right icon-vig_right"></i>',
                     'items' => array(
                         array('label' => 'Отправить своё', 'url' => array('/items/create')),
                     ),
@@ -42,6 +43,7 @@
 
             <div id="nav" class="menu">
                 <?php $this->widget('zii.widgets.CMenu', array(
+                    'itemTemplate' => '<i class="icon left icon-horn_left"></i>{menu}<i class="icon right icon-horn_right"></i>',
                     'items' => array(
                         array('label' => 'Цитаты', 'url' => array('/items/index')),
                         array('label' => 'Картинки', 'url' => array('/items/images')),

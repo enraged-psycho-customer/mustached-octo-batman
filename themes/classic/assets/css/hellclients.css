@@ -119,19 +119,42 @@ div.menu ul {
     text-align: center;
 }
 
-div#create ul li {
-    padding-bottom: 0px;
-}
-
-
 div.menu ul li {
     padding-bottom: 15px;
+}
+
+div#create ul li {
+    padding-bottom: 0px;
 }
 
 div.menu ul li a {
     color: #282828;
     text-decoration: none;
     text-shadow: 1px 1px 1px #FFF;
+}
+
+.menu i.left {
+    float: left;
+    margin-left: 20px;
+}
+
+.menu i.right {
+    float: right;
+    margin-right: 20px;
+}
+
+div.menu ul li i {
+    display: none;
+}
+
+div#create ul li i {
+    margin-top: 4px;
+    display: inline-block;
+}
+
+div.menu ul li.active i {
+    margin-top: 7px;
+    display: inline-block;
 }
 
 div.menu ul li.active a, div.menu ul li a:hover {

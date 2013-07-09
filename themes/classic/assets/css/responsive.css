@@ -29,6 +29,14 @@
         width: 290px;
     }
 
+    div#create ul li i {
+        margin-top: 2px;
+    }
+
+    div.menu ul li.active i {
+        margin-top: 4px;
+    }
+
     div#createForm textarea {
         height: 240px;
         width: 240px;
@@ -115,6 +123,14 @@
 
     .commentsForm .captcha {
         max-width: 520px;
+    }
+
+    div#create ul li i {
+        margin-top: 2px;
+    }
+
+    div.menu ul li.active i {
+        margin-top: 4px;
     }
 
     div#createForm textarea {

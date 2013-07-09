@@ -208,6 +208,10 @@
         width: 620px;
     }
 
+    .commentsFormNested textarea, .commentsFormNested .captcha {
+        width: 560px;
+    }
+
     /* Font sizes */
     div#nav, div#hall_of_fame {
         font-size: 18px;
@@ -269,6 +273,10 @@
 
     .commentsForm .captcha {
         width: 620px;
+    }
+
+    .commentsFormNested textarea, .commentsFormNested .captcha {
+        width: 560px;
     }
 
     /* Font sizes */
@@ -338,7 +346,7 @@
         width: 720px;
     }
 
-    .commentsFormNested textarea {
+    .commentsFormNested textarea, .commentsFormNested .captcha {
         width: 660px;
     }
 

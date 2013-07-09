@@ -1,5 +1,8 @@
 $(document).ready(function() {
-    // Selectors list
+    var settings = {
+        avatarsCount: 11
+    };
+
     var elements = {
         loader: '<div class="loader"></div>'
     };
@@ -109,14 +112,17 @@ $(document).ready(function() {
     $(places.avatarSwitch).live("click", function() {
         var currentAvatar = $(this).parent().find('i.avatar');
         var hiddenField = $(this).parent().parent().parent().find('input.avatar_field');
+        var avatarId = parseInt(currentAvatar.attr('data-avatar'));
 
-        if (currentAvatar.hasClass('icon-avatar_boy')) {
-            hiddenField.val(2);
-            currentAvatar.addClass('icon-avatar_girl').removeClass('icon-avatar_boy');
-        } else {
-            hiddenField.val(1);
-            currentAvatar.removeClass('icon-avatar_girl').addClass('icon-avatar_boy');
-        }
+        if ($(this).hasClass('up')) avatarId += 1;
+        else avatarId -= 1;
+
+        if (avatarId > settings.avatarsCount) avatarId = 1;
+        if (avatarId == 0) avatarId = settings.avatarsCount;
+
+        currentAvatar.removeClass().addClass('avatar').addClass('avatars');
+        currentAvatar.addClass('avatar_' + avatarId).attr("data-avatar", avatarId);
+        hiddenField.val(avatarId);
     });
 
     // Nested form copy

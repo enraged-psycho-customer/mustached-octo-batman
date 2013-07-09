@@ -16,26 +16,9 @@
  */
 class Comments extends CActiveRecord
 {
-    const AVATAR_BOY = 1;
-    const AVATAR_GIRL = 2;
-
     public $avatar = 1;
     public $parent_id = 0;
     public $captcha;
-
-    private $avatars = array(
-        self::AVATAR_BOY => 'boy',
-        self::AVATAR_GIRL => 'girl',
-    );
-
-    public function getAvatarClass()
-    {
-        $parts = array('avatar');
-        if ($this->is_admin) $parts[] = 'admin';
-        else $parts[] = isset($this->avatars[$this->avatar]) ? $this->avatars[$this->avatar] : 'boy';
-
-        return implode("_", $parts);
-    }
 
     /**
      * Returns the static model of the specified AR class.
@@ -70,7 +53,7 @@ class Comments extends CActiveRecord
             array('content', 'length', 'min' => 1, 'max' => 500, 'allowEmpty' => false, 'on' => 'create'),
             array('created_at', 'default', 'value' => new CDbExpression('NOW()'), 'on' => 'create'),
             array('parent_id', 'default', 'value' => 0, 'setOnEmpty' => true, 'on' => 'create'),
-            array('avatar', 'default', 'value' => self::AVATAR_BOY, 'setOnEmpty' => true, 'on' => 'create'),
+            array('avatar', 'in', 'range' => range(1, 11), 'allowEmpty' => false, 'on' => 'create'),
             array('captcha', 'captcha', 'allowEmpty' => !CCaptcha::checkRequirements()),
 
             // The following rule is used by search().

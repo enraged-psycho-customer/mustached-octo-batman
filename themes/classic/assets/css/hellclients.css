@@ -344,7 +344,11 @@ div#shades > .active {
     display: inline-block;
 }
 
-.commentsForm div.textarea img {
+.commentsForm .textarea, .commentsForm .button {
+    margin-top: 10px;
+}
+
+.commentsForm .textarea img {
     float: left;
 }
 

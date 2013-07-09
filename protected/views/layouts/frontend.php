@@ -28,7 +28,7 @@
 <div id="wrapper">
     <div id="sidebar">
         <div id="logo">
-            <?php echo CHtml::link(CHtml::image($this->assetsUrl . "/images/logo.png"), array('/items')); ?>
+            <?php echo CHtml::link(CHtml::image($this->assetsUrl . "/images/logos/logo_" . rand(1, 11) . ".png", '', array('class' => 'logo')), array('/items')); ?>
         </div>
 
         <div id="sidebar_inner">
@@ -48,7 +48,6 @@
                         array('label' => 'Сражения', 'url' => array('/items/battles')),
                         array('label' => 'Инкивизиция', 'url' => array('/items/inquisition')),
                         array('label' => 'Магазинчик', 'url' => array('/shop')),
-                        array('label' => 'Ништяки', 'url' => array('/goodies')),
                     ),
                 )); ?>
             </div>

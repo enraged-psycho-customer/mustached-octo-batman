@@ -50,7 +50,7 @@ div#sidebar {
     background: #E6E6E6;
     height: 100%;
     text-align: center;
-    /* padding: 30px; */
+    padding-top: 10px;
     width: 100px;
 }
 
@@ -118,6 +118,11 @@ div.menu ul {
     padding: 0;
     text-align: center;
 }
+
+div#create ul li {
+    padding-bottom: 0px;
+}
+
 
 div.menu ul li {
     padding-bottom: 15px;

@@ -1,11 +1,11 @@
 <div class="<?php echo $class; ?>">
     <div class="containerForm">
         <div class="avatar">
-            <a href="javascript:void(0)" class="avatar_switch">
+            <a href="javascript:void(0)" class="avatar_switch up">
                 <i class="icon icon-form_arrow_up"></i>
             </a>
-            <a href="javascript:void(0)" title="Аватар"><i class="avatar icon icon-avatar_boy"></i></a>
-            <a href="javascript:void(0)" class="avatar_switch">
+            <a href="javascript:void(0)" title="Аватар"><i class="avatar avatars avatar_1" data-avatar="1"></i></a>
+            <a href="javascript:void(0)" class="avatar_switch down">
                 <i class="icon icon-form_arrow_down"></i>
             </a>
         </div>

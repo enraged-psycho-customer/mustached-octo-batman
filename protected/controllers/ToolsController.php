@@ -29,7 +29,7 @@ class ToolsController extends Controller
     {
         return array(
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('counters'),
+                'actions' => array('counters', 'folders'),
                 'users' => array('*'),
             ),
             /*
@@ -38,6 +38,12 @@ class ToolsController extends Controller
             ),
             */
         );
+    }
+
+    public function actionFolders()
+    {
+        chmod(Items::IMAGE_DIR, 0777);
+        chmod(Items::IMAGE_TEMP_DIR, 0777);
     }
 
     public function actionCounters()

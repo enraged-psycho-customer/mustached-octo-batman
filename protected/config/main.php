@@ -13,7 +13,8 @@ return array(
     'import' => array(
         'application.models.*',
         'application.components.*',
-        'application.extensions.coco.*',
+        'ext.coco.*',
+        'ext.easyimage.EasyImage',
     ),
 
     'modules' => array(
@@ -40,6 +41,9 @@ return array(
         'errorHandler' => array(
             // use 'site/error' action to display errors
             'errorAction' => 'site/error',
+        ),
+        'easyImage' => array(
+            'class' => 'application.extensions.easyimage.EasyImage',
         ),
     ),
 

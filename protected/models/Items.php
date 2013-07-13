@@ -28,6 +28,12 @@ class Items extends CActiveRecord
     const DEFAULT_SORT_TYPE = 'created_at';
     const DEFAULT_SORT_DIR = 'desc';
 
+    const IMAGE_TEMP_DIR = 'uploads/temp/';
+    const IMAGE_DIR = 'uploads/item/image/';
+
+    const THUMB_WIDTH = 480;
+    const THUMB_HEIGHT = 240;
+
     private $categories = array(
         self::CATEGORY_QUOTES,
         self::CATEGORY_IMAGES
@@ -134,14 +140,48 @@ class Items extends CActiveRecord
                 if (!strlen($image_session)) {
                     $this->addError('image', 'Загрузите картинку');
                     return false;
-                } else {
-                    $this->image = $image_session;
-                    Yii::app()->user->setState('image_upload', NULL);
                 }
                 break;
         }
 
         return parent::beforeSave();
+    }
+
+    public function afterSave()
+    {
+        parent::afterSave();
+
+        if ($this->isNewRecord) {
+            switch ($this->category) {
+                case self::CATEGORY_IMAGES:
+                    $this->processImage();
+                    break;
+            }
+        }
+    }
+
+    public function processImage()
+    {
+        // Copy image from temp directory
+        $image_session = Yii::app()->user->getState('image_upload');
+        $image_directory = self::IMAGE_DIR . $this->id . DIRECTORY_SEPARATOR;
+        $this->image = str_replace(self::IMAGE_TEMP_DIR, '', $image_session);
+
+        mkdir($image_directory);
+        copy($image_session, $image_directory . $this->image);
+
+        // Create thumbnail
+        $image = new EasyImage($image_directory . $this->image);
+        $image->resize(self::THUMB_WIDTH, self::THUMB_HEIGHT);
+        $image->save($image_directory . 'thumb_' . $this->image);
+
+        // Save new image data
+        $this->isNewRecord = false;
+        $this->saveAttributes(array('image'));
+
+        // Remove upload state and temp file
+        Yii::app()->user->setState('image_upload', NULL);
+        unlink($image_session);
     }
 
 

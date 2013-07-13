@@ -123,7 +123,7 @@ if (isset($model->category)) {
         $this->widget('CocoWidget', array(
             'id' => 'upload_image',
             'allowedExtensions' => array('jpg', 'png'), // server-side mime-type validated
-            'uploadDir' => 'uploads/temp/', // coco will @mkdir it
+            'uploadDir' => Items::IMAGE_TEMP_DIR,
             'receptorClassName' => 'application.models.Items',
             'methodName' => 'onFileUploaded',
             'maxUploads' => 1, // defaults to -1 (unlimited)

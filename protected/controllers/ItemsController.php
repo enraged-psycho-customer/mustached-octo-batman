@@ -49,7 +49,7 @@ class ItemsController extends Controller
     {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'images', 'view', 'get', 'save', 'create', 'vote', 'captcha', 'coco'),
+                'actions' => array('index', 'images', 'inquisition', 'view', 'get', 'save', 'create', 'vote', 'captcha', 'coco'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -139,14 +139,18 @@ class ItemsController extends Controller
         }
 
         $model = $this->loadModel($id);
-        $template = 'view';
+        $template = 'view/quote';
         switch ($model->category) {
             case Items::CATEGORY_QUOTES:
-                $template = 'view';
+                $template = 'view/quote';
                 break;
 
             case Items::CATEGORY_IMAGES:
-                $template = 'image';
+                $template = 'view/image';
+                break;
+
+            case Items::CATEGORY_INQUISITION:
+                $template = 'view/inquisition';
                 break;
         }
 
@@ -258,7 +262,7 @@ class ItemsController extends Controller
         $dataProvider = new CActiveDataProvider($model);
         $this->render('list', array(
             'dataProvider' => $dataProvider,
-            'itemTemplate' => '_quote',
+            'itemTemplate' => 'list/_quote',
             'class' => 'comments',
         ));
     }
@@ -272,8 +276,19 @@ class ItemsController extends Controller
         $dataProvider = new CActiveDataProvider($model);
         $this->render('list', array(
             'dataProvider' => $dataProvider,
-            'itemTemplate' => '_image',
+            'itemTemplate' => 'list/_image',
             'class' => 'images'
+        ));
+    }
+
+    public function actionInquisition()
+    {
+        $model = $this->getItemsList()->inquisition();
+        $dataProvider = new CActiveDataProvider($model);
+        $this->render('list', array(
+            'dataProvider' => $dataProvider,
+            'itemTemplate' => 'list/_inquisition',
+            'class' => 'comments'
         ));
     }
 

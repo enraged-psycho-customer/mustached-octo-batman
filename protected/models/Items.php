@@ -14,11 +14,13 @@
  * @property string $updated_at
  * @property int $comments_count
  * @property string $email
+ * @property string $title
  */
 class Items extends CActiveRecord
 {
     const CATEGORY_QUOTES = 1;
     const CATEGORY_IMAGES = 2;
+    const CATEGORY_INQUISITION = 3;
 
     const STATE_SUBMITTED = 0;
     const STATE_AWAITING_MODERATION = 1;
@@ -36,7 +38,8 @@ class Items extends CActiveRecord
 
     private $categories = array(
         self::CATEGORY_QUOTES,
-        self::CATEGORY_IMAGES
+        self::CATEGORY_IMAGES,
+        self::CATEGORY_INQUISITION,
     );
 
     private $sort_types = array(
@@ -69,14 +72,28 @@ class Items extends CActiveRecord
     }
 
     /**
+     * Image upload handler
+     *
+     * @param $fullFileName
+     * @param $userdata
+     */
+    public function onImageUploaded($fullFileName, $userdata)
+    {
+        Yii::app()->user->setState('image_upload', $fullFileName);
+    }
+
+    /**
      * File upload handler
      *
      * @param $fullFileName
      * @param $userdata
      */
-    public function onFileUploaded($fullFileName, $userdata)
+    public function onFilesUploaded($fullFileName, $userdata)
     {
-        Yii::app()->user->setState('image_upload', $fullFileName);
+        $file_upload = Yii::app()->user->getState('file_upload');
+        if (!$file_upload) $file_upload = array();
+        $file_upload[] = $fullFileName;
+        Yii::app()->user->setState('file_upload', $file_upload);
     }
 
     /**
@@ -92,8 +109,8 @@ class Items extends CActiveRecord
             array('image', 'length', 'max' => 255),
 
             // Create scenario
+            array('content, category, email, title', 'safe', 'on' => 'create'),
             array('category', 'in', 'range' => $this->categories, 'allowEmpty' => false, 'on' => 'create'),
-            //array('content', 'length', 'min' => 10, 'max' => 2000, 'allowEmpty' => false, 'on' => 'create'),
 
             array('email', 'length', 'max' => 255, 'allowEmpty' => false, 'on' => 'create'),
             array('email', 'email', 'allowEmpty' => false, 'on' => 'create'),
@@ -123,17 +140,23 @@ class Items extends CActiveRecord
         );
     }
 
+    public function validateContent()
+    {
+        if (!strlen($this->content)) {
+            $this->addError('content', 'Введите текст цитаты');
+            return false;
+        } else {
+            $this->content = nl2br($this->content);
+            return true;
+        }
+    }
+
     public function beforeSave()
     {
         if ($this->scenario == 'create') {
             switch ($this->category) {
                 case self::CATEGORY_QUOTES:
-                    if (!strlen($this->content)) {
-                        $this->addError('content', 'Введите текст цитаты');
-                        return false;
-                    } else {
-                        $this->content = nl2br($this->content);
-                    }
+                    if (!$this->validateContent()) return false;
                     break;
 
                 case self::CATEGORY_IMAGES:
@@ -142,6 +165,15 @@ class Items extends CActiveRecord
                         $this->addError('image', 'Загрузите картинку');
                         return false;
                     }
+                    break;
+
+                case self::CATEGORY_INQUISITION:
+                    if (!$this->validateContent()) return false;
+                    if (!strlen($this->title)) {
+                        $this->addError('title', 'Введите имя клиента');
+                        return false;
+                    }
+
                     break;
             }
         }
@@ -158,8 +190,41 @@ class Items extends CActiveRecord
                 case self::CATEGORY_IMAGES:
                     $this->processImage();
                     break;
+
+                case self::CATEGORY_INQUISITION:
+                    $this->proccessFiles();
+                    break;
             }
         }
+    }
+
+    public function proccessFiles()
+    {
+        // Create item directory
+        $files = Yii::app()->user->getState('file_upload');
+        if (!is_null($files)) {
+            $file_directory = self::IMAGE_DIR . $this->id . DIRECTORY_SEPARATOR;
+            mkdir($file_directory);
+
+            // Copy all files
+            foreach ($files as $file) {
+                // Copy new file
+                $filename = str_replace(self::IMAGE_TEMP_DIR, '', $file);
+                copy($file, $file_directory . $filename);
+
+                // Save metadata to database
+                $fileModel = new Files();
+                $fileModel->item_id = $this->id;
+                $fileModel->filename = $filename;
+                $fileModel->save();
+
+                // Remove temp files
+                unlink($file);
+            }
+        }
+
+        // Remove upload state
+        Yii::app()->user->setState('file_upload', NULL);
     }
 
     public function processImage()
@@ -202,6 +267,7 @@ class Items extends CActiveRecord
         return array(
             'comments' => array(self::HAS_MANY, 'Comments', 'item_id'),
             'commentsCount' => array(self::STAT, 'Comments', 'item_id'),
+            'files' => array(self::HAS_MANY, 'Files', 'item_id'),
         );
     }
 
@@ -210,6 +276,7 @@ class Items extends CActiveRecord
         return array(
             self::CATEGORY_QUOTES => 'Новая цитата',
             self::CATEGORY_IMAGES => 'Новая картинка',
+            self::CATEGORY_INQUISITION => 'Новая инквизиция'
         );
     }
 
@@ -284,6 +351,10 @@ class Items extends CActiveRecord
             'images' => array(
                 'condition' => 'category = :category',
                 'params' => array(':category' => self::CATEGORY_IMAGES),
+            ),
+            'inquisition' => array(
+                'condition' => 'category = :category',
+                'params' => array(':category' => self::CATEGORY_INQUISITION),
             ),
         );
     }

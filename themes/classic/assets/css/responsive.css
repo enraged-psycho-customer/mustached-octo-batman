@@ -48,7 +48,7 @@
         height: 240px;
     }
 
-    div#createForm input#email {
+    div#createForm input {
         width: 240px;
     }
 
@@ -148,7 +148,7 @@
         padding-top: 100px;
     }
 
-    div#createForm input#email {
+    div#createForm input {
         width: 320px;
     }
 

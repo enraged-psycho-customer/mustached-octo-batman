@@ -1,38 +1,38 @@
+var settings = {
+    avatarsCount: 11
+};
+
+var elements = {
+    loader: '<div class="loader"></div>'
+};
+
+var places = {
+    document: 'html, body',
+
+    sortLink: 'a.sortBy',
+    sortLinksAll: '#shades .shade .inner a.sortBy',
+    shadesAll: '#shades .shade',
+    innerShade: '#shades .shade .inner',
+    sortType: '#itemsForm #sort_type',
+    sortDirection: '#itemsForm #sort_dir',
+
+    expandAjaxLink: 'div.item a.expand',
+    avatarSwitch: '.commentsForm a.avatar_switch',
+    expandLink: '.comments a.expand',
+    expandLinkImage: '.comments_image a.expand',
+    closeLink: '.social a.close',
+    expandedLink: '.item a.expanded',
+
+    comment: '.comment.real, .comment.level',
+    submitCommentButton: '.commentsForm .button button',
+    nestedCommentForm: '.commentsFormNested',
+    nestedCommentFormParentField: '.commentsFormNested input.parent_id',
+
+    balloon: '#balloon',
+    balloonText: '#balloon_text'
+};
+
 $(document).ready(function() {
-    var settings = {
-        avatarsCount: 11
-    };
-
-    var elements = {
-        loader: '<div class="loader"></div>'
-    };
-
-    var places = {
-        document: 'html, body',
-
-        sortLink: 'a.sortBy',
-        sortLinksAll: '#shades .shade .inner a.sortBy',
-        shadesAll: '#shades .shade',
-        innerShade: '#shades .shade .inner',
-        sortType: '#itemsForm #sort_type',
-        sortDirection: '#itemsForm #sort_dir',
-
-        expandAjaxLink: 'div.item a.expand',
-        avatarSwitch: '.commentsForm a.avatar_switch',
-        expandLink: '.comments a.expand',
-        expandLinkImage: '.comments_image a.expand',
-        closeLink: '.social a.close',
-        expandedLink: '.item a.expanded',
-
-        comment: '.comment.real, .comment.level',
-        submitCommentButton: '.commentsForm .button button',
-        nestedCommentForm: '.commentsFormNested',
-        nestedCommentFormParentField: '.commentsFormNested input.parent_id',
-
-        balloon: '#balloon',
-        balloonText: '#balloon_text'
-    };
-
     $(places.expandAjaxLink).live("click", function(e) {
         e.preventDefault();
         var itemId = $(this).parents('.item').attr('data-id');
@@ -63,15 +63,7 @@ $(document).ready(function() {
         e.preventDefault();
         $(places.sortType).val($(this).attr('data-type'));
         $(places.sortDirection).val($(this).attr('data-dir'));
-
-        $(places.sortLinksAll).show();
-        $(this).hide();
-
-        $(places.shadesAll).removeClass('active');
-        $(this).parent().parent().addClass('active');
-
-        $(places.innerShade).removeClass('active');
-        $(this).parent().addClass('active');
+        sortLinksSwitch(this);
 
         $('#itemsForm').submit();
         return false;
@@ -176,6 +168,17 @@ $(document).ready(function() {
         text: teletypeText
     });
 });
+
+sortLinksSwitch = function(obj) {
+    $(places.sortLinksAll).show();
+    $(obj).hide();
+
+    $(places.shadesAll).removeClass('active');
+    $(obj).parent().parent().addClass('active');
+
+    $(places.innerShade).removeClass('active');
+    $(obj).parent().addClass('active');
+}
 
 var where, when; //added
 

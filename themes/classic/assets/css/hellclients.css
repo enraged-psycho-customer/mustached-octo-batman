@@ -481,11 +481,12 @@ div#createForm div.label {
     color: #B0B0B0;
 }
 
-div#createForm input#email {
+div#createForm input {
     border: 0px none;
     background: transparent;
     color: #272727;
     width: 450px;
+    font-size: 16px;
 }
 
 div#createForm div.buttons div {

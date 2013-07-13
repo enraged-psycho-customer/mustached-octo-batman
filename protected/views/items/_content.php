@@ -8,4 +8,13 @@
         'class' => 'fancybox iframe'
     ));
     ?>
+<?php elseif ($model->category == Items::CATEGORY_INQUISITION): ?>
+    <h1><?php echo CHtml::encode($model->title); ?></h1>
+    <div><?php echo $model->content; ?></div>
+    <br/><br/>
+    <div>К делу прилагается:</div>
+    <?php foreach ($model->files as $file): ?>
+        <?php $files[] = CHtml::link($file->filename, $model->getImageDir() . $file->filename); ?>
+    <?php endforeach; ?>
+    <?php echo implode(", ", $files); ?>
 <?php endif; ?>

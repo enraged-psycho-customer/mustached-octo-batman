@@ -16,6 +16,13 @@ $this->menu = array(
 
 <?php
 $script = <<< EOD
+    var contentTypes = {1: 'text_quote', 2: 'text_image'};
+
+    function switchContentType(id) {
+        for (var i in contentTypes) $('#' + contentTypes[i]).hide();
+        $('#' + contentTypes[id]).show();
+    }
+
     $("a.scroll").live("click", function(e) {
         e.preventDefault();
         var direction = $(this).attr('data-dir');
@@ -39,10 +46,9 @@ $script = <<< EOD
             }
         }
 
-        console.log(optionValue + " / " + optionText);
-
         $('select#category').val(optionValue);
         $('div.selectText').html(optionText);
+        switchContentType(optionValue);
 
         return false;
     });
@@ -67,6 +73,11 @@ $script = <<< EOD
 EOD;
 
 Yii::app()->clientScript->registerScript('scrollSelect', $script, CClientScript::POS_END);
+
+if (isset($model->category)) {
+    Yii::app()->clientScript->registerScript('switchContentType', 'switchContentType(' . $model->category . ')', CClientScript::POS_READY);
+}
+
 ?>
 
 <div id="createForm">
@@ -93,7 +104,7 @@ Yii::app()->clientScript->registerScript('scrollSelect', $script, CClientScript:
         <?php echo $form->errorSummary($model); ?>
     </div>
 
-    <div class="text">
+    <div class="text" id="text_quote">
         <?php echo $form->textArea($model, 'content', array('id' => 'text')); ?>
 
         <div class="textareaScrollbar">
@@ -105,6 +116,24 @@ Yii::app()->clientScript->registerScript('scrollSelect', $script, CClientScript:
                 <i class="icon icon-scroll_down"></i>
             </a>
         </div>
+    </div>
+
+    <div class="text" id="text_image">
+        <?php
+        $this->widget('CocoWidget', array(
+            'id' => 'upload_image',
+            'allowedExtensions' => array('jpg', 'png'), // server-side mime-type validated
+            'uploadDir' => 'uploads/temp/', // coco will @mkdir it
+            'receptorClassName' => 'application.models.Items',
+            'methodName' => 'onFileUploaded',
+            'maxUploads' => 1, // defaults to -1 (unlimited)
+            'maxUploadsReachMessage' => 'No more files allowed',
+            'multipleFileSelection' => false,
+            'defaultControllerName' => 'items',
+            'buttonText' => CHtml::image($this->assetsUrl . '/images/upload.png'),
+            'dropFilesText' => 'Бросайте файл сюда',
+        ));
+        ?>
     </div>
 
     <div class="clear"></div>

@@ -63,6 +63,17 @@ class Items extends CActiveRecord
     }
 
     /**
+     * File upload handler
+     *
+     * @param $fullFileName
+     * @param $userdata
+     */
+    public function onFileUploaded($fullFileName, $userdata)
+    {
+        Yii::app()->user->setState('image_upload', $fullFileName);
+    }
+
+    /**
      * @return array validation rules for model attributes.
      */
     public function rules()
@@ -76,7 +87,7 @@ class Items extends CActiveRecord
 
             // Create scenario
             array('category', 'in', 'range' => $this->categories, 'allowEmpty' => false, 'on' => 'create'),
-            array('content', 'length', 'min' => 10, 'max' => 2000, 'allowEmpty' => false, 'on' => 'create'),
+            //array('content', 'length', 'min' => 10, 'max' => 2000, 'allowEmpty' => false, 'on' => 'create'),
 
             array('email', 'length', 'max' => 255, 'allowEmpty' => false, 'on' => 'create'),
             array('email', 'email', 'allowEmpty' => false, 'on' => 'create'),
@@ -108,7 +119,28 @@ class Items extends CActiveRecord
 
     public function beforeSave()
     {
-        $this->content = nl2br($this->content);
+        switch ($this->category) {
+            case self::CATEGORY_QUOTES:
+                if (!strlen($this->content)) {
+                    $this->addError('content', 'Введите текст цитаты');
+                    return false;
+                } else {
+                    $this->content = nl2br($this->content);
+                }
+                break;
+
+            case self::CATEGORY_IMAGES:
+                $image_session = Yii::app()->user->getState('image_upload');
+                if (!strlen($image_session)) {
+                    $this->addError('image', 'Загрузите картинку');
+                    return false;
+                } else {
+                    $this->image = $image_session;
+                    Yii::app()->user->setState('image_upload', NULL);
+                }
+                break;
+        }
+
         return parent::beforeSave();
     }
 

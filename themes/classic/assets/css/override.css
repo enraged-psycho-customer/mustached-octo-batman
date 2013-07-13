@@ -1,3 +1,4 @@
+/* CPager */
 .list-view .pager {
     margin-top: 50px;
 }
@@ -30,3 +31,19 @@ ul.yiiPager .hidden a {
 .list-view-loading {
     background: url(../images/loader.gif) no-repeat center top;
 }
+
+/* CocoWidget */
+.cocowidget {
+    padding-top: 20px;
+}
+
+.qq-upload-button {
+    margin: 0 auto;
+    background: none;
+    border: none;
+}
+
+.qq-upload-list {
+    list-style-type: none;
+}
+

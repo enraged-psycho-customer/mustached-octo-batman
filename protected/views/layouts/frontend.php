@@ -61,7 +61,7 @@
             <div id="hall_of_fame" class="menu">
                 <?php $this->widget('zii.widgets.CMenu', array(
                     'items' => array(
-                        array('label' => 'Зал славы', 'url' => array('/items/fame')),
+                        array('label' => 'Зал славы', 'url' => array('/fame')),
                     ),
                 )); ?>
             </div>

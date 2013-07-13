@@ -452,6 +452,10 @@ div#createForm div.text {
     margin: 60px 0px;
 }
 
+div#createForm #text_image {
+    display: none;
+}
+
 div#createForm textarea {
     border: 0px none;
     width: 480px;

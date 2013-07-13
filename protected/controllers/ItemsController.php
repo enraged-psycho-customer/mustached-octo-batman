@@ -23,6 +23,9 @@ class ItemsController extends Controller
                 'testLimit' => 1,
                 'height' => 50,
             ),
+            'coco' => array(
+                'class' => 'CocoAction',
+            ),
         );
     }
 
@@ -46,7 +49,7 @@ class ItemsController extends Controller
     {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'images', 'view', 'create', 'vote', 'captcha'),
+                'actions' => array('index', 'images', 'view', 'create', 'vote', 'captcha', 'coco'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -127,7 +130,7 @@ class ItemsController extends Controller
         if (isset($_POST['Items'])) {
             $model->attributes = $_POST['Items'];
             if ($model->save()) {
-                Yii::app()->user->setFlash('success', "Ваша цитата отправлена!");
+                Yii::app()->user->setFlash('success', "Ваша информация успешно сохранена!");
                 $this->redirect(array('/' . $model->id));
             }
         }

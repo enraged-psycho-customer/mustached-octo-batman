@@ -24,7 +24,8 @@
                 array( //htmlOptions
                     'href' => Yii::app()->createUrl('/items/vote/', array('id' => $model->id)),
                     'class' => 'like_' . $model->id,
-                    'id' => 'ajaxVota_' . $model->id
+                    'id' => 'ajaxVote_' . $model->id,
+                    'title' => 'Проголосовать',
                 )
             );
             ?>

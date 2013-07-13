@@ -16,7 +16,8 @@
 
     <!-- JavaScript -->
     <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/common.js"></script>
-    <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/teletype.js"></script>
+    <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/jquery-ui-1.8.17.js"></script>
+    <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/jquery.annotate.js"></script>
 
     <script type="text/javascript">
         var teletypeText = '#$%^@#$!';

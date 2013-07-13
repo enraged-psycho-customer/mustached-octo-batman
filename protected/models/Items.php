@@ -125,23 +125,25 @@ class Items extends CActiveRecord
 
     public function beforeSave()
     {
-        switch ($this->category) {
-            case self::CATEGORY_QUOTES:
-                if (!strlen($this->content)) {
-                    $this->addError('content', 'Введите текст цитаты');
-                    return false;
-                } else {
-                    $this->content = nl2br($this->content);
-                }
-                break;
+        if ($this->scenario == 'create') {
+            switch ($this->category) {
+                case self::CATEGORY_QUOTES:
+                    if (!strlen($this->content)) {
+                        $this->addError('content', 'Введите текст цитаты');
+                        return false;
+                    } else {
+                        $this->content = nl2br($this->content);
+                    }
+                    break;
 
-            case self::CATEGORY_IMAGES:
-                $image_session = Yii::app()->user->getState('image_upload');
-                if (!strlen($image_session)) {
-                    $this->addError('image', 'Загрузите картинку');
-                    return false;
-                }
-                break;
+                case self::CATEGORY_IMAGES:
+                    $image_session = Yii::app()->user->getState('image_upload');
+                    if (!strlen($image_session)) {
+                        $this->addError('image', 'Загрузите картинку');
+                        return false;
+                    }
+                    break;
+            }
         }
 
         return parent::beforeSave();
@@ -151,7 +153,7 @@ class Items extends CActiveRecord
     {
         parent::afterSave();
 
-        if ($this->isNewRecord) {
+        if ($this->isNewRecord && $this->scenario == 'create') {
             switch ($this->category) {
                 case self::CATEGORY_IMAGES:
                     $this->processImage();
@@ -182,6 +184,11 @@ class Items extends CActiveRecord
         // Remove upload state and temp file
         Yii::app()->user->setState('image_upload', NULL);
         unlink($image_session);
+    }
+
+    public function getImageDir()
+    {
+        return '/' . self::IMAGE_DIR . $this->id . '/';
     }
 
 

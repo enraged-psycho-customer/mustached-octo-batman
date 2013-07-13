@@ -20,7 +20,7 @@
         </div>
 
         <div class="quote">
-            <?php echo $data->content; ?>
+            <?php $this->renderPartial('_content', array('model' => $data)); ?>
         </div>
     </div>
 </div>

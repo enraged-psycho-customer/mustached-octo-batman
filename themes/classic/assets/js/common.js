@@ -20,6 +20,7 @@ $(document).ready(function() {
         expandAjaxLink: 'div.item a.expand',
         avatarSwitch: '.commentsForm a.avatar_switch',
         expandLink: '.comments a.expand',
+        expandLinkImage: '.comments_image a.expand',
         closeLink: '.social a.close',
         expandedLink: '.item a.expanded',
 
@@ -148,10 +149,14 @@ $(document).ready(function() {
     // Comments icon highlight
     $(places.expandLink).live("mouseover", function() {
         $(this).find('i').removeClass('icon-comments').addClass('icon-comments_active');
+    }).live("mouseout", function() {
+        $(this).find('i').removeClass('icon-comments_active').addClass('icon-comments');
     });
 
-    $(places.expandLink).live("mouseout", function() {
-        $(this).find('i').removeClass('icon-comments_active').addClass('icon-comments');
+    $(places.expandLinkImage).live("mouseover", function() {
+        $(this).find('i').removeClass('icon-image_icon').addClass('icon-image_icon_active');
+    }).live("mouseout", function() {
+        $(this).find('i').removeClass('icon-image_icon_active').addClass('icon-image_icon');
     });
 
     // Bird and balloon
@@ -171,3 +176,26 @@ $(document).ready(function() {
         text: teletypeText
     });
 });
+
+var where, when; //added
+
+$.fn.teletype = function(opts){
+    var $this = this,
+        defaults = {
+            animDelay: 50
+        },
+        settings = $.extend(defaults, opts);
+
+    var letters = settings.text.length; //added
+
+    where = '#' + $($this).attr('id'); //added
+    when = settings.animDelay; //added
+
+    $(where).html("");
+
+    $.each(settings.text, function(i, letter){
+        setTimeout(function(){
+            $this.html($this.html() + letter);
+        }, settings.animDelay * i);
+    });
+};

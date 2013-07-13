@@ -49,7 +49,7 @@ class ItemsController extends Controller
     {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'images', 'view', 'create', 'vote', 'captcha', 'coco'),
+                'actions' => array('index', 'images', 'view', 'get', 'save', 'create', 'vote', 'captcha', 'coco'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -62,6 +62,46 @@ class ItemsController extends Controller
         );
     }
 
+    // Get comments for image
+    public function actionGet($id)
+    {
+        $annotations = array();
+        $comments = Comments::model()->findAllByAttributes(array('item_id' => $id));
+
+        foreach ($comments as $comment) {
+            if (!is_null($comment->x) && !is_null($comment->y)) {
+                $annotation = array(
+                    'left' => $comment->x,
+                    'top' => $comment->y,
+                    'width' => 48,
+                    'height' => 48,
+                    'text' => $comment->content,
+                    'id' => $comment->id,
+                    'editable' => false,
+                );
+
+                $annotations[] = (object)$annotation;
+            }
+        }
+
+        echo json_encode($annotations);
+        exit;
+    }
+
+    // Save comments for image
+    public function actionSave($id)
+    {
+        $comment = new Comments('create_hover');
+        $comment->content = $_GET['text'];
+        $comment->item_id = $id;
+        $comment->x = $_GET['left'];
+        $comment->y = $_GET['top'];
+        $comment->save();
+
+        echo json_encode((object)array('id' => $comment->id));
+        exit;
+    }
+
     /**
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed
@@ -69,9 +109,9 @@ class ItemsController extends Controller
     public function actionView($id)
     {
         $modal = false;
-        if (isset($_GET['modal'])) {
-            $modal = true;
-        }
+        $fancy = false;
+        if (isset($_GET['modal'])) $modal = true;
+        if (isset($_GET['fancy'])) $fancy = true;
 
         $comment = new Comments('create');
         $comment->item_id = $id;
@@ -98,22 +138,40 @@ class ItemsController extends Controller
             $this->redirect('/' . $id);
         }
 
-        if ($modal) {
-            $this->renderPartial('view', array(
-                'model' => $this->loadModel($id)->with('comments'),
-                'modal' => $modal,
-                'commentModel' => $comment,
-                'hasVoted' => $hasVoted
-            ));
-        } else {
-            $this->render('view', array(
-                'model' => $this->loadModel($id)->with('comments'),
-                'modal' => $modal,
-                'commentModel' => $comment,
-                'hasVoted' => $hasVoted
-            ));
+        $model = $this->loadModel($id);
+        $template = 'view';
+        switch ($model->category) {
+            case Items::CATEGORY_QUOTES:
+                $template = 'view';
+                break;
+
+            case Items::CATEGORY_IMAGES:
+                $template = 'image';
+                break;
         }
 
+        if ($fancy) {
+            $template = 'fancy';
+            $this->layout = 'empty';
+            Yii::app()->clientScript->scriptMap['jquery.js'] = false;
+            Yii::app()->clientScript->registerScriptFile($this->assetsUrl . '/js/jquery-1.7.1.js');
+            Yii::app()->clientScript->registerScriptFile($this->assetsUrl . '/js/jquery-ui-1.8.17.js');
+            Yii::app()->clientScript->registerScriptFile($this->assetsUrl . '/js/jquery.annotate.js');
+        }
+
+        $params = array(
+            'model' => $model->with('comments'),
+            'modal' => $modal,
+            'commentModel' => $comment,
+            'hasVoted' => $hasVoted
+        );
+
+        if ($modal) {
+            Yii::app()->clientScript->scriptMap['*.js'] = false;
+            $this->renderPartial($template, $params, false, true);
+        } else {
+            $this->render($template, $params);
+        }
 
     }
 
@@ -200,7 +258,8 @@ class ItemsController extends Controller
         $dataProvider = new CActiveDataProvider($model);
         $this->render('list', array(
             'dataProvider' => $dataProvider,
-            'itemTemplate' => '_quote'
+            'itemTemplate' => '_quote',
+            'class' => 'comments',
         ));
     }
 
@@ -213,7 +272,8 @@ class ItemsController extends Controller
         $dataProvider = new CActiveDataProvider($model);
         $this->render('list', array(
             'dataProvider' => $dataProvider,
-            'itemTemplate' => '_image'
+            'itemTemplate' => '_image',
+            'class' => 'images'
         ));
     }
 

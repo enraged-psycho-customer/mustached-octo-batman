@@ -50,11 +50,13 @@ class Comments extends CActiveRecord
             array('content, created_at, updated_at', 'safe'),
 
             // Create scenario
-            array('content', 'length', 'min' => 1, 'max' => 500, 'allowEmpty' => false, 'on' => 'create'),
-            array('created_at', 'default', 'value' => new CDbExpression('NOW()'), 'on' => 'create'),
-            array('parent_id', 'default', 'value' => 0, 'setOnEmpty' => true, 'on' => 'create'),
-            array('avatar', 'in', 'range' => range(1, 11), 'allowEmpty' => false, 'on' => 'create'),
-            array('captcha', 'captcha', 'allowEmpty' => !CCaptcha::checkRequirements()),
+            array('content', 'length', 'min' => 1, 'max' => 500, 'allowEmpty' => false, 'on' => 'create, create_hover'),
+            array('created_at', 'default', 'value' => new CDbExpression('NOW()'), 'on' => 'createe, create_hover'),
+            array('parent_id', 'default', 'value' => 0, 'setOnEmpty' => true, 'on' => 'createe, create_hover'),
+            array('avatar', 'in', 'range' => range(1, 11), 'allowEmpty' => false, 'on' => 'createe, create_hover'),
+
+            array('captcha', 'captcha', 'allowEmpty' => !CCaptcha::checkRequirements(), 'on' => 'create'),
+            array('captcha', 'captcha', 'allowEmpty' => true, 'on' => 'create_hover'),
 
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
@@ -79,13 +81,13 @@ class Comments extends CActiveRecord
 
     public function afterSave()
     {
+        parent::afterSave();
+
         /* @var $item Items */
         $item = Items::model()->findByPk($this->item_id);
         $item->comments_count = $item->comments_count + 1;
         $item->updated_at = new CDbExpression('NOW()');
-        $item->save();
-
-        parent::afterSave();
+        $item->save(false);
     }
 
     /**

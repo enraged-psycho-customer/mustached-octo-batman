@@ -27,7 +27,7 @@
                 <i class="icon icon-arrow_white_top" title="Сортировать по-возрастанию"></i>
             </a>
             <span>
-                <i class="icon icon-comments_white" title="Сортировать по количеству комментариев"></i>
+                <i class="icon icon-<?php echo $class; ?>_white" title="Сортировать по количеству комментариев"></i>
             </span>
             <a class="sortBy" data-type="comments_count" data-dir="desc" href="<?php echo Yii::app()->createUrl($this->route, array('sort_type' => 'comments_count', 'sort_dir' => 'desc')); ?>">
                 <i class="icon icon-arrow_white_bottom" title="Сортировать по-убыванию"></i>
@@ -40,7 +40,7 @@
                 <i class="icon icon-arrow_white_top" title="Сортировать по-возрастанию"></i>
             </a>
             <span>
-                <i class="icon icon-comments_time" title="Сортировать новым комментариям"></i>
+                <i class="icon icon-<?php echo $class; ?>_time" title="Сортировать новым комментариям"></i>
             </span>
             <a class="sortBy" data-type="updated_at" data-dir="desc" href="<?php echo Yii::app()->createUrl($this->route, array('sort_type' => 'updated_at', 'sort_dir' => 'desc')); ?>">
                 <i class="icon icon-arrow_white_bottom" title="Сортировать по-убыванию"></i>

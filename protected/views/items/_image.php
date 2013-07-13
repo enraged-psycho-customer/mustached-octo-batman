@@ -8,19 +8,19 @@
         <?php echo CHtml::link('№' . $data->id, array('view', 'id' => $data->id), array('class' => 'expand')); ?>
     </div>
     <div class="container">
-        <div class="comments">
+        <div class="comments comments_image">
             <a class="expand" href="<?php echo $this->createUrl('/items/view/', array('id' => $data->id)); ?>">
                 <div>
                     <span class="comments_count"><?php echo $data->comments_count; ?></span>
                 </div>
                 <div>
-                    <i class="icon icon-comments"></i>
+                    <i class="icon icon-image_icon"></i>
                 </div>
             </a>
         </div>
 
         <div class="quote">
-            <?php echo $data->image; ?>
+            <?php $this->renderPartial('_content', array('model' => $data)); ?>
         </div>
     </div>
 </div>

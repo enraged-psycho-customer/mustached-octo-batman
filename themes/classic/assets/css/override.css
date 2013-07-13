@@ -1,6 +1,7 @@
 /* CPager */
 .list-view .pager {
     margin-top: 50px;
+    text-align: center;
 }
 
 ul.yiiPager a:link,

@@ -13,6 +13,7 @@
     <div><?php echo $model->content; ?></div>
     <br/><br/>
     <div>К делу прилагается:</div>
+    <?php $files = array(); ?>
     <?php foreach ($model->files as $file): ?>
         <?php $files[] = CHtml::link($file->filename, $model->getImageDir() . $file->filename); ?>
     <?php endforeach; ?>

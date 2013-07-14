@@ -12,10 +12,12 @@
     <h1><?php echo CHtml::encode($model->title); ?></h1>
     <div><?php echo $model->content; ?></div>
     <br/><br/>
-    <div>К делу прилагается:</div>
+    <div>К делу прилагается:
     <?php $files = array(); ?>
     <?php foreach ($model->files as $file): ?>
         <?php $files[] = CHtml::link($file->filename, $model->getImageDir() . $file->filename); ?>
     <?php endforeach; ?>
     <?php echo implode(", ", $files); ?>
+    <?php if (!count($files)) echo 'ничего'; ?>
+    </div>
 <?php endif; ?>

@@ -7,7 +7,7 @@
 <div id="createForm" class="form_inquisition">
 
     <?php $form = $this->beginWidget('CActiveForm', array(
-        'enableAjaxValidation' => false,
+        'enableClientValidation' => true,
     )); ?>
 
     <div class="category">
@@ -55,7 +55,7 @@
             'uploadDir' => Items::IMAGE_TEMP_DIR,
             'receptorClassName' => 'application.models.Items',
             'methodName' => 'onFilesUploaded',
-            'maxUploads' => 5, // defaults to -1 (unlimited)
+            'maxUploads' => Items::FILE_LIMIT, // defaults to -1 (unlimited)
             'maxUploadsReachMessage' => 'Максимальное число файлов - 5',
             'multipleFileSelection' => true,
             'defaultControllerName' => 'items',

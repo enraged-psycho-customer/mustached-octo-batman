@@ -36,6 +36,8 @@ class Items extends CActiveRecord
     const THUMB_WIDTH = 480;
     const THUMB_HEIGHT = 240;
 
+    const FILE_LIMIT = 5;
+
     private $categories = array(
         self::CATEGORY_QUOTES,
         self::CATEGORY_IMAGES,
@@ -91,7 +93,7 @@ class Items extends CActiveRecord
     public function onFilesUploaded($fullFileName, $userdata)
     {
         $file_upload = Yii::app()->user->getState('file_upload');
-        if (!$file_upload) $file_upload = array();
+        if (is_null($file_upload) || count($file_upload) >= Items::FILE_LIMIT) $file_upload = array();
         $file_upload[] = $fullFileName;
         Yii::app()->user->setState('file_upload', $file_upload);
     }

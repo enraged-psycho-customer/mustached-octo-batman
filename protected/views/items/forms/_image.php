@@ -7,7 +7,7 @@
 <div id="createForm" class="form_image">
 
     <?php $form = $this->beginWidget('CActiveForm', array(
-        'enableAjaxValidation' => false,
+        'enableClientValidation' => true,
     )); ?>
 
     <div class="category">

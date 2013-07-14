@@ -32,11 +32,6 @@ class Controller extends CController
     {
         $this->initAssets();
         $this->pageTitle = Yii::app()->name;
-
-        if (!in_array($this->action, array('create', 'coco'))) {
-            Yii::app()->user->setState('image_upload', null);
-            Yii::app()->user->setState('file_upload', null);
-        }
     }
 
     public function initAssets()

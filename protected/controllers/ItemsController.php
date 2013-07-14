@@ -209,6 +209,7 @@ class ItemsController extends Controller
      */
     public function actionUpdate($id)
     {
+        $this->layout = '//layouts/column2';
         $model = $this->loadModel($id);
 
         // Uncomment the following line if AJAX validation is needed
@@ -301,6 +302,7 @@ class ItemsController extends Controller
      */
     public function actionAdmin()
     {
+        $this->layout = '//layouts/column2';
         $model = new Items('search');
         $model->unsetAttributes(); // clear any default values
         if (isset($_GET['Items']))

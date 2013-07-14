@@ -2,7 +2,9 @@
 /* @var $this ItemsController */
 /* @var $dataProvider CActiveDataProvider */
 
-$this->renderPartial('_sortables', array('class' => $class));
+$this->renderPartial('filters/_sort', array('class' => $class));
+
+if ($search) $this->renderPartial('filters/_search');
 
 $this->widget('zii.widgets.CListView', array(
     'id' => 'itemsList',

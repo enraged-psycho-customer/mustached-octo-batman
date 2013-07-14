@@ -108,7 +108,7 @@
         margin-left: 150px;
     }
 
-    div#shades {
+    div#shades, div#search {
         margin-left: 100px;
     }
 
@@ -207,7 +207,7 @@
         margin-left: 200px;
     }
 
-    div#shades {
+    div#shades, div#search {
         margin-left: 150px;
     }
 
@@ -274,7 +274,7 @@
         margin-left: 200px;
     }
 
-    div#shades {
+    div#shades, div#search {
         margin-left: 150px;
     }
 
@@ -345,7 +345,7 @@
         margin-left: 375px;
     }
 
-    div#shades {
+    div#shades, div#search {
         margin-left: 200px;
     }
 

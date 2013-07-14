@@ -69,7 +69,7 @@ $(document).ready(function() {
         return false;
     });
 
-    $('#itemsForm').submit(function(){
+    $('#itemsForm, #searchForm').submit(function(){
         $.fn.yiiListView.update('itemsList', {
             data: $(this).serialize()
         });

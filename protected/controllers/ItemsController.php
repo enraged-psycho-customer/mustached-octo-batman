@@ -248,7 +248,8 @@ class ItemsController extends Controller
         $model = Items::model()->published();
         $sortType = isset($_GET['sort_type']) ? $_GET['sort_type'] : null;
         $sortDirection = isset($_GET['sort_dir']) ? $_GET['sort_dir'] : null;
-        $model->sortBy($sortType, $sortDirection);
+        $searchQuery = isset($_GET['query']) ? $_GET['query'] : null;
+        $model->filterBy($searchQuery, $sortType, $sortDirection);
 
         return $model;
     }
@@ -264,6 +265,7 @@ class ItemsController extends Controller
             'dataProvider' => $dataProvider,
             'itemTemplate' => 'list/_quote',
             'class' => 'comments',
+            'search' => false,
         ));
     }
 
@@ -277,7 +279,8 @@ class ItemsController extends Controller
         $this->render('list', array(
             'dataProvider' => $dataProvider,
             'itemTemplate' => 'list/_image',
-            'class' => 'images'
+            'class' => 'images',
+            'search' => false,
         ));
     }
 
@@ -288,7 +291,8 @@ class ItemsController extends Controller
         $this->render('list', array(
             'dataProvider' => $dataProvider,
             'itemTemplate' => 'list/_inquisition',
-            'class' => 'comments'
+            'class' => 'comments',
+            'search' => true,
         ));
     }
 

@@ -194,6 +194,22 @@ div#shades > .active {
     width: 48px;
 }
 
+/* Search */
+#search {
+    margin-top: 50px;
+}
+
+#search input {
+    font-size: 40px;
+    max-width: 480px;
+}
+
+.items .empty {
+    display: block;
+    padding-top: 20px;
+    text-align: center;
+}
+
 /* Share buttons and action links */
 .social {
     float: right;

@@ -14,7 +14,7 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
 ?>
 <div class="item_container">
     <div class="item_container_bottom">
-        <div class="item" id="item_<?php echo $model->id; ?>" data-id="<?php echo $model->id; ?>">
+        <div class="item open" id="item_<?php echo $model->id; ?>" data-id="<?php echo $model->id; ?>">
             <?php if ($modal): ?>
                 <?php $this->renderPartial('_social', array('model' => $model, 'hasVoted' => $hasVoted)); ?>
             <?php endif; ?>

@@ -18,6 +18,7 @@
                     'success' => "function(data) {
                         data = JSON.parse(data);
                         $('span.wrap_like_" . $model->id . "').html('<i class=\"icon icon-like_active\"></i>');
+                        $('span.wrap_like_" . $model->id . "').parents('.social').find('.external').show();
                         alert(data.msg);
                     }",
                 ),
@@ -32,13 +33,15 @@
         <?php endif; ?>
     </span>
     <?php $absoluteUrl = Yii::app()->createAbsoluteUrl('/' . $model->id); ?>
-    <a href="https://vk.com/share.php?url=<?php echo $absoluteUrl; ?>&title=Адовые клиенты!" title="Поделиться на VK" target="_blank">
-        <i class="icon icon-vk"></i>
-    </a>
-    <a href="https://twitter.com/share/?url=<?php echo $absoluteUrl; ?>&text=Адовые клиенты!" title="Поделиться на Twitter" target="_blank">
-        <i class="icon icon-twitter"></i>
-    </a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($absoluteUrl); ?>" title="Поделиться на Facebook">
-        <i class="icon icon-facebook"></i>
-    </a>
+    <div class="external">
+        <a href="https://vk.com/share.php?url=<?php echo $absoluteUrl; ?>&title=Адовые клиенты!" title="Поделиться на VK" target="_blank">
+            <i class="icon icon-vk"></i>
+        </a>
+        <a href="https://twitter.com/share/?url=<?php echo $absoluteUrl; ?>&text=Адовые клиенты!" title="Поделиться на Twitter" target="_blank">
+            <i class="icon icon-twitter"></i>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($absoluteUrl); ?>" title="Поделиться на Facebook">
+            <i class="icon icon-facebook"></i>
+        </a>
+    </div>
 </div>

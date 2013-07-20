@@ -5,11 +5,6 @@
         width: 320px;
     }
 
-    img.logo {
-        width: 140px;
-        height: 227px;
-    }
-
     div#logo {
         float: left;
     }
@@ -43,18 +38,11 @@
         font-size: 16px;
     }
 
-    div#createForm div.textareaScrollbar {
-        margin-left: 10px;
-        height: 240px;
-    }
 
     div#createForm input {
         width: 240px;
     }
 
-    div#createForm div.textareaScrollbar a {
-        padding-top: 60px;
-    }
 
     /* Font sizes */
     div#nav, div#hall_of_fame {
@@ -99,11 +87,6 @@
         width: 160px;
     }
 
-    img.logo {
-        width: 140px;
-        height: 227px;
-    }
-
     div#content {
         margin-left: 150px;
     }
@@ -137,15 +120,6 @@
         height: 320px;
         width: 320px;
         font-size: 18px;
-    }
-
-    div#createForm div.textareaScrollbar {
-        margin-left: 20px;
-        height: 320px;
-    }
-
-    div#createForm div.textareaScrollbar a {
-        padding-top: 100px;
     }
 
     div#createForm input {
@@ -196,11 +170,6 @@
     div#sidebar {
         left: 0;
         width: 200px;
-    }
-
-    img.logo {
-        width: 180px;
-        height: 292px;
     }
 
     div#content {

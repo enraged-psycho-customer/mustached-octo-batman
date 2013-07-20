@@ -46,11 +46,31 @@
                 <?php $this->widget('zii.widgets.CMenu', array(
                     'itemTemplate' => '<i class="icon left icon-horn_left"></i>{menu}<i class="icon right icon-horn_right"></i>',
                     'items' => array(
-                        array('label' => 'Цитаты', 'url' => array('/items/index')),
-                        array('label' => 'Картинки', 'url' => array('/items/images')),
-                        array('label' => 'Сражения', 'url' => array('/items/battles')),
-                        array('label' => 'Инкивизиция', 'url' => array('/items/inquisition')),
-                        array('label' => 'Магазинчик', 'url' => array('/shop')),
+                        array(
+                            'label' => 'Цитаты',
+                            'url' => array('/quotes'),
+                            'active' => $this->action->id == 'quotes'
+                        ),
+                        array(
+                            'label' => 'Картинки',
+                            'url' => array('/images'),
+                            'active' => $this->action->id == 'images'
+                        ),
+                        array(
+                            'label' => 'Сражения',
+                            'url' => array('/battles'),
+                            'active' => $this->action->id == 'battles'
+                        ),
+                        array(
+                            'label' => 'Инкивизиция',
+                            'url' => array('/inquisition'),
+                            'active' => $this->action->id == 'inquisition'
+                        ),
+                        array(
+                            'label' => 'Магазинчик',
+                            'url' => array('/shop'),
+                            'active' => $this->action->id == 'shop'
+                        ),
                     ),
                 )); ?>
             </div>

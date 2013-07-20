@@ -3,7 +3,7 @@
 /* @var $data Items */
 ?>
 
-<div class="item" id="item_<?php echo $data->id; ?>" data-id="<?php echo $data->id; ?>">
+<div class="item closed" id="item_<?php echo $data->id; ?>" data-id="<?php echo $data->id; ?>">
     <div class="number">
         <?php echo CHtml::link('№' . $data->id, array('view', 'id' => $data->id), array('class' => 'expand')); ?>
     </div>

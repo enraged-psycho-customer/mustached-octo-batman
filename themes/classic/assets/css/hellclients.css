@@ -6,12 +6,14 @@
 
 body {
     background: #F2F2F2;
-    font-family: 'corporateacyrregular', "Times New Roman", Times, sans-serif;
+    font-family: 'corporate-web';
+    color: #272727;
     height: 100%;
 }
 
-input, textarea {
-    font-family: 'corporateacyrregular', "Times New Roman", Times, sans-serif;
+input, textarea, div.quote {
+    font-family: 'corporate-web';
+    color: #272727;
 }
 
 
@@ -30,6 +32,10 @@ button {
     cursor: pointer;
 }
 
+.item.closed {
+    cursor: pointer;
+}
+
 /* Layout */
 div#wrapper {
     margin: 0 auto;
@@ -43,7 +49,6 @@ div#container {
 }
 
 div#sidebar {
-    font-family: 'corporateacyrdemi_italic', Times New Roman, sans-serif;
     border-left: 1px solid #B1B1B1;
     border-right: 1px solid #B1B1B1;
     position: fixed;
@@ -166,14 +171,20 @@ div#shades .shade {
     display: inline-block;
     background: url(../images/shade.png) no-repeat;
     width: 48px;
-    height: 87px;
+    height: 130px;
     float: left;
     margin-right: 15px;
+    vertical-align: bottom;
+}
+
+.shade a {
+    padding: 5px 0px 10px 0px;
+    display: inline-block;
 }
 
 div#shades > .active {
     position: relative;
-    top: -30px;
+    top: -85px;
 }
 
 .shade .inner {
@@ -181,17 +192,21 @@ div#shades > .active {
     text-align: center;
     vertical-align: middle;
     width: 48px;
-    height: 87px;
+    height: 130px;
     padding: 0;
 }
 
-.shade > .active {
-    padding-top: 15px;
+.shade.active .inner {
+    vertical-align: bottom;
 }
 
-.shade .inner a {
+.shade.active .inner a {
+    display: none;
+}
+
+.shade.active .inner a.active {
     display: inline-block;
-    width: 48px;
+    vertical-align: bottom;
 }
 
 /* Search */
@@ -225,8 +240,12 @@ div#shades > .active {
     margin-bottom: 15px;
 }
 
-.social a:first-child {
+.social > a:first-child {
     margin-bottom: 30px;
+}
+
+.social .external {
+    display: none;
 }
 
 /* Items */
@@ -250,7 +269,6 @@ div#shades > .active {
 
 /* Item: number link */
 .item .number {
-    font-family: 'corporateacyrdemi', "Times New Roman", Times, sans-serif;
     margin-left: 55px;
     padding-bottom: 20px;
 }
@@ -299,7 +317,6 @@ div#shades > .active {
     border-top: 1px solid #E5E5E5;
     clear: both;
     font-size: 14px;
-    font-family: 'corporateacyrdemi_italic', Times New Roman, sans-serif;
     padding: 25px 0;
 }
 
@@ -472,25 +489,31 @@ div#createForm #text_image {
     display: none;
 }
 
+div#createForm table {
+    margin: 0 auto;
+}
+
+div#createForm table td.textarea {
+    padding-right: 10px;
+}
+
 div#createForm textarea {
     border: 0px none;
-    width: 480px;
     background: url(../images/textarea.png) repeat-y;
     color: #272727;
     display: inline-block;
     overflow: hidden;
+
     line-height: 26px;
-}
+    font-size: 22px;
 
-div#createForm div.textareaScrollbar {
-    display: inline-block;
-    vertical-align: top;
-}
+    height: 468px;
+    width: 480px;
 
-div#createForm div.textareaScrollbar a {
-    display: inline-block;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
 }
-
 
 div#createForm div.label {
     display: inline-block;
@@ -515,25 +538,6 @@ div#createForm div.buttons div.agreement {
     color: #B0B0B0;
 }
 
-/* Item sizes */
-div#createForm textarea {
-    height: 468px;
-    font-size: 22px;
-}
-
-div#createForm div.textareaScrollbar {
-    margin-left: 40px;
-    height: 468px;
-}
-
-div#createForm div.textareaScrollbar a {
-    padding-top: 160px;
-}
-
-div#createForm div.email {
-    margin-bottom: 35px;
-}
-
 /* Helpers */
 span.hint {
     color: #B0B0B0;
@@ -556,4 +560,8 @@ div.loader {
     width: 16px;
     height: 16px;
     background: url(../images/loader.gif) no-repeat;
+}
+
+td.bottom {
+    vertical-align: bottom;
 }

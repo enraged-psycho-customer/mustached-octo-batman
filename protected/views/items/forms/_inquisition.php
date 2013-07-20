@@ -36,17 +36,23 @@
         </div>
         <br/><br/>
 
-        <?php echo $form->textArea($model, 'content', array('id' => 'text')); ?>
-
-        <div class="textareaScrollbar">
-            <a class="scrollbar" data-dir="up" href="javascript:void(0)">
-                <i class="icon icon-scroll_up"></i>
-            </a>
-            <br>
-            <a class="scrollbar" data-dir="down" href="javascript:void(0)">
-                <i class="icon icon-scroll_down"></i>
-            </a>
-        </div>
+        <table>
+            <tr>
+                <td class="textarea" rowspan="2"><?php echo $form->textArea($model, 'content', array('id' => 'text')); ?></td>
+                <td>
+                    <a class="scrollbar" data-dir="up" href="javascript:void(0)">
+                        <i class="icon icon-scroll_up"></i>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td class="bottom">
+                    <a class="scrollbar" data-dir="down" href="javascript:void(0)">
+                        <i class="icon icon-scroll_down"></i>
+                    </a>
+                </td>
+            </tr>
+        </table>
 
         <?php
         $this->widget('CocoWidget', array(

@@ -8,6 +8,8 @@ class ItemsController extends Controller
      */
     public $layout = '//layouts/frontend';
 
+    public $defaultAction = 'quotes';
+
     /**
      * Declares class-based actions.
      */
@@ -49,7 +51,7 @@ class ItemsController extends Controller
     {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'images', 'inquisition', 'view', 'get', 'save', 'create', 'vote', 'captcha', 'coco'),
+                'actions' => array('quotes', 'images', 'inquisition', 'view', 'get', 'save', 'create', 'vote', 'captcha', 'coco'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -258,7 +260,7 @@ class ItemsController extends Controller
     /**
      * Lists all quotes.
      */
-    public function actionIndex()
+    public function actionQuotes()
     {
         $model = $this->getItemsList()->quotes();
         $dataProvider = new CActiveDataProvider($model);

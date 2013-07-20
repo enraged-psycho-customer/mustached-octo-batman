@@ -33,6 +33,7 @@ return array(
             'showScriptName' => false,
             'rules' => array(
                 '<id:\d+>' => 'items/view',
+                '<action:\w+>' => 'items/<action>',
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',

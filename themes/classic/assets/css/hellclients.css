@@ -214,11 +214,6 @@ div#create ul li a {
     line-height: 14px;
 }
 
-div.menu ul li.active i {
-    margin-top: 7px;
-    display: inline-block;
-}
-
 div.menu ul li.active a, div.menu ul li a:hover {
     color: #EC444B;
 }

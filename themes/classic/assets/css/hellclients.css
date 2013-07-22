@@ -613,12 +613,6 @@ div.clear {
     clear: both;
 }
 
-div.loader {
-    width: 16px;
-    height: 16px;
-    background: url(../images/loader.gif) no-repeat;
-}
-
 td.bottom {
     vertical-align: bottom;
 }

@@ -30,7 +30,15 @@ ul.yiiPager .hidden a {
 }
 
 .list-view-loading {
-    background: url(../images/loader.gif) no-repeat center top;
+    width: 96px;
+    height: 82px;
+    background-image: url(../images/loader.png);
+
+    -webkit-animation: play .8s steps(7) infinite;
+    -moz-animation: play .8s steps(7) infinite;
+    -ms-animation: play .8s steps(7) infinite;
+    -o-animation: play .8s steps(7) infinite;
+    animation: play .8s steps(7) infinite;
 }
 
 /* CocoWidget */

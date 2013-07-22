@@ -18,7 +18,7 @@
         border-right: 1px solid #B1B1B1;
         height: 160px;
         padding: 0 0;
-        width: 33.2%;
+        width: 33.0%;
     }
 
     .comment .text {
@@ -91,7 +91,7 @@
 
     #sidebar_inner {
         display: table;
-        width: 66.5%;
+        width: 66.0%;
     }
 
     #container {

@@ -6,6 +6,8 @@ var elements = {
     loader: '<div class="loader"></div>'
 };
 
+var garbage = {};
+
 var places = {
     document: 'html, body',
 
@@ -21,7 +23,6 @@ var places = {
     expandLink: '.comments a.expand',
     expandLinkImage: '.comments_image a.expand',
     closeLink: '.social a.close',
-    expandedLink: '.item a.expanded',
 
     comment: '.comment.real, .comment.level',
     submitCommentButton: '.commentsForm .button button',
@@ -33,13 +34,34 @@ var places = {
 };
 
 $(document).ready(function() {
+    $('#nav_mobile ul li a.prev, #nav_mobile ul li a.next').live('click', function(e) {
+        var parentList = $(this).parents('ul');
+
+        if ($(this).hasClass('prev')) {
+            var lastItem = parentList.find('li:last').remove();
+            parentList.prepend(lastItem);
+        } else {
+            var parentItem = $(this).parents('li');
+            parentItem.remove();
+            parentList.append(parentItem);
+        }
+    });
+
     $(places.expandAjaxLink).live("click", function(e) {
         e.preventDefault();
+
+        // Close all other posts
+        for (var id in garbage) {
+            $('div.item#item_' + id).parents('.item_container').replaceWith(garbage[id]);
+            delete garbage[id];
+        }
+
         var itemId = $(this).attr('data-id');
         var itemSelector = '#item_' + itemId;
         var commentsSelector = '#comments_' + itemId;
         var requestUrl = $(this).find('a.expand').attr('href') + '?modal';
 
+        garbage[itemId] = $(itemSelector).get(0).outerHTML;
         $(itemSelector).find('div.number').html(elements.loader);
 
         $.ajax(requestUrl)
@@ -52,6 +74,18 @@ $(document).ready(function() {
 
         return false;
     });
+
+    // Close expanded item
+    $(places.closeLink).live("click", function(e) {
+        e.preventDefault();
+        var itemId = $(this).parents('div.item').attr('data-id');
+
+        $(this).parents('.item_container').replaceWith(garbage[itemId]);
+        delete garbage[itemId];
+
+        return false;
+    });
+
 
     // Sortables
     $(places.sortLink).live("click", function(e) {
@@ -70,30 +104,11 @@ $(document).ready(function() {
         $(this).addClass('active');
     });
 
+    // Submit sortables & filters
     $('#itemsForm, #searchForm').submit(function(){
         $.fn.yiiListView.update('itemsList', {
             data: $(this).serialize()
         });
-        return false;
-    });
-
-    // Close expanded item
-    $(places.closeLink).live("click", function(e) {
-        e.preventDefault();
-        var parent = $(this).parents('div.item_container');
-        parent.removeClass('active');
-        parent.find('.comments_list').hide();
-        parent.find('.social').hide();
-        return false;
-    });
-
-    // Re-open closed expanded item
-    $(places.expandedLink).live("click", function(e) {
-        e.preventDefault();
-        var parent = $(this).parents('div.item_container');
-        parent.addClass('active');
-        parent.find('.comments_list').show();
-        parent.find('.social').show();
         return false;
     });
 
@@ -118,9 +133,15 @@ $(document).ready(function() {
     $(places.comment).live("click", function(e) {
         e.preventDefault();
         var parentItem = $(this).parents('.comments_list');
-        parentItem.find(places.nestedCommentForm).show();
-        parentItem.find(places.nestedCommentForm).appendTo(this);
         parentItem.find(places.nestedCommentFormParentField).val($(this).attr('data-id'));
+
+        var form = parentItem.find(places.nestedCommentForm);
+        form.show();
+
+        var formHtml = form.get(0).outerHTML;
+        parentItem.find(places.nestedCommentForm).remove();
+
+        $(this).after(formHtml);
 
         return false;
     });

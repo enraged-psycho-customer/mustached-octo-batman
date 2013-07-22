@@ -27,17 +27,65 @@
 <body>
 
 <div id="wrapper">
+    <a id="contest_mobile" href="<?php echo $this->createUrl('/contest'); ?>" title="Конкурс">&nbsp;</a>
+
     <div id="sidebar">
         <div id="logo">
-            <?php echo CHtml::link(CHtml::image($this->assetsUrl . "/images/logos/logo_" . rand(1, 11) . ".png", '', array('class' => 'logo')), array('/items')); ?>
+            <?php echo CHtml::link(CHtml::image($this->assetsUrl . "/images/logos/logo_" . rand(1, 11) . ".png", '', array('class' => 'logo')), array('/quotes')); ?>
         </div>
 
         <div id="sidebar_inner">
             <div id="create" class="menu">
                 <?php $this->widget('zii.widgets.CMenu', array(
-                    'itemTemplate' => '<i class="icon left icon-vig_left"></i>{menu}<i class="icon right icon-vig_right"></i>',
+                    'itemTemplate' => '
+                        <a class="prev" href="javascript:void(0)"><i class="icon right icon-vig_left"></i></a>
+                        {menu}
+                        <a class="next" href="javascript:void(0)"><i class="icon left icon-vig_right"></i></a>
+                    ',
                     'items' => array(
                         array('label' => 'Отправить своё', 'url' => array('/items/create')),
+                    ),
+                )); ?>
+            </div>
+
+            <div id="nav_mobile" class="menu">
+                <?php $this->widget('zii.widgets.CMenu', array(
+                    'itemTemplate' => '
+                        <a class="prev" href="javascript:void(0)"><i class="icon right icon-arrow_small_left"></i></a>
+                        {menu}
+                        <a class="next" href="javascript:void(0)"><i class="icon left icon-arrow_small_right"></i></a>
+                    ',
+                    'items' => array(
+                        array(
+                            'label' => 'Цитаты',
+                            'url' => array('/quotes'),
+                            'active' => $this->action->id == 'quotes'
+                        ),
+                        array(
+                            'label' => 'Картинки',
+                            'url' => array('/images'),
+                            'active' => $this->action->id == 'images'
+                        ),
+                        array(
+                            'label' => 'Сражения',
+                            'url' => array('/battles'),
+                            'active' => $this->action->id == 'battles'
+                        ),
+                        array(
+                            'label' => 'Инкивизиция',
+                            'url' => array('/inquisition'),
+                            'active' => $this->action->id == 'inquisition'
+                        ),
+                        array(
+                            'label' => 'Магазинчик',
+                            'url' => array('/shop'),
+                            'active' => $this->action->id == 'shop'
+                        ),
+                        array(
+                            'label' => 'Зал славы',
+                            'url' => array('/fame'),
+                            'active' => $this->action->id == 'fame'
+                        ),
                     ),
                 )); ?>
             </div>
@@ -90,6 +138,9 @@
     </div>
 
     <div id="container">
+        <div class="age_inner">
+            <i class="icon icon-age"></i>
+        </div>
         <div id="content">
             <?php echo $content; ?>
         </div>
@@ -100,7 +151,7 @@
 </div>
 
 <?php $this->widget('Flashes'); ?>
-<div id="age">
+<div class="age_top">
     <i class="icon icon-age"></i>
 </div>
 <div id="companion"></div>

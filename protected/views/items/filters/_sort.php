@@ -26,6 +26,7 @@
 <?php $this->endWidget(); ?>
 
 <div class="clear"></div>
+<br/>
 
 <?php if (isset($_GET['sort_type']) && isset($_GET['sort_dir'])): ?>
 <script type="text/javascript">

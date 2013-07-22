@@ -37,18 +37,19 @@ button {
 }
 
 /* Layout */
-div#wrapper {
+#wrapper {
     margin: 0 auto;
     width: 100%;
     position: absolute;
     top: 0;
 }
 
-div#container {
+#container {
     width: 100%;
+    z-index: 100;
 }
 
-div#sidebar {
+#sidebar {
     border-left: 1px solid #B1B1B1;
     border-right: 1px solid #B1B1B1;
     position: fixed;
@@ -57,13 +58,14 @@ div#sidebar {
     text-align: center;
     padding-top: 10px;
     width: 100px;
+    z-index: 200;
 }
 
-div#content {
+#content {
     padding-bottom: 30px;
 }
 
-div#age {
+.age_top {
     position: absolute;
     top: 7px;
     right: 8px;
@@ -71,7 +73,15 @@ div#age {
     height: 10px;
 }
 
-div#companion {
+.age_inner {
+    width: 98%;
+    text-align: right;
+    padding: 5px 0 0 5px;
+    height: 10px;
+    display: none;
+}
+
+#companion {
     position: fixed;
     right: 4px;
     bottom: 0;
@@ -81,7 +91,7 @@ div#companion {
     cursor: pointer;
 }
 
-div#balloon {
+#balloon {
     position: fixed;
     right: 45px;
     bottom: 30px;
@@ -92,7 +102,7 @@ div#balloon {
     height: 54px;
 }
 
-div#balloon_text {
+#balloon_text {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
@@ -100,21 +110,56 @@ div#balloon_text {
     height: 40px;
 }
 
+#contest_mobile {
+    width: 100%;
+    background: url(../images/contest_big.png) center center no-repeat;
+    height: 64px;
+    display: none;
+}
 
-div#create {
+#nav_mobile {
+    display: none;
+    padding-top: 40px;
+}
+
+#nav_mobile ul li {
+    display: none;
+}
+
+#nav_mobile ul li i.left {
+    margin-left: 5px;
+}
+
+#nav_mobile ul li i.right {
+    margin-right: 5px;
+}
+
+#nav_mobile ul li:first-child {
+    display: block;
+}
+
+#nav_mobile ul li a {
+    display: inline-block;
+}
+
+#nav_mobile ul li a.prev, #nav_mobile ul li a.next {
+    padding-bottom: 3px;
+}
+
+#create {
     margin-top: 40px;
 }
 
-div#contest {
+#contest {
     margin-top: 60px;
 }
 
-div#hall_of_fame {
+#hall_of_fame {
     margin-top: 60px;
 }
 
 /* Navigation */
-div#nav {
+#nav {
     margin-top: 75px;
 }
 
@@ -130,6 +175,14 @@ div.menu ul li {
 
 div#create ul li {
     padding-bottom: 0px;
+}
+
+div#create ul li a {
+    display: inline-block;
+}
+
+div#create ul li a.prev, div#create ul li a.next {
+    cursor: default;
 }
 
 div.menu ul li a {
@@ -152,9 +205,13 @@ div.menu ul li i {
     display: none;
 }
 
-div#create ul li i {
-    margin-top: 2px;
+div#create ul li i, div#nav_mobile ul li i {
     display: inline-block;
+}
+
+div#create ul li a {
+    height: 14px;
+    line-height: 14px;
 }
 
 div.menu ul li.active i {
@@ -167,7 +224,7 @@ div.menu ul li.active a, div.menu ul li a:hover {
 }
 
 /* Shades */
-div#shades .shade {
+.shade {
     display: inline-block;
     background: url(../images/shade.png) no-repeat;
     width: 48px;
@@ -175,6 +232,7 @@ div#shades .shade {
     float: left;
     margin-right: 15px;
     vertical-align: bottom;
+    position: absolute;
 }
 
 .shade a {
@@ -182,8 +240,7 @@ div#shades .shade {
     display: inline-block;
 }
 
-div#shades > .active {
-    position: relative;
+.shade.active {
     top: -85px;
 }
 

@@ -46,5 +46,15 @@ ul.yiiPager .hidden a {
 
 .qq-upload-list {
     list-style-type: none;
+    color: #EC1F23;
 }
 
+.qq-upload-list li {
+    font-size: 16px;
+    text-decoration: underline;
+    display: inline;
+}
+
+.qq-upload-size {
+    display: none;
+}

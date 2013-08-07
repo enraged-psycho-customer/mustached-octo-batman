@@ -596,7 +596,7 @@ qq.extend(qq.FileUploader.prototype, {
 
         var item = this._getItemByFileId(id);
         var size = this._find(item, 'size');
-        size.style.display = 'inline';
+        size.style.display = 'none';
 
         var text;
         if (loaded != total){

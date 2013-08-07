@@ -66,11 +66,16 @@
 .avatar_7{ background-position: -336px 0; width: 32px; height: 54px; }
 .avatar_8{ background-position: -378px 0; width: 32px; height: 54px; }
 .avatar_9{ background-position: -420px 0; width: 32px; height: 54px; }
-.avatar_10{ background-position: -84px 0; width: 32px; height: 54px; }
 
-.loader {
+.max {
+    width: 90%;
+    text-align: center;
+}
+
+.loader, .list-view-loading .load {
     width: 96px;
     height: 82px;
+    display: inline-block;
     background-image: url(../images/loader.png);
 
     -webkit-animation: play .8s steps(7) infinite;
@@ -80,6 +85,7 @@
     animation: play .8s steps(7) infinite;
 }
 
+/* Animations */
 @-webkit-keyframes play {
     from { background-position:    0px; }
     to { background-position: -678px; }
@@ -103,4 +109,30 @@
 @keyframes play {
     from { background-position:    0px; }
     to { background-position: -678px; }
+}
+
+/* Animations mini */
+@-webkit-keyframes play-small {
+    from { background-position:    0px; }
+    to { background-position: -339px; }
+}
+
+@-moz-keyframes play-small {
+    from { background-position:    0px; }
+    to { background-position: -339px; }
+}
+
+@-ms-keyframes play-small {
+    from { background-position:    0px; }
+    to { background-position: -339px; }
+}
+
+@-o-keyframes play-small {
+    from { background-position:    0px; }
+    to { background-position: -339px; }
+}
+
+@keyframes play-small {
+    from { background-position:    0px; }
+    to { background-position: -339px; }
 }

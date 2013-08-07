@@ -10,7 +10,12 @@ $this->widget('zii.widgets.CListView', array(
     'id' => 'itemsList',
     'dataProvider' => $dataProvider,
     'itemView' => $itemTemplate,
-    'template' => '{items}{pager}',
+    'template' => '
+        <div class="max"><div class="load"></div></div>
+        {items}
+        <div class="max"><div class="load"></div></div>
+        {pager}
+    ',
     'pager' => array(
         'class' => 'CLinkPager',
         'maxButtonCount' => 5,

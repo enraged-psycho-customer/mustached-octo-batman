@@ -18,7 +18,7 @@ var places = {
     avatarSwitch: '.commentsForm a.avatar_switch',
     expandLink: '.comments a.expand',
     expandLinkImage: '.comments_image a.expand',
-    closeLink: '.social a.close',
+    closeLink: '.social-common a.close',
 
     comment: '.comment.real, .comment.level',
     submitCommentButton: '.commentsForm .button button',
@@ -80,6 +80,12 @@ $(document).ready(function() {
         delete garbage[itemId];
 
         return false;
+    });
+
+    $('a.externalToggle').live("click", function(e) {
+        $(this).parents('.social-common').find('.external').toggle();
+        $(this).find('i').toggleClass('icon-like');
+        $(this).find('i').toggleClass('icon-like_active');
     });
 
 

@@ -278,7 +278,7 @@ class Items extends CActiveRecord
         return array(
             self::CATEGORY_QUOTES => 'Новая цитата',
             self::CATEGORY_IMAGES => 'Новая картинка',
-            self::CATEGORY_INQUISITION => 'Новая инквизиция'
+            self::CATEGORY_INQUISITION => 'Новый грешник'
         );
     }
 

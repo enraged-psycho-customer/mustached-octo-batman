@@ -1,3 +1,14 @@
+/* Height stuff */
+@media screen and (max-height: 900px) {
+    #contest img {
+        display: none;
+    }
+
+    #contest div.menu {
+        display: block;
+    }
+}
+
 /* 320px */
 @media screen and (max-width: 640px) {
     #sidebar {
@@ -44,6 +55,10 @@
 
     #contest, #nav, #hall_of_fame, div.social, .age_top {
         display: none;
+    }
+
+    .social-small {
+        display: block;
     }
 
     .age_inner {
@@ -132,7 +147,7 @@
 
 
     /* Font sizes */
-    div#nav, div#hall_of_fame {
+    div#nav, div#hall_of_fame, div#contest {
         font-size: 12px;
     }
 
@@ -169,6 +184,18 @@
         padding-left: 0px;
     }
 
+    .loader, .list-view-loading .load {
+        width: 48px;
+        height: 41px;
+        background-image: url(../images/loader_small.png);
+
+        -webkit-animation: play-small .8s steps(7) infinite;
+        -moz-animation: play-small .8s steps(7) infinite;
+        -ms-animation: play-small .8s steps(7) infinite;
+        -o-animation: play-small .8s steps(7) infinite;
+        animation: play-small .8s steps(7) infinite;
+    }
+
 }
 
 /* 640px */
@@ -185,6 +212,10 @@
 
     div.item div.comments, div.social {
         display: none;
+    }
+
+    .social-small {
+        display: block;
     }
 
     div.item div.number {
@@ -235,7 +266,7 @@
     }
 
     /* Font sizes */
-    div#nav, div#hall_of_fame {
+    div#nav, div#hall_of_fame, div#contest {
         font-size: 12px;
     }
 
@@ -275,6 +306,18 @@
     .pad {
         padding-left: 75px;
     }
+
+    .loader, .list-view-loading .load {
+        width: 48px;
+        height: 41px;
+        background-image: url(../images/loader_small.png);
+
+        -webkit-animation: play-small .8s steps(7) infinite;
+        -moz-animation: play-small .8s steps(7) infinite;
+        -ms-animation: play-small .8s steps(7) infinite;
+        -o-animation: play-small .8s steps(7) infinite;
+        animation: play-small .8s steps(7) infinite;
+    }
 }
 
 /* 1280px */
@@ -311,7 +354,7 @@
     }
 
     /* Font sizes */
-    div#nav, div#hall_of_fame {
+    div#nav, div#hall_of_fame, div#contest {
         font-size: 18px;
     }
 
@@ -378,7 +421,7 @@
     }
 
     /* Font sizes */
-    div#nav, div#hall_of_fame {
+    div#nav, div#hall_of_fame, div#contest {
         font-size: 20px;
     }
 
@@ -449,7 +492,7 @@
     }
 
     /* Font sizes */
-    div#nav, div#hall_of_fame {
+    div#nav, div#hall_of_fame, div#contest {
         font-size: 20px;
     }
 

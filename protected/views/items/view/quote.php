@@ -7,13 +7,12 @@
 <div class="item_container">
     <div class="item_container_bottom">
         <div class="item open" id="item_<?php echo $model->id; ?>" data-id="<?php echo $model->id; ?>">
-            <?php if ($modal): ?>
-                <?php $this->renderPartial('_social', array('model' => $model, 'hasVoted' => $hasVoted)); ?>
-            <?php endif; ?>
-
             <div class="number">
                 <?php echo CHtml::link('№' . $model->id, array('view', 'id' => $model->id)); ?>
             </div>
+            <?php if ($modal): ?>
+                <?php $this->renderPartial('_social', array('model' => $model, 'class' => 'social')); ?>
+            <?php endif; ?>
             <div class="container">
                 <div class="comments">
                     <a class="expanded" href="javascript:void(0)">
@@ -26,6 +25,9 @@
 
                 <div class="quote">
                     <?php $this->renderPartial('_content', array('model' => $model)); ?>
+                    <?php if ($modal): ?>
+                        <?php $this->renderPartial('_social', array('model' => $model, 'class' => 'social-small')); ?>
+                    <?php endif; ?>
                 </div>
 
                 <div class="clear"></div>

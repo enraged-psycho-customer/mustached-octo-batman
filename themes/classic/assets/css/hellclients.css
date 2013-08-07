@@ -65,6 +65,10 @@ button {
     padding-bottom: 30px;
 }
 
+#contest div.menu {
+    display: none;
+}
+
 .age_top {
     position: absolute;
     top: 7px;
@@ -280,9 +284,16 @@ div.menu ul li.active a, div.menu ul li a:hover {
 /* Share buttons and action links */
 .social {
     float: right;
-    margin-top: 35px;
-    margin-left: 20px;
     width: 30px;
+}
+
+.social-small {
+    display: none;
+    margin-top: 10px;
+}
+
+.social-small a {
+    padding: 0px 5px;
 }
 
 .social a, .social span {
@@ -296,7 +307,7 @@ div.menu ul li.active a, div.menu ul li a:hover {
     margin-bottom: 30px;
 }
 
-.social .external {
+.social .external, .social-small .external {
     display: none;
 }
 
@@ -590,6 +601,7 @@ div#createForm input {
 
 div#createForm div.buttons div {
     display: inline-block;
+    margin-top: 40px;
     vertical-align: top;
 }
 

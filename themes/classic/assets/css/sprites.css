@@ -3,9 +3,9 @@
     background: url(../images/sprites.png) no-repeat top left;
 }
 
-.icon-comments_active { background-position: -267px 0; width: 19px; height: 20px; }
-.icon-image_icon_active { background-position: -556px 0; width: 20px; height: 21px; }
-.icon-like_active { background-position: -686px 0; width: 16px; height: 16px; }
+.icon-comments_active { background-position: -281px 0; width: 19px; height: 20px; }
+.icon-image_icon_active { background-position: -570px 0; width: 20px; height: 21px; }
+.icon-like_active { background-position: -700px 0; width: 16px; height: 16px; }
 
 .icon-age{ background-position: 0 0; width: 22px; height: 9px; }
 .icon-arrow_small_left{ background-position: -32px 0; width: 8px; height: 8px; }
@@ -14,40 +14,39 @@
 .icon-arrow_small_right:hover{ background-position: -86px 0; width: 8px; height: 8px; }
 .icon-arrow_white_bottom{ background-position: -104px 0; width: 9px; height: 9px; }
 .icon-arrow_white_top{ background-position: -123px 0; width: 9px; height: 9px; }
-.icon-checkbox{ background-position: -142px 0; width: 14px; height: 11px; }
-.icon-checkbox:hover{ background-position: -166px 0; width: 14px; height: 11px; }
-.icon-close{ background-position: -190px 0; width: 14px; height: 14px; }
-.icon-close:hover{ background-position: -214px 0; width: 14px; height: 14px; }
-.icon-comments{ background-position: -238px 0; width: 19px; height: 20px; }
-.icon-comments:hover{ background-position: -267px 0; width: 19px; height: 20px; }
-.icon-comments_time{ background-position: -296px 0; width: 26px; height: 27px; }
-.icon-comments_white{ background-position: -332px 0; width: 26px; height: 27px; }
-.icon-facebook{ background-position: -368px 0; width: 7px; height: 14px; }
-.icon-facebook:hover{ background-position: -385px 0; width: 7px; height: 14px; }
-.icon-form_arrow_down{ background-position: -402px 0; width: 14px; height: 14px; }
-.icon-form_arrow_down:hover{ background-position: -426px 0; width: 14px; height: 14px; }
-.icon-form_arrow_up{ background-position: -450px 0; width: 14px; height: 14px; }
-.icon-form_arrow_up:hover{ background-position: -474px 0; width: 14px; height: 14px; }
-.icon-horn_left{ background-position: -498px 0; width: 4px; height: 8px; }
-.icon-horn_right{ background-position: -512px 0; width: 4px; height: 8px; }
-.icon-image_icon{ background-position: -526px 0; width: 20px; height: 21px; }
-.icon-image_icon:hover{ background-position: -556px 0; width: 20px; height: 21px; }
-.icon-images_time{ background-position: -586px 0; width: 27px; height: 28px; }
-.icon-images_white{ background-position: -623px 0; width: 27px; height: 28px; }
-.icon-like{ background-position: -660px 0; width: 16px; height: 16px; }
-.icon-like:hover{ background-position: -686px 0; width: 16px; height: 16px; }
-.icon-scroll_down{ background-position: -712px 0; width: 14px; height: 14px; }
-.icon-scroll_down:hover{ background-position: -736px 0; width: 14px; height: 14px; }
-.icon-scroll_up{ background-position: -760px 0; width: 14px; height: 14px; }
-.icon-scroll_up:hover{ background-position: -784px 0; width: 14px; height: 14px; }
-.icon-time_white{ background-position: -808px 0; width: 19px; height: 19px; }
-.icon-twitter{ background-position: -837px 0; width: 11px; height: 14px; }
-.icon-twitter:hover{ background-position: -858px 0; width: 11px; height: 14px; }
-.icon-vig_left{ background-position: -879px 0; width: 10px; height: 17px; }
-.icon-vig_right{ background-position: -899px 0; width: 10px; height: 17px; }
-.icon-vk{ background-position: -919px 0; width: 11px; height: 14px; }
-.icon-vk:hover{ background-position: -940px 0; width: 11px; height: 14px; }
-
+.icon-checkbox{ background-position: -142px 0; width: 21px; height: 16px; }
+.icon-checkbox:hover{ background-position: -173px 0; width: 21px; height: 16px; }
+.icon-close{ background-position: -204px 0; width: 14px; height: 14px; }
+.icon-close:hover{ background-position: -228px 0; width: 14px; height: 14px; }
+.icon-comments{ background-position: -252px 0; width: 19px; height: 20px; }
+.icon-comments:hover{ background-position: -281px 0; width: 19px; height: 20px; }
+.icon-comments_time{ background-position: -310px 0; width: 26px; height: 27px; }
+.icon-comments_white{ background-position: -346px 0; width: 26px; height: 27px; }
+.icon-facebook{ background-position: -382px 0; width: 7px; height: 14px; }
+.icon-facebook:hover{ background-position: -399px 0; width: 7px; height: 14px; }
+.icon-form_arrow_down{ background-position: -416px 0; width: 14px; height: 14px; }
+.icon-form_arrow_down:hover{ background-position: -440px 0; width: 14px; height: 14px; }
+.icon-form_arrow_up{ background-position: -464px 0; width: 14px; height: 14px; }
+.icon-form_arrow_up:hover{ background-position: -488px 0; width: 14px; height: 14px; }
+.icon-horn_left{ background-position: -512px 0; width: 4px; height: 8px; }
+.icon-horn_right{ background-position: -526px 0; width: 4px; height: 8px; }
+.icon-image_icon{ background-position: -540px 0; width: 20px; height: 21px; }
+.icon-image_icon:hover{ background-position: -570px 0; width: 20px; height: 21px; }
+.icon-images_time{ background-position: -600px 0; width: 27px; height: 28px; }
+.icon-images_white{ background-position: -637px 0; width: 27px; height: 28px; }
+.icon-like{ background-position: -674px 0; width: 16px; height: 16px; }
+.icon-like:hover{ background-position: -700px 0; width: 16px; height: 16px; }
+.icon-scroll_down{ background-position: -726px 0; width: 14px; height: 14px; }
+.icon-scroll_down:hover{ background-position: -750px 0; width: 14px; height: 14px; }
+.icon-scroll_up{ background-position: -774px 0; width: 14px; height: 14px; }
+.icon-scroll_up:hover{ background-position: -798px 0; width: 14px; height: 14px; }
+.icon-time_white{ background-position: -822px 0; width: 19px; height: 19px; }
+.icon-twitter{ background-position: -851px 0; width: 11px; height: 14px; }
+.icon-twitter:hover{ background-position: -872px 0; width: 11px; height: 14px; }
+.icon-vig_left{ background-position: -893px 0; width: 10px; height: 17px; }
+.icon-vig_right{ background-position: -913px 0; width: 10px; height: 17px; }
+.icon-vk{ background-position: -933px 0; width: 11px; height: 14px; }
+.icon-vk:hover{ background-position: -954px 0; width: 11px; height: 14px; }
 
 
 

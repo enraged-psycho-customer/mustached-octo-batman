@@ -53,7 +53,7 @@
         <div class="label">
             <label for="email">Ваш e-mail:</label>
         </div>
-        <?php echo $form->textField($model, 'email', array('id' => 'email')); ?>
+        <?php echo $form->textField($model, 'email', array('id' => 'email', 'placeholder' => 'yourname@example.com')); ?>
         <div>
             <span class="pad hint small">На него будут приходить уведомления о новых комментариях</span>
         </div>

@@ -29,16 +29,24 @@
 
     <div class="text" id="text_inquisition">
         <div class="email">
-            <div class="label">
-                <label for="title">Имя клиента</label>
-            </div>
-            <?php echo $form->textField($model, 'title', array('id' => 'title')); ?>
+            <?php echo $form->textField($model, 'title', array('id' => 'title', 'placeholder' => 'Введите имя грешника сюда')); ?>
         </div>
         <br/><br/>
 
         <table>
             <tr>
-                <td class="textarea" rowspan="2"><?php echo $form->textArea($model, 'content', array('id' => 'text')); ?></td>
+                <td>
+                    <div class="email">
+                        <div class="label">
+                            <label for="content">Текст обвинения</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="textarea" rowspan="2">
+                    <?php echo $form->textArea($model, 'content', array('id' => 'text')); ?>
+                </td>
                 <td>
                     <a class="scrollbar" data-dir="up" href="javascript:void(0)">
                         <i class="icon icon-scroll_up"></i>
@@ -77,7 +85,7 @@
         <div class="label">
             <label for="email">Ваш e-mail:</label>
         </div>
-        <?php echo $form->textField($model, 'email', array('id' => 'email')); ?>
+        <?php echo $form->textField($model, 'email', array('id' => 'email', 'placeholder' => 'yourname@example.com')); ?>
         <div>
             <span class="pad hint small">На него будут приходить уведомления о новых комментариях</span>
         </div>

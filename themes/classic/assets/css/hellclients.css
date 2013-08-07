@@ -596,7 +596,8 @@ div#createForm input {
     background: transparent;
     color: #272727;
     width: 450px;
-    font-size: 16px;
+    font-size: 20px;
+    height: 24px;
 }
 
 div#createForm div.buttons div {
@@ -607,6 +608,7 @@ div#createForm div.buttons div {
 
 div#createForm div.buttons div.agreement {
     text-align: left;
+    margin-left: 20px;
     color: #B0B0B0;
 }
 

@@ -16,7 +16,7 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
     <div class="item_container_bottom">
         <div class="item open" id="item_<?php echo $model->id; ?>" data-id="<?php echo $model->id; ?>">
             <?php if ($modal): ?>
-                <?php $this->renderPartial('_social', array('model' => $model, 'hasVoted' => $hasVoted)); ?>
+                <?php $this->renderPartial('_social', array('model' => $model, 'class' => 'social')); ?>
             <?php endif; ?>
 
             <div class="number">
@@ -34,6 +34,9 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
 
                 <div class="quote">
                     <?php $this->renderPartial('_content', array('model' => $model)); ?>
+                    <?php if ($modal): ?>
+                        <?php $this->renderPartial('_social', array('model' => $model, 'class' => 'social-small')); ?>
+                    <?php endif; ?>
                 </div>
 
                 <div class="clear"></div>

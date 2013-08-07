@@ -32,6 +32,7 @@ class Controller extends CController
     {
         $this->initAssets();
         $this->pageTitle = Yii::app()->name;
+        Stages::init();
     }
 
     public function beforeAction($event)

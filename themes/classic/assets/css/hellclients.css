@@ -483,6 +483,10 @@ div.menu ul li.active a, div.menu ul li a:hover {
     margin: 10px 0px;
 }
 
+.commentsForm a.admin {
+    margin-top: 40px;
+}
+
 .commentsForm .form .button, .commentsForm .form .textarea {
     display: inline-block;
 }

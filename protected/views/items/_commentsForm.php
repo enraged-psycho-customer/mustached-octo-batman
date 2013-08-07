@@ -1,13 +1,17 @@
 <div class="<?php echo $class; ?>">
     <div class="containerForm">
         <div class="avatar">
-            <a href="javascript:void(0)" class="avatar_switch up">
-                <i class="icon icon-form_arrow_up"></i>
-            </a>
-            <a href="javascript:void(0)" title="Аватар"><i class="avatar avatars avatar_1" data-avatar="1"></i></a>
-            <a href="javascript:void(0)" class="avatar_switch down">
-                <i class="icon icon-form_arrow_down"></i>
-            </a>
+            <?php if (Yii::app()->user->isGuest): ?>
+                <a href="javascript:void(0)" class="avatar_switch up">
+                    <i class="icon icon-form_arrow_up"></i>
+                </a>
+                <a href="javascript:void(0)" title="Аватар"><i class="avatar avatars avatar_1" data-avatar="1"></i></a>
+                <a href="javascript:void(0)" class="avatar_switch down">
+                    <i class="icon icon-form_arrow_down"></i>
+                </a>
+            <?php else: ?>
+                <a class="admin" href="javascript:void(0)" title="Аватар"><i class="avatar avatars avatar_0" data-avatar="0"></i></a>
+            <?php endif; ?>
         </div>
         <div class="form">
             <?php $form = $this->beginWidget('CActiveForm', array(

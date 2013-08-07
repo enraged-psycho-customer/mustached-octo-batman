@@ -21,6 +21,10 @@
 
     <script type="text/javascript">
         var teletypeText = '#$%^@#$!';
+
+        var settings = {
+            avatarsCount: <?php echo Stages::getStage(); ?>
+        };
     </script>
 </head>
 
@@ -31,7 +35,7 @@
 
     <div id="sidebar">
         <div id="logo">
-            <?php echo CHtml::link(CHtml::image($this->assetsUrl . "/images/logos/logo_" . rand(1, 11) . ".png", '', array('class' => 'logo')), array('/quotes')); ?>
+            <?php echo CHtml::link(Stages::getRandomLogo($this->assetsUrl), array('/quotes')); ?>
         </div>
 
         <div id="sidebar_inner">

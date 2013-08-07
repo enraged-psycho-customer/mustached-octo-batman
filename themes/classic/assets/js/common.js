@@ -1,7 +1,3 @@
-var settings = {
-    avatarsCount: 11
-};
-
 var elements = {
     loader: '<div class="loader"></div>'
 };
@@ -114,8 +110,8 @@ $(document).ready(function() {
 
     // Comments form avatar switcher
     $(places.avatarSwitch).live("click", function() {
-        var currentAvatar = $(this).parent().find('i.avatar');
-        var hiddenField = $(this).parent().parent().parent().find('input.avatar_field');
+        var currentAvatar = $(this).parents('div.avatar').find('i.avatar');
+        var hiddenField = $(this).parents('div.containerForm').find('input.avatar_field');
         var avatarId = parseInt(currentAvatar.attr('data-avatar'));
 
         if ($(this).hasClass('up')) avatarId += 1;
@@ -193,6 +189,7 @@ sortLinksSwitch = function(obj) {
     $(obj).addClass('active');
 };
 
+// Teletype
 var where, when; //added
 
 $.fn.teletype = function(opts){

@@ -16,7 +16,6 @@
  */
 class Comments extends CActiveRecord
 {
-    public $avatar = 1;
     public $parent_id = 0;
     public $captcha;
 
@@ -47,13 +46,12 @@ class Comments extends CActiveRecord
         // will receive user inputs.
         return array(
             array('mode, item_id, is_admin', 'numerical', 'integerOnly' => true),
-            array('content, created_at, updated_at', 'safe'),
+            array('content, created_at, updated_at, avatar', 'safe'),
 
             // Create scenario
             array('content', 'length', 'min' => 1, 'max' => 500, 'allowEmpty' => false, 'on' => 'create, create_hover'),
-            array('created_at', 'default', 'value' => new CDbExpression('NOW()'), 'on' => 'createe, create_hover'),
-            array('parent_id', 'default', 'value' => 0, 'setOnEmpty' => true, 'on' => 'createe, create_hover'),
-            array('avatar', 'in', 'range' => range(1, 11), 'allowEmpty' => false, 'on' => 'createe, create_hover'),
+            array('created_at', 'default', 'value' => new CDbExpression('NOW()'), 'on' => 'create, create_hover'),
+            array('parent_id', 'default', 'value' => 0, 'setOnEmpty' => true, 'on' => 'create, create_hover'),
 
             array('captcha', 'captcha', 'allowEmpty' => !CCaptcha::checkRequirements(), 'on' => 'create'),
             array('captcha', 'captcha', 'allowEmpty' => true, 'on' => 'create_hover'),
@@ -63,6 +61,19 @@ class Comments extends CActiveRecord
             array('id, content, mode, item_id, created_at, updated_at, is_admin', 'safe', 'on' => 'search'),
         );
     }
+
+    public function beforeSave()
+    {
+        if ($this->is_admin) {
+            $this->avatar = 0;
+        }
+        else if ($this->avatar > Stages::getStage() || $this->avatar == 0) {
+            $this->avatar = 1;
+        }
+
+        return parent::beforeSave();
+    }
+
 
     public function behaviors()
     {

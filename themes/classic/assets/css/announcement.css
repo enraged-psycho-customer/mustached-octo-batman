@@ -1,0 +1,15 @@
+html,body {
+    background: #EFEFEF url(../images/teaser_boss.png) center center no-repeat;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.age_top {
+    position: absolute;
+    top: 7px;
+    right: 8px;
+    width: 21px;
+    height: 10px;
+}

@@ -34,11 +34,29 @@ class Controller extends CController
         $this->pageTitle = Yii::app()->name;
     }
 
+    public function beforeAction($event)
+    {
+        $this->isMaintenanceMode();
+        return true;
+    }
+
+    public function isMaintenanceMode()
+    {
+        if (isset(Yii::app()->params['maintenanceMode'])) {
+            if (Yii::app()->user->isGuest && !in_array($this->action->id, array('login', 'logout'))) {
+                $this->layout = '//layouts/teaser';
+                $this->render('application.views.site.teaser');
+                Yii::app()->end();
+            }
+        }
+    }
+
     public function initAssets()
     {
         // Publish theme assets
         if (is_dir(Yii::app()->theme->basePath . '/assets')) {
-            $this->assetsUrl = Yii::app()->assetManager->publish(Yii::app()->theme->basePath . '/assets', false, 2, YII_DEBUG);
+            $assetsDir = Yii::app()->theme->basePath . '/assets';
+            $this->assetsUrl = Yii::app()->assetManager->publish($assetsDir, false, 2, YII_DEBUG);
         };
     }
 

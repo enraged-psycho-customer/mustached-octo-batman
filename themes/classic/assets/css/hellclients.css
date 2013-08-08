@@ -289,7 +289,7 @@ div.menu ul li.active a, div.menu ul li a:hover {
 
 .social-small {
     display: none;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 .social-small a {
@@ -373,7 +373,7 @@ div.menu ul li.active a, div.menu ul li a:hover {
 
 /* Comments */
 .comments_list {
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 .comments_list .comment {
@@ -392,7 +392,7 @@ div.menu ul li.active a, div.menu ul li a:hover {
 }
 
 .comment.level {
-    padding-left: 80px;
+    padding-left: 40px;
     cursor: pointer;
 }
 

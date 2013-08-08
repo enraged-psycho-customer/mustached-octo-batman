@@ -24,6 +24,10 @@
         z-index: 300;
     }
 
+    div#createForm .email .helper div.label {
+        display: none;
+    }
+
     #logo {
         float: left;
         border-right: 1px solid #B1B1B1;
@@ -142,7 +146,7 @@
 
 
     div#createForm input {
-        width: 240px;
+        width: 280px;
     }
 
 

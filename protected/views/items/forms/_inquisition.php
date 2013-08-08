@@ -38,7 +38,7 @@
                 <td>
                     <div class="email">
                         <div class="label">
-                            <label for="content">Текст обвинения</label>
+                            <label for="content">Текст обвинения:</label>
                         </div>
                     </div>
                 </td>
@@ -61,7 +61,13 @@
                 </td>
             </tr>
         </table>
+        <br/><br/>
 
+        <div class="email">
+            <div class="label">
+                <label for="content">К делу прилагаются файлы:</label>
+            </div>
+        </div>
         <?php
         $this->widget('CocoWidget', array(
             'id' => 'upload_files',
@@ -82,12 +88,17 @@
     <div class="clear"></div>
 
     <div class="email">
-        <div class="label">
-            <label for="email">Ваш e-mail:</label>
-        </div>
-        <?php echo $form->textField($model, 'email', array('id' => 'email', 'placeholder' => 'yourname@example.com')); ?>
         <div>
-            <span class="pad hint small">На него будут приходить уведомления о новых комментариях</span>
+            <div class="label">
+                <label for="email">Ваш e-mail:</label>
+            </div>
+            <?php echo $form->textField($model, 'email', array('id' => 'email', 'placeholder' => 'yourname@example.com')); ?>
+        </div>
+        <div class="helper">
+            <div class="label" style="visibility: hidden">
+                <label for="email">Ваш e-mail:</label>
+            </div>
+            <span class="hint small">На него будут приходить уведомления о новых комментариях</span>
         </div>
     </div>
 

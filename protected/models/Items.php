@@ -275,11 +275,20 @@ class Items extends CActiveRecord
 
     public function getCategories()
     {
-        return array(
-            self::CATEGORY_QUOTES => 'Новая цитата',
-            self::CATEGORY_IMAGES => 'Новая картинка',
-            self::CATEGORY_INQUISITION => 'Новый грешник'
-        );
+        $stage = Stages::getStage();
+
+        $categories = array();
+
+        if ($stage >= 1) {
+            $categories[self::CATEGORY_QUOTES] = 'Новая цитата';
+            $categories[self::CATEGORY_IMAGES] = 'Новая картинка';
+        }
+
+        if ($stage >= 6) {
+            $categories[self::CATEGORY_INQUISITION] = 'Новый грешник';
+        }
+
+        return $categories;
     }
 
     public function getComments()

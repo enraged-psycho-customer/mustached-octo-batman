@@ -69,6 +69,11 @@ if (isset($model->category)) {
 }
 ?>
 
-<?php $this->renderPartial('forms/_quote', array('model' => $model)); ?>
-<?php $this->renderPartial('forms/_image', array('model' => $model)); ?>
-<?php $this->renderPartial('forms/_inquisition', array('model' => $model)); ?>
+<?php if ($this->stage >= 1): ?>
+    <?php $this->renderPartial('forms/_quote', array('model' => $model)); ?>
+    <?php $this->renderPartial('forms/_image', array('model' => $model)); ?>
+<?php endif; ?>
+
+<?php if ($this->stage >= 6): ?>
+    <?php $this->renderPartial('forms/_inquisition', array('model' => $model)); ?>
+<?php endif; ?>

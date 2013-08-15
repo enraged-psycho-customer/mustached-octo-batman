@@ -24,6 +24,7 @@ class Controller extends CController
     // Shared resources
     public $assetsUrl = null;
     public $votes = array();
+    public $stage = null;
 
     /**
      * Initialization
@@ -32,18 +33,31 @@ class Controller extends CController
     {
         $this->initAssets();
         $this->pageTitle = Yii::app()->name;
-        Stages::init();
+        $this->stage = Stages::init();
     }
 
     public function beforeAction($event)
     {
         $this->isMaintenanceMode();
+        $this->isValidStage();
         return true;
+    }
+
+    public function isValidStage()
+    {
+        if (Yii::app()->user->isGuest) {
+            if (isset(Stages::$_pages[$this->action->id])) {
+                $pageLevel = Stages::$_pages[$this->action->id];
+                if ($this->stage < $pageLevel) {
+                    throw new CHttpException(500, 'Страница еще не готова!');
+                }
+            }
+        }
     }
 
     public function isMaintenanceMode()
     {
-        if (isset(Yii::app()->params['maintenanceMode'])) {
+        if (isset(Yii::app()->params['maintenanceMode']) && Yii::app()->params['maintenanceMode'] == 1) {
             if (Yii::app()->user->isGuest && !in_array($this->action->id, array('login', 'logout'))) {
                 $this->layout = '//layouts/teaser';
                 $this->render('application.views.site.teaser');

@@ -53,89 +53,28 @@
             </div>
 
             <div id="nav_mobile" class="menu">
-                <?php $this->widget('zii.widgets.CMenu', array(
-                    'itemTemplate' => '
-                        <a class="prev" href="javascript:void(0)"><i class="icon right icon-arrow_small_left"></i></a>
-                        {menu}
-                        <a class="next" href="javascript:void(0)"><i class="icon left icon-arrow_small_right"></i></a>
-                    ',
-                    'items' => array(
-                        array(
-                            'label' => 'Цитаты',
-                            'url' => array('/quotes'),
-                            'active' => $this->action->id == 'quotes'
-                        ),
-                        array(
-                            'label' => 'Картинки',
-                            'url' => array('/images'),
-                            'active' => $this->action->id == 'images'
-                        ),
-                        array(
-                            'label' => 'Сражения',
-                            'url' => array('/battles'),
-                            'active' => $this->action->id == 'battles'
-                        ),
-                        array(
-                            'label' => 'Инкивизиция',
-                            'url' => array('/inquisition'),
-                            'active' => $this->action->id == 'inquisition'
-                        ),
-                        array(
-                            'label' => 'Магазинчик',
-                            'url' => array('/shop'),
-                            'active' => $this->action->id == 'shop'
-                        ),
-                        array(
-                            'label' => 'Зал славы',
-                            'url' => array('/fame'),
-                            'active' => $this->action->id == 'fame'
-                        ),
-                    ),
-                )); ?>
+                <?php echo $this->renderPartial('application.views.partials.navigation_mobile'); ?>
             </div>
 
             <div id="nav" class="menu">
-                <?php $this->widget('zii.widgets.CMenu', array(
-                    'itemTemplate' => '<i class="icon left icon-horn_left"></i>{menu}<i class="icon right icon-horn_right"></i>',
-                    'items' => array(
-                        array(
-                            'label' => 'Цитаты',
-                            'url' => array('/quotes'),
-                            'active' => $this->action->id == 'quotes'
-                        ),
-                        array(
-                            'label' => 'Картинки',
-                            'url' => array('/images'),
-                            'active' => $this->action->id == 'images'
-                        ),
-                        array(
-                            'label' => 'Сражения',
-                            'url' => array('/battles'),
-                            'active' => $this->action->id == 'battles'
-                        ),
-                        array(
-                            'label' => 'Инкивизиция',
-                            'url' => array('/inquisition'),
-                            'active' => $this->action->id == 'inquisition'
-                        ),
-                        array(
-                            'label' => 'Магазинчик',
-                            'url' => array('/shop'),
-                            'active' => $this->action->id == 'shop'
-                        ),
-                    ),
-                )); ?>
+                <?php echo $this->renderPartial('application.views.partials.navigation'); ?>
             </div>
 
             <div id="contest">
-                <?php echo CHtml::link(CHtml::image($this->assetsUrl . "/images/contest.png"), array('/contest')); ?>
-                <div class="menu"><ul><li><?php echo CHtml::link('Конкурс', array('/contest')); ?></li></ul></div>
+                <?php if ($this->stage >= 2): ?>
+                    <?php echo CHtml::link(CHtml::image($this->assetsUrl . "/images/contest.png"), array('/contest')); ?>
+                    <div class="menu"><ul><li><?php echo CHtml::link('Конкурс', array('/contest')); ?></li></ul></div>
+                <?php endif; ?>
             </div>
 
             <div id="hall_of_fame" class="menu">
                 <?php $this->widget('zii.widgets.CMenu', array(
                     'items' => array(
-                        array('label' => 'Зал славы', 'url' => array('/fame')),
+                        array(
+                            'label' => 'Зал славы',
+                            'url' => array('/fame'),
+                            'visible' => $this->stage >= 11
+                        ),
                     ),
                 )); ?>
             </div>

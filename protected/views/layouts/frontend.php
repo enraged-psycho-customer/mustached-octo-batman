@@ -87,7 +87,7 @@
     </div>
 
     <div id="container">
-        <div class="age_inner">
+        <div class="age age_inner">
             <i class="icon icon-age"></i>
         </div>
         <div id="content">
@@ -100,7 +100,7 @@
 </div>
 
 <?php $this->widget('Flashes'); ?>
-<div class="age_top">
+<div class="age age_top">
     <i class="icon icon-age"></i>
 </div>
 <div id="companion"></div>

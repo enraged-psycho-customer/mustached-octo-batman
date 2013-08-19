@@ -3,6 +3,8 @@
     background: url(../images/sprites.png) no-repeat top left;
 }
 
+.icon-age-pattern { background: url(../images/age_pattern.png); width: 36px; height: 23px; }
+
 .icon-comments_active { background-position: -281px 0; width: 19px; height: 20px; }
 .icon-image_icon_active { background-position: -570px 0; width: 20px; height: 21px; }
 .icon-like_active { background-position: -700px 0; width: 16px; height: 16px; }

@@ -16,6 +16,12 @@ $this->pageTitle = Yii::app()->name . ' - Правила';
         padding-top: 64px;
     }
 
+    @media screen and (max-width: 640px) {
+        #content {
+            min-width: 300px;
+        }
+    }
+
     #companion, #balloon {
         display: none;
     }

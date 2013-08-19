@@ -61,7 +61,8 @@ $this->pageTitle = Yii::app()->name . ' - Зал славы';
 
     #fame_social {
         height: 69px;
-
+        text-align: center;
+        margin: 0 auto;
     }
 
     #fame_social .platform {

@@ -18,7 +18,7 @@
 
 <div class="platform">
     <!-- Put this div tag to the place, where the Like block will be -->
-    <div id="vk_like" position="static" width="80"></div>
+    <div id="vk_like" position="static"></div>
 </div>
 
 <div class="platform">
@@ -32,13 +32,13 @@
     </script>
 
     <script type="text/javascript">
-        VK.Widgets.Like("vk_like", {type: "mini"});
+        VK.Widgets.Like("vk_like", {type: "mini", width: 80});
     </script>
 <?php else: ?>
     <script type="text/javascript">
         VK.init({apiId: 3830212, onlyWidgets: true});
     </script>
     <script type="text/javascript">
-        VK.Widgets.Like("vk_like", {type: "mini"});
+        VK.Widgets.Like("vk_like", {type: "mini", width: 80});
     </script>
 <?php endif; ?>

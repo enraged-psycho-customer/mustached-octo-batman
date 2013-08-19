@@ -6,6 +6,9 @@
     <meta name="language" content="<?php echo Yii::app()->language; ?>"/>
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
+    <!-- Favicon -->
+    <?php echo $this->renderPartial('application.views.partials.favicons'); ?>
+
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/css/hellclients.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/css/sprites.css"/>
@@ -102,6 +105,8 @@
 <div id="balloon">
     <div id="balloon_text"></div>
 </div>
+
+<?php echo $this->renderPartial('application.views.partials.metrika'); ?>
 
 </body>
 </html>

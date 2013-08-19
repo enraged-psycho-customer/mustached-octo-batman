@@ -15,7 +15,8 @@ class Stages
         'fame' => 11,
     );
 
-    public static $characters = array(
+    /* Actual stages */
+    public static $_characters = array(
         0 => 'admin',
         1 => 'client',
         2 => 'designer',

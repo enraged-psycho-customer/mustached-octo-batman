@@ -67,14 +67,9 @@
 .avatar_9{ background-position: -420px 0; width: 32px; height: 54px; }
 
 
-.item .max {
-    display: none;
-}
-
 .max {
     width: 100%;
     text-align: center;
-
 }
 
 .loader, .list-view-loading .load {

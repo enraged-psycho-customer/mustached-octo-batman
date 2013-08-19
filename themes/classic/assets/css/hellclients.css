@@ -316,6 +316,10 @@ div.menu ul li.active a, div.menu ul li a:hover {
     margin-top: 10px;
 }
 
+.item .max, .item.open .comments_list {
+    display: none;
+}
+
 .item_container.active {
     background: url(../images/expanded_top.png) repeat-x top center;
     border-top: 1px solid #E2E2E2;

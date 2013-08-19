@@ -11,15 +11,25 @@ $this->widget('zii.widgets.CListView', array(
     'dataProvider' => $dataProvider,
     'itemView' => $itemTemplate,
     'template' => '
-        <div class="max"><div class="load"></div></div>
         {items}
-        <div class="max"><div class="load"></div></div>
         {pager}
     ',
     'pager' => array(
         'class' => 'CLinkPager',
         'maxButtonCount' => 5,
     ),
+    'beforeAjaxUpdate' => '
+        function() {
+            $(".list-view .max").hide();
+            $(".list-view .max").fadeIn("slow");
+        }
+    ',
+    'afterAjaxUpdate' => '
+        function() {
+            $(".items").hide();
+            $(".items").fadeIn("slow");
+        }
+    ',
 ));
 
 $this->widget('application.extensions.fancybox.EFancyBox', array(

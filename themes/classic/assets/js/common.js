@@ -59,11 +59,12 @@ $(document).ready(function() {
 
         garbage[itemId] = $(itemSelector).get(0).outerHTML;
 
-        $(itemSelector).find('.max').html(elements.loader).show('slow');
+        $(itemSelector).find('.max').html(elements.loader).fadeIn('slow');
 
         $.ajax(requestUrl)
             .done(function(data){
                 $(itemSelector).replaceWith(data);
+                $(itemSelector).find('.comments_list').fadeIn('slow');
                 $(itemSelector).parents('.item_container').addClass('active');
                 $(commentsSelector).addClass('active');
             })

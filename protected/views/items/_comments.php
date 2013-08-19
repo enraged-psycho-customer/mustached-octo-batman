@@ -12,13 +12,19 @@
         <div class="text">
             <?php echo $comment->content; ?>
 
-            <?php if ($model->category == Items::CATEGORY_IMAGES && !is_null($comment->x)): ?>
+            <?php /* if ($model->category == Items::CATEGORY_IMAGES && !is_null($comment->x)): ?>
             <div style="float: right"">
                 <div style="background:url(<?php echo $model->getImageDir() . $model->image; ?>) -<?php echo $comment->x; ?>px -<?php echo $comment->y; ?>px; width: 48px; height: 48px;"></div>
             </div>
-        <?php endif; ?>
+            <?php endif; */ ?>
         </div>
     </div>
 
-    <?php if (isset($comments[$comment->id])) $this->renderPartial('_comments', array('comments' => $comments, 'index' => $comment->id, , 'model' => $model)); ?>
+    <?php if (isset($comments[$comment->id])) 
+        $this->renderPartial('_comments', array(
+            'comments' => $comments, 
+            'index' => $comment->id, , 
+            'model' => $model
+        )); 
+    ?>
 <?php endforeach; ?>

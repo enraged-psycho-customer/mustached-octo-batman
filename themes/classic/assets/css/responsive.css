@@ -192,6 +192,11 @@
     .loader, .list-view-loading .load {
         width: 48px;
         height: 41px;
+        /*
+        position: fixed;
+        top: 226px;
+        left: 60px;
+        */
         background-image: url(../images/loader_small.png);
 
         -webkit-animation: play-small .8s steps(7) infinite;

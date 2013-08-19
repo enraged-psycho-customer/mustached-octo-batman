@@ -371,6 +371,10 @@ div.menu ul li.active a, div.menu ul li a:hover {
     color: #EC1F23;
 }
 
+.item.open .quote {
+    cursor: pointer;
+}
+
 /* Comments */
 .comments_list {
     margin-top: 15px;

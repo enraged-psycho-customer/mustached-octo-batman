@@ -66,17 +66,23 @@
 .avatar_8{ background-position: -378px 0; width: 32px; height: 54px; }
 .avatar_9{ background-position: -420px 0; width: 32px; height: 54px; }
 
+
+.item .max {
+    display: none;
+}
+
 .max {
-    width: 90%;
+    width: 100%;
     text-align: center;
+
 }
 
 .loader, .list-view-loading .load {
+    display: inline-block;
     width: 96px;
     height: 82px;
-    display: inline-block;
-    background-image: url(../images/loader.png);
 
+    background: url(../images/loader.png) no-repeat;
     -webkit-animation: play .8s steps(7) infinite;
     -moz-animation: play .8s steps(7) infinite;
     -ms-animation: play .8s steps(7) infinite;

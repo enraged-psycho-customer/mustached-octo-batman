@@ -18,7 +18,7 @@ var places = {
     avatarSwitch: '.commentsForm a.avatar_switch',
     expandLink: '.comments a.expand',
     expandLinkImage: '.comments_image a.expand',
-    closeLink: '.social-common a.close',
+    closeLink: '.social-common a.close, .item.open .quote',
 
     comment: '.comment.real, .comment.level',
     submitCommentButton: '.commentsForm .button button',
@@ -58,7 +58,8 @@ $(document).ready(function() {
         var requestUrl = $(this).find('a.expand').attr('href') + '?modal';
 
         garbage[itemId] = $(itemSelector).get(0).outerHTML;
-        $(itemSelector).find('div.number').html(elements.loader);
+
+        $(itemSelector).find('.max').html(elements.loader).show('slow');
 
         $.ajax(requestUrl)
             .done(function(data){

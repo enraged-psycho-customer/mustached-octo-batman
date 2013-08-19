@@ -23,5 +23,6 @@
             <?php $this->renderPartial('_content', array('model' => $data)); ?>
         </div>
     </div>
+    <div class="max"></div>
 </div>
 <div class="clear"></div>

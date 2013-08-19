@@ -19,10 +19,12 @@ div.flashes div {
 
 div.flashes div.flash-success {
     color: #FFF;
+    font-weight: bold;
     background-color: #ED1B23;
 }
 
 div.flashes div.flash-error {
     color: #FFF;
+    font-weight: bold;
     background-color: #ED1B23;
 }

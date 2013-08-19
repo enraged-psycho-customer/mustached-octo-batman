@@ -44,6 +44,10 @@ ul.yiiPager .hidden a {
     border: none;
 }
 
+.qq-upload-button img {
+    cursor: pointer;
+}
+
 .qq-upload-list {
     list-style-type: none;
     color: #EC1F23;

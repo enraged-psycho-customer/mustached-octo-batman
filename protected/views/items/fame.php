@@ -61,11 +61,11 @@ $this->pageTitle = Yii::app()->name . ' - Зал славы';
 
     #fame_social {
         height: 69px;
-        line-height: 69px;
     }
 
     #fame_social .platform {
-        display: inline;
+        display: inline-block;
+        text-align: center;
     }
 
     img.team {
@@ -93,7 +93,7 @@ $this->pageTitle = Yii::app()->name . ' - Зал славы';
                         <img class="team" src="<?php echo $this->assetsUrl; ?>/images/pixel.png" usemap="team">
                         <div id="fame_social_wrapper">
                             <div id="fame_social">
-                                <?php echo $this->renderPartial('application.views.partials.likes', array('url' => $this->createAbsoluteUrl('/fame'))); ?>
+                                <?php echo $this->renderPartial('application.views.partials.widgets', array('url' => $this->createAbsoluteUrl('/fame'))); ?>
                             </div>
                         </div>
                     </td>

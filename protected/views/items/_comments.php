@@ -20,5 +20,5 @@
         </div>
     </div>
 
-    <?php if (isset($comments[$comment->id])) $this->renderPartial('_comments', array('comments' => $comments, 'index' => $comment->id)); ?>
+    <?php if (isset($comments[$comment->id])) $this->renderPartial('_comments', array('comments' => $comments, 'index' => $comment->id, , 'model' => $model)); ?>
 <?php endforeach; ?>

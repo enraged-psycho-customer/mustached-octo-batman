@@ -8,17 +8,15 @@ $this->pageTitle = Yii::app()->name . ' - Правила';
        background: url(<?php echo $this->assetsUrl; ?>/images/bg_pattern.png);
     }
 
-    #content {
-        background: url(<?php echo $this->assetsUrl; ?>/images/rules_agreement.png) no-repeat center center;
-        text-align: center;
-        min-width: 509px;
-        min-height: 581px;
-        padding-top: 64px;
+    #wrapper {
+        height: 100%;
+        background: url(<?php echo $this->assetsUrl; ?>/images/rules_agreement.png) no-repeat 66% 50%;
     }
 
     @media screen and (max-width: 640px) {
-        #content {
-            min-width: 300px;
+        #wrapper {
+            height: 100%;
+            background: url(<?php echo $this->assetsUrl; ?>/images/rules_agreement.png) no-repeat 50% 85%;
         }
     }
 

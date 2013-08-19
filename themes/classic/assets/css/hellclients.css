@@ -379,7 +379,7 @@ div.menu ul li.active a, div.menu ul li a:hover {
 .comments_list .comment {
     border-top: 1px solid #E5E5E5;
     clear: both;
-    font-size: 14px;
+    font-size: 18px;
     padding: 25px 0;
 }
 
@@ -412,6 +412,7 @@ div.menu ul li.active a, div.menu ul li a:hover {
 }
 
 .comment .text {
+    font-style: italic;
     display: inline-block;
     vertical-align: top;
 }

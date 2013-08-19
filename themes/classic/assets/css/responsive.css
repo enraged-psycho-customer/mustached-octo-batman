@@ -170,6 +170,7 @@
 
     div.item div.quote {
         font-size: 16px;
+        line-height: 21.6px;
     }
 
     div.item .number a {
@@ -289,6 +290,7 @@
 
     div.item div.quote {
         font-size: 16px;
+        line-height: 21.6px;
     }
 
     div.item .number a {
@@ -296,7 +298,7 @@
     }
 
     div.comments_list .comment {
-        font-size: 14px;
+        font-size: 18px;
     }
 
     div.email label, div.email input, div.buttons div.agreement, div.errors {
@@ -372,6 +374,7 @@
 
     div.item div.quote {
         font-size: 20px;
+        line-height: 27px;
     }
 
     div.item .number a {
@@ -439,6 +442,7 @@
 
     div.item div.quote {
         font-size: 22px;
+        line-height: 29.7px;
     }
 
     div.item .number a {
@@ -446,7 +450,7 @@
     }
 
     div.comments_list .comment {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     div.email label, div.email input, div.buttons div.agreement, div.errors {
@@ -510,6 +514,7 @@
 
     div.item div.quote {
         font-size: 22px;
+        line-height: 29.7px;
     }
 
     div.item .number a {
@@ -517,7 +522,7 @@
     }
 
     div.comments_list .comment {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     div.email label, div.email input, div.buttons div.agreement, div.errors {

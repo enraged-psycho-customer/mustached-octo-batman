@@ -113,6 +113,6 @@ $this->pageTitle = Yii::app()->name . ' - Зал славы';
 </div>
 
 <map name="team">
-    <area shape="rect" coords="393,53,565,267" href="http://artkadabra.ru" alt="ARTKADABRA">
-    <area shape="rect" coords="110,0,375,104" href="http://doesnotcompute.ru" alt="Does Not Compute">
+    <area shape="rect" coords="393,83,565,297" href="http://artkadabra.ru" alt="ARTKADABRA">
+    <area shape="rect" coords="110,30,375,134" href="http://doesnotcompute.ru" alt="Does Not Compute">
 </map>

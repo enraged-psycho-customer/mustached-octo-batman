@@ -6,18 +6,21 @@ class Stages
 {
     private static $_stage = 0;
 
+    const STAGE_HALL_OF_FAME = 1;
+    const STAGE_CONTEST = 2;
+
     public static $_pages = array(
         'quotes' => 1,
         'images' => 1,
         'battles' => 4,
         'inquisition' => 6,
         'shop' => 8,
-        'fame' => 11,
+        'fame' => self::STAGE_HALL_OF_FAME,
     );
 
-    /* Actual stages */
-    public static $_characters = array(
-        0 => 'admin',
+    /* Stages */
+    public static $_stages = array(
+        0 => 'boss',
         1 => 'client',
         2 => 'designer',
         3 => 'courier',
@@ -31,6 +34,21 @@ class Stages
         11 => 'granny'
     );
 
+    /* Logos */
+    public static $_logos = array(
+        0 => 'boss',
+        1 => 'client',
+        2 => 'courier',
+        3 => 'painter',
+        4 => 'marketer',
+        5 => 'guard',
+        6 => 'secretary',
+        7 => 'manager',
+        8 => 'artdirector',
+        9 => 'typographe',
+        10 => 'granny'
+    );
+
     public static function init()
     {
         self::$_stage = Yii::app()->params['currentStage'];
@@ -39,8 +57,11 @@ class Stages
 
     public static function getRandomLogo($assetsUrl)
     {
-        $randomLogoId = rand(0, self::$_stage);
-        return CHtml::image($assetsUrl . "/images/logos/logo_" . $randomLogoId . ".png", '', array('class' => 'logo'));
+        $limit = self::$_stage;
+        if (self::$_stage > sizeof(self::$_logos)) $limit = sizeof(self::$_logos);
+
+        $logo_id = rand(0, $limit - 1);
+        return CHtml::image($assetsUrl . "/images/logos/logo_" . self::$_logos[$logo_id] . ".png", '', array('class' => 'logo'));
     }
 
     public static function getStage() {

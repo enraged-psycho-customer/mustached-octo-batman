@@ -39,7 +39,7 @@
             'label' => 'Зал славы',
             'url' => array('/fame'),
             'active' => $this->action->id == 'fame',
-            'visible' => $this->stage >= 11
+            'visible' => $this->stage >= Stages::STAGE_HALL_OF_FAME
         ),
     ),
 )); ?>

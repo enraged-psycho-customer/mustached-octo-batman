@@ -18,9 +18,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/css/override.css"/>
 
     <!-- JavaScript -->
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?98"></script>
     <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/common.js"></script>
-    <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/jquery-ui-1.8.17.js"></script>
-    <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/jquery.annotate.js"></script>
 
     <script type="text/javascript">
         var teletypeText = '#$%^@#$!';
@@ -36,7 +35,11 @@
 <body>
 
 <div id="wrapper">
-    <a id="contest_mobile" href="<?php echo $this->createUrl('/contest'); ?>" title="Конкурс">&nbsp;</a>
+    <?php if ($this->stage >= Stages::STAGE_CONTEST): ?>
+        <a id="contest_mobile" href="<?php echo $this->createUrl('/contest'); ?>" title="Конкурс">&nbsp;</a>
+    <?php else: ?>
+        <a id="contest_mobile" href="javascript:void(0)" title="Coming soon ;)">&nbsp;</a>
+    <?php endif; ?>
 
     <div id="sidebar">
         <div id="logo">
@@ -66,7 +69,7 @@
             </div>
 
             <div id="contest">
-                <?php if ($this->stage >= 2): ?>
+                <?php if ($this->stage >= Stages::STAGE_CONTEST): ?>
                     <?php echo CHtml::link(CHtml::image($this->assetsUrl . "/images/contest.png"), array('/contest')); ?>
                     <div class="menu"><ul><li><?php echo CHtml::link('Конкурс', array('/contest')); ?></li></ul></div>
                 <?php endif; ?>
@@ -78,7 +81,7 @@
                         array(
                             'label' => 'Зал славы',
                             'url' => array('/fame'),
-                            'visible' => $this->stage >= 11
+                            'visible' => $this->stage >= Stages::STAGE_HALL_OF_FAME
                         ),
                     ),
                 )); ?>

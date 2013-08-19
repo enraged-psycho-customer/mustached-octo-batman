@@ -1,5 +1,6 @@
 var elements = {
-    loader: '<div class="loader"></div>'
+    loader: '<div class="loader"></div>',
+    sortables: ['updated_at', 'comments_count', 'created_at']
 };
 
 var garbage = {};
@@ -27,6 +28,27 @@ var places = {
 
     balloon: '#balloon',
     balloonText: '#balloon_text'
+};
+
+
+// Sortables
+swapShades = function(object) {
+    if (object.hasClass('active')) {
+        object.removeClass('active');
+        object.hide();
+        object.fadeIn('slow');
+    } else {
+        object.addClass('active');
+        object.hide();
+        object.fadeIn('slow');
+    }
+}
+
+sortLinksSwitch = function(obj) {
+    $(places.sortLinksAll).removeClass('active');
+    $(obj).addClass('active');
+    //$(obj).hide();
+    //$(obj).show("slow");
 };
 
 $(document).ready(function() {
@@ -64,6 +86,7 @@ $(document).ready(function() {
         $.ajax(requestUrl)
             .done(function(data){
                 $(itemSelector).replaceWith(data);
+                $(itemSelector).find('.comments_list').hide();
                 $(itemSelector).find('.comments_list').fadeIn('slow');
                 $(itemSelector).parents('.item_container').addClass('active');
                 $(commentsSelector).addClass('active');
@@ -91,21 +114,40 @@ $(document).ready(function() {
     });
 
 
-    // Sortables
+    $('.shade').live("click", function(e) {
+        swapShades($(this));
+    });
+
     $(places.sortLink).live("click", function(e) {
         e.preventDefault();
-        $(places.sortType).val($(this).attr('data-type'));
-        $(places.sortDirection).val($(this).attr('data-dir'));
-        sortLinksSwitch(this);
-
-        $('#itemsForm').submit();
+        swapShades($(this).parents('.shade'));
         return false;
     });
 
-    $('.shade').live("mouseover", function(e) {
-        $(this).removeClass('active');
-    }).live("mouseout", function(e) {
-        $(this).addClass('active');
+    $('.shade .arrowSort').live("click", function(e) {
+        e.preventDefault();
+
+        var currentIndex = 0;
+        var length = elements.sortables.length;
+
+        for (var i = 0; i < length; i++) {
+            if ($('.shade a.' + elements.sortables[i]).hasClass('active')) {
+                currentIndex = i;
+            }
+        }
+
+        if ($(this).hasClass('up')) currentIndex -= 1;
+        else currentIndex += 1;
+
+        if (currentIndex < 0) currentIndex = length - 1;
+        if (currentIndex >= length) currentIndex = 0;
+
+        var object = $('.shade a.' + elements.sortables[currentIndex]);
+        $(places.sortType).val(object.attr('data-type'));
+        $(places.sortDirection).val(object.attr('data-dir'));
+        sortLinksSwitch(object);
+
+        $('#itemsForm').submit();
     });
 
     // Submit sortables & filters
@@ -191,11 +233,6 @@ $(document).ready(function() {
         text: teletypeText
     });
 });
-
-sortLinksSwitch = function(obj) {
-    $(places.sortLinksAll).removeClass('active');
-    $(obj).addClass('active');
-};
 
 // Teletype
 var where, when; //added

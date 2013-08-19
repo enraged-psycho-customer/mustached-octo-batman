@@ -51,7 +51,7 @@ class ItemsController extends Controller
     {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('quotes', 'images', 'inquisition', 'view', 'get', 'save', 'create', 'vote', 'captcha', 'coco'),
+                'actions' => array('quotes', 'fame', 'images', 'inquisition', 'view', 'get', 'save', 'create', 'vote', 'captcha', 'coco'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -110,10 +110,14 @@ class ItemsController extends Controller
      */
     public function actionView($id)
     {
+        $this->pageTitle = Yii::app()->name . ' - №' . $id;
+
         $modal = false;
         $fancy = false;
         if (isset($_GET['modal'])) $modal = true;
-        if (isset($_GET['fancy'])) $fancy = true;
+        if (isset($_GET['fancy'])) {
+            $fancy = true;
+        }
 
         $comment = new Comments('create');
         $comment->item_id = $id;
@@ -187,6 +191,7 @@ class ItemsController extends Controller
      */
     public function actionCreate()
     {
+        $this->pageTitle = Yii::app()->name . ' - Отрпавить своё';
         $model = new Items('create');
 
         //$this->performAjaxValidation($model);
@@ -262,6 +267,7 @@ class ItemsController extends Controller
      */
     public function actionQuotes()
     {
+        $this->pageTitle = Yii::app()->name . ' - Цитаты';
         $model = $this->getItemsList()->quotes();
         $dataProvider = new CActiveDataProvider($model);
         $this->render('list', array(
@@ -277,6 +283,7 @@ class ItemsController extends Controller
      */
     public function actionImages()
     {
+        $this->pageTitle = Yii::app()->name . ' - Картинки';
         $model = $this->getItemsList()->images();
         $dataProvider = new CActiveDataProvider($model);
         $this->render('list', array(
@@ -289,6 +296,7 @@ class ItemsController extends Controller
 
     public function actionInquisition()
     {
+        $this->pageTitle = Yii::app()->name . ' - Инкивизиция';
         $model = $this->getItemsList()->inquisition();
         $dataProvider = new CActiveDataProvider($model);
         $this->render('list', array(
@@ -312,6 +320,13 @@ class ItemsController extends Controller
 
         $this->render('admin', array(
             'model' => $model,
+        ));
+    }
+
+    public function actionFame()
+    {
+        $this->render('fame', array(
+
         ));
     }
 

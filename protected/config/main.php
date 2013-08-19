@@ -1,7 +1,7 @@
 <?php
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
-    'name' => 'Clients From Hell',
+    'name' => 'CLFH.ORG',
     'language' => 'ru',
     'theme' => 'classic',
     'defaultController' => 'items',

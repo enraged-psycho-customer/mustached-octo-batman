@@ -34,7 +34,7 @@ class YiiDebugToolbarRoute extends CLogRoute
      * - a CIDR mask (192.168.0.0/24)
      * - "*" for everything.
      */
-    public $ipFilters=array('127.0.0.1','::1');
+    public $ipFilters = array('127.0.0.1','::1');
 
     /**
      * If true, then after reloading the page will open the current panel.
@@ -110,6 +110,8 @@ class YiiDebugToolbarRoute extends CLogRoute
 
         $this->enabled && $this->enabled = ($this->allowIp(Yii::app()->request->userHostAddress)
                 && !Yii::app()->getRequest()->getIsAjaxRequest() && (Yii::app() instanceof CWebApplication));
+
+        if (isset($_GET['fancy'])) $this->enabled = false;
 
         if ($this->enabled)
         {

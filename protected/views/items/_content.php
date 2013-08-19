@@ -4,20 +4,17 @@
     <?php
     $thumbnail = $model->getImageDir() . 'thumb_' . $model->image;
     $fullsize = $model->getImageDir() . $model->image;
-    echo CHtml::link(CHtml::image($thumbnail), array('/' . $model->id), array(
-        'class' => 'fancybox iframe'
-    ));
+    echo CHtml::link(CHtml::image($fullsize, '', array('class' => 'image_item image_item_' . $model->id)), $fullsize);
     ?>
 <?php elseif ($model->category == Items::CATEGORY_INQUISITION): ?>
     <h1><?php echo CHtml::encode($model->title); ?></h1>
     <div><?php echo $model->content; ?></div>
     <br/><br/>
-    <div>К делу прилагается:
-    <?php $files = array(); ?>
-    <?php foreach ($model->files as $file): ?>
-        <?php $files[] = CHtml::link($file->filename, $model->getImageDir() . $file->filename); ?>
-    <?php endforeach; ?>
-    <?php echo implode(", ", $files); ?>
-    <?php if (!count($files)) echo 'ничего'; ?>
+    <div>
+        <?php $files = array(); ?>
+        <?php foreach ($model->files as $file): ?>
+            <?php $files[] = CHtml::link($file->filename, $model->getImageDir() . $file->filename); ?>
+        <?php endforeach; ?>
+        <?php if (count($files)) echo 'К делу прилагается:' . implode(", ", $files); ?>
     </div>
 <?php endif; ?>

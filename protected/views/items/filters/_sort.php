@@ -10,6 +10,9 @@
 <div id="shades">
     <div class="shade active">
         <div class="inner">
+            <a class="arrowSort up" href="javascript:void(0)">
+                <i class="icon icon-arrow_white_top"></i>
+            </a>
             <a class="sortBy updated_at desc" data-type="updated_at" data-dir="desc" href="<?php echo Yii::app()->createUrl($this->route, array('sort_type' => 'updated_at', 'sort_dir' => 'desc')); ?>">
                 <i class="icon icon-<?php echo $class; ?>_time" title="Сортировать новым комментариям"></i>
             </a>
@@ -18,6 +21,9 @@
             </a>
             <a class="active sortBy created_at desc" data-type="created_at" data-dir="desc" href="<?php echo Yii::app()->createUrl($this->route, array('sort_type' => 'created_at', 'sort_dir' => 'desc')); ?>">
                 <i class="icon icon-time_white" title="Сортировать по времени"></i>
+            </a>
+            <a class="arrowSort down" href="javascript:void(0)">
+                <i class="icon icon-arrow_white_bottom"></i>
             </a>
         </div>
     </div>

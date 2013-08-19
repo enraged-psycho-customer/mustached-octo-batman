@@ -299,7 +299,8 @@
     }
 
     div.comments_list .comment {
-        font-size: 18px;
+        font-size: 16px;
+		line-height: 26px;
     }
 
     div.email label, div.email input, div.buttons div.agreement, div.errors {
@@ -451,7 +452,8 @@
     }
 
     div.comments_list .comment {
-        font-size: 22px;
+        font-size: 16px;
+		line-height: 26px;
     }
 
     div.email label, div.email input, div.buttons div.agreement, div.errors {
@@ -523,7 +525,8 @@
     }
 
     div.comments_list .comment {
-        font-size: 22px;
+        font-size: 16px;
+		line-height: 26px;
     }
 
     div.email label, div.email input, div.buttons div.agreement, div.errors {

@@ -404,8 +404,9 @@ div.menu ul li.active a, div.menu ul li a:hover {
 .comments_list .comment {
     border-top: 1px solid #E5E5E5;
     clear: both;
-    font-size: 18px;
-    padding: 25px 0;
+    font-size: 16px;
+	line-height: 26px;
+    padding: 16px 0;
 }
 
 .comment.real {

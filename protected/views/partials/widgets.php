@@ -32,13 +32,13 @@
     </script>
 
     <script type="text/javascript">
-        VK.Widgets.Like("vk_like", {type: "mini", width: 80});
+        VK.Widgets.Like("vk_like", {type: "mini"});
     </script>
 <?php else: ?>
     <script type="text/javascript">
         VK.init({apiId: 3830212, onlyWidgets: true});
     </script>
     <script type="text/javascript">
-        VK.Widgets.Like("vk_like", {type: "mini", width: 80});
+        VK.Widgets.Like("vk_like", {type: "mini"});
     </script>
 <?php endif; ?>

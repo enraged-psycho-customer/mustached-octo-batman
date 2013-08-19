@@ -28,6 +28,8 @@
         var settings = {
             avatarsCount: <?php echo Stages::getStage(); ?>
         };
+
+        $(['<?php echo $this->assetsUrl; ?>/images/loader.png', '<?php echo $this->assetsUrl; ?>/images/loader_small.png']).preload();
     </script>
 </head>
 

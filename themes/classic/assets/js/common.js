@@ -28,7 +28,7 @@ var places = {
     avatarSwitch: '.commentsForm a.avatar_switch',
     expandLink: '.comments a.expand',
     expandLinkImage: '.comments_image a.expand',
-    closeLink: '.social-common a.close, .item_text.open .quote',
+    closeLink: '.social-common a.close, .item_text.open .quote_content',
 
     comment: '.comment.real, .comment.level',
     submitCommentButton: '.commentsForm .button button',
@@ -38,7 +38,6 @@ var places = {
     balloon: '#balloon',
     balloonText: '#balloon_text'
 };
-
 
 // Sortables
 swapShades = function(object) {
@@ -101,6 +100,8 @@ $(document).ready(function() {
                 $(itemSelector).find('.comments_list').fadeIn('slow');
                 $(itemSelector).parents('.item_container').addClass('active');
                 $(commentsSelector).addClass('active');
+
+                fixCommentIcons();
             })
             .fail(function() { alert("Произошла ошибка. Повторите свой запрос позднее."); })
 
@@ -271,6 +272,7 @@ $(document).ready(function() {
     $(places.balloonText).teletype({
         text: teletypeText
     });
+
 });
 
 // Teletype

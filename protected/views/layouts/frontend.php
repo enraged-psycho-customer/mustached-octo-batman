@@ -20,6 +20,7 @@
     <!-- JavaScript -->
     <script type="text/javascript" src="//vk.com/js/api/openapi.js?98"></script>
     <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/common.js"></script>
+    <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/jquery-scrolltofixed-min.js"></script>
 
     <!-- Plugins -->
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/plugins/jquery-notes/style.css"/>

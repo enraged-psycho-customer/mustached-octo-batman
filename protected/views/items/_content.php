@@ -1,3 +1,4 @@
+<div class="quote_content">
 <?php if ($model->category == Items::CATEGORY_QUOTES): ?>
     <?php echo $model->content; ?>
 <?php elseif ($model->category == Items::CATEGORY_IMAGES): ?>
@@ -27,3 +28,4 @@
         <?php if (count($files)) echo 'К делу прилагается:' . implode(", ", $files); ?>
     </div>
 <?php endif; ?>
+</div>

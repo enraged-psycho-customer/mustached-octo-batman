@@ -211,13 +211,13 @@
 	    
 	    var html = '';
 	    
-	    html += '<a href="javascript:void(0);" class="counter" title="0 notes" />';
+	    html += '<a href="javascript:void(0);" class="counter" title="0 отметок" />';
 	    
-	    html += (settings.allowAdd) ? '<a href="javascript:void(0);" class="add-note" title="add" />' : '';
+	    html += (settings.allowAdd) ? '<a href="javascript:void(0);" class="add-note" title="Добавить" />' : '';
 	    
 	    html += (settings.allowHide && settings.loadNotes) ? '<a href="javascript:void(0);" class="hide-notes" title="hide" />' : '';
 	    
-	    html += (settings.allowReload && settings.loadNotes) ? '<a href="javascript:void(0);" class="reload-notes" title="reload" />' : '';
+	    html += (settings.allowReload && settings.loadNotes) ? '<a href="javascript:void(0);" class="reload-notes" title="Обновить" />' : '';
 	    
 	    $('#jquery-notes_'+pointer+' .controller').append(html);
 	    
@@ -349,7 +349,7 @@
 			    var counter = _countNotes(pointer);
 			    
 			    $('#jquery-notes_'+pointer+' .controller .counter').attr('title', function() {
-				return (counter == 1) ? counter+' note' : counter+' notes';
+				return (counter == 1) ? counter+' note' : counter+' отметок';
 			    });
 			    
 			    (counter >= settings.maxNotes && settings.maxNotes != null) ? $('#jquery-notes_'+pointer+' .add-note').hide() : $('#jquery-notes_'+pointer+' .add-note').show();
@@ -508,44 +508,57 @@
 	    
 	    if (ID.add && !ID.set) {
 	    
-            ID.set = true;
-            ID.move = true;
+		ID.set = true;
+		ID.move = true;
 
-            var position = {};
+		var position = {};
 
-            position.left = event.pageX-ID.left;
-            position.top = event.pageY-ID.top;
+		position.left = event.pageX-ID.left;
+		position.top = event.pageY-ID.top;
 
-            $('#jquery-notes_'+pointer+' .notes').append('<div class="note select"><div class="border"><div class="bg"></div></div></div>');
-
-            position.maxLeft = ID.width-ID.minWidth;
-            position.maxTop = ID.height-ID.minHeight;
-
-            position.left = (position.left > position.maxLeft) ? position.maxLeft : position.left;
-            position.top = (position.top > position.maxTop) ? position.maxTop : position.top;
-
-            $('#jquery-notes_'+pointer+' .notes .select').css({
-                width: 48,
-                height: 48,
-                left: position.left,
-                top: position.top,
-                cursor: 'move'
-            }).draggable({
-                containment: 'parent',
-                cursor: 'move'
-            });
-
+		$('#jquery-notes_'+pointer+' .notes').append('' +
+            '<div class="note select">' +
+            '<div class="border">' +
+            '<div class="bg">' +
+                '&nbsp;' +
             /*
-            .resizable({
-                containment: 'parent',
-                minWidth: ID.minWidth,
-                minHeight: ID.minHeight,
-                maxWidth: ID.maxWidth,
-                maxHeight: ID.maxHeight,
-                aspectRatio: ID.aspectRatio,
-                handles: 'ne, se, sw, nw'
-            });
+                '<a href="javascript:void(0)" class="avatar_switch up"><i class="icon icon-form_arrow_up"></i></a>' +
+                '<a href="javascript:void(0)" title="Аватар"><i class="avatar avatars avatar_1" data-avatar="1"></i></a>' +
+                '<a href="javascript:void(0)" class="avatar_switch down"><i class="icon icon-form_arrow_down"></i></a>' +
             */
+            '</div>' +
+            '</div>' +
+            '</div>');
+
+		position.maxLeft = ID.width-ID.minWidth;
+		position.maxTop = ID.height-ID.minHeight;
+
+		position.left = (position.left > position.maxLeft) ? position.maxLeft : position.left;
+		position.top = (position.top > position.maxTop) ? position.maxTop : position.top;
+
+		$('#jquery-notes_'+pointer+' .notes .select').css({
+		    width: ID.minWidth,
+		    height: ID.minHeight,
+		    left: position.left,
+		    top: position.top,
+		    cursor: 'move'
+		}).draggable({
+		    containment: 'parent',
+		    cursor: 'move'
+		})
+
+        /*
+        .resizable({
+		    containment: 'parent',
+		    minWidth: ID.minWidth,
+		    minHeight: ID.minHeight,
+		    maxWidth: ID.maxWidth,
+		    maxHeight: ID.maxHeight,
+		    aspectRatio: ID.aspectRatio,
+		    handles: 'ne, se, sw, nw'
+		});
+		*/
+
 	    }
 	    
 	}
@@ -565,15 +578,21 @@
 		
 		ID.move = false;
 		
-		var html = '<div class="text-box">';
+		var html = '<div class="text-box"><div class="text-box-inner">';
 		
 		html += (settings.allowAuthor) ? '<input type="text" name="author" value="" /><br />' : '';
 		
-		html += '<textarea name="note"></textarea><br />';
+		html += '<textarea name="note"></textarea>';
 		
 		html += (settings.allowLink) ? '<input type="text" name="link" value="http://" /><br />' : '';
 		
-		html += '<a href="javascript:void(0);" class="save-note" title="save note"></a><a href="javascript:void(0);" class="cancel-note" title="cancel"></a></div>';
+		html += '' +
+            '<div class="notes-actions">' +
+            '<a href="javascript:void(0);" class="cancel-note" title="Отменить"><i class="icon icon-close"></i></a>' +
+            '<a href="javascript:void(0);" class="save-note" title="Сохранить"><i class="icon icon-checkbox"></i></a>' +
+            '</div>';
+
+        html += '</div></div>';
 		
 		$('#jquery-notes_'+pointer+' .notes .select').append(html);
 		
@@ -586,7 +605,7 @@
 		$('#jquery-notes_'+pointer+' .notes .select .text-box .cancel-note').click(function() {
 		    
 		    $('#jquery-notes_'+pointer+' .controller .cancel-note').removeClass('cancel-note').attr({
-			title: 'add note'
+			title: 'Добавить заметку'
 		    });
 		    
 		    _abort(pointer);
@@ -808,7 +827,7 @@
 		    maxHeight: ID.maxHeight,
 		    aspectRatio: ID.aspectRatio,
 		    handles: 'ne, se, sw, nw'
-		})
+		});
 		*/
 		
 		$('#jquery-notes_'+pointer+' .notes .select .text-box .edit-note').click(function() {
@@ -822,6 +841,7 @@
 		$('#jquery-notes_'+pointer+' .notes .select .text-box .delete-note').click(function() {
 		    _deleteNote(pointer, id);
 		});
+
 	    }
 	    
 	}
@@ -873,6 +893,7 @@
 	 * @return		: none
 	 */
 	var _reload = function(pointer) {
+
 	    $('#jquery-notes_'+pointer+' .notes .note').remove();
 	    $('#jquery-notes_'+pointer+' .notes .text').remove();
 	    

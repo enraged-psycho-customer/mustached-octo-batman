@@ -10,6 +10,8 @@ class note
      */
     private $path;
 
+    private $item_id;
+
     /**
      * @description
      * class constructor
@@ -23,9 +25,10 @@ class note
      *
      * @access        : public
      */
-    public function __construct($folder, $prefix, $image, $extension)
+    public function __construct($folder, $item_id)
     {
-        $this->path = $folder . $prefix . md5($image) . $extension;
+        //$this->path = $folder . $prefix . md5($image) . $extension;
+        $this->item_id = $item_id;
     }
 
     /**
@@ -40,7 +43,7 @@ class note
      */
     public function getNotes()
     {
-
+        /*
         if (file_exists($this->path)) {
 
             $handle = fopen($this->path, 'r');
@@ -55,6 +58,30 @@ class note
                 $notes = array();
 
         } else
+            $notes = array();
+        */
+
+        $notes = array();
+        $comments = Comments::model()->findAllByAttributes(array('item_id' => $this->item_id));
+
+        foreach ($comments as $comment) {
+            if (!is_null($comment->x) && !is_null($comment->y)) {
+                $note = array(
+                    'LEFT' => $comment->x,
+                    'TOP' => $comment->y,
+                    'WIDTH' => $comment->width,
+                    'HEIGHT' => $comment->height,
+                    'NOTE' => $comment->content,
+                    'ID' => $comment->id,
+                );
+
+                $notes[] = $note;
+            }
+        }
+
+        if (count($notes) > 0)
+            $notes = $this->sortNotes($notes);
+        else
             $notes = array();
 
         return $notes;
@@ -129,7 +156,7 @@ class note
      *
      * @access        : public
      */
-    public function addNote($position, $note, $author, $link)
+    public function addNote($position, $note, $author = null, $link = null)
     {
 
         $properties = $this->setNote($position, $note, $author, $link);
@@ -137,6 +164,16 @@ class note
         if (!$properties)
             return false;
 
+        $comment = new Comments('create_hover');
+        $comment->content = $properties['NOTE'];
+        $comment->item_id = $this->item_id;
+        $comment->x = $properties['LEFT'];
+        $comment->y = $properties['TOP'];
+        $comment->width = $properties['WIDTH'];
+        $comment->height = $properties['HEIGHT'];
+        $comment->save();
+
+        /*
         $notes = $this->getNotes();
 
         $id = 0;
@@ -163,6 +200,7 @@ class note
         );
 
         $this->saveNotes($notes);
+        */
 
         return true;
 

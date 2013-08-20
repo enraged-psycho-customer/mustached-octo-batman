@@ -56,12 +56,12 @@
             allowReload: true,
             allowLink: false,
             allowAuthor: false,
-            dateFormat: 'Y/D/M H:I',
+            dateFormat: '',
             hideNotes: false,
             loadNotes: true,
             helper: '',
             maxNotes: null,
-            operator: '<?php echo $this->createAbsoluteUrl('items/notes') ?>'
+            operator: '<?php echo $this->createAbsoluteUrl('/items/notes/', array('id' => $model->id)) ?>'
         });
     });
 

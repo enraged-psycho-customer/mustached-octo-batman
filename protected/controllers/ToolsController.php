@@ -29,7 +29,7 @@ class ToolsController extends Controller
     {
         return array(
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('counters', 'folders'),
+                'actions' => array('counters', 'folders', 'clear'),
                 'users' => array('*'),
             ),
             /*
@@ -38,6 +38,24 @@ class ToolsController extends Controller
             ),
             */
         );
+    }
+
+    public function actionClear()
+    {
+        $path = dirname(Yii::app()->basePath) . '/' . Items::IMAGE_TEMP_DIR;
+        $files = glob($path);
+
+        echo '<pre>';
+        foreach (new DirectoryIterator($path) as $fileInfo) {
+            if ($fileInfo->isDot()) continue;
+            if ($fileInfo->getFilename() != '.gitignore') {
+                echo 'Deleting ' . $fileInfo->getFilename() . "\n";
+                @unlink($fileInfo->getPathname());
+            }
+        }
+
+        echo '</pre>';
+        exit;
     }
 
     public function actionFolders()

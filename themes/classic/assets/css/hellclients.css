@@ -36,6 +36,18 @@ button {
     cursor: pointer;
 }
 
+.comments_right {
+    float: right;
+}
+
+.comments_right div {
+    display: block;
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    margin: 2px;
+}
+
 /* Layout */
 #wrapper {
     margin: 0 auto;

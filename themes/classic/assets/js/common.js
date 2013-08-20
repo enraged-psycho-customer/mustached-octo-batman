@@ -1,6 +1,15 @@
+countMaxLines = function() {
+    var height = parseInt($('#createForm textarea').css('height'));
+    var lineHeight = parseInt($('#createForm textarea').css('line-height'));
+    return height / lineHeight;
+};
+
 var elements = {
     loader: '<div class="loader"></div>',
-    sortables: ['updated_at', 'comments_count', 'created_at']
+    sortables: ['updated_at', 'comments_count', 'created_at'],
+    currentLines: NaN,
+    minLines: 18,
+    maxLines: 36
 };
 
 var garbage = {};
@@ -52,6 +61,8 @@ sortLinksSwitch = function(obj) {
 };
 
 $(document).ready(function() {
+    elements.currentLines = countMaxLines();
+
     $('#nav_mobile ul li a.prev, #nav_mobile ul li a.next').live('click', function(e) {
         var parentList = $(this).parents('ul');
 
@@ -182,14 +193,42 @@ $(document).ready(function() {
         parentItem.find(places.nestedCommentFormParentField).val($(this).attr('data-id'));
 
         var form = parentItem.find(places.nestedCommentForm);
-        form.show();
+        //form.show();
 
         var formHtml = form.get(0).outerHTML;
         parentItem.find(places.nestedCommentForm).remove();
 
         $(this).after(formHtml);
 
+        var clicked = parentItem.find(places.nestedCommentForm);
+        console.log(clicked.css('opacity'));
+        if (clicked.css("opacity") == "1") {
+            clicked.hide().fadeIn('normal');
+        } else {
+            clicked.css("opacity", 1);
+            clicked.show();
+        }
+
+        clicked.find('div.controls').show();
+        clicked.find('div.captcha').hide();
+
         return false;
+    });
+
+    $('#createForm textarea').live('keydown', function() {
+        var lines = $(this).val().split("\n");
+        var currentCount = lines.length;
+
+        if (currentCount > elements.currentLines && currentCount < elements.maxLines ||
+            currentCount < elements.currentLines && currentCount > elements.minLines) {
+            var delta = currentCount - elements.currentLines;
+            var deltaHeight = delta * parseInt($(this).css('line-height'));
+
+            var currentHeight = parseInt($(this).css('height'));
+            $(this).css('height', currentHeight + deltaHeight);
+
+            elements.currentLines = currentCount;
+        }
     });
 
     // Show captcha after submit

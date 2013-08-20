@@ -9,6 +9,37 @@
     }
 }
 
+/* Textarea fixes */
+@media screen and (min-width: 160px) and (max-width: 321px) {
+    .commentsForm textarea, .comment .text {
+        width: 150px;
+    }
+}
+
+@media screen and (min-width: 400px) and  (max-width: 640px) {
+    .commentsForm textarea, .comment .text {
+        width: 200px;
+    }
+}
+
+@media screen and (min-width: 641px) and (max-width: 800px) {
+    .commentsForm textarea, .comment .text {
+        width: 150px;
+    }
+}
+
+@media screen and (min-width: 801px) and (max-width: 1280px) {
+    .commentsForm textarea, .comment .text {
+        width: 300px;
+    }
+}
+
+@media screen and (min-width: 1281px) and (max-width: 1440px) {
+    .commentsForm textarea, .comment .text {
+        width: 560px;
+    }
+}
+
 /* 320px */
 @media screen and (max-width: 640px) {
     #sidebar {
@@ -83,7 +114,7 @@
     }
 
     .commentsFormNested {
-        padding-left: 0;
+        padding-left: 40px;
     }
 
     .comment div.avatar {
@@ -212,6 +243,10 @@
         width: 160px;
     }
 
+    .commentsFormNested {
+        padding-left: 40px;
+    }
+
     .comment .text {
         width: 75%;
     }
@@ -245,7 +280,7 @@
         display: block;
     }
 
-    .item .quote, .commentsForm textarea, .comment .text {
+    .item .quote, .comment .text {
         max-width: 540px;
     }
 
@@ -330,6 +365,10 @@
 
 /* 1280px */
 @media screen and (min-width: 1281px) and (max-width: 1440px) {
+    .comments_right {
+        display: none;
+    }
+
     /* Layout */
     div#sidebar {
         left: 0;
@@ -350,15 +389,19 @@
     }
 
     .item .quote, .commentsForm textarea, .comment .text {
-        width: 640px;
+        width: 635px;
     }
 
     .commentsForm .captcha {
-        width: 620px;
+        width: 615px;
+    }
+
+    .commentsFormNested {
+        padding-left: 40px;
     }
 
     .commentsFormNested textarea, .commentsFormNested .captcha {
-        width: 560px;
+        width: 555px;
     }
 
     /* Font sizes */
@@ -398,6 +441,10 @@
 
 /* 1440px */
 @media screen and (min-width: 1441px) and (max-width: 1679px) {
+    .comments_right {
+        display: none;
+    }
+
     /* Layout */
     div#sidebar {
         left: 0;
@@ -418,15 +465,15 @@
     }
 
     .item .quote, .commentsForm textarea, .comment .text {
-        width: 640px;
+        width: 635px;
     }
 
     .commentsForm .captcha {
-        width: 620px;
+        width: 615px;
     }
 
     .commentsFormNested textarea, .commentsFormNested .captcha {
-        width: 560px;
+        width: 555px;
     }
 
     /* Font sizes */
@@ -471,6 +518,10 @@
 
 /* >= 1680 */
 @media screen and (min-width: 1680px) {
+    .comments_right {
+        display: none;
+    }
+
     /* Layout */
     div#sidebar {
         left: 150px;
@@ -491,15 +542,15 @@
     }
 
     .item .quote, .commentsForm textarea, .comment .text {
-        width: 740px;
+        width: 735px;
     }
 
     .commentsForm .captcha {
-        width: 720px;
+        width: 715px;
     }
 
     .commentsFormNested textarea, .commentsFormNested .captcha {
-        width: 660px;
+        width: 655px;
     }
 
     /* Font sizes */

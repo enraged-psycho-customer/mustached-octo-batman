@@ -13,6 +13,12 @@
 
             <div class="number">
                 <?php echo CHtml::link('№' . $model->id, array('view', 'id' => $model->id)); ?>
+                <div class="comments_right ">
+                    <a class="expanded" href="javascript:void(0)">
+                        <div><i class="icon icon-image_icon_active"></i></div>
+                        <div><span class="comments_count"><?php echo $model->comments_count; ?></span></div>
+                    </a>
+                </div>
             </div>
             <div class="container">
                 <div class="comments comments_image">

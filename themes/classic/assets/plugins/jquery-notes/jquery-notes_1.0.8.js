@@ -508,40 +508,44 @@
 	    
 	    if (ID.add && !ID.set) {
 	    
-		ID.set = true;
-		ID.move = true;
-		
-		var position = {};
-		
-		position.left = event.pageX-ID.left;
-		position.top = event.pageY-ID.top;
-		
-		$('#jquery-notes_'+pointer+' .notes').append('<div class="note select"><div class="border"><div class="bg"></div></div></div>');
-		
-		position.maxLeft = ID.width-ID.minWidth;
-		position.maxTop = ID.height-ID.minHeight;
-		
-		position.left = (position.left > position.maxLeft) ? position.maxLeft : position.left;
-		position.top = (position.top > position.maxTop) ? position.maxTop : position.top;
-		
-		$('#jquery-notes_'+pointer+' .notes .select').css({
-		    width: ID.minWidth,
-		    height: ID.minHeight,
-		    left: position.left,
-		    top: position.top,
-		    cursor: 'move'
-		}).draggable({
-		    containment: 'parent',
-		    cursor: 'move'
-		}).resizable({
-		    containment: 'parent',
-		    minWidth: ID.minWidth,
-		    minHeight: ID.minHeight,
-		    maxWidth: ID.maxWidth,
-		    maxHeight: ID.maxHeight,
-		    aspectRatio: ID.aspectRatio,
-		    handles: 'ne, se, sw, nw'
-		});
+            ID.set = true;
+            ID.move = true;
+
+            var position = {};
+
+            position.left = event.pageX-ID.left;
+            position.top = event.pageY-ID.top;
+
+            $('#jquery-notes_'+pointer+' .notes').append('<div class="note select"><div class="border"><div class="bg"></div></div></div>');
+
+            position.maxLeft = ID.width-ID.minWidth;
+            position.maxTop = ID.height-ID.minHeight;
+
+            position.left = (position.left > position.maxLeft) ? position.maxLeft : position.left;
+            position.top = (position.top > position.maxTop) ? position.maxTop : position.top;
+
+            $('#jquery-notes_'+pointer+' .notes .select').css({
+                width: 48,
+                height: 48,
+                left: position.left,
+                top: position.top,
+                cursor: 'move'
+            }).draggable({
+                containment: 'parent',
+                cursor: 'move'
+            });
+
+            /*
+            .resizable({
+                containment: 'parent',
+                minWidth: ID.minWidth,
+                minHeight: ID.minHeight,
+                maxWidth: ID.maxWidth,
+                maxHeight: ID.maxHeight,
+                aspectRatio: ID.aspectRatio,
+                handles: 'ne, se, sw, nw'
+            });
+            */
 	    }
 	    
 	}
@@ -794,7 +798,9 @@
 		$('#jquery-notes_'+pointer+' .notes .select').draggable({
 		    containment: 'parent',
 		    cursor: 'move'
-		}).resizable({
+		});
+        /*
+        .resizable({
 		    containment: 'parent',
 		    minWidth: ID.minWidth,
 		    minHeight: ID.minHeight,
@@ -802,7 +808,8 @@
 		    maxHeight: ID.maxHeight,
 		    aspectRatio: ID.aspectRatio,
 		    handles: 'ne, se, sw, nw'
-		});
+		})
+		*/
 		
 		$('#jquery-notes_'+pointer+' .notes .select .text-box .edit-note').click(function() {
 		    _saveNote(pointer, id, 'edit');

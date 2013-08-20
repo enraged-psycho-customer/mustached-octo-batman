@@ -1,5 +1,5 @@
 <div class="metrika">
-<?php if (!YII_DEBUG): ?>
+<?php if (YII_DEBUG): ?>
     <!-- Yandex.Metrika informer -->
     <a href="http://metrika.yandex.ru/stat/?id=22105426&amp;from=informer"
        target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/22105426/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"

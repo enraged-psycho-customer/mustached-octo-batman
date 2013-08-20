@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="quote">
-                    <?php $this->renderPartial('_content', array('model' => $model)); ?>
+                    <?php $this->renderPartial('_content', array('model' => $model, 'list' => false)); ?>
                     <?php if ($modal): ?>
                         <?php $this->renderPartial('_social', array('model' => $model, 'class' => 'social-small')); ?>
                     <?php endif; ?>
@@ -42,3 +42,30 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function() {
+        $('.image_item_<?php echo $model->id; ?>').jQueryNotes({
+            minWidth: 48,
+            minHeight: 48,
+            maxWidth: 48,
+            maxHeight: 48,
+            aspectRatio: true,
+            allowAdd: true,
+            allowHide: false,
+            allowReload: true,
+            allowLink: false,
+            allowAuthor: false,
+            dateFormat: 'Y/D/M H:I',
+            hideNotes: false,
+            loadNotes: true,
+            helper: '',
+            maxNotes: null,
+            operator: '<?php echo $this->createAbsoluteUrl('items/notes') ?>'
+        });
+    });
+
+    $(window).resize(function() {
+        $('.image_item_<?php echo $model->id; ?> a.reload-notes').trigger('click');
+    });
+</script>

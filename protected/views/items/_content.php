@@ -4,7 +4,16 @@
     <?php
     $thumbnail = $model->getImageDir() . 'thumb_' . $model->image;
     $fullsize = $model->getImageDir() . $model->image;
-    echo CHtml::link(CHtml::image($fullsize, '', array('class' => 'image_item image_item_' . $model->id)), $fullsize);
+
+    if ($list) {    // In list
+        echo CHtml::image($thumbnail);
+    } else {        // Single item
+        echo CHtml::image($fullsize, '', array(
+            'id' => 'image_' . $model->id,
+            'class' => 'image_item image_item_' . $model->id,
+            'width' => '100%',
+        ));
+    }
     ?>
 <?php elseif ($model->category == Items::CATEGORY_INQUISITION): ?>
     <h1><?php echo CHtml::encode($model->title); ?></h1>

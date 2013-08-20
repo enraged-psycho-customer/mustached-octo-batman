@@ -21,6 +21,12 @@
     <script type="text/javascript" src="//vk.com/js/api/openapi.js?98"></script>
     <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/common.js"></script>
 
+    <!-- Plugins -->
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/plugins/jquery-notes/style.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/plugins/jquery-notes/lteIE8.css"/>
+    <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/plugins/jquery-notes/jquery-notes_1.0.8.js"></script>
+    <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/plugins/jquery-notes/jquery-ui.js"></script>
+
     <script type="text/javascript">
         var teletypeText = '#$%^@#$!';
 

@@ -6,7 +6,7 @@
 ?>
 <div class="item_container">
     <div class="item_container_bottom">
-        <div class="item <?php if ($modal) echo 'open'; ?>" id="item_<?php echo $model->id; ?>" data-id="<?php echo $model->id; ?>">
+        <div class="item item_text <?php if ($modal) echo 'open'; ?>" id="item_<?php echo $model->id; ?>" data-id="<?php echo $model->id; ?>">
             <div class="number">
                 <?php echo CHtml::link('№' . $model->id, array('view', 'id' => $model->id)); ?>
             </div>

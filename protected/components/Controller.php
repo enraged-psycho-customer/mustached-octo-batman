@@ -71,7 +71,7 @@ class Controller extends CController
         // Publish theme assets
         if (is_dir(Yii::app()->theme->basePath . '/assets')) {
             $assetsDir = Yii::app()->theme->basePath . '/assets';
-            $this->assetsUrl = Yii::app()->assetManager->publish($assetsDir, false, 2, YII_DEBUG);
+            $this->assetsUrl = Yii::app()->assetManager->publish($assetsDir, false, 10, YII_DEBUG);
         };
     }
 

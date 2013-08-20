@@ -19,7 +19,7 @@ var places = {
     avatarSwitch: '.commentsForm a.avatar_switch',
     expandLink: '.comments a.expand',
     expandLinkImage: '.comments_image a.expand',
-    closeLink: '.social-common a.close, .item.open .quote',
+    closeLink: '.social-common a.close, .item_text.open .quote',
 
     comment: '.comment.real, .comment.level',
     submitCommentButton: '.commentsForm .button button',

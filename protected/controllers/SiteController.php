@@ -16,6 +16,11 @@ class SiteController extends Controller
         );
     }
 
+    public function actionSandbox()
+    {
+        $this->render('sandbox');
+    }
+
     /**
      * This is the action to handle external exceptions.
      */

@@ -15,6 +15,7 @@ return array(
         'application.components.*',
         'ext.coco.*',
         'ext.easyimage.EasyImage',
+        'ext.*',
     ),
 
     'modules' => array(

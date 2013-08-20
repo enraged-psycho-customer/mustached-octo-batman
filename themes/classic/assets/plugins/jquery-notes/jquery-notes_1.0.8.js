@@ -533,9 +533,7 @@
 		}).draggable({
 		    containment: 'parent',
 		    cursor: 'move'
-		});
-        /*
-        .resizable({
+		}).resizable({
 		    containment: 'parent',
 		    minWidth: ID.minWidth,
 		    minHeight: ID.minHeight,
@@ -544,7 +542,6 @@
 		    aspectRatio: ID.aspectRatio,
 		    handles: 'ne, se, sw, nw'
 		});
-		*/
 	    }
 	    
 	}

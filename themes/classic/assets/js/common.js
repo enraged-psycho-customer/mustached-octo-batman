@@ -44,7 +44,7 @@ swapShades = function(object) {
     if (object.hasClass('active')) {
         object.removeClass('active');
         object.hide();
-        object.fadeIn('slow');
+        object.slideDown('slow');
     } else {
         object.addClass('active');
         object.hide();
@@ -55,8 +55,6 @@ swapShades = function(object) {
 sortLinksSwitch = function(obj) {
     $(places.sortLinksAll).removeClass('active');
     $(obj).addClass('active');
-    //$(obj).hide();
-    //$(obj).show("slow");
 };
 
 $(document).ready(function() {

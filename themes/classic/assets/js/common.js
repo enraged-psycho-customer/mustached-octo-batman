@@ -98,8 +98,6 @@ $(document).ready(function() {
                 $(itemSelector).find('.comments_list').fadeIn('slow');
                 $(itemSelector).parents('.item_container').addClass('active');
                 $(commentsSelector).addClass('active');
-
-                fixCommentIcons();
             })
             .fail(function() { alert("Произошла ошибка. Повторите свой запрос позднее."); })
 

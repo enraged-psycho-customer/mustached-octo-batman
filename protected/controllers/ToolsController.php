@@ -29,21 +29,15 @@ class ToolsController extends Controller
     {
         return array(
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('counters', 'folders', 'clear'),
+                'actions' => array('counters', 'clear'),
                 'users' => array('*'),
             ),
-            /*
-            array('deny', // deny all users
-                'users' => array('*'),
-            ),
-            */
         );
     }
 
     public function actionClear()
     {
         $path = dirname(Yii::app()->basePath) . '/' . Items::IMAGE_TEMP_DIR;
-        $files = glob($path);
 
         echo '<pre>';
         foreach (new DirectoryIterator($path) as $fileInfo) {
@@ -56,12 +50,6 @@ class ToolsController extends Controller
 
         echo '</pre>';
         exit;
-    }
-
-    public function actionFolders()
-    {
-        chmod(Items::IMAGE_DIR, 0777);
-        chmod(Items::IMAGE_TEMP_DIR, 0777);
     }
 
     public function actionCounters()

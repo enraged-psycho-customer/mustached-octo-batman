@@ -41,9 +41,9 @@ class Controller extends CController
     {
         $currentAnnouncement = Yii::app()->params['currentAnnouncement'];
         $cookieName = 'announcement_' . $currentAnnouncement;
-        $value = (int)Yii::app()->request->cookies[$cookieName];
+        $value = Yii::app()->request->cookies[$cookieName]->value;
 
-        if ($value != 1) {
+        if ((int)$value != 1) {
             Yii::app()->request->cookies[$cookieName] = new CHttpCookie($cookieName, 1);
             $this->redirect('/site/announcement');
         }

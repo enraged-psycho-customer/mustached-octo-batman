@@ -372,21 +372,27 @@ class Items extends CActiveRecord
 
     public function filterBy($query = null, $type = null, $direction = null)
     {
+        // Search
         if (!is_null($query) && mb_strlen($query) >= 3) {
             $criteria = new CDbCriteria;
             $criteria->compare('content', $query, true, 'OR');
             $criteria->compare('title', $query, true, 'OR');
-
             $this->getDbCriteria()->mergeWith($criteria);
         }
 
+        // Hidden items
+        $hiddenItems = explode(",", Yii::app()->request->cookies['hiddenItems']);
+        if (is_array($hiddenItems) && count($hiddenItems)) {
+            $criteria = new CDbCriteria;
+            $criteria->addNotInCondition('id', $hiddenItems);
+            $this->getDbCriteria()->mergeWith($criteria);
+        }
+
+        // Order and direction
         if (is_null($type) || !in_array($type, $this->sort_types)) $type = self::DEFAULT_SORT_TYPE;
         if (is_null($direction) || !in_array($direction, $this->sort_dirs)) $direction = self::DEFAULT_SORT_DIR;
         $order = implode(" ", array($type, $direction));
-
-        $this->getDbCriteria()->mergeWith(array(
-            'order' => $order,
-        ));
+        $this->getDbCriteria()->mergeWith(array('order' => $order));
 
         return $this;
     }

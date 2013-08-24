@@ -65,6 +65,15 @@
         z-index: 300;
     }
 
+    .number .trash {
+        display: none;
+    }
+
+    .comments_right .trash {
+        display: inline-block;
+    }
+
+
     div#createForm .email .helper div.label {
         display: none;
     }
@@ -255,6 +264,14 @@
     div#sidebar {
         left: 0;
         width: 160px;
+    }
+
+    .number .trash {
+        display: none;
+    }
+
+    .comments_right .trash {
+        display: inline-block;
     }
 
     .commentsFormNested {

@@ -3,15 +3,39 @@
     display: none;
 }
 
+.ias_trigger {
+    float: left;
+}
+
+.ias_loader {
+    display: block;
+    text-align: center;
+}
+
 /* CPager */
 .list-view .pager {
-    margin-top: 50px;
-    text-align: center;
+    margin-top: 20px;
+    float: right;
+    color: #B1B1B1;
+    font-size: 12px;
+}
+
+ul.yiiPager {
+    margin-left: 15px;
+    font-size: 12px
+}
+
+ul.yiiPager li.last {
+    display: inline-block;
+}
+
+ul.yiiPager .hidden {
+    display: none;
 }
 
 ul.yiiPager a:link,
 ul.yiiPager a:visited {
-    border: solid 1px #EC1F23;
+    border: 0px none;
     font-weight: bold;
     color: #EC1F23;
     padding: 1px 6px;
@@ -19,18 +43,19 @@ ul.yiiPager a:visited {
 }
 
 ul.yiiPager a:hover {
-    border: solid 1px #EF6164;
+    border: 0px none;
     color: #EF6164;
 }
 
 ul.yiiPager .selected a {
-    background: #EC1F23;
-    color: #FFFFFF;
+    background: transparent;
+    color: #EC1F23;
+    font-size: 14px;
     font-weight: bold;
 }
 
 ul.yiiPager .hidden a {
-    border: solid 1px #DEDEDE;
+    border: 0px none;
     color: #888888;
 }
 

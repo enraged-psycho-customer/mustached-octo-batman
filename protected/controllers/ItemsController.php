@@ -252,6 +252,7 @@ class ItemsController extends Controller
         $this->pageTitle = Yii::app()->name . ' - Цитаты';
         $model = $this->getItemsList()->quotes();
         $dataProvider = new CActiveDataProvider($model);
+
         $this->render('list', array(
             'dataProvider' => $dataProvider,
             'itemTemplate' => 'list/_quote',
@@ -268,6 +269,7 @@ class ItemsController extends Controller
         $this->pageTitle = Yii::app()->name . ' - Картинки';
         $model = $this->getItemsList()->images();
         $dataProvider = new CActiveDataProvider($model);
+
         $this->render('list', array(
             'dataProvider' => $dataProvider,
             'itemTemplate' => 'list/_image',
@@ -281,6 +283,7 @@ class ItemsController extends Controller
         $this->pageTitle = Yii::app()->name . ' - Инкивизиция';
         $model = $this->getItemsList()->inquisition();
         $dataProvider = new CActiveDataProvider($model);
+
         $this->render('list', array(
             'dataProvider' => $dataProvider,
             'itemTemplate' => 'list/_inquisition',
@@ -318,32 +321,19 @@ class ItemsController extends Controller
             $this->redirect('/items');
         }
 
-        $ip = Yii::app()->request->userHostAddress;
-        $params = array(
+        $command = Yii::app()->db->createCommand();
+        $command->attachBehavior('InsertUpdateCommandBehavior', new InsertUpdateCommandBehavior);
+        $command->insertUpdate(Votes::model()->tableName(), array(
             'item_id' => $id,
-            'ip' => $ip,
-        );
-
-        $votes = (int)Votes::model()->count('item_id = :item_id AND ip = :ip', $params);
-
-        if ($votes > 0) {
-            $msg = "Ошибка: вы уже голосовали за данный контент";
-            $error = true;
-        } else {
-            $votes = new Votes();
-            $votes->attributes = $params;
-            if ($votes->save()) {
-                $msg = "Ваш голос учтен!";
-                $error = false;
-            } else {
-                $msg = "Произошла ошибка, повторите свой запрос позднее";
-                $error = true;
-            }
-        }
+            'ip' => Yii::app()->request->userHostAddress,
+        ), array(
+            'item_id' => $id,
+            'ip' => Yii::app()->request->userHostAddress,
+            'updated_at' => new CDbExpression('NOW()'),
+        ));
 
         $response = json_encode(array(
-            'msg' => $msg,
-            'error' => $error,
+            'error' => false,
         ));
 
         echo $response;

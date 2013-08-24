@@ -12,8 +12,18 @@
             <?php endif; ?>
 
             <div class="number">
+                <div class="trash">
+                    <?php if ($modal): ?>
+                        <?php echo CHtml::link('<i class="icon icon-trash"></i>', 'javascript:void(0)', array('title' => 'Скрыть')); ?>
+                    <?php endif; ?>
+                </div>
                 <?php echo CHtml::link('№' . $model->id, array('view', 'id' => $model->id)); ?>+
                 <div class="comments_right">
+                    <div class="trash">
+                        <?php if ($modal): ?>
+                            <?php echo CHtml::link('<i class="icon icon-trash"></i>', 'javascript:void(0)', array('title' => 'Скрыть')); ?>
+                        <?php endif; ?>
+                    </div>
                     <a class="expanded" href="javascript:void(0)">
                         <div><i class="icon icon-comments_active"></i></div>
                         <div><span class="comments_count"><?php echo $model->comments_count; ?></span></div>

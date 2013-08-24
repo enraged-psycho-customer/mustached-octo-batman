@@ -5,6 +5,7 @@
 
 <div class="item closed" id="item_<?php echo $data->id; ?>" data-id="<?php echo $data->id; ?>">
     <div class="number">
+        <div class="trash"></div>
         <?php echo CHtml::link('№' . $data->id, array('view', 'id' => $data->id), array('class' => 'expand')); ?>
         <div class="comments_right">
             <a class="expand" href="<?php echo $this->createUrl('/items/view/', array('id' => $data->id)); ?>">

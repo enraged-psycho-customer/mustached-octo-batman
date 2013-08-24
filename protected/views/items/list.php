@@ -12,11 +12,17 @@ $this->widget('zii.widgets.CListView', array(
     'itemView' => $itemTemplate,
     'template' => '
         {items}
-        {pager}
+        <div class="item pager_wrap">
+            {pager}
+        </div>
     ',
+    'ajaxUpdate' => false,
     'pager' => array(
-        'class' => 'CLinkPager',
-        'maxButtonCount' => 5,
+        'class' => 'LinkPager',
+        'maxButtonCount' => 1,
+        'header' => 'Страница',
+        'prevPageLabel' => CHtml::image($this->assetsUrl . '/images/pager_left.png'),
+        'nextPageLabel' => CHtml::image($this->assetsUrl . '/images/pager_right.png'),
     ),
     'beforeAjaxUpdate' => '
         function() {

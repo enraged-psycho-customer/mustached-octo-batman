@@ -267,7 +267,7 @@ div.menu ul li.active a, div.menu ul li a:hover {
 }
 
 .shade a {
-    padding: 10px 0px 10px 0px;
+    padding: 5px 0px 5px 0px;
     display: inline-block;
 }
 
@@ -277,6 +277,15 @@ div.menu ul li.active a, div.menu ul li a:hover {
 
 .shade.active {
     top: -85px;
+}
+
+.shade.active a {
+    display: none;
+}
+
+.shade.active a.active {
+    display: inline-block;
+    padding: 0 0 9px 0;
 }
 
 .shade .inner {
@@ -292,9 +301,6 @@ div.menu ul li.active a, div.menu ul li a:hover {
     vertical-align: bottom;
 }
 
-.shade .inner a {
-    display: none;
-}
 
 .shade.active .inner a.arrowSort {
     display: none;
@@ -380,8 +386,14 @@ div.menu ul li.active a, div.menu ul li a:hover {
 }
 
 /* Item: number link */
+.number .trash {
+    width: 55px;
+    text-align: center;
+    display: inline-block;
+}
+
 .item .number {
-    margin-left: 55px;
+    /* margin-left: 55px; */
     padding-bottom: 20px;
 }
 

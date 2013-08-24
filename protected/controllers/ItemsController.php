@@ -326,6 +326,7 @@ class ItemsController extends Controller
         $command->insertUpdate(Votes::model()->tableName(), array(
             'item_id' => $id,
             'ip' => Yii::app()->request->userHostAddress,
+            'updated_at' => new CDbExpression('NOW()'),
         ), array(
             'item_id' => $id,
             'ip' => Yii::app()->request->userHostAddress,

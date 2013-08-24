@@ -180,11 +180,8 @@
     }
 
     div#createForm textarea {
-        height: 240px;
         width: 240px;
-        font-size: 16px;
     }
-
 
     div#createForm input {
         width: 280px;
@@ -246,6 +243,13 @@
 }
 
 /* 640px */
+@media screen and (min-width: 641px) and (max-width: 1024px) {
+    div#createForm textarea {
+        width: 360px;
+    }
+}
+
+/* 640px */
 @media screen and (min-width: 641px) and (max-width: 1280px) {
     /* Layout */
     div#sidebar {
@@ -304,12 +308,6 @@
 
     div.menu ul li.active i {
         margin-top: 4px;
-    }
-
-    div#createForm textarea {
-        height: 320px;
-        width: 320px;
-        font-size: 18px;
     }
 
     div#createForm input {

@@ -1,15 +1,15 @@
 countMaxLines = function() {
     var height = parseInt($('#createForm textarea').css('height'));
     var lineHeight = parseInt($('#createForm textarea').css('line-height'));
-    return height / lineHeight;
+    return Math.floor(height / lineHeight);
 };
 
 var elements = {
     loader: '<div class="loader"></div>',
     sortables: ['updated_at', 'comments_count', 'created_at'],
     currentLines: NaN,
-    minLines: 18,
-    maxLines: 36
+    minLines: 5,
+    maxLines: 20
 };
 
 var garbage = {};
@@ -214,7 +214,7 @@ $(document).ready(function() {
 
     $('#createForm textarea').live('keydown', function() {
         var lines = $(this).val().split("\n");
-        var currentCount = lines.length;
+        var currentCount = lines.length + 1;
 
         if (currentCount > elements.currentLines && currentCount < elements.maxLines ||
             currentCount < elements.currentLines && currentCount > elements.minLines) {
@@ -225,6 +225,10 @@ $(document).ready(function() {
             $(this).css('height', currentHeight + deltaHeight);
 
             elements.currentLines = currentCount;
+        }
+
+        if (currentCount > elements.maxLines) {
+            $('a.scrollbar').fadeIn('slow');
         }
     });
 

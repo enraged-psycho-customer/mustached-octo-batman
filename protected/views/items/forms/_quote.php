@@ -12,14 +12,14 @@
 
     <div class="category">
         <div>
-            <a class="scroll" data-dir="up" href="javascript:void(0)"><i class="icon icon-form_arrow_up"></i></a>
+            <a class="scroll" data-dir="up" href="javascript:void(0)"><i class="icon icon-arrow_small_top"></i></a>
         </div>
         <div>
             <div class="selectText">Новая цитата</div>
             <?php echo $form->dropDownList($model, 'category', $model->getCategories(), array('id' => 'category', 'style' => 'display: none')); ?>
         </div>
         <div>
-            <a class="scroll" data-dir="down" href="javascript:void(0)"><i class="icon icon-form_arrow_down"></i></a>
+            <a class="scroll" data-dir="down" href="javascript:void(0)"><i class="icon icon-arrow_small_bottom"></i></a>
         </div>
     </div>
 
@@ -50,17 +50,23 @@
     <div class="clear"></div>
 
     <div class="email">
-        <div>
-            <div class="label">
-                <label for="email">Ваш e-mail:</label>
-            </div>
-            <?php echo $form->textField($model, 'email', array('id' => 'email', 'placeholder' => 'yourname@example.com')); ?>
-        </div>
         <div class="helper">
-            <div class="label" style="visibility: hidden">
-                <label for="email">Ваш e-mail:</label>
-            </div>
-            <span class="hint small">На него будут приходить уведомления о новых комментариях</span>
+            <table>
+                <tr>
+                    <td>
+                        <div class="label"><label for="email">Ваш e-mail:</label></div>
+                    </td>
+                    <td>
+                        <?php echo $form->textField($model, 'email', array('id' => 'email', 'placeholder' => 'yourname@example.com')); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <span class="hint small">На него будут приходить уведомления о новых комментариях</span>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 

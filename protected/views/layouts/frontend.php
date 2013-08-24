@@ -14,7 +14,6 @@
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/css/sprites.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/css/responsive.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/fonts/stylesheet.css"/>
-    <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/css/flashes.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/css/override.css"/>
 
     <!-- JavaScript -->
@@ -36,9 +35,8 @@
 
         $([
             '<?php echo $this->assetsUrl; ?>/images/loader.png',
-            '<?php echo $this->assetsUrl; ?>/images/loader_small.png',
-            '<?php echo $this->assetsUrl; ?>/images/bg_pattern.png',
-        ]).preload();
+            '<?php echo $this->assetsUrl; ?>/images/loader_small.png']
+        ).preload();
     </script>
 </head>
 
@@ -108,11 +106,9 @@
         </div>
     </div>
 
-
     <div class="clear"></div>
 </div>
 
-<?php $this->widget('Flashes'); ?>
 <div class="age age_top">
     <i class="icon icon-age"></i>
 </div>

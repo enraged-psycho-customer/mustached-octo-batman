@@ -6,7 +6,6 @@
  * The followings are the available columns in table 'votes':
  * @property integer $item_id
  * @property string $ip
- * @property string $created_at
  * @property string $updated_at
  */
 class Votes extends CActiveRecord
@@ -39,11 +38,11 @@ class Votes extends CActiveRecord
         return array(
             array('item_id', 'numerical', 'integerOnly' => true),
             array('ip', 'length', 'max' => 255),
-            array('created_at, updated_at', 'safe'),
-            array('created_at, updated_at', 'default', 'value' => new CDbExpression('NOW()')),
+            array('updated_at', 'safe'),
+            array('updated_at', 'default', 'value' => new CDbExpression('NOW()')),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, item_id, ip, created_at, updated_at', 'safe', 'on' => 'search'),
+            array('id, item_id, ip, updated_at', 'safe', 'on' => 'search'),
         );
     }
 
@@ -65,7 +64,6 @@ class Votes extends CActiveRecord
         return array(
             'item_id' => 'Item',
             'ip' => 'Ip',
-            'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         );
     }
@@ -83,7 +81,6 @@ class Votes extends CActiveRecord
 
         $criteria->compare('item_id', $this->item_id);
         $criteria->compare('ip', $this->ip, true);
-        $criteria->compare('created_at', $this->created_at, true);
         $criteria->compare('updated_at', $this->updated_at, true);
 
         return new CActiveDataProvider($this, array(

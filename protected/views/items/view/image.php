@@ -8,7 +8,7 @@
     <div class="item_container_bottom">
         <div class="item <?php if ($modal) echo 'open'; ?>" id="item_<?php echo $model->id; ?>" data-id="<?php echo $model->id; ?>">
             <?php if ($modal): ?>
-                <?php $this->renderPartial('_social', array('model' => $model, 'class' => 'social')); ?>
+                <?php $this->renderPartial('_social', array('class' => 'social', 'shareUrl' => $this->createAbsoluteUrl('/' . $model->id))); ?>
             <?php endif; ?>
 
             <div class="number">
@@ -33,7 +33,7 @@
                 <div class="quote">
                     <?php $this->renderPartial('_content', array('model' => $model, 'list' => false)); ?>
                     <?php if ($modal): ?>
-                        <?php $this->renderPartial('_social', array('model' => $model, 'class' => 'social-small')); ?>
+                        <?php $this->renderPartial('_social', array('shareUrl' => $this->createAbsoluteUrl('/' . $model->id), 'class' => 'social-small')); ?>
                     <?php endif; ?>
                 </div>
 

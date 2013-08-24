@@ -39,17 +39,16 @@ class ToolsController extends Controller
     {
         $path = dirname(Yii::app()->basePath) . '/' . Items::IMAGE_TEMP_DIR;
 
-        echo '<pre>';
+        $data = array();
         foreach (new DirectoryIterator($path) as $fileInfo) {
             if ($fileInfo->isDot()) continue;
             if ($fileInfo->getFilename() != '.gitignore') {
-                echo 'Deleting ' . $fileInfo->getFilename() . "\n";
+                $data[] = 'Deleting ' . $fileInfo->getFilename() . "\n";
                 @unlink($fileInfo->getPathname());
             }
         }
 
-        echo '</pre>';
-        exit;
+        $this->render('debug', array('data' => $data));
     }
 
     public function actionCounters()
@@ -72,8 +71,6 @@ class ToolsController extends Controller
         }
 
 
-        $this->render('debug');
-
-        //Yii::app()->end();
+        $this->render('debug', array('data' => array()));
     }
 }

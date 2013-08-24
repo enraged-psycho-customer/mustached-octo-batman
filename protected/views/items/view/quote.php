@@ -17,7 +17,7 @@
                 </div>
             </div>
             <?php if ($modal): ?>
-                <?php $this->renderPartial('_social', array('model' => $model, 'class' => 'social')); ?>
+                <?php $this->renderPartial('_social', array('shareUrl' => $this->createAbsoluteUrl('/' . $model->id), 'class' => 'social')); ?>
             <?php endif; ?>
             <div class="container">
                 <div class="comments">
@@ -32,7 +32,7 @@
                 <div class="quote">
                     <?php $this->renderPartial('_content', array('model' => $model)); ?>
                     <?php if ($modal): ?>
-                        <?php $this->renderPartial('_social', array('model' => $model, 'class' => 'social-small')); ?>
+                        <?php $this->renderPartial('_social', array('shareUrl' => $this->createAbsoluteUrl('/' . $model->id), 'class' => 'social-small')); ?>
                     <?php endif; ?>
                 </div>
 

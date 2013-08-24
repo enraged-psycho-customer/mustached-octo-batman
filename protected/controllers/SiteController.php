@@ -21,6 +21,12 @@ class SiteController extends Controller
         $this->render('sandbox');
     }
 
+    public function actionAnnouncement()
+    {
+        $currentAnnouncement = Yii::app()->params['currentAnnouncement'];
+        $this->render('announcement/announcement_' . $currentAnnouncement);
+    }
+
     /**
      * This is the action to handle external exceptions.
      */

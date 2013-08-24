@@ -22,6 +22,25 @@ $this->pageTitle = Yii::app()->name . ' - Правила';
     #companion, #balloon {
         display: none;
     }
+
+    #rules {
+        height:100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    #rules td {
+        vertical-align: middle;
+        text-align: center;
+
+    }
+
+    img.rules {
+        width: 509px;
+        height: 581px;
+    }
 </style>
 <script type="text/javascript">
     $(document).ready(function() {

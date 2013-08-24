@@ -20,7 +20,6 @@
     <!-- JavaScript -->
     <script type="text/javascript" src="//vk.com/js/api/openapi.js?98"></script>
     <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/common.js"></script>
-    <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/jquery-scrolltofixed-min.js"></script>
 
     <!-- Plugins -->
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/plugins/jquery-notes/style.css"/>
@@ -35,7 +34,11 @@
             avatarsCount: <?php echo Stages::getStage(); ?>
         };
 
-        $(['<?php echo $this->assetsUrl; ?>/images/loader.png', '<?php echo $this->assetsUrl; ?>/images/loader_small.png']).preload();
+        $([
+            '<?php echo $this->assetsUrl; ?>/images/loader.png',
+            '<?php echo $this->assetsUrl; ?>/images/loader_small.png',
+            '<?php echo $this->assetsUrl; ?>/images/bg_pattern.png',
+        ]).preload();
     </script>
 </head>
 
@@ -75,12 +78,12 @@
                 <?php echo $this->renderPartial('application.views.partials.navigation'); ?>
             </div>
 
+            <?php if ($this->stage >= Stages::STAGE_CONTEST): ?>
             <div id="contest">
-                <?php if ($this->stage >= Stages::STAGE_CONTEST): ?>
-                    <?php echo CHtml::link(CHtml::image($this->assetsUrl . "/images/contest.png"), array('/contest')); ?>
-                    <div class="menu"><ul><li><?php echo CHtml::link('Конкурс', array('/contest')); ?></li></ul></div>
-                <?php endif; ?>
+                <?php echo CHtml::link(CHtml::image($this->assetsUrl . "/images/contest.png"), array('/contest')); ?>
+                <div class="menu"><ul><li><?php echo CHtml::link('Конкурс', array('/contest')); ?></li></ul></div>
             </div>
+            <?php endif; ?>
 
             <div id="hall_of_fame" class="menu">
                 <?php $this->widget('zii.widgets.CMenu', array(
@@ -114,9 +117,11 @@
     <i class="icon icon-age"></i>
 </div>
 <div id="companion"></div>
-<div id="balloon">
-    <div id="balloon_text"></div>
-</div>
+<a href="<?php echo $this->createUrl('/site/announcement'); ?>">
+    <div id="balloon">
+        <div id="balloon_text"></div>
+    </div>
+</a>
 
 <?php echo $this->renderPartial('application.views.partials.metrika'); ?>
 

@@ -34,6 +34,19 @@ class Controller extends CController
         $this->initAssets();
         $this->pageTitle = Yii::app()->name;
         $this->stage = Stages::init();
+        $this->showAnnouncement();
+    }
+
+    public function showAnnouncement()
+    {
+        $currentAnnouncement = Yii::app()->params['currentAnnouncement'];
+        $cookieName = 'announcement_' . $currentAnnouncement;
+        $value = Yii::app()->request->cookies[$cookieName];
+
+        if ((int)$value != 1) {
+            Yii::app()->request->cookies[$cookieName] = new CHttpCookie($cookieName, 1);
+            $this->redirect('/site/announcement');
+        }
     }
 
     public function beforeAction($event)

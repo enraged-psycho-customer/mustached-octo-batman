@@ -36,6 +36,10 @@ button {
     cursor: pointer;
 }
 
+.item_container.active {
+    margin-top: -1px;
+}
+
 .comments_right {
     float: right;
 }
@@ -140,6 +144,7 @@ button {
 #nav_mobile {
     display: none;
     padding-top: 40px;
+    font-size: 20px;
 }
 
 #nav_mobile ul li {
@@ -174,13 +179,20 @@ button {
     margin-top: 60px;
 }
 
-#hall_of_fame {
-    margin-top: 60px;
-}
-
 /* Navigation */
 #nav {
-    margin-top: 75px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+}
+
+#hall_of_fame {
+    position: absolute;
+    top: 90%;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 10px;
 }
 
 div.menu ul {

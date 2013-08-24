@@ -1,4 +1,14 @@
 /* Height stuff */
+@media screen and (max-height: 600px) {
+    #nav, #hall_of_fame {
+        display: none;
+    }
+
+    #nav_mobile {
+        display: block;
+    }
+}
+
 @media screen and (max-height: 900px) {
     #contest img {
         display: none;

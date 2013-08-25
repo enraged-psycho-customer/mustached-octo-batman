@@ -99,7 +99,7 @@ $this->pageTitle = Yii::app()->name . ' - Зал славы';
             <table id="team">
                 <tr>
                     <td>
-                        <img class="team" src="<?php echo $this->assetsUrl; ?>/images/pixel.png" usemap="team">
+                        <img class="team" src="<?php echo $this->assetsUrl; ?>/images/pixel.png" usemap="#team">
                         <div id="fame_social_wrapper">
                             <div id="fame_social">
                                 <?php echo $this->renderPartial('application.views.partials.widgets', array('url' => $this->createAbsoluteUrl('/fame'))); ?>

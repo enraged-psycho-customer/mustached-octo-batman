@@ -659,7 +659,7 @@
 		dataType: 'json',
 		type: 'POST',
 		beforeSend: function() {
-		    (id == undefined) ? _startLoading(pointer, 'saving note') : _startLoading(pointer, 'editing note');
+		    (id == undefined) ? _startLoading(pointer, 'Сохраняем...') : _startLoading(pointer, 'editing note');
 		},
 		data: operation+'=true&image='+ID.image+'&id='+id+'&position='+position.left+','+position.top+','+position.width+','+position.height+'&note='+note+'&link='+link+'&author='+author,
 		success: function(data) {

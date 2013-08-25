@@ -60,7 +60,7 @@
 </div>
 
 <script type="text/javascript">
-    $(function() {
+    imagesLoaded($('.image_item_<?php echo $model->id; ?>'), function( instance ) {
         $('.image_item_<?php echo $model->id; ?>').jQueryNotes({
             minWidth: 48,
             minHeight: 48,

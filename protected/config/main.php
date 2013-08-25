@@ -52,7 +52,7 @@ return array(
     // application-level parameters that can be accessed
     // using Yii::app()->params['paramName']
     'params' => array(
-        'maintenanceMode' => 0,
+        'maintenanceMode' => 1,
         'currentStage' => 2,
         'currentAnnouncement' => 1,
     ),

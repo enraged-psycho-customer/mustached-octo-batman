@@ -16,7 +16,7 @@ $this->widget('zii.widgets.CListView', array(
             {pager}
         </div>
     ',
-    'ajaxUpdate' => false,
+    //'ajaxUpdate' => false,
     'pager' => array(
         'class' => 'LinkPager',
         'maxButtonCount' => 1,

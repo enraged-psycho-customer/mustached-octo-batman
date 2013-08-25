@@ -176,7 +176,7 @@ class ItemsController extends Controller
      */
     public function actionCreate()
     {
-        $this->pageTitle = Yii::app()->name . ' - Отрпавить своё';
+        $this->pageTitle = Yii::app()->name . ' - Отправить своё';
         $model = new Items('create');
 
         //$this->performAjaxValidation($model);

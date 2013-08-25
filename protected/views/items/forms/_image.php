@@ -8,7 +8,7 @@
 
     <?php $form = $this->beginWidget('CActiveForm', array(
         'enableClientValidation' => true,
-        'enctype' => 'multipart/form-data'
+        'htmlOptions' => array('enctype' => 'multipart/form-data')
     )); ?>
 
     <div class="category">

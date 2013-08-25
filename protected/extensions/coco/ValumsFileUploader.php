@@ -21,7 +21,6 @@ class ValumsFileUploader {
         $this->sizeLimit = $sizeLimit;
 
         //$this->checkServerSettings();
-        var_dump($_FILES);
 
         if (isset($_GET['qqfile'])) {
             $this->file = new qqUploadedFileXhr();

@@ -1,2 +1,2 @@
-<pre><?php var_dump($this->data); ?></pre>
+<pre><?php var_dump($data); ?></pre>
 Done.

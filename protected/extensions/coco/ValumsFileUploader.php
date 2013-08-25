@@ -29,8 +29,6 @@ class ValumsFileUploader {
         } else {
             $this->file = false;
         }
-
-        var_dump($this->file);
     }
 
     public function checkServerSettings(){

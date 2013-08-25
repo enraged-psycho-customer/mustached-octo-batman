@@ -22,7 +22,6 @@ class ValumsFileUploader {
 
         //$this->checkServerSettings();
 
-/*
         if (isset($_GET['qqfile'])) {
             $this->file = new qqUploadedFileXhr();
         } elseif (isset($_FILES['qqfile'])) {
@@ -30,8 +29,6 @@ class ValumsFileUploader {
         } else {
             $this->file = false;
         }
-*/
-        $this->file = new qqUploadedFileForm();
     }
 
     public function checkServerSettings(){

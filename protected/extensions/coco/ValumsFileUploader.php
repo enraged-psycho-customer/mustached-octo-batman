@@ -94,6 +94,7 @@ class ValumsFileUploader {
         }
 
         $fullpath = $uploadDirectory . $filename . '.' . $ext;
+        var_dump($fullpath);
 
         if ($this->file->save($fullpath)){
             return array('success'=>true,'filename'=>$filename,'size'=>$size,'ext'=>$ext,'path'=>$uploadDirectory,'fullpath'=>$fullpath);

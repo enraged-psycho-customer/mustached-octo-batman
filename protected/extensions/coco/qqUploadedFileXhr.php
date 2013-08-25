@@ -13,9 +13,6 @@ class qqUploadedFileXhr {
         $realSize = stream_copy_to_stream($input, $temp);
         fclose($input);
 
-        var_dump($realSize);
-        var_dump($this->getSize());
-
         if ($realSize != $this->getSize()){
             return false;
         }

@@ -200,9 +200,7 @@ echo
 			$this->uploadDir = rtrim($this->uploadDir,'/').'/';
 			
 			if (!is_dir($this->uploadDir)) {
-				var_dump($this->uploadDir);
-				exit;
-				@mkdir($this->uploadDir);
+				//@mkdir($this->uploadDir);
 			}
 
 			$result = $uploader->handleUpload($this->uploadDir);

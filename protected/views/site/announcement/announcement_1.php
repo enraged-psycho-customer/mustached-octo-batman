@@ -35,7 +35,7 @@ $this->pageTitle = Yii::app()->name . ' - Анонс';
         <img class="designer" src="<?php echo $this->assetsUrl; ?>/images/announcement/designer.png">
     </div>
     <div class="achievement">
-        <img class="achievement" src="<?php echo $this->assetsUrl; ?>/images/announcement/achievement_1.png" usemap="achievement">
+        <img class="achievement" src="<?php echo $this->assetsUrl; ?>/images/announcement/achievement_1.png" usemap="#achievement">
     </div>
     <?php $this->renderPartial('application.views.items._social', array(
         'class' => 'social social-special',

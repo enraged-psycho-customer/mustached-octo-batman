@@ -173,6 +173,8 @@ class note
         $comment->width = $properties['WIDTH'];
         $comment->height = $properties['HEIGHT'];
         $comment->avatar = $avatar;
+
+        if (!Yii::app()->user->isGuest) $comment->is_admin = 1;
         $comment->save();
 
         /*

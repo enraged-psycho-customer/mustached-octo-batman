@@ -53,8 +53,7 @@ var CocoWidget = function(options) {
 			onComplete: _this.onComplete,
 			onCancel: _this.onCancel,
 			onSubmit: _this.onSubmit,// helps controlling the number of uploads
-			showMessage: _this.showMessage,
-			forceMultipart: true
+			showMessage: _this.showMessage
 		});
 	}
 

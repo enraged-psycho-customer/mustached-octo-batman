@@ -14,6 +14,10 @@
             'class' => 'image_item image_item_' . $model->id,
             'width' => '100%',
         ));
+
+        echo CHtml::image($fullsize, '', array(
+            'class' => 'pivot',
+        ));
     }
     ?>
 <?php elseif ($model->category == Items::CATEGORY_INQUISITION): ?>

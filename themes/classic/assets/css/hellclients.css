@@ -16,6 +16,15 @@ input, textarea, div.quote {
     color: #272727;
 }
 
+.clip {
+    width: 48px;
+    height: 48px;
+    overflow: hidden;
+}
+
+.pivot {
+    display: none;
+}
 
 a {
     text-decoration: none;

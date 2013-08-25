@@ -60,7 +60,29 @@
 </div>
 
 <script type="text/javascript">
-    imagesLoaded($('.image_item_<?php echo $model->id; ?>'), function( instance ) {
+    renderClips = function(object)
+    {
+        var propWidth = parseInt(object.width());
+        var propHeight = parseInt(object.height());
+
+        var delta = parseInt($('.pivot').width()) / propWidth;
+        $('.clip img').css('width', propWidth).css('height', propHeight);
+
+        // Create clips
+        $.each($('.clip'), function(index, item){
+            var leftPercent = parseInt($(item).attr("data-left"));
+            var topPercent = parseInt($(item).attr("data-top"));
+
+            var clipLeft = -1 * Math.ceil(leftPercent * (propWidth / 100));
+            var clipTop = -1 * Math.ceil(topPercent * (propHeight / 100));
+
+            //console.log(clipLeft + " " + clipTop);
+            $(item).find('img').css("left", clipLeft + "px").css("top", clipTop + "px")
+        });
+    }
+
+    imagesLoaded($('.image_item_<?php echo $model->id; ?>'), function(instance) {
+        // Load notes
         $('.image_item_<?php echo $model->id; ?>').jQueryNotes({
             minWidth: 48,
             minHeight: 48,
@@ -79,6 +101,8 @@
             maxNotes: null,
             operator: '<?php echo $this->createAbsoluteUrl('/items/notes/', array('id' => $model->id)) ?>'
         });
+
+        renderClips($('.image_item_<?php echo $model->id; ?>'));
     });
 
     $(window).resize(function() {

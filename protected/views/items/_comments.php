@@ -11,7 +11,7 @@
         </div>
         <div class="text">
             <?php echo $comment->content; ?>
-            <?php //$this->renderPartial('_clip', array('model' => $model, 'comment' => $comment)); ?>
+            <?php $this->renderPartial('_clip', array('model' => $model, 'comment' => $comment)); ?>
         </div>
     </div>
 

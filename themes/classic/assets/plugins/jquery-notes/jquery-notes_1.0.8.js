@@ -384,11 +384,11 @@
 
 	    html += (note.LINK != '' && settings.allowLink) ? '<a href="'+note.LINK+'"></a>' : '';
 
-	    html += '</div></div></div><div id="t_'+pointer+'-'+note.ID+'" class="text"><span class="txt">';
+	    html += '</div></div></div><div id="t_'+pointer+'-'+note.ID+'" class="text"><div class="text-box"><div class="inner"><span class="txt">';
 
 	    html += (note.NOTE != '') ? note.NOTE : note.LINK;
 
-	    html += '</span>';
+	    html += '</span></div></div>';
 
 	    html += (note.AUTHOR != '' && settings.allowAuthor) ? '<span class="author"> - '+note.AUTHOR+'</span>' : '';
 
@@ -434,9 +434,11 @@
 		_focusOffNote(pointer, note.ID);
 	    });
 
+        console.log(position.height);
+
 	    $('#jquery-notes_'+pointer+' .notes #t_'+pointer+'-'+note.ID).css({
-		left: position.left+'px',
-		top: (parseFloat(position.top)+parseFloat(position.height))+'px'
+		left: (parseFloat(position.left) + parseFloat(position.width)) +'px',
+		top: (parseFloat(position.top)) + 'px'
 	    });
 
 	}

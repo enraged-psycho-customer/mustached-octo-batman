@@ -20,6 +20,8 @@ input, textarea, div.quote {
     width: 48px;
     height: 48px;
     overflow: hidden;
+    border: 1px solid #E5E5E5;
+    border-radius: 25px;
 }
 
 .pivot {

@@ -199,7 +199,7 @@ echo
 			// ensure directory
 			$this->uploadDir = rtrim($this->uploadDir,'/').'/';
 			
-			if (!file_exists($this->uploadDir)) {
+			if (!is_dir($this->uploadDir)) {
 				@mkdir($this->uploadDir);
 			}
 

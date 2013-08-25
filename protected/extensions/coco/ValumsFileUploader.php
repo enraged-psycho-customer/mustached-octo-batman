@@ -20,7 +20,7 @@ class ValumsFileUploader {
         $this->allowedExtensions = $allowedExtensions;
         $this->sizeLimit = $sizeLimit;
 
-        $this->checkServerSettings();
+        //$this->checkServerSettings();
 
         if (isset($_GET['qqfile'])) {
             $this->file = new qqUploadedFileXhr();
@@ -29,6 +29,8 @@ class ValumsFileUploader {
         } else {
             $this->file = false;
         }
+
+        var_dump($this->file);
     }
 
     public function checkServerSettings(){

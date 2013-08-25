@@ -14,8 +14,6 @@ class qqUploadedFileXhr {
         fclose($input);
 
         if ($realSize != $this->getSize()){
-            var_dump($realSize);
-            var_dump($this->getSize());
             return false;
         }
 

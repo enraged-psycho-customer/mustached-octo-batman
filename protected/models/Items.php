@@ -114,8 +114,8 @@ class Items extends CActiveRecord
             array('content, category, email, title', 'safe', 'on' => 'create'),
             array('category', 'in', 'range' => $this->categories, 'allowEmpty' => false, 'on' => 'create'),
 
-            array('email', 'length', 'max' => 255, 'allowEmpty' => false, 'on' => 'create'),
-            array('email', 'email', 'allowEmpty' => false, 'on' => 'create'),
+            array('email', 'length', 'max' => 255, 'allowEmpty' => true, 'on' => 'create'),
+            array('email', 'email', 'allowEmpty' => true, 'on' => 'create'),
 
             array('state', 'default', 'value' => self::STATE_PUBLISHED, 'setOnEmpty' => false, 'on' => 'create'),
             array('created_at', 'default', 'value' => new CDbExpression('NOW()'), 'on' => 'create'),

@@ -434,7 +434,7 @@
 		_focusOffNote(pointer, note.ID);
 	    });
 
-        console.log(position.height);
+        //console.log(position.height);
 
 	    $('#jquery-notes_'+pointer+' .notes #t_'+pointer+'-'+note.ID).css({
 		left: (parseFloat(position.left) + parseFloat(position.width)) +'px',

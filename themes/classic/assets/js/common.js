@@ -70,7 +70,17 @@ hideTrashedItems = function() {
 $(document).ready(function() {
     elements.currentLines = countMaxLines();
     hideTrashedItems();
-
+/*
+    $('.clip img').live('mouseover', function(e) {
+        var currentId = $(this).parent().attr('data-id');
+        $('#n_1-' + currentId).fadeIn('fast');
+        $('#t_1-' + currentId).fadeIn('fast');
+    }).live('mouseout', function(e) {
+        var currentId = $(this).parent().attr('data-id');
+        $('#n_1-' + currentId).fadeOut('fast');
+        $('#t_1-' + currentId).fadeOut('fast');
+    });
+*/
     $('#nav_mobile ul li a.prev, #nav_mobile ul li a.next').live('click', function(e) {
         var parentList = $(this).parents('ul');
 

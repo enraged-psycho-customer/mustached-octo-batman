@@ -87,6 +87,9 @@ class Controller extends CController
             $assetsDir = Yii::app()->theme->basePath . '/assets';
             $this->assetsUrl = Yii::app()->assetManager->publish($assetsDir, false, 10, YII_DEBUG);
         };
+
+        $cs = Yii::app()->clientScript;
+        $cs->registerCoreScript('cookie');
     }
 
     public function pageTitle($title)

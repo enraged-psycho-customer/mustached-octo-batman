@@ -32,7 +32,8 @@
         var teletypeText = '#$%^@#$!';
 
         var settings = {
-            avatarsCount: <?php echo Stages::getStage(); ?>
+            avatarsCount: <?php echo Stages::getStage(); ?>,
+            glowsCount: <?php echo Stages::getStage(); ?>
         };
 
         $([

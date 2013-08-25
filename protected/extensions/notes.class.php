@@ -73,6 +73,7 @@ class note
                     'HEIGHT' => $comment->height,
                     'NOTE' => $comment->content,
                     'ID' => $comment->id,
+                    'AVATAR' => $comment->avatar
                 );
 
                 $notes[] = $note;
@@ -156,10 +157,10 @@ class note
      *
      * @access        : public
      */
-    public function addNote($position, $note, $author = null, $link = null)
+    public function addNote($position, $note, $avatar, $link = null)
     {
 
-        $properties = $this->setNote($position, $note, $author, $link);
+        $properties = $this->setNote($position, $note, $avatar, $link);
 
         if (!$properties)
             return false;
@@ -171,6 +172,7 @@ class note
         $comment->y = $properties['TOP'];
         $comment->width = $properties['WIDTH'];
         $comment->height = $properties['HEIGHT'];
+        $comment->avatar = $avatar;
         $comment->save();
 
         /*

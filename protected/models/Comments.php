@@ -65,10 +65,10 @@ class Comments extends CActiveRecord
     public function beforeSave()
     {
         if ($this->is_admin) {
-            $this->avatar = 0;
+            //$this->avatar = 0;
         }
         else if ($this->avatar > Stages::getStage() || $this->avatar == 0) {
-            $this->avatar = 1;
+            //$this->avatar = 1;
         }
 
         return parent::beforeSave();

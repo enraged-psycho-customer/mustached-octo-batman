@@ -53,7 +53,7 @@ return array(
     // using Yii::app()->params['paramName']
     'params' => array(
         'maintenanceMode' => 1,
-        'currentStage' => 1,
+        'currentStage' => 2,
         'currentAnnouncement' => 1,
     ),
 );

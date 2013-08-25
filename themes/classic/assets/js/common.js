@@ -96,6 +96,8 @@ $(document).ready(function() {
 
     // Trash can
     $('.trash a').live("click", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
         var currentPostId = $(this).parents('.item').attr('data-id');
         var voteUrl = '/items/vote/' + currentPostId;
 
@@ -118,7 +120,12 @@ $(document).ready(function() {
                 hiddenItems.push(currentPostId);
                 $.cookie("hiddenItems", hiddenItems, { expires: 14 });
 
-                $('#item_' + currentPostId).parents('.item_container').fadeOut(300, function() { $(this).remove() });
+                var parentObj = $('#item_' + currentPostId);
+                if (!parentObj.hasClass('closed')) {
+                    parentObj = parentObj.parents('.item_container');
+                }
+
+                parentObj.fadeOut(300, function() { $(this).remove() });
             }
         });
     });
@@ -157,6 +164,7 @@ $(document).ready(function() {
     // Close expanded item
     $(places.closeLink).live("click", function(e) {
         e.preventDefault();
+        e.stopPropagation();
         var itemId = $(this).parents('div.item').attr('data-id');
 
         $(this).parents('.item_container').replaceWith(garbage[itemId]);
@@ -220,6 +228,21 @@ $(document).ready(function() {
         currentAvatar.removeClass().addClass('avatar').addClass('avatars');
         currentAvatar.addClass('avatar_' + avatarId).attr("data-avatar", avatarId);
         hiddenField.val(avatarId);
+    });
+
+    // Glow switch
+    $('a.glow_switch').live("click", function() {
+        var currentAvatar = $(this).parents('.border').find('a.glow_current i');
+        var avatarId = parseInt(currentAvatar.attr('data-avatar'));
+
+        if ($(this).hasClass('up')) avatarId += 1;
+        else avatarId -= 1;
+
+        if (avatarId > settings.glowsCount) avatarId = 1;
+        if (avatarId == 0) avatarId = settings.glowsCount;
+
+        currentAvatar.removeClass().addClass('glow-small');
+        currentAvatar.addClass('glow-small_' + avatarId).attr("data-avatar", avatarId);
     });
 
     // Nested form copy

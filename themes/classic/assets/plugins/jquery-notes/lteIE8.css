@@ -7,7 +7,7 @@
     filter:alpha(opacity=30);
 }
 .jquery-notes-container .notes .offFocus .border {
-    outline:1px solid #555;
+   /* outline:1px solid #555;*/
 }
 .jquery-notes-container .notes .offFocus .border .bg {
     filter:alpha(opacity=9);

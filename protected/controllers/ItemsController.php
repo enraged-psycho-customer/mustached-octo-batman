@@ -76,6 +76,9 @@ class ItemsController extends Controller
         if (isset($_POST['position']) && !empty($_POST['position']))
             $position = $_POST['position'];
 
+        if (isset($_POST['avatar']) && !empty($_POST['avatar']))
+            $avatar = $_POST['avatar'];
+
         if (isset($_POST['note']) && !empty($_POST['note']))
             $note = (string) strip_tags($_POST['note']);
 
@@ -83,7 +86,7 @@ class ItemsController extends Controller
             echo json_encode($oNote->getNotes());
 
         if (isset($_POST['add']) && !empty($_POST['add']))
-            echo json_encode($oNote->addNote($position, $note));
+            echo json_encode($oNote->addNote($position, $note, $avatar));
     }
 
     /**

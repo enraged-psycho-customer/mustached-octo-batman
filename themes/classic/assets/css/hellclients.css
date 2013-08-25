@@ -273,6 +273,7 @@ div.menu ul li.active a, div.menu ul li a:hover {
     margin-right: 15px;
     vertical-align: bottom;
     position: absolute;
+    z-index: 100;
 }
 
 .shade a {

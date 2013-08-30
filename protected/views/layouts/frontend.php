@@ -38,8 +38,9 @@
 
         $([
             '<?php echo $this->assetsUrl; ?>/images/loader.png',
-            '<?php echo $this->assetsUrl; ?>/images/loader_small.png']
-        ).preload();
+            '<?php echo $this->assetsUrl; ?>/images/loader_small.png',
+            '<?php echo $this->assetsUrl; ?>/images/bg_pattern.png',
+        ]).preload();
     </script>
 </head>
 

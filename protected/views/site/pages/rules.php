@@ -7,44 +7,25 @@ $this->pageTitle = Yii::app()->name . ' - Правила';
        background: url(<?php echo $this->assetsUrl; ?>/images/bg_pattern.png);
     }
 
-    #wrapper {
-        height: 100%;
-        background: url(<?php echo $this->assetsUrl; ?>/images/rules_agreement.png) no-repeat 66% 50%;
-    }
-
-    @media screen and (max-width: 640px) {
-        #wrapper {
-            height: 100%;
-            background: url(<?php echo $this->assetsUrl; ?>/images/rules_agreement.png) no-repeat 50% 85%;
-        }
-    }
-
-    #companion, #balloon {
+    #sidebar, #contest_mobile, #companion, #balloon {
         display: none;
     }
 
-    #rules {
-        height:100%;
-        width: 100%;
-        margin: 0;
+    #content {
+        margin: 0 !important;
         padding: 0;
-        border: 0;
-    }
-
-    #rules td {
-        vertical-align: middle;
+        width: 100%;
         text-align: center;
-
-    }
-
-    img.rules {
-        width: 509px;
-        height: 581px;
     }
 </style>
+
+<img class="rules" src="<?php echo $this->assetsUrl; ?>/images/rules_agreement.png" usemap="#rules">
+<map name="rules">
+    <area shape="rect" coords="167,433,347,513" href="javascript:void(0)" onclick="parent.$.fancybox.close();" alt="">
+</map>
+
 <script type="text/javascript">
     $(document).ready(function() {
         $('.age i').removeClass('icon-age').addClass('icon-age-pattern');
-
     });
 </script>

@@ -20,6 +20,10 @@ $this->pageTitle = Yii::app()->name . ' - Зал славы';
         height: 100%;
     }
 
+    a#contest_mobile {
+        display: none;
+    }
+
     #content {
         background: url(<?php echo $this->assetsUrl; ?>/images/team.png) no-repeat center center;
         padding-bottom: 0;

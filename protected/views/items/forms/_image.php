@@ -74,7 +74,7 @@
             <button class="checkbox" type="submit"><i class="icon icon-checkbox"></i></button>
         </div>
         <div class="agreement">
-            Я прочитал <?php echo CHtml::link('правила', array('/site/page', 'view' => 'rules'), array('class' => 'hint', 'target' => '_blank')) ?>, и гарантирую,<br/> что не буду визжать как сучка
+            Я прочитал <?php echo CHtml::link('правила', array('/site/page', 'view' => 'rules'), array('class' => 'hint rules iframe')) ?>, и гарантирую,<br/> что не буду визжать как сучка
         </div>
     </div>
 

@@ -118,7 +118,7 @@
 
 				} else if ($(obj).hasClass("iframe")) {
 					type = 'iframe';
-                    href += '?fancy';
+                    //href += '?fancy';
 				} else if (href.indexOf("#") === 0) {
 					type = 'inline';
 

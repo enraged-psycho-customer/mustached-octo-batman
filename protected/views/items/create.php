@@ -77,3 +77,13 @@ if (isset($model->category)) {
 <?php if ($this->stage >= 6): ?>
     <?php $this->renderPartial('forms/_inquisition', array('model' => $model)); ?>
 <?php endif; ?>
+
+<?php
+$this->widget('application.extensions.fancybox.EFancyBox', array(
+    'target' => 'a.rules',
+    'config' => array(
+        'width' => 620,
+        'height' => 620
+    ),
+));
+?>

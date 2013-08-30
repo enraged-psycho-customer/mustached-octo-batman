@@ -8,6 +8,7 @@
 
     <?php $form = $this->beginWidget('CActiveForm', array(
         'enableClientValidation' => true,
+        //'htmlOptions' => array('enctype' => 'multipart/form-data')
     )); ?>
 
     <div class="category">
@@ -60,8 +61,8 @@
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
-                    <td>
-                        <span class="hint small">На него будут приходить уведомления о новых комментариях</span>
+                    <td class="left">
+                        <span class="hint small">На него <i>возможно, когда-нибудь</i> будут<br/> приходить уведомления о новых комментариях</span>
                     </td>
                 </tr>
             </table>
@@ -73,7 +74,7 @@
             <button class="checkbox" type="submit"><i class="icon icon-checkbox"></i></button>
         </div>
         <div class="agreement">
-            Я прочитал <?php echo CHtml::link('правила', array('/site/page', 'view' => 'rules'), array('class' => 'hint')) ?>, и гарантирую,<br/> что не буду визжать как сучка
+            Я прочитал <?php echo CHtml::link('правила', array('/site/page', 'view' => 'rules'), array('class' => 'hint', 'target' => '_blank')) ?>, и гарантирую,<br/> что не буду визжать как сучка
         </div>
     </div>
 

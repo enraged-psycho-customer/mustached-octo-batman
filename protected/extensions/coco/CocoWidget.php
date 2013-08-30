@@ -198,7 +198,10 @@ echo
 
 			// ensure directory
 			$this->uploadDir = rtrim($this->uploadDir,'/').'/';
-			@mkdir($this->uploadDir);
+			
+			if (!is_dir($this->uploadDir)) {
+				//@mkdir($this->uploadDir);
+			}
 
 			$result = $uploader->handleUpload($this->uploadDir);
 			if(isset($result['success'])){
@@ -210,7 +213,7 @@ echo
 				else{
 					Yii::log('ACTION CALLED - RESULT=ERROR1','info');
 				}
-			}else
+			} else
 			Yii::log('ACTION CALLED - RESULT=ERROR2','info');
 			echo htmlspecialchars(json_encode($result), ENT_NOQUOTES);
 		}

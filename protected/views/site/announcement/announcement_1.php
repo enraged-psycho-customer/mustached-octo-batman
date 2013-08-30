@@ -1,6 +1,6 @@
 <?php
 /* @var $this SiteController */
-$this->pageTitle = Yii::app()->name . ' - Анонс';
+$this->pageTitle = Yii::app()->name . ' - День рождения';
 ?>
 
 <style>

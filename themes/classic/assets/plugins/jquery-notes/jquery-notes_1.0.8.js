@@ -64,6 +64,11 @@
             ID.image = image.attr('src');
             ID.width = image.width();
             ID.height = image.height();
+
+            if (ID.height == 0) {
+                setTimeout(function() { ID.height = image.height(); }, 200);
+            }
+
             ID.left = image.offset().left;
             ID.top = image.offset().top;
 

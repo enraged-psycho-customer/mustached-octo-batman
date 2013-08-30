@@ -6,7 +6,8 @@ class Stages
 {
     private static $_stage = 0;
 
-    const STAGE_HALL_OF_FAME = 1;
+    const STAGE_HALL_OF_FAME = 11;
+    
     const STAGE_CONTEST = 3;
 
     public static $_pages = array(

@@ -205,7 +205,7 @@ class EasyImage extends CApplicationComponent
 
 		// Make cache dir
 		if (!is_dir($cachePath)) {
-			mkdir($cachePath, 0755, true);
+			//@mkdir($cachePath, 0755, true);
 		}
 
 		// Create and caching thumb by params

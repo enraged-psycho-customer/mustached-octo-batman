@@ -11,7 +11,7 @@
     <div class="shade active">
         <div class="inner">
             <a class="sortBy updated_at desc" data-type="updated_at" data-dir="desc" href="<?php echo Yii::app()->createUrl($this->route, array('sort_type' => 'updated_at', 'sort_dir' => 'desc')); ?>">
-                <i class="icon icon-<?php echo $class; ?>_time" title="Сортировать новым комментариям"></i>
+                <i class="icon icon-<?php echo $class; ?>_time" title="Сортировать по новым комментариям"></i>
             </a>
             <a class="sortBy comments_count desc" data-type="comments_count" data-dir="desc" href="<?php echo Yii::app()->createUrl($this->route, array('sort_type' => 'comments_count', 'sort_dir' => 'desc')); ?>">
                 <i class="icon icon-<?php echo $class; ?>_white" title="Сортировать по количеству комментариев"></i>

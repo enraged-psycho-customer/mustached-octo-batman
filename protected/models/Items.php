@@ -114,6 +114,8 @@ class Items extends CActiveRecord
             array('content, category, email, title', 'safe', 'on' => 'create'),
             array('category', 'in', 'range' => $this->categories, 'allowEmpty' => false, 'on' => 'create'),
 
+            array('content', 'length', 'min' => 1, 'allowEmpty' => false),
+
             array('email', 'length', 'max' => 255, 'allowEmpty' => false, 'on' => 'create'),
             array('email', 'email', 'allowEmpty' => false, 'on' => 'create'),
 

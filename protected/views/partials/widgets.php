@@ -1,4 +1,4 @@
-<div class="platform">
+<div class="platform facebook">
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -16,12 +16,12 @@
          data-send="false"></div>
 </div>
 
-<div class="platform">
+<div class="platform vk">
     <!-- Put this div tag to the place, where the Like block will be -->
     <div id="vk_like" position="static"></div>
 </div>
 
-<div class="platform">
+<div class="platform twitter">
     <a href="https://twitter.com/share" class="twitter-share-button" data-lang="ru">Твитнуть</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </div>

@@ -75,7 +75,18 @@ $this->pageTitle = Yii::app()->name . ' - Зал славы';
         margin: 0 5px;
         text-align: center;
         padding-top: 25px;
-        max-width: 100px;
+    }
+
+    #fame_social .facebook {
+        max-width: 101px;
+    }
+
+    #fame_social .vk {
+        max-width: 125px;
+    }
+
+    #fame_social .twitter {
+        max-width: 138px;
     }
 
     #vk_like {

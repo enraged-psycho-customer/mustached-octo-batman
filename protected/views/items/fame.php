@@ -75,6 +75,7 @@ $this->pageTitle = Yii::app()->name . ' - Зал славы';
         margin: 0 5px;
         text-align: center;
         padding-top: 25px;
+        max-width: 100px;
     }
 
     #vk_like {

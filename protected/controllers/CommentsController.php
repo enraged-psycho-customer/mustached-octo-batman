@@ -78,7 +78,14 @@ class CommentsController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->loadModel($id)->delete();
+        $comment = $this->loadModel($id);
+        $item_id = $comment->item_id;
+        $comment->delete();
+
+        // Decrement item counter
+        $item = Items::model()->findByPk($item_id);
+        $item->comments_count = $item->comments_count - 1;
+        $item->save();
 
         // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
         if (!isset($_GET['ajax']))

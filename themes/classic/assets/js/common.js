@@ -152,6 +152,11 @@ $(document).ready(function() {
                 $(itemSelector).find('.comments_list').fadeIn('slow');
                 $(itemSelector).parents('.item_container').addClass('active');
                 $(commentsSelector).addClass('active');
+
+                // Scroll to post start
+                $('html, body').animate({
+                    scrollTop: $(itemSelector).offset().top
+                }, 500);
             })
             .fail(function() { alert("Произошла ошибка. Повторите свой запрос позднее."); })
 

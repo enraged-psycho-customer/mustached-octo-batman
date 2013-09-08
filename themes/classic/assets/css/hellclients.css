@@ -4,6 +4,10 @@
     padding: 0;
 }
 
+#contest_mobile {
+    display: none !important;
+}
+
 body {
     background: #F2F2F2;
     font-family: 'corporate-web';
@@ -709,21 +713,6 @@ div#createForm div.buttons div.agreement {
 
 button.checkbox {
     margin-top: 8px;
-}
-
-input.checkbox {
-    margin-top: 48px;
-    width: 21px !important;
-    height: 16px !important;
-    display: inline-block;
-    background: url(../images/sprites.png) no-repeat top left !important;
-    background-position: -338px 0 !important;
-    border: 0 none !important;
-    cursor: pointer;
-}
-
-input.checkbox:hover {
-    background-position: -369px 0 !important;
 }
 
 /* Helpers */

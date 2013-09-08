@@ -70,6 +70,7 @@
                                 alert(message);
                             } else {
                                 // Add comment and hide comment forms
+                                alert("Комментарий добавлен");
                             }
 
                             $("div.captcha img").trigger("click");

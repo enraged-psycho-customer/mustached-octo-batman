@@ -715,6 +715,23 @@ button.checkbox {
     margin-top: 8px;
 }
 
+input.checkbox {
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 45px;
+    border: 0 none !important;
+    background: url(../images/sprites.png) no-repeat top left !important;
+    background-position: -338px 0 !important;
+    width: 21px !important;
+    height: 16px !important;
+}
+
+input.checkbox:hover {
+    background-position: -369px 0 !important;
+    width: 21px !important;
+    height: 16px !important;
+}
+
 /* Helpers */
 span.hint {
     color: #B0B0B0;

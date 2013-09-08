@@ -18,6 +18,8 @@
  */
 class Items extends CActiveRecord
 {
+    const SPOILER_LIMIT = 500;
+
     const CATEGORY_QUOTES = 1;
     const CATEGORY_IMAGES = 2;
     const CATEGORY_INQUISITION = 3;

@@ -27,7 +27,7 @@
         </div>
 
         <div class="quote">
-            <?php $this->renderPartial('_content', array('model' => $data)); ?>
+            <?php $this->renderPartial('_content', array('model' => $data, 'list' => true)); ?>
         </div>
     </div>
     <div class="max"></div>

@@ -153,10 +153,14 @@ $(document).ready(function() {
                 $(itemSelector).parents('.item_container').addClass('active');
                 $(commentsSelector).addClass('active');
 
+                $(itemSelector).find('.yandex').hide().fadeIn(300);
+
                 // Scroll to post start
                 $('html, body').animate({
                     scrollTop: $(itemSelector).offset().top
                 }, 500);
+
+
             })
             .fail(function() { alert("Произошла ошибка. Повторите свой запрос позднее."); })
 
@@ -262,7 +266,7 @@ $(document).ready(function() {
         $(this).after(formHtml);
 
         var clicked = parentItem.find(places.nestedCommentForm);
-        console.log(clicked.css('opacity'));
+
         if (clicked.css("opacity") == "1") {
             clicked.hide().fadeIn('normal');
         } else {

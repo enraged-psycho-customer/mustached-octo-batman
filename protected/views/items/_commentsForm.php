@@ -15,8 +15,11 @@
         </div>
         <div class="form">
             <?php $form = $this->beginWidget('CActiveForm', array(
-                'id' => 'comment-form',
-                'enableAjaxValidation' => false,
+                'id' => 'comments-form',
+                'enableAjaxValidation' => true,
+                'clientOptions' => array(
+                    'validateOnSubmit' => true,
+                ),
             )); ?>
 
             <?php echo $form->hiddenField($model, 'avatar', array('class' => 'avatar_field')); ?>
@@ -49,7 +52,30 @@
                     );
                     ?>
                 </div>
-                <div class="submit"><button class="checkbox" type="submit"><i class="icon icon-checkbox"></i></button></div>
+                <div class="submit">
+                    <?php echo CHtml::ajaxSubmitButton('', $this->createAbsoluteUrl('/' . $item->id), array(
+                        'dataType' => 'json',
+                        'success' => 'js:function(data) {
+                            var message = "";
+
+                            if (data.success == undefined) {
+                                var i = 0;
+                                for (var key in data) {
+                                    message = data[key];
+                                    if (typeof(first) !== \'function\') {
+                                        break;
+                                    }
+                                }
+
+                                alert(message);
+                            } else {
+                                // Add comment and hide comment forms
+                            }
+
+                            $("div.captcha img").trigger("click");
+                        }'
+                    ), array('class' => 'checkbox')); ?>
+                </div>
             </div>
             <?php $this->endWidget(); ?>
         </div>

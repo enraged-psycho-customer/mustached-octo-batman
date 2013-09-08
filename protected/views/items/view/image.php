@@ -7,10 +7,6 @@
 <div class="item_container">
     <div class="item_container_bottom">
         <div class="item <?php if ($modal) echo 'open'; ?>" id="item_<?php echo $model->id; ?>" data-id="<?php echo $model->id; ?>">
-            <?php if ($modal): ?>
-                <?php $this->renderPartial('_social', array('class' => 'social', 'shareUrl' => $this->createAbsoluteUrl('/' . $model->id))); ?>
-            <?php endif; ?>
-
             <div class="number">
                 <div class="trash">
                     <?php if ($modal): ?>
@@ -41,9 +37,9 @@
                 </div>
 
                 <div class="quote">
-                    <?php $this->renderPartial('_content', array('model' => $model, 'list' => false)); ?>
+                    <?php $this->renderPartial('_content', array('model' => $model, 'modal' => $modal, 'list' => false)); ?>
                     <?php if ($modal): ?>
-                        <?php $this->renderPartial('_social', array('shareUrl' => $this->createAbsoluteUrl('/' . $model->id), 'class' => 'social-small')); ?>
+                        <?php $this->renderPartial('_social', array('shareUrl' => $this->createAbsoluteUrl('/' . $model->id), 'class' => 'social')); ?>
                     <?php endif; ?>
                 </div>
 
@@ -51,8 +47,8 @@
 
                 <div class="comments_list" id="comments_<?php echo $model->id; ?>">
                     <?php $this->renderPartial('_comments', array('comments' => $model->getComments(), 'index' => 0, 'model' => $model)); ?>
-                    <?php $this->renderPartial('_commentsForm', array('model' => $commentModel, 'class' => 'commentsForm commentsFormNested')); ?>
-                    <?php $this->renderPartial('_commentsForm', array('model' => $commentModel, 'class' => 'commentsForm commentsFormBottom')); ?>
+                    <?php $this->renderPartial('_commentsForm', array('model' => $commentModel, 'class' => 'commentsForm commentsFormNested', 'item' => $model)); ?>
+                    <?php $this->renderPartial('_commentsForm', array('model' => $commentModel, 'class' => 'commentsForm commentsFormBottom', 'item' => $model)); ?>
                 </div>
             </div>
         </div>

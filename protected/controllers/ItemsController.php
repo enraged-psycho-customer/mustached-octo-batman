@@ -104,31 +104,29 @@ class ItemsController extends Controller
             $fancy = true;
         }
 
+        // Comment handling
         $comment = new Comments('create');
         $comment->item_id = $id;
         $comment->is_admin = (int)!Yii::app()->user->isGuest;
 
-        $params = array('item_id' => $id, 'ip' => Yii::app()->request->userHostAddress);
-        $hasVoted = (int)Votes::model()->count('item_id = :item_id AND ip = :ip', $params);
+        if (Yii::app()->request->isAjaxRequest && !isset($_GET['modal'])) {
+            $messages = CActiveForm::validate($comment);
 
-        //$this->performAjaxValidation($model);
+            if ($messages == '[]' && isset($_POST['Comments'])) {
+                $comment->attributes = $_POST['Comments'];
+                $comment->save(false);
 
-        if (isset($_POST['Comments'])) {
-            $comment->attributes = $_POST['Comments'];
-            if ($comment->save()) {
-                Yii::app()->user->setFlash('success', "Ваш комментарий отправлен!");
-            } else {
-                $errors = $comment->getErrors();
-                foreach ($errors as $attribute => $attributeErrors) {
-                    foreach ($attributeErrors as $error) {
-                        Yii::app()->user->setFlash('error', $error);
-                    }
-                }
+                $messages = json_encode(array(
+                    'success' => true,
+                    'comment' => $comment->getAttributes(),
+                ));
             }
 
-            $this->redirect('/' . $id);
+            echo $messages;
+            Yii::app()->end();
         }
 
+        // View type handling
         $model = $this->loadModel($id);
         $template = 'view/quote';
         switch ($model->category) {
@@ -157,8 +155,7 @@ class ItemsController extends Controller
         $params = array(
             'model' => $model->with('comments'),
             'modal' => $modal,
-            'commentModel' => $comment,
-            'hasVoted' => $hasVoted
+            'commentModel' => $comment
         );
 
         if ($modal) {
@@ -358,17 +355,5 @@ class ItemsController extends Controller
         if ($model === null)
             throw new CHttpException(404, 'The requested page does not exist.');
         return $model;
-    }
-
-    /**
-     * Performs the AJAX validation.
-     * @param Items $model the model to be validated
-     */
-    protected function performAjaxValidation($model)
-    {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'items-form') {
-            echo CActiveForm::validate($model);
-            Yii::app()->end();
-        }
     }
 }

@@ -1,6 +1,15 @@
 <div class="quote_content">
 <?php if ($model->category == Items::CATEGORY_QUOTES): ?>
-    <?php echo $model->content; ?>
+    <?php
+    $string = $model->content;
+    if (!$modal && $list && mb_strlen($string, 'utf-8') >= Items::SPOILER_LIMIT){
+        $string = mb_substr($string, 0, 700 - 5, 'utf-8') .
+            "..." .
+            "<br>".
+            CHtml::link("Читать дальше", 'javascript:void(0)');
+    }
+    echo $string;
+    ?>
 <?php elseif ($model->category == Items::CATEGORY_IMAGES): ?>
     <?php
     $thumbnail = $model->getImageDir() . 'thumb_' . $model->image;
@@ -33,3 +42,12 @@
     </div>
 <?php endif; ?>
 </div>
+
+<?php if (!$list): ?>
+<div class="yandex">
+    <script type="text/javascript" src="//yandex.st/share/share.js"
+            charset="utf-8"></script>
+    <div class="yashare-auto-init" data-yashareL10n="ru"
+         data-yashareType="button" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir"></div>
+</div>
+<?php endif; ?>

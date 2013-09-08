@@ -32,7 +32,7 @@
         </div>
 
         <div class="quote">
-            <?php $this->renderPartial('_content', array('model' => $data, 'list' => true)); ?>
+            <?php $this->renderPartial('_content', array('model' => $data, 'list' => true, 'modal' => false)); ?>
         </div>
     </div>
     <div class="max"></div>

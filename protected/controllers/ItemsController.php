@@ -118,7 +118,12 @@ class ItemsController extends Controller
 
                 $messages = json_encode(array(
                     'success' => true,
-                    'comment' => $comment->getAttributes(),
+                    'item_id' => $comment->item_id,
+                    'parent_id' => $comment->parent_id,
+                    'commentHtml' => $this->renderPartial('application.views.items._comment', array(
+                        'index' => $comment->parent_id,
+                        'comment' => $comment
+                    ), true)
                 ));
             }
 

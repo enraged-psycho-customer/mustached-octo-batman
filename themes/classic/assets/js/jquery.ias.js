@@ -626,7 +626,7 @@
         function init()
         {
             isHtml5 = !!(window.history && history.pushState && history.replaceState);
-            isHtml5 = false; // html5 functions disabled due to problems in chrome
+            //isHtml5 = false; // html5 functions disabled due to problems in chrome
         }
 
         // initialize
@@ -686,9 +686,9 @@
                 }
             }
             else {
-                haveState = (window.location.hash.substring(0, 7) === '#/page/');
+                haveState = (window.location.hash.substring(0, 7) === '?Items_page=');
                 if (haveState) {
-                    pageNum = parseInt(window.location.hash.replace('#/page/', ''), 10);
+                    pageNum = parseInt(window.location.hash.replace('?Items_page=', ''), 10);
                     return { page : pageNum };
                 }
             }
@@ -731,7 +731,7 @@
                 history.pushState({ ias : stateObj }, title, url);
             }
             else {
-                hash = (stateObj.page > 0 ? '#/page/' + stateObj.page : '');
+                hash = (stateObj.page > 0 ? '?Items_page=' + stateObj.page : '');
                 window.location.hash = hash;
             }
 

@@ -37,4 +37,4 @@
     </div>
     <div class="max"></div>
 </div>
-<div class="clear"></div>
+<div class="item hidden clearfix">&nbsp;</div>

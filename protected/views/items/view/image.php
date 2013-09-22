@@ -45,11 +45,13 @@
 
                 <div class="clear"></div>
 
+                <?php if ($model->category != Items::CATEGORY_IMAGES): ?>
                 <div class="comments_list" id="comments_<?php echo $model->id; ?>">
                     <?php $this->renderPartial('_comments', array('comments' => $model->getComments(), 'index' => 0, 'model' => $model)); ?>
                     <?php $this->renderPartial('_commentsForm', array('model' => $commentModel, 'class' => 'commentsForm commentsFormNested', 'item' => $model)); ?>
                     <?php $this->renderPartial('_commentsForm', array('model' => $commentModel, 'class' => 'commentsForm commentsFormBottom', 'item' => $model)); ?>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

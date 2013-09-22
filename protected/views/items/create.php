@@ -82,8 +82,8 @@ if (isset($model->category)) {
 $this->widget('application.extensions.fancybox.EFancyBox', array(
     'target' => 'a.rules',
     'config' => array(
-        'width' => 620,
-        'height' => 620
+        'width' => '99%',
+        'height' => '99%'
     ),
 ));
 ?>

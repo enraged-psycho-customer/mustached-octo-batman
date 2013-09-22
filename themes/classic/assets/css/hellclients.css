@@ -20,6 +20,14 @@ td.left {
     text-align: left;
 }
 
+.hidden {
+    display: none !important;
+}
+
+.clearfix {
+    clear: both;
+}
+
 .clip {
     width: 48px;
     height: 48px;
@@ -45,6 +53,10 @@ button {
     background: transparent;
     border: 0 none;
     cursor: pointer;
+}
+
+.trash a {
+    display: none !important;
 }
 
 .item.closed {
@@ -380,7 +392,7 @@ div.menu ul li.active a, div.menu ul li a:hover {
 /* Items */
 .image_item {
     max-width: 100%;
-    max-height: 500px;
+    max-height: 100%;
 }
 
 .items {
@@ -759,4 +771,5 @@ td.bottom {
 .yandex {
     margin-top: 10px;
     font: 14px Verdana, Arial, sans-serif !important;
+    clear: both;
 }

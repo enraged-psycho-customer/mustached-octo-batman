@@ -2,10 +2,9 @@
 class LinkPager extends CLinkPager
 {
     public $options = array(
-        'history' => false,
+        'history' => true,
         'triggerPageTreshold' => 1,
         'trigger' => 'Load more',
-       // 'onRenderComplete'=>"function(items) {console.log('We rendered ' + items.length + ' items');}",
     );
 
     public function init()
@@ -22,7 +21,7 @@ class LinkPager extends CLinkPager
                     'item' => '.item',
                     'pagination' => '#itemsList .pager',
                     'next' => '#itemsList .next:not(.disabled):not(.hidden) a',
-                    'loader' => '<div class="loader"></div>',
+                    'loader' => '<div class="loader"></div>'
                 ))) . ");";
 
 

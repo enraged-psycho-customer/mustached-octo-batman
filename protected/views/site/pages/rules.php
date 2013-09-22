@@ -11,18 +11,30 @@ $this->pageTitle = Yii::app()->name . ' - Правила';
         display: none;
     }
 
+    #wrapper, #container, #content {
+        height: 100%;
+    }
+
     #content {
         margin: 0 !important;
         padding: 0;
         width: 100%;
         text-align: center;
     }
+
+    .rules_block {
+        position: relative;
+        top: 10%;
+    }
 </style>
 
-<img class="rules" src="<?php echo $this->assetsUrl; ?>/images/rules_agreement.png" usemap="#rules">
-<map name="rules">
-    <area shape="rect" coords="167,433,347,513" href="javascript:void(0)" onclick="parent.$.fancybox.close();" alt="">
-</map>
+<div class="rules_block">
+    <img class="rules" src="<?php echo $this->assetsUrl; ?>/images/rules_agreement.png" usemap="#rules">
+    <map name="rules">
+        <area shape="rect" coords="167,433,347,513" href="javascript:void(0)" onclick="parent.$.fancybox.close();" alt="">
+    </map>
+</div>
+
 
 <script type="text/javascript">
     $(document).ready(function() {

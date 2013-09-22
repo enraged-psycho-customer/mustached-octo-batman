@@ -70,10 +70,26 @@
                                 alert(message);
                             } else {
                                 // Add comment and hide comment forms
-                                alert("Комментарий добавлен");
+                                var item = $("#item_" + data.item_id);
+                                var commentHtml = $(data.commentHtml);
+                                var parentComment = null;
+
+                                if (data.parent_id == 0) {
+                                    parentComment = item.find(".comment").last();
+                                    item.find(".commentsFormBottom .controls").show();
+                                    item.find(".commentsFormBottom textarea").val("");
+                                    item.find(".commentsFormBottom .captcha").hide();
+                                    item.find(".commentsFormBottom input").val("");
+                                } else {
+                                    parentComment = item.find(".comment_" + data.parent_id);
+                                    item.find(".commentsFormNested").fadeOut(300);
+                                }
+
+                                parentComment.after(commentHtml);
+                                $(commentHtml).hide().fadeIn(300);
                             }
 
-                            $("div.captcha img").trigger("click");
+                            item.find("div.captcha img").trigger("click");
                         }'
                     ), array('class' => 'checkbox')); ?>
                 </div>

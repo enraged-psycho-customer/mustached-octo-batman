@@ -116,14 +116,18 @@ class ItemsController extends Controller
                 $comment->attributes = $_POST['Comments'];
                 $comment->save(false);
 
+                $item = Items::model()->findByPk($comment->item_id);
+                $tplParams = array(
+                    'index' => $comment->parent_id,
+                    'comment' => $comment,
+                    'model' => $item
+                );
+
                 $messages = json_encode(array(
                     'success' => true,
                     'item_id' => $comment->item_id,
                     'parent_id' => $comment->parent_id,
-                    'commentHtml' => $this->renderPartial('application.views.items._comment', array(
-                        'index' => $comment->parent_id,
-                        'comment' => $comment
-                    ), true)
+                    'commentHtml' => $this->renderPartial('application.views.items._comment', $tplParams, true)
                 ));
             }
 

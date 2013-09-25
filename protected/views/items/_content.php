@@ -46,12 +46,16 @@
 <?php if (!$list): ?>
 <div class="yandex">
     <?php
+        $image = isset($thumbnail)
+            ? $this->createAbsoluteUrl($thumbnail)
+            : $this->createAbsoluteUrl(implode("/", array($this->assetsUrl, "icons/apple-touch-icon-144x144-precomposed.png")));
+
         $config = array(
             'element' => 'ya_share',
             'link' => $this->createAbsoluteUrl('/' . $model->id),
             'title' => implode(" - ", array(Yii::app()->name, "№" . $model->id)),
             'description' => isset($string) ? $string : '',
-            'image' => isset($thumbnail) ? $this->createAbsoluteUrl($thumbnail) : '',
+            'image' => $image,
         );
 
         $json_config = json_encode((object)$config);

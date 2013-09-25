@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/css/override.css"/>
 
     <!-- JavaScript -->
+    <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
     <script type="text/javascript" src="//vk.com/js/api/openapi.js?98"></script>
     <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/common.js"></script>
     <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/imagesloaded.js"></script>

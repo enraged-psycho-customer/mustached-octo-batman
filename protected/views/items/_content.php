@@ -45,9 +45,22 @@
 
 <?php if (!$list): ?>
 <div class="yandex">
-    <script type="text/javascript" src="//yandex.st/share/share.js"
-            charset="utf-8"></script>
-    <div class="yashare-auto-init" data-yashareL10n="ru"
-         data-yashareType="button" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir"></div>
+    <?php
+        $config = array(
+            'element' => 'ya_share',
+            'link' => $this->createAbsoluteUrl('/' . $model->id),
+            'title' => implode(" - ", array(Yii::app()->name, "№" . $model->id)),
+            'description' => isset($string) ? $string : '',
+            'image' => isset($thumbnail) ? $thumbnail : '',
+        );
+
+        $json_config = json_encode((object)$config);
+    ?>
+
+
+    <script type="text/javascript">
+        var YaShareInstance = new Ya.share(<?php echo $json_config; ?>);
+    </script>
+    <div id="ya_share"></div>
 </div>
 <?php endif; ?>

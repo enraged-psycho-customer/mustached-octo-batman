@@ -51,7 +51,7 @@
             'link' => $this->createAbsoluteUrl('/' . $model->id),
             'title' => implode(" - ", array(Yii::app()->name, "№" . $model->id)),
             'description' => isset($string) ? $string : '',
-            'image' => isset($thumbnail) ? $thumbnail : '',
+            'image' => isset($thumbnail) ? $this->createAbsoluteUrl($thumbnail) : '',
         );
 
         $json_config = json_encode((object)$config);

@@ -50,6 +50,21 @@ class Stages
         10 => 'granny'
     );
 
+    public static $_categories = array(
+        1 => 'Цитаты',
+        2 => 'Картинки',
+        3 => 'Инквизиция'
+    );
+
+    public static function getCategory($category)
+    {
+        if (isset(self::$_categories[$category])) {
+            return self::$_categories[$category];
+        }
+
+        return null;
+    }
+
     public static function init()
     {
         self::$_stage = Yii::app()->params['currentStage'];

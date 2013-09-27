@@ -9,6 +9,9 @@
     <!-- Favicon -->
     <?php echo $this->renderPartial('application.views.partials.favicons'); ?>
 
+    <!-- Sharing -->
+    <?php echo $this->renderPartial('application.views.partials.sharing'); ?>
+
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/css/hellclients.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/css/sprites.css"/>

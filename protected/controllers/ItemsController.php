@@ -144,6 +144,7 @@ class ItemsController extends Controller
                 break;
 
             case Items::CATEGORY_IMAGES:
+                $this->image = $this->createAbsoluteUrl($model->getImageDir() . $model->image);
                 $template = 'view/image';
                 break;
 
@@ -151,6 +152,10 @@ class ItemsController extends Controller
                 $template = 'view/inquisition';
                 break;
         }
+
+        // Global stuff for sharing
+        $this->category = $model->category;
+        $this->viewLink = $this->createAbsoluteUrl('/items/view', array('id' => $model->id));
 
         if ($fancy) {
             $template = 'fancy';

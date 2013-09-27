@@ -46,9 +46,7 @@
 <?php if (!$list): ?>
 <div class="yandex">
     <?php
-        $image = isset($thumbnail)
-            ? $this->createAbsoluteUrl($thumbnail)
-            : $this->createAbsoluteUrl(implode("/", array($this->assetsUrl, "icons/apple-touch-icon-144x144-precomposed.png")));
+        $image = isset($thumbnail) ? $this->createAbsoluteUrl($thumbnail) : '';
 
         $config = array(
             'element' => 'ya_share',
@@ -56,6 +54,13 @@
             'title' => implode(" - ", array(Yii::app()->name, "№" . $model->id)),
             'description' => isset($string) ? $string : '',
             'image' => $image,
+            'elementStyle' => array(
+                'quickServices' => array(
+                    'vkontakte',
+                    'facebook',
+                    'twitter'
+                )
+            )
         );
 
         $json_config = json_encode((object)$config);

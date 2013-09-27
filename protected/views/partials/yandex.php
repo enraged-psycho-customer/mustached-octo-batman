@@ -10,7 +10,8 @@
                 'vkontakte',
                 'facebook',
                 'twitter'
-            )
+            ),
+            'type' => 'none'
         )
     );
 

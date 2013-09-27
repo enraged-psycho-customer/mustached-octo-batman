@@ -44,32 +44,9 @@
 </div>
 
 <?php if (!$list): ?>
-<div class="yandex">
     <?php
-        $image = isset($thumbnail) ? $this->createAbsoluteUrl($thumbnail) : '';
-
-        $config = array(
-            'element' => 'ya_share',
-            'link' => $this->createAbsoluteUrl('/' . $model->id),
-            'title' => implode(" - ", array(Yii::app()->name, "№" . $model->id)),
-            'description' => isset($string) ? $string : '',
-            'image' => $image,
-            'elementStyle' => array(
-                'quickServices' => array(
-                    'vkontakte',
-                    'facebook',
-                    'twitter'
-                )
-            )
-        );
-
-        $json_config = json_encode((object)$config);
+    echo $this->renderPartial('application.views.partials.yandex', array(
+        'model' => $model,
+        'thumbnail' => isset($thumbnail) ? $thumbnail : null));
     ?>
-
-
-    <script type="text/javascript">
-        var YaShareInstance = new Ya.share(<?php echo $json_config; ?>);
-    </script>
-    <div id="ya_share"></div>
-</div>
 <?php endif; ?>

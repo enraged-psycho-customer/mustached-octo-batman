@@ -54,6 +54,6 @@ return array(
     'params' => array(
         'maintenanceMode' => 2,
         'currentStage' => 2,
-        'currentAnnouncement' => 1,
+        //'currentAnnouncement' => 1,
     ),
 );

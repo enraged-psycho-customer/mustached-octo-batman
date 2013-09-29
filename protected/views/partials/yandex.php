@@ -9,11 +9,11 @@
     if (isset($thumbnail)) $image = $this->createAbsoluteUrl($thumbnail);
 
     $description = $this->viewLink;
-    $twitterLink = $this->viewLink;
     if ($model->category != Items::CATEGORY_IMAGES) {
         $description = mb_substr($this->description, 0, 100, 'utf-8');
+        $twitterTitle = $description;
     } else {
-        $twitterLink = $image;
+        $twitterTitle = $title;
     }
 
     $link = $this->createAbsoluteUrl('/' . $model->id);
@@ -34,8 +34,7 @@
         ),
         'serviceSpecific' => array(
             'twitter' => array(
-                'link' => $twitterLink,
-                'title' => $description,
+                'title' => $twitterTitle,
             )
         ),
     );

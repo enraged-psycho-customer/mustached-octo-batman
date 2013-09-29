@@ -23,6 +23,10 @@ class SiteController extends Controller
 
     public function actionAnnouncement()
     {
+        if (!isset(Yii::app()->params['currentAnnouncement'])) {
+            throw new CHttpException(404);
+        }
+
         $currentAnnouncement = Yii::app()->params['currentAnnouncement'];
         $this->render('announcement/announcement_' . $currentAnnouncement);
     }

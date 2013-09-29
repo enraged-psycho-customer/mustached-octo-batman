@@ -11,7 +11,7 @@
     $description = $this->viewLink;
     $twitterLink = $this->viewLink;
     if ($model->category != Items::CATEGORY_IMAGES) {
-        $description = mb_substr($this->description, 0, 100, 'utf-8') . "...";
+        $description = mb_substr($this->description, 0, 100, 'utf-8');
     } else {
         $twitterLink = $image;
     }

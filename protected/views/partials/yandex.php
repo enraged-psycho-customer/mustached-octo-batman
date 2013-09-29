@@ -8,8 +8,8 @@
     $config = array(
         'element' => 'ya_share',
         'link' => $this->createAbsoluteUrl('/' . $model->id),
-        'title' => $title,
-        'description' => 'testets',
+        //'title' => $title,
+        //'description' => 'testets',
         'elementStyle' => array(
             'quickServices' => array(
                 'vkontakte',
@@ -17,7 +17,7 @@
                 'twitter'
             ),
             'type' => 'none'
-        )
+        ),
     );
 
     if (isset($thumbnail)) $config['image'] = $this->createAbsoluteUrl($thumbnail);

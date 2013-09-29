@@ -156,6 +156,8 @@ class ItemsController extends Controller
         // Global stuff for sharing
         $this->category = $model->category;
         $this->viewLink = $this->createAbsoluteUrl('/items/view', array('id' => $model->id));
+        $this->description = $this->viewLink;
+        if ($model->category != Items::CATEGORY_IMAGES) $this->description = mb_substr($model->content, 0, 700, 'utf-8');
 
         if ($fancy) {
             $template = 'fancy';

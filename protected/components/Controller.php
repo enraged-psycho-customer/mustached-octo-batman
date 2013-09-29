@@ -23,9 +23,12 @@ class Controller extends CController
 
     // Shared resources
     public $assetsUrl = null;
+
+
     public $category = 0;
     public $viewLink = null;
     public $image = null;
+    public $description = null;
 
     public $votes = array();
     public $stage = null;

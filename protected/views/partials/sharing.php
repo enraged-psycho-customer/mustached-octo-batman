@@ -3,12 +3,9 @@ $title_parts = array(Yii::app()->name);
 $category = Stages::getCategory($this->category);
 if (!is_null($category)) $title_parts[] = $category;
 $title = implode(" - ", $title_parts);
-
-$description = $this->pageTitle;
-if (!is_null($this->viewLink)) $description = $this->viewLink;
 ?>
 <meta name="title" content="<?php echo $title; ?>" />
-<meta name="description" content="<?php echo $description; ?>" />
+<meta name="description" content="<?php echo $this->description; ?>" />
 <?php if (!is_null($this->image)): ?>
 <meta property="og:image" content="<?php echo $this->image; ?>"/>
 <?php endif; ?>
@@ -20,7 +17,7 @@ if (!is_null($this->viewLink)) $description = $this->viewLink;
 <link rel="image_src" href="<?php echo $this->createAbsoluteUrl($this->assetsUrl . "/share/6.png"); ?>" />
 
 <meta property="og:title" content="<?php echo $title; ?>"/>
-<meta property="og:description" content="<?php echo $description; ?>"/>
+<meta property="og:description" content="<?php echo $this->description; ?>"/>
 <?php if (!is_null($this->image)): ?>
 <meta property="og:image" content="<?php echo $this->image; ?>"/>
 <?php endif; ?>

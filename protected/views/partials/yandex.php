@@ -9,7 +9,7 @@
         'element' => 'ya_share',
         'link' => $this->createAbsoluteUrl('/' . $model->id),
         'title' => $title,
-        'description' => $description,
+        'description' => json_encode($description),
         'elementStyle' => array(
             'quickServices' => array(
                 'vkontakte',

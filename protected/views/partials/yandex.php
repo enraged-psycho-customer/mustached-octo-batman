@@ -19,6 +19,11 @@
             ),
             'type' => 'none'
         ),
+        'serviceSpecific' => array(
+            'twitter' => array(
+                'title' => isset($description) ? $description : '',
+            )
+        ),
     );
 
     if (isset($thumbnail)) $config['image'] = $this->createAbsoluteUrl($thumbnail);

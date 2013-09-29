@@ -38,7 +38,7 @@ class Controller extends CController
         $this->initAssets();
         $this->pageTitle = Yii::app()->name;
         $this->stage = Stages::init();
-        //$this->showAnnouncement();
+        $this->showAnnouncement();
     }
 
     public function showAnnouncement()

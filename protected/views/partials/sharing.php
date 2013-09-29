@@ -25,7 +25,7 @@ if (!is_null($this->viewLink)) $description = $this->viewLink;
 <meta property="og:image" content="<?php echo $this->image; ?>"/>
 <?php endif; ?>
 <meta property="og:image" content="<?php echo $this->createAbsoluteUrl($this->assetsUrl . "/share/_main.png"); ?>"/>
-<meta property="og:image" content="<?php echo $this->createAbsoluteUrl($this->assetsUrl . "/share/2.png"); ?>g"/>
+<meta property="og:image" content="<?php echo $this->createAbsoluteUrl($this->assetsUrl . "/share/2.png"); ?>"/>
 <meta property="og:image" content="<?php echo $this->createAbsoluteUrl($this->assetsUrl . "/share/3.png"); ?>"/>
 <meta property="og:image" content="<?php echo $this->createAbsoluteUrl($this->assetsUrl . "/share/4.png"); ?>"/>
 <meta property="og:image" content="<?php echo $this->createAbsoluteUrl($this->assetsUrl . "/share/5.png"); ?>"/>

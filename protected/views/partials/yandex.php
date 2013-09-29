@@ -1,10 +1,15 @@
 <div class="yandex">
     <?php
+    $title_parts = array(Yii::app()->name);
+    $category = Stages::getCategory($this->category);
+    if (!is_null($category)) $title_parts[] = $category;
+    $title = implode(" - ", $title_parts);
+
     $config = array(
         'element' => 'ya_share',
         'link' => $this->createAbsoluteUrl('/' . $model->id),
-        'title' => implode(" - ", array(Yii::app()->name, "№" . $model->id)),
-        'description' => isset($string) ? $string : '',
+        'title' => $title,
+        'description' => $description,
         'elementStyle' => array(
             'quickServices' => array(
                 'vkontakte',

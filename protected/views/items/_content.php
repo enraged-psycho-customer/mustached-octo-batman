@@ -47,8 +47,7 @@
     <?php
     echo $this->renderPartial('application.views.partials.yandex', array(
         'model' => $model,
-        'thumbnail' => isset($thumbnail) ? $thumbnail : null,
-        'description' =>  isset($string) ? $string : ''
+        'thumbnail' => isset($thumbnail) ? $thumbnail : null
     ));
     ?>
 <?php endif; ?>

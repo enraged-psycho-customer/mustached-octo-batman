@@ -34,6 +34,7 @@
         ),
         'serviceSpecific' => array(
             'twitter' => array(
+                'link' => $twitterLink,
                 'title' => $description,
             )
         ),

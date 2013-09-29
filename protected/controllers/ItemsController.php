@@ -157,7 +157,10 @@ class ItemsController extends Controller
         $this->category = $model->category;
         $this->viewLink = $this->createAbsoluteUrl('/items/view', array('id' => $model->id));
         $this->description = $this->viewLink;
-        if ($model->category != Items::CATEGORY_IMAGES) $this->description = strip_tags($model->content);
+        if ($model->category != Items::CATEGORY_IMAGES) {
+            $description = preg_replace('/\<br(\s*)?\/?\>/i', "\n", $model->content);
+            $this->description = strip_tags($description);
+        }
 
         if ($fancy) {
             $template = 'fancy';

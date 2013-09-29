@@ -29,7 +29,7 @@
     if (isset($thumbnail)) $config['image'] = $this->createAbsoluteUrl($thumbnail);
     $config['description'] = $this->viewLink;
     if ($model->category != Items::CATEGORY_IMAGES) {
-        $config['description'] = mb_substr($model->content, 0, 100, 'utf-8') . "...";
+        $config['description'] = mb_substr($this->description, 0, 100, 'utf-8') . "...";
     }
     $json_config = json_encode((object)$config);
     ?>

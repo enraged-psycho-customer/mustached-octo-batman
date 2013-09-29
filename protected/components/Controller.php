@@ -43,7 +43,13 @@ class Controller extends CController
 
     public function showAnnouncement()
     {
-        $currentAnnouncement = Yii::app()->params['currentAnnouncement'];
+        if (!isset(Yii::app()->params['currentAnnouncement'])) {
+            return false;
+        }
+
+        $announcementNumber = Yii::app()->params['currentAnnouncement'];
+
+        $currentAnnouncement = $announcementNumber;
         $cookieName = 'announcement_' . $currentAnnouncement;
 
         if (!isset(Yii::app()->request->cookies[$cookieName])) {

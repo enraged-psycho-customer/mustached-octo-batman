@@ -5,7 +5,7 @@ if (!is_null($category)) $title_parts[] = $category;
 $title = implode(" - ", $title_parts);
 ?>
 <meta name="title" content="<?php echo $title; ?>" />
-<meta name="description" content="<?php echo $this->description; ?>" />
+<meta name="description" content="<?php echo CHtml::encode($this->description); ?>" />
 <?php if (!is_null($this->image)): ?>
 <meta property="og:image" content="<?php echo $this->image; ?>"/>
 <?php endif; ?>

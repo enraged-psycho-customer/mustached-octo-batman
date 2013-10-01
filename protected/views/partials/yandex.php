@@ -23,7 +23,7 @@
         'link' => $link,
         'image' => $image,
         'title' => $title,
-        'description' => $description,
+        //'description' => $description,
         'elementStyle' => array(
             'quickServices' => array(
                 'vkontakte',

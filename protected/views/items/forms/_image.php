@@ -3,7 +3,6 @@
 /* @var $model Items */
 /* @var $form CActiveForm */
 ?>
-
 <div id="createForm" class="form_image">
 
     <?php $form = $this->beginWidget('CActiveForm', array(

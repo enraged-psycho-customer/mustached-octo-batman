@@ -83,6 +83,7 @@ class Items extends CActiveRecord
      */
     public function onImageUploaded($fullFileName, $userdata)
     {
+        //var_dump($fullFileName);
         Yii::app()->user->setState('image_upload', $fullFileName);
     }
 
@@ -169,7 +170,7 @@ class Items extends CActiveRecord
                 case self::CATEGORY_IMAGES:
                     $image_session = Yii::app()->user->getState('image_upload');
                     if (!strlen($image_session)) {
-                        $this->addError('image', 'Загрузите картинку');
+                        $this->addError('image', 'Загрузите картинку (не более 2МБ)');
                         return false;
                     }
                     break;

@@ -119,8 +119,8 @@ class Items extends CActiveRecord
             array('content', 'length', 'min' => 1, 'allowEmpty' => false, 'on' => 'create'),
             array('content', 'length', 'min' => 1, 'allowEmpty' => true, 'on' => 'create_image'),
 
-            array('email', 'length', 'max' => 255, 'allowEmpty' => false, 'on' => 'create, create_image'),
-            array('email', 'email', 'allowEmpty' => false, 'on' => 'create, create_image'),
+            array('email', 'length', 'max' => 255, 'allowEmpty' => true, 'on' => 'create, create_image'),
+            array('email', 'email', 'allowEmpty' => true, 'on' => 'create, create_image'),
 
             array('state', 'default', 'value' => self::STATE_PUBLISHED, 'setOnEmpty' => false, 'on' => 'create, create_image'),
             array('created_at', 'default', 'value' => new CDbExpression('NOW()'), 'on' => 'create, create_image'),
@@ -160,7 +160,7 @@ class Items extends CActiveRecord
 
     public function beforeSave()
     {
-        if ($this->scenario == 'create') {
+        if ($this->scenario == 'create' || $this->scenario == 'create_image') {
             switch ($this->category) {
                 case self::CATEGORY_QUOTES:
                     if (!$this->validateContent()) return false;
@@ -192,7 +192,7 @@ class Items extends CActiveRecord
     {
         parent::afterSave();
 
-        if ($this->isNewRecord && $this->scenario == 'create') {
+        if ($this->isNewRecord && ($this->scenario == 'create' || $this->scenario == 'create_image')) {
             switch ($this->category) {
                 case self::CATEGORY_IMAGES:
                     $this->processImage();

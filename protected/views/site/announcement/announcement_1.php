@@ -4,6 +4,21 @@ $this->pageTitle = Yii::app()->name . ' - День рождения';
 ?>
 
 <style>
+    #sidebar, #contest_mobile, #companion, #balloon {
+        display: none;
+    }
+
+    #wrapper, #container, #content {
+        height: 100%;
+    }
+
+    #content {
+        margin: 0 !important;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+    }
+
     #wrapper, #container, #content {
         height: 100%;
     }

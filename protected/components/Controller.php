@@ -24,7 +24,7 @@ class Controller extends CController
     // Shared resources
     public $assetsUrl = null;
 
-
+    public $showAnnouncement = 0;
     public $category = 0;
     public $viewLink = null;
     public $image = null;
@@ -59,7 +59,7 @@ class Controller extends CController
             Yii::app()->request->cookies[$cookieName] = new CHttpCookie($cookieName, 1, array(
                 'expire' => time() + 3600 * 24 * 7
             ));
-            $this->redirect('/site/announcement');
+            $this->showAnnouncement = 1;
         }
     }
 

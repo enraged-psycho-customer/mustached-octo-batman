@@ -115,6 +115,25 @@
     </div>
 
     <div class="clear"></div>
+
+    <!-- Announcements -->
+    <?php if ($this->action->id != 'announcement' && $this->showAnnouncement == 1): ?>
+        <a class="announcement iframe" href="<?php echo $this->createUrl('/site/announcement'); ?>">&nbsp;</a>
+        <?php
+        $this->widget('application.extensions.fancybox.EFancyBox', array(
+            'target' => 'a.announcement',
+            'config' => array(
+                'width' => '99%',
+                'height' => '99%'
+            ),
+        ));
+        ?>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('a.announcement').fancybox({width: '99%', height: '99%'}).trigger('click');
+            });
+        </script>
+    <?php endif; ?>
 </div>
 
 <div class="age age_top">

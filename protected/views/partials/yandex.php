@@ -33,6 +33,9 @@
             'type' => 'none'
         ),
         'serviceSpecific' => array(
+            'facebook' => array(
+                'link' => implode('?', array($link, rand(100000, 999999)))
+            ),
             'twitter' => array(
                 'title' => $twitterTitle,
             )

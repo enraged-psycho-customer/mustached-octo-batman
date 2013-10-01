@@ -199,6 +199,11 @@ class ItemsController extends Controller
 
         if (isset($_POST['Items'])) {
             $model->attributes = $_POST['Items'];
+
+            if ($model->category == Items::CATEGORY_IMAGES) {
+                $model->setScenario('create_image');
+            }
+
             if ($model->save()) {
                 Yii::app()->user->setFlash('success', "Ваша информация успешно сохранена!");
                 $this->redirect(array('/' . $model->id));

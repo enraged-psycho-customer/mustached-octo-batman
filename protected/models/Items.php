@@ -113,17 +113,18 @@ class Items extends CActiveRecord
             array('image', 'length', 'max' => 255),
 
             // Create scenario
-            array('content, category, email, title', 'safe', 'on' => 'create'),
-            array('category', 'in', 'range' => $this->categories, 'allowEmpty' => false, 'on' => 'create'),
+            array('content, category, email, title', 'safe', 'on' => 'create, create_image'),
+            array('category', 'in', 'range' => $this->categories, 'allowEmpty' => false, 'on' => 'create, create_image'),
 
-            array('content', 'length', 'min' => 1, 'allowEmpty' => false),
+            array('content', 'length', 'min' => 1, 'allowEmpty' => false, 'on' => 'create'),
+            array('content', 'length', 'min' => 1, 'allowEmpty' => true, 'on' => 'create_image'),
 
-            array('email', 'length', 'max' => 255, 'allowEmpty' => false, 'on' => 'create'),
-            array('email', 'email', 'allowEmpty' => false, 'on' => 'create'),
+            array('email', 'length', 'max' => 255, 'allowEmpty' => false, 'on' => 'create, create_image'),
+            array('email', 'email', 'allowEmpty' => false, 'on' => 'create, create_image'),
 
-            array('state', 'default', 'value' => self::STATE_PUBLISHED, 'setOnEmpty' => false, 'on' => 'create'),
-            array('created_at', 'default', 'value' => new CDbExpression('NOW()'), 'on' => 'create'),
-            array('rating', 'default', 'value' => 0, 'on' => 'create'),
+            array('state', 'default', 'value' => self::STATE_PUBLISHED, 'setOnEmpty' => false, 'on' => 'create, create_image'),
+            array('created_at', 'default', 'value' => new CDbExpression('NOW()'), 'on' => 'create, create_image'),
+            array('rating', 'default', 'value' => 0, 'on' => 'create, create_image'),
 
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.

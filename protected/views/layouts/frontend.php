@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="language" content="<?php echo Yii::app()->language; ?>"/>
-    <title><?php echo CHtml::encode($this->pageTitle); ?></title>
+    <title>АДОВЫЕ КЛИЕНТЫ / <?php echo CHtml::encode($this->pageTitle); ?></title>
 
     <!-- Favicon -->
     <?php echo $this->renderPartial('application.views.partials.favicons'); ?>

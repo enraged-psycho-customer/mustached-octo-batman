@@ -57,7 +57,7 @@
                         'dataType' => 'json',
                         'success' => 'js:function(data) {
                             var message = "";
-                            var item = $("#item_" + data.item_id);
+                            var item = $("#item_" + ' . $item->id . ');
 
                             if (data.success == undefined) {
                                 var i = 0;

@@ -57,6 +57,7 @@
                         'dataType' => 'json',
                         'success' => 'js:function(data) {
                             var message = "";
+                            var item = $("#item_" + data.item_id);
 
                             if (data.success == undefined) {
                                 var i = 0;
@@ -70,7 +71,6 @@
                                 alert(message);
                             } else {
                                 // Add comment and hide comment forms
-                                var item = $("#item_" + data.item_id);
                                 var commentHtml = $(data.commentHtml);
                                 var parentComment = null;
 

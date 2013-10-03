@@ -43,7 +43,7 @@ class CocoWidget extends CWidget implements EYuiActionRunnable {
 		parent::init();
 		$this->registerCoreScripts();
 		if($this->sizeLimit == null)
-			$this->sizeLimit = 2 * 1024 * 1024;
+			$this->sizeLimit = 10 * 1024 * 1024;
 		if($this->methodName == null)
 			$this->methodName = 'coco_onFileUploaded';
 	}

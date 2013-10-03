@@ -16,6 +16,10 @@ input, textarea, div.quote {
     color: #272727;
 }
 
+a img {
+    border: 0px none;
+}
+
 td.left {
     text-align: left;
 }

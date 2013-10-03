@@ -98,11 +98,7 @@ class ItemsController extends Controller
         $this->pageTitle = Yii::app()->name . ' - №' . $id;
 
         $modal = false;
-        $fancy = false;
         if (isset($_GET['modal'])) $modal = true;
-        if (isset($_GET['fancy'])) {
-            $fancy = true;
-        }
 
         // Comment handling
         $comment = new Comments('create');
@@ -114,6 +110,7 @@ class ItemsController extends Controller
 
             if ($messages == '[]' && isset($_POST['Comments'])) {
                 $comment->attributes = $_POST['Comments'];
+                $comment->item_id = $id;
                 $comment->save(false);
 
                 $item = Items::model()->findByPk($comment->item_id);
@@ -160,15 +157,6 @@ class ItemsController extends Controller
         if ($model->category != Items::CATEGORY_IMAGES) {
             $description = preg_replace('/\<br(\s*)?\/?\>/i', " ", $model->content);
             $this->description = strip_tags($description);
-        }
-
-        if ($fancy) {
-            $template = 'fancy';
-            $this->layout = 'empty';
-            Yii::app()->clientScript->scriptMap['jquery.js'] = false;
-            Yii::app()->clientScript->registerScriptFile($this->assetsUrl . '/js/jquery-1.7.1.js');
-            Yii::app()->clientScript->registerScriptFile($this->assetsUrl . '/js/jquery-ui-1.8.17.js');
-            Yii::app()->clientScript->registerScriptFile($this->assetsUrl . '/js/jquery.annotate.js');
         }
 
         $params = array(

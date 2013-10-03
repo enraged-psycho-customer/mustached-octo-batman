@@ -91,7 +91,10 @@
 
                             item.find("div.captcha img").trigger("click");
                         }'
-                    ), array('class' => 'checkbox')); ?>
+                    ), array(
+                        'class' => 'checkbox',
+                        'id' => 'send-comment-'.uniqid()
+                    )); ?>
                 </div>
             </div>
             <?php $this->endWidget(); ?>

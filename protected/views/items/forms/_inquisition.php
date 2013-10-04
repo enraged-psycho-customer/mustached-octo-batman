@@ -71,7 +71,7 @@
         <?php
         $this->widget('CocoWidget', array(
             'id' => 'upload_files',
-            'allowedExtensions' => array('jpg', 'png', 'doc', 'docx', 'txt'), // server-side mime-type validated
+            'allowedExtensions' => array('jpg', 'png', 'doc', 'docx', 'xls', 'txt'), // server-side mime-type validated
             'uploadDir' => Items::IMAGE_TEMP_DIR,
             'receptorClassName' => 'application.models.Items',
             'methodName' => 'onFilesUploaded',

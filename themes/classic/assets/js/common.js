@@ -91,6 +91,10 @@ $(document).ready(function() {
         }
     });
 
+    $('a.file').live("click", function(e) {
+        e.stopPropagation();
+    });
+
     // Trash can
     $('.trash a').live("click", function(e) {
         e.preventDefault();

@@ -36,7 +36,7 @@
     <div>
         <?php $files = array(); ?>
         <?php foreach ($model->files as $file): ?>
-            <?php $files[] = CHtml::link($file->filename, $model->getImageDir() . $file->filename); ?>
+            <?php $files[] = CHtml::link($file->filename, $model->getImageDir() . $file->filename, array('class' => 'file')); ?>
         <?php endforeach; ?>
         <?php if (count($files)) echo 'К делу прилагается: ' . implode(", ", $files); ?>
     </div>

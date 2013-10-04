@@ -69,12 +69,12 @@ if (isset($model->category)) {
 }
 ?>
 
-<?php if ($this->stage >= 1): ?>
+<?php if ($this->stage >= Stages::STAGE_INIT): ?>
     <?php $this->renderPartial('forms/_quote', array('model' => $model)); ?>
     <?php $this->renderPartial('forms/_image', array('model' => $model)); ?>
 <?php endif; ?>
 
-<?php if ($this->stage >= 6): ?>
+<?php if ($this->stage >= Stages::STAGE_INQUISITION): ?>
     <?php $this->renderPartial('forms/_inquisition', array('model' => $model)); ?>
 <?php endif; ?>
 

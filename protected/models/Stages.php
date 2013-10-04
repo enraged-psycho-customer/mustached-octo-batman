@@ -14,7 +14,7 @@ class Stages
         'quotes' => 1,
         'images' => 1,
         'battles' => 4,
-        'inquisition' => 6,
+        'inquisition' => 1,
         'shop' => 8,
         'fame' => self::STAGE_HALL_OF_FAME,
     );

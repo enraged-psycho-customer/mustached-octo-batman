@@ -6,11 +6,15 @@
 
 <?php
 $script = <<< EOD
-    var contentTypes = {1: 'form_quote', 2: 'form_image', 3: 'form_inquisition'};
+    var contentTypes = {
+        1: 'form_quote',
+        2: 'form_image',
+        3: 'form_inquisition'
+    };
 
     function switchContentType(id) {
         for (var i in contentTypes) $('.' + contentTypes[i]).hide();
-        $('.' + contentTypes[id]).show();
+        $('.' + contentTypes[id]).fadeIn(300);
     }
 
     $("a.scroll").live("click", function(e) {
@@ -35,6 +39,8 @@ $script = <<< EOD
                 optionText = $('select#category option').first().html();
             }
         }
+
+        console.log(optionValue);
 
         $('select#category').val(optionValue);
         $('div.selectText').html(optionText);

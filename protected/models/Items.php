@@ -285,12 +285,12 @@ class Items extends CActiveRecord
 
         $categories = array();
 
-        if ($stage >= 1) {
+        if ($stage >= Stages::STAGE_INIT) {
             $categories[self::CATEGORY_QUOTES] = 'Новая цитата';
             $categories[self::CATEGORY_IMAGES] = 'Новая картинка';
         }
 
-        if ($stage >= 6) {
+        if ($stage >= Stages::STAGE_INQUISITION) {
             $categories[self::CATEGORY_INQUISITION] = 'Новый грешник';
         }
 

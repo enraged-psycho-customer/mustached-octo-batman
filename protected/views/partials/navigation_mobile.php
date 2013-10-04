@@ -27,7 +27,7 @@
             'label' => 'Инкивизиция',
             'url' => array('/inquisition'),
             'active' => $this->action->id == 'inquisition',
-            'visible' => $this->stage >= 6
+            'visible' => $this->stage >= Stages::STAGE_INQUISITION
         ),
         array(
             'label' => 'Магазинчик',

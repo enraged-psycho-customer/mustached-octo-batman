@@ -7,14 +7,14 @@ class Stages
     private static $_stage = 0;
 
     const STAGE_HALL_OF_FAME = 1;
-    
+    const STAGE_INQUISITION = 1;
     const STAGE_CONTEST = 3;
 
     public static $_pages = array(
         'quotes' => 1,
         'images' => 1,
         'battles' => 4,
-        'inquisition' => 1,
+        'inquisition' => self::STAGE_INQUISITION,
         'shop' => 8,
         'fame' => self::STAGE_HALL_OF_FAME,
     );

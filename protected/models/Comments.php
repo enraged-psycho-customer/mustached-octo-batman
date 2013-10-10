@@ -58,7 +58,7 @@ class Comments extends CActiveRecord
 
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, content, mode, item_id, created_at, updated_at, is_admin', 'safe', 'on' => 'search'),
+            array('id, content, mode, item_id, created_at, updated_at, is_admin', 'safe', 'on' => 'search, update'),
         );
     }
 

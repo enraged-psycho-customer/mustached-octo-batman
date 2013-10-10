@@ -56,13 +56,14 @@ class CommentsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->loadModel($id);
+        $model->setScenario('update');
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
         if (isset($_POST['Comments'])) {
             $model->attributes = $_POST['Comments'];
-            if ($model->save())
+            if ($model->save(false))
                 $this->redirect(array('view', 'id' => $model->id));
         }
 

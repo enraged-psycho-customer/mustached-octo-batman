@@ -218,7 +218,7 @@ class ItemsController extends Controller
 
         if (isset($_POST['Items'])) {
             $model->attributes = $_POST['Items'];
-            if ($model->save())
+            if ($model->save(false))
                 $this->redirect(array('view', 'id' => $model->id));
         }
 

@@ -9,31 +9,31 @@
             'label' => 'Цитаты',
             'url' => array('/quotes'),
             'active' => $this->action->id == 'quotes',
-            'visible' => $this->stage >= 1
+            'visible' => $this->stage >= Stages::STAGE_INIT,
         ),
         array(
             'label' => 'Картинки',
             'url' => array('/images'),
             'active' => $this->action->id == 'images',
-            'visible' => $this->stage >= 1
+            'visible' => $this->stage >= Stages::STAGE_INIT,
         ),
         array(
             'label' => 'Сражения',
             'url' => array('/battles'),
             'active' => $this->action->id == 'battles',
-            'visible' => $this->stage >= 4
+            'visible' => $this->stage >= Stages::STAGE_BATTLES,
         ),
         array(
             'label' => 'Инкивизиция',
             'url' => array('/inquisition'),
             'active' => $this->action->id == 'inquisition',
-            'visible' => $this->stage >= 6
+            'visible' => $this->stage >= Stages::STAGE_INQUISITION
         ),
         array(
             'label' => 'Магазинчик',
             'url' => array('/shop'),
             'active' => $this->action->id == 'shop',
-            'visible' => $this->stage >= 8
+            'visible' => $this->stage >= Stages::STAGE_SHOP,
         ),
         array(
             'label' => 'Зал славы',

@@ -6,16 +6,20 @@ class Stages
 {
     private static $_stage = 0;
 
+    const STAGE_INIT = 1;
     const STAGE_HALL_OF_FAME = 1;
-    
+    const STAGE_INQUISITION = 1;
+
     const STAGE_CONTEST = 3;
+    const STAGE_BATTLES = 4;
+    const STAGE_SHOP = 8;
 
     public static $_pages = array(
-        'quotes' => 1,
-        'images' => 1,
-        'battles' => 4,
-        'inquisition' => 6,
-        'shop' => 8,
+        'quotes' => self::STAGE_INIT,
+        'images' => self::STAGE_INIT,
+        'battles' => self::STAGE_BATTLES,
+        'inquisition' => self::STAGE_INQUISITION,
+        'shop' => self::STAGE_SHOP,
         'fame' => self::STAGE_HALL_OF_FAME,
     );
 

@@ -129,7 +129,7 @@ class Items extends CActiveRecord
 
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, content, category, state, image, rating, created_at, updated_at, comments_count', 'safe', 'on' => 'search'),
+            array('id, content, category, state, image, rating, created_at, updated_at, comments_count', 'safe', 'on' => 'search, update'),
         );
     }
 
@@ -285,12 +285,12 @@ class Items extends CActiveRecord
 
         $categories = array();
 
-        if ($stage >= 1) {
+        if ($stage >= Stages::STAGE_INIT) {
             $categories[self::CATEGORY_QUOTES] = 'Новая цитата';
             $categories[self::CATEGORY_IMAGES] = 'Новая картинка';
         }
 
-        if ($stage >= 6) {
+        if ($stage >= Stages::STAGE_INQUISITION) {
             $categories[self::CATEGORY_INQUISITION] = 'Новый грешник';
         }
 

@@ -129,7 +129,7 @@ class Items extends CActiveRecord
 
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, content, category, state, image, rating, created_at, updated_at, comments_count', 'safe', 'on' => 'search'),
+            array('id, content, category, state, image, rating, created_at, updated_at, comments_count', 'safe', 'on' => 'search, update'),
         );
     }
 

@@ -8,7 +8,7 @@ class Stages
 
     const STAGE_INIT = 1;
     const STAGE_HALL_OF_FAME = 1;
-    const STAGE_INQUISITION = 1;
+    const STAGE_INQUISITION = 8;
 
     const STAGE_CONTEST = 3;
     const STAGE_BATTLES = 4;

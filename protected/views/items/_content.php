@@ -21,7 +21,6 @@
         echo CHtml::image($fullsize, '', array(
             'id' => 'image_' . $model->id,
             'class' => 'image_item image_item_' . $model->id,
-            'width' => '100%',
         ));
 
         echo CHtml::image($fullsize, '', array(

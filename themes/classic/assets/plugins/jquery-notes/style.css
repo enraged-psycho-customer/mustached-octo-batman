@@ -43,7 +43,7 @@
 }
 .jquery-notes-container .notes .note {
     position:absolute;
-    display:none;
+    /*display:none;*/
 }
 .jquery-notes-container .notes .offFocus {
     border: none;

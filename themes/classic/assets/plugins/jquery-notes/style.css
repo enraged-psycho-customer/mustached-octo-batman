@@ -136,16 +136,20 @@
 
 .text .text-box .inner {
     background: #F2F2F2;
-    padding: 10px;
-    margin-left: 8px;
-    width: 192px;
-    height: 64px;
+    /*padding: 10px;*/
+    margin-left: -1px;
+    min-height: 64px;
+    line-height: 16px;
+    font-family: 'corporate-web';
+    font-style: italic;
+    font-size: 16px;
 }
 
 .text .text-box .inner textarea {
+    resize: none;
     overflow: auto;
     margin-top: 0px;
-    width: 192px;
+    width: 187px;
     height: 70px;
     line-height: 16px;
     font-family: 'corporate-web';
@@ -238,7 +242,8 @@
     font-size: 14px;
     background-color: #F2F2F2;
     border:0px none;
-
+    outline: none;
+    resize: none;
 }
 .jquery-notes-container .notes .note .text-box a {
     display: inline-block;
@@ -305,4 +310,11 @@
     text-align: center;
     width: 20px;
     padding-right: 8px;
+}
+
+.add-note{
+    display: none!important;
+}
+.note:hover .text{
+    display: block;
 }

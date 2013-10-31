@@ -4,6 +4,11 @@
 /* @var $form CActiveForm */
 /* @var $commentModel Comments */
 ?>
+<style type="text/css">
+    .add-note{
+        display: none!important;
+    }
+</style>
 <div class="item_container">
     <div class="item_container_bottom">
         <div class="item <?php if ($modal) echo 'open'; ?>" id="item_<?php echo $model->id; ?>" data-id="<?php echo $model->id; ?>">
@@ -99,11 +104,18 @@
             maxNotes: null,
             operator: '<?php echo $this->createAbsoluteUrl('/items/notes/', array('id' => $model->id)) ?>'
         });
-
         renderClips($('.image_item_<?php echo $model->id; ?>'));
+
+//        console.log();
+
+    });
+
+    $('#image_<?php echo $model->id; ?>').click(function(){
+        $('.add-note').trigger('click');
     });
 
     $(window).resize(function() {
         $('.image_item_<?php echo $model->id; ?> a.reload-notes').trigger('click');
     });
+
 </script>

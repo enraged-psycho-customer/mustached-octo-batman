@@ -28,7 +28,7 @@ class SiteController extends Controller
         }
 
         $currentAnnouncement = Yii::app()->params['currentAnnouncement'];
-        $this->render('announcement/announcement_' . $currentAnnouncement);
+        $this->renderPartial('announcement/announcement_' . $currentAnnouncement);
     }
 
     /**

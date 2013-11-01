@@ -34,7 +34,9 @@
                         <div class="border">
                             <i class="glow glow_<?php echo $comment->avatar; ?>">
                                 <div class="com-text">
-                                    <?php echo CHtml::encode($comment->content)?>
+                                    <div class="text">
+                                        <?php echo CHtml::encode($comment->content)?>
+                                    </div>
                                     <div class="com-arr"></div>
                                 </div>
                             </i>

@@ -674,13 +674,20 @@
     display: none;
     position: absolute;
     background: #F2F2F2;
-    width: 350px;
-    min-height: 100px;
-    top: -20px;
+    min-width: 150px;
+    max-width: 350px;
+    min-height: 80px;
+    top: -10px;
     left: 55px;
     z-index: 150;
     box-shadow: 0 0 5px rgba(0,0,0,0.5);
     border-radius: 2px;
+    cursor: default;
+}
+.com-text .text {
+    padding: 5px 10px;
+    font-size: 16px;
+    line-height: 22px;
 }
 .com-arr {
     background: url(../images/tooltip_left.png);
@@ -688,11 +695,11 @@
     height: 14px;
     position: absolute;
     left: -8px;
-    top: 40px;
-
+    top: 30px;
 }
 .hm {
     cursor: pointer;
+    width: 50px;
 }
 .hm-off {
     opacity: 0.5;

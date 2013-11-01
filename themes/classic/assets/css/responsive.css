@@ -670,3 +670,30 @@
 .image-block {
     position: relative;
 }
+.com-text {
+    display: none;
+    position: absolute;
+    background: #F2F2F2;
+    width: 350px;
+    min-height: 100px;
+    top: -20px;
+    left: 55px;
+    z-index: 150;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    border-radius: 2px;
+}
+.com-arr {
+    background: url(../images/tooltip_left.png);
+    width: 8px;
+    height: 14px;
+    position: absolute;
+    left: -8px;
+    top: 40px;
+
+}
+.hm {
+    cursor: pointer;
+}
+.hm-off {
+    opacity: 0.5;
+}

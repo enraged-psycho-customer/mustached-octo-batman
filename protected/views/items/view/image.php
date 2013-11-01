@@ -112,3 +112,18 @@
 <!--    });-->
 <!---->
 <!--</script>-->
+
+<script>
+    $(document).ready(function(){
+        $('.hm').hover(
+            function(){
+                $('.hm').addClass('hm-off');
+                $(this).removeClass('hm-off').find('.com-text').show();
+            },
+            function(){
+                $(this).find('.com-text').hide();
+                $('.hm').removeClass('hm-off');
+            }
+        )
+    });
+</script>

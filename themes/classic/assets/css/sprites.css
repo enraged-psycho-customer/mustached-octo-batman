@@ -73,6 +73,7 @@
 .glow {
     display: inline-block;
     background: url(../images/glow.png) no-repeat top left;
+    position: relative;
 }
 
 .glow_0{ background-position: 0 0; width: 46px; height: 50px; }

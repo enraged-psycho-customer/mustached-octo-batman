@@ -48,6 +48,7 @@
 
             Yii::app()->clientScript->registerScript('init_com_add','
             $(".image-block img").live("click",function(e){
+                $(".hm").addClass("hm-off");
                 var xClick = e.pageX - $(this).offset().left;
                 var yClick = e.pageY - $(this).offset().top;
                 if($("#commentForm").length==1)

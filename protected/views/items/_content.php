@@ -29,7 +29,9 @@
             ));
 
             if($model->comments)
-                foreach($model->comments as $comment) { ?>
+                foreach($model->comments as $comment) {
+                    if($comment->x!=null&&$comment->y!=null) {
+                    ?>
                     <div class="hm" style="position: absolute; top: <?php echo $comment->y?>%; left: <?php echo $comment->x?>%;">
                         <div class="border">
                             <i class="glow glow_<?php echo $comment->avatar; ?>">
@@ -66,6 +68,7 @@
                 }
             });
             ',CClientScript::POS_READY);
+                }}
         }
         ?>
     </div>

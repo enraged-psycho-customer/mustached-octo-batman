@@ -129,35 +129,3 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    $('.cancel-note').live('click',function(){
-        $('#commentForm').fadeOut(function(){$(this).remove()});
-        $(".hm").removeClass("hm-off");
-    });
-    $('.save-note').live('click',function(){
-        if($('#Comments_content').val()!='')
-        {
-            $('#Comments_avatar').val($('.glow_current i').attr('data-avatar'));
-            $.ajax({
-                url: "/comments/create",
-                type: "post",
-                data: $('.save-note').parents('form').serialize(),
-                success: function(data){
-                    if(data==true)
-                    {
-//                        $('#commentForm').fadeOut(function(){$(this).remove()});
-                        $.ajax({
-                            url: '/'+$('#Comments_item_id').val()+'?modal',
-                            success: function(data)
-                            {
-                                $('.items .item_container').addClass('item_old').fadeOut(function(){$(this).remove()});
-                                $('.items').prepend(data);
-                            }
-                        });
-                    }
-                }
-            });
-        }
-    });
-</script>

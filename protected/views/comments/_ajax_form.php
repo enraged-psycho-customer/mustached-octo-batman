@@ -25,7 +25,6 @@
         float: left;
     }
     #commentForm .text-box{
-        background: url(/images/notes_left.png) no-repeat center left;
         padding-left: 9px;
         margin-left: 50px;
         position: absolute;
@@ -34,6 +33,51 @@
         height: 80px;
         z-index: 9990;
     }
+    #commentForm a.up {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    #commentForm a.down {
+        position: absolute;
+        left: 0;
+        top: 42px;
+    }
+    #commentForm a.glow_current {
+        position: absolute;
+        top: 22px;
+    }
+    #commentForm .controls {
+        background: #F2F2F2;
+        position: relative;
+        border-radius: 2px;
+        box-shadow: 3px 3px 10px rgba(0,0,0, 0.5);
+        height: 90px;
+    }
+    #commentForm .com-arr {
+        top: 50%;
+        margin-top: -4px;
+    }
+    #commentForm .textarea {
+        padding: 5px;
+        margin-right: 25px;
+    }
+    #commentForm .textarea textarea {
+        border: none;
+        width: 100%;
+        height: 80px;
+        background: #F2F2F2;
+        font-size: 14px;
+        resize:none;
+        outline: none;
+    }
+    #commentForm .button {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+    }
+
+
 </style>
 <div id="commentForm" class="note select ui-draggable">
     <div class="border">
@@ -76,13 +120,13 @@
 
                 <div class="controls">
                     <div class="textarea">
-                        <img src="<?php echo $this->assetsUrl; ?>/images/comment_arrow.png"/>
                         <?php echo $form->textArea($model, 'content'); ?>
                     </div>
 
                     <div class="button">
                         <button type="button"><i class="icon icon-checkbox"></i></button>
                     </div>
+                    <div class="com-arr"></div>
                 </div>
                 <?php $this->endWidget(); ?>
             </div>

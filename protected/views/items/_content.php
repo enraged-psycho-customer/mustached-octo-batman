@@ -97,7 +97,11 @@
                                     url: "/"+$("#Comments_item_id").val()+"?modal",
                                     success: function(data)
                                     {
-                                        $(".items .active").addClass("item_old").fadeOut().after(data);
+                                        var activeItem = $(".items .active");
+                                        $(activeItem).addClass("item_old").removeClass("active").fadeOut();
+                                        $(activeItem).after(data);
+                                        $(activeItem).next().addClass("active");
+                                        $(activeItem).remove();
                                     }
                                 });
                             }
@@ -113,7 +117,7 @@
                 else
                     return parseInt((100 / image.height) * pixel);
             }
-            ',CClientScript::POS_HEAD);
+            ',CClientScript::POS_READY);
         }
         ?>
     </div>

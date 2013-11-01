@@ -11,23 +11,37 @@
     echo $string;
     ?>
 <?php elseif ($model->category == Items::CATEGORY_IMAGES): ?>
-    <?php
-    $thumbnail = $model->getImageDir() . 'thumb_' . $model->image;
-    $fullsize = $model->getImageDir() . $model->image;
+    <div class="image-block">
+        <?php
+        $thumbnail = $model->getImageDir() . 'thumb_' . $model->image;
+        $fullsize = $model->getImageDir() . $model->image;
 
-    if ($list) {    // In list
-        echo CHtml::image($thumbnail);
-    } else {        // Single item
-        echo CHtml::image($fullsize, '', array(
-            'id' => 'image_' . $model->id,
-            'class' => 'image_item image_item_' . $model->id,
-        ));
+        if ($list) {    // In list
+            echo CHtml::image($thumbnail);
+        } else {        // Single item
+            echo CHtml::image($fullsize, '', array(
+                'id' => 'image_' . $model->id,
+                'class' => 'image_item image_item_' . $model->id,
+            ));
 
-        echo CHtml::image($fullsize, '', array(
-            'class' => 'pivot',
-        ));
-    }
-    ?>
+            echo CHtml::image($fullsize, '', array(
+                'class' => 'pivot',
+            ));
+
+            if($model->comments)
+                foreach($model->comments as $comment) { ?>
+                    <div style="position: absolute; top: <?php echo $comment->y?>%; left: <?php echo $comment->x?>%;">
+                        <div class="border">
+                            <i class="glow glow_<?php echo $comment->avatar; ?>"></i>
+                            <div class="com-text">
+                                <?php echo CHtml::encode($comment->content)?>
+                            </div>
+                        </div>
+                    </div>
+                <?php }
+        }
+        ?>
+    </div>
 <?php elseif ($model->category == Items::CATEGORY_INQUISITION): ?>
     <h1><?php echo CHtml::encode($model->title); ?></h1>
     <div><?php echo $model->content; ?></div>

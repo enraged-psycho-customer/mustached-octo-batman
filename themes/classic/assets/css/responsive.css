@@ -666,3 +666,7 @@
 #preview a.like:hover {
     background: url(../images/like_hover.png);
 }
+/**/
+.image-block {
+    position: relative;
+}

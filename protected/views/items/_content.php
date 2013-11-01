@@ -44,7 +44,7 @@
                             </i>
                         </div>
                     </div>
-                <?php }
+                <?php }}
 
             Yii::app()->clientScript->registerScript('init_com_add','
             $(".image-block img").live("click",function(e){
@@ -68,7 +68,6 @@
                 }
             });
             ',CClientScript::POS_READY);
-                }}
         }
         ?>
     </div>

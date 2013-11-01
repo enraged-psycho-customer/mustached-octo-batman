@@ -47,13 +47,20 @@
                 <?php }}
 
             Yii::app()->clientScript->registerScript('init_com_add','
-            $(".image-block img").live("click",function(e){
+            $("#image_'.$model->id.'").live("click",function(e){
                 $(".hm").addClass("hm-off");
-                var xClick = e.pageX - $(this).offset().left;
-                var yClick = e.pageY - $(this).offset().top;
+
+                var xClick = e.pageX - $(this).offset().left - 10;
+                var yClick = e.pageY - $(this).offset().top - 40;
+
+                xClick = pxToPercent(xClick,this,"width");
+                yClick = pxToPercent(yClick,this,"height");
+
                 if($("#commentForm").length==1)
                 {
-                    $("#commentForm").css({left:xClick+"px",top:yClick+"px"});
+                    $("#commentForm").css({left:xClick+"%",top:yClick+"%"});
+                    $("#Comments_x").val(xClick);
+                    $("#Comments_y").val(yClick);
                 }
                 else
                 {
@@ -63,12 +70,21 @@
                         data: ({id:'.$model->id.',x:xClick,y:yClick}),
                         success: function(data)
                         {
-                            $(".image-block").append(data);
+                            $("#item_'.$model->id.' .image-block").append(data);
+                            $("#commentForm").css({left:xClick+"%",top:yClick+"%"}).fadeIn();
                         }
                     });
                 }
             });
-            ',CClientScript::POS_READY);
+
+            function pxToPercent(pixel,image,type)
+            {
+                if(type=="width")
+                    return parseInt((100 / image.width) * pixel);
+                else
+                    return parseInt((100 / image.height) * pixel);
+            }
+            ',CClientScript::POS_HEAD);
         }
         ?>
     </div>

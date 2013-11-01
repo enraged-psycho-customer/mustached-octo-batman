@@ -60,10 +60,16 @@ class CommentsController extends Controller
         $model = new Comments('create_hover');
         $model->x = $request->getParam('x');
         $model->y = $request->getParam('y');
+        $model->item_id = $request->getParam('id');
 
         if(isset($_POST['Comments']))
         {
-
+            if($model->save())
+            {
+                echo true;
+            }
+            else
+                echo false;
         }
 
         $this->renderPartial('_ajax_form',array('model'=>$model));

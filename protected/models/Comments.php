@@ -159,9 +159,4 @@ class Comments extends CActiveRecord
     {
 
     }
-
-    public function percentToPixel()
-    {
-
-    }
 }

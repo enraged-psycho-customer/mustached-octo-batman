@@ -12,8 +12,7 @@
 <style type="text/css">
     #commentForm{
         position: absolute;
-        top: <?php echo $model->x; ?>px;
-        left: <?php echo $model->y; ?>px;
+        display: none;
     }
     #commentForm .border{
         position: relative;
@@ -71,13 +70,19 @@
         resize:none;
         outline: none;
     }
-    #commentForm .button {
+    #commentForm .buttons {
         position: absolute;
-        right: 5px;
+        right: 3px;
         top: 5px;
     }
-
-
+    #commentForm .buttons a{
+        display: block;
+        position: relative;
+    }
+    #commentForm .buttons a.save-note{
+        bottom: -23px;
+        right: 2px;
+    }
 </style>
 <div id="commentForm" class="note select ui-draggable">
     <div class="border">
@@ -91,19 +96,6 @@
             <i class="icon icon-arrow_small_bottom_white"></i>
         </a>
     </div>
-<!--    <div class="avatar">-->
-<!--        --><?php //if (Yii::app()->user->isGuest): ?>
-<!--            <a href="javascript:void(0)" class="avatar_switch up">-->
-<!--                <i class="icon icon-form_arrow_up"></i>-->
-<!--            </a>-->
-<!--            <a href="javascript:void(0)" title="Аватар"><i class="avatar avatars avatar_1" data-avatar="1"></i></a>-->
-<!--            <a href="javascript:void(0)" class="avatar_switch down">-->
-<!--                <i class="icon icon-form_arrow_down"></i>-->
-<!--            </a>-->
-<!--        --><?php //else: ?>
-<!--            <a class="admin" href="javascript:void(0)" title="Аватар"><i class="avatar avatars avatar_0" data-avatar="0"></i></a>-->
-<!--        --><?php //endif; ?>
-<!--    </div>-->
     <div class="text-box">
         <div class="text-box-inner">
             <div class="form">
@@ -115,16 +107,20 @@
                     ),
                 )); ?>
 
-                <?php echo $form->hiddenField($model, 'avatar', array('class' => 'avatar_field')); ?>
+                <?php echo $form->hiddenField($model, 'avatar', array('class' => 'avatar_field','value'=>1)); ?>
+                <?php echo $form->hiddenField($model, 'item_id'); ?>
                 <?php echo $form->hiddenField($model, 'parent_id', array('class' => 'parent_id')); ?>
+                <?php echo $form->hiddenField($model, 'x',array('class'=>'x_field')); ?>
+                <?php echo $form->hiddenField($model, 'y',array('class'=>'y_field')); ?>
 
                 <div class="controls">
                     <div class="textarea">
                         <?php echo $form->textArea($model, 'content'); ?>
                     </div>
 
-                    <div class="button">
-                        <button type="button"><i class="icon icon-checkbox"></i></button>
+                    <div class="buttons">
+                        <a href="javascript:void(0);" class="cancel-note" title="Отменить"><i class="icon icon-close"></i></a>
+                        <a href="javascript:void(0);" class="save-note" title="Сохранить"><i class="icon icon-checkbox"></i></a>
                     </div>
                     <div class="com-arr"></div>
                 </div>
@@ -133,3 +129,27 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $('.cancel-note').live('click',function(){
+        $('#commentForm').fadeOut(function(){$(this).remove()});
+        $(".hm").removeClass("hm-off");
+    });
+    $('.save-note').live('click',function(){
+        if($('#Comments_content').val()!='')
+        {
+            $('#Comments_avatar').val($('.glow_current i').attr('data-avatar'));
+            $.ajax({
+                url: "/comments/create",
+                type: "post",
+                data: $('.save-note').parents('form').serialize(),
+                success: function(data){
+                    if(data==true)
+                    {
+
+                    }
+                }
+            });
+        }
+    });
+</script>

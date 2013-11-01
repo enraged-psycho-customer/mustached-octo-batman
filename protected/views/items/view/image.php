@@ -58,60 +58,6 @@
         </div>
     </div>
 </div>
-<!--<script type="text/javascript">-->
-<!--    renderClips = function(object)-->
-<!--    {-->
-<!--        var propWidth = parseInt(object.width());-->
-<!--        var propHeight = parseInt(object.height());-->
-<!---->
-<!--        var delta = parseInt($('.pivot').width()) / propWidth;-->
-<!--        $('.clip img').css('width', propWidth).css('height', propHeight);-->
-<!---->
-<!--        // Create clips-->
-<!--        $.each($('.clip'), function(index, item){-->
-<!--            var leftPercent = parseInt($(item).attr("data-left"));-->
-<!--            var topPercent = parseInt($(item).attr("data-top"));-->
-<!---->
-<!--            var clipLeft = -1 * Math.ceil(leftPercent * (propWidth / 100));-->
-<!--            var clipTop = -1 * Math.ceil(topPercent * (propHeight / 100));-->
-<!---->
-<!--            //console.log(clipLeft + " " + clipTop);-->
-<!--            $(item).find('img').css("left", clipLeft + "px").css("top", clipTop + "px")-->
-<!--        });-->
-<!--    }-->
-<!---->
-<!--    imagesLoaded($('.image_item_--><?php //echo $model->id; ?><!--'), function(instance) {-->
-<!--        // Load notes-->
-<!--        $('.image_item_--><?php //echo $model->id; ?><!--').jQueryNotes({-->
-<!--            minWidth: 48,-->
-<!--            minHeight: 48,-->
-<!--            maxWidth: 48,-->
-<!--            maxHeight: 48,-->
-<!--            aspectRatio: true,-->
-<!--            allowAdd: true,-->
-<!--            allowHide: false,-->
-<!--            allowReload: true,-->
-<!--            allowLink: false,-->
-<!--            allowAuthor: false,-->
-<!--            dateFormat: '',-->
-<!--            hideNotes: false,-->
-<!--            loadNotes: true,-->
-<!--            helper: '',-->
-<!--            maxNotes: null,-->
-<!--            operator: '--><?php //echo $this->createAbsoluteUrl('/items/notes/', array('id' => $model->id)) ?><!--'-->
-<!--        });-->
-<!--        renderClips($('.image_item_--><?php //echo $model->id; ?><!--'));-->
-<!--    });-->
-<!---->
-<!--    $('#image_--><?php //echo $model->id; ?><!--').click(function(){-->
-<!--        $('.add-note').trigger('click');-->
-<!--    });-->
-<!---->
-<!--    $(window).resize(function() {-->
-<!--        $('.image_item_--><?php //echo $model->id; ?><!-- a.reload-notes').trigger('click');-->
-<!--    });-->
-<!---->
-<!--</script>-->
 
 <script>
     $(document).ready(function(){

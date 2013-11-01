@@ -118,7 +118,7 @@
         $('.hm').hover(
             function(){
                 $('.hm').addClass('hm-off');
-                $(this).removeClass('hm-off').find('.com-text').show();
+                $(this).removeClass('hm-off').find('.com-text').fadeIn();
             },
             function(){
                 $(this).find('.com-text').hide();

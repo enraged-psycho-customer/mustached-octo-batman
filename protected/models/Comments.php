@@ -15,6 +15,8 @@
  * @property integer $parent_id
  * @property integer $x
  * @property integer $y
+ * @property integer $width
+ * @property integer $height
  */
 class Comments extends CActiveRecord
 {
@@ -48,7 +50,7 @@ class Comments extends CActiveRecord
         // will receive user inputs.
         return array(
             array('mode, item_id, is_admin', 'numerical', 'integerOnly' => true),
-            array('content, created_at, updated_at, avatar, x, y', 'safe'),
+            array('content, created_at, updated_at, avatar, x, y, width, height', 'safe'),
 
             // Create scenario
             array('content', 'length', 'min' => 1, 'max' => 500, 'allowEmpty' => false, 'on' => 'create, create_hover'),

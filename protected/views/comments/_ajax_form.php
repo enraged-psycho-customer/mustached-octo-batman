@@ -146,7 +146,15 @@
                 success: function(data){
                     if(data==true)
                     {
-
+//                        $('#commentForm').fadeOut(function(){$(this).remove()});
+                        $.ajax({
+                            url: '/'+$('#Comments_item_id').val()+'?modal',
+                            success: function(data)
+                            {
+                                $('.items .item_container').addClass('item_old').fadeOut(function(){$(this).remove()});
+                                $('.items').prepend(data);
+                            }
+                        });
                     }
                 }
             });

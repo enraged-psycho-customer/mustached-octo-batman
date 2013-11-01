@@ -61,18 +61,19 @@ class CommentsController extends Controller
         $model->x = $request->getParam('x');
         $model->y = $request->getParam('y');
         $model->item_id = $request->getParam('id');
+        $model->width = 6;
+        $model->height = 10;
 
         if(isset($_POST['Comments']))
         {
+            $model->attributes = $_POST['Comments'];
             if($model->save())
             {
                 echo true;
             }
-            else
-                echo false;
         }
-
-        $this->renderPartial('_ajax_form',array('model'=>$model));
+        else
+            $this->renderPartial('_ajax_form',array('model'=>$model));
     }
 
     /**

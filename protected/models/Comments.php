@@ -13,6 +13,8 @@
  * @property integer $is_admin
  * @property integer $avatar
  * @property integer $parent_id
+ * @property integer $x
+ * @property integer $y
  */
 class Comments extends CActiveRecord
 {
@@ -46,7 +48,7 @@ class Comments extends CActiveRecord
         // will receive user inputs.
         return array(
             array('mode, item_id, is_admin', 'numerical', 'integerOnly' => true),
-            array('content, created_at, updated_at, avatar', 'safe'),
+            array('content, created_at, updated_at, avatar, x, y', 'safe'),
 
             // Create scenario
             array('content', 'length', 'min' => 1, 'max' => 500, 'allowEmpty' => false, 'on' => 'create, create_hover'),
@@ -151,5 +153,15 @@ class Comments extends CActiveRecord
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
         ));
+    }
+
+    public function pixelToPercent()
+    {
+
+    }
+
+    public function percentToPixel()
+    {
+
     }
 }

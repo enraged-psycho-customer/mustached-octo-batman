@@ -43,6 +43,29 @@
                         </div>
                     </div>
                 <?php }
+
+            Yii::app()->clientScript->registerScript('init_com_add','
+            $(".image-block img").live("click",function(e){
+                var xClick = e.pageX - $(this).offset().left;
+                var yClick = e.pageY - $(this).offset().top;
+                if($("#commentForm").length==1)
+                {
+                    $("#commentForm").css({left:xClick+"px",top:yClick+"px"});
+                }
+                else
+                {
+                    $.ajax({
+                        url: "/comments/create",
+                        type: "post",
+                        data: ({id:'.$model->id.',x:xClick,y:yClick}),
+                        success: function(data)
+                        {
+                            $(".image-block").append(data);
+                        }
+                    });
+                }
+            });
+            ',CClientScript::POS_READY);
         }
         ?>
     </div>

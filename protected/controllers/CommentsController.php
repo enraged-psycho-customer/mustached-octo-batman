@@ -27,8 +27,13 @@ class CommentsController extends Controller
     public function accessRules()
     {
         return array(
+            array(
+                'allow',
+                'actions'=>array('create'),
+                'users'=>array('*')
+            ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('update', 'view', 'admin', 'delete'),
+                'actions' => array('create', 'view', 'admin', 'delete'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
@@ -46,6 +51,22 @@ class CommentsController extends Controller
         $this->render('view', array(
             'model' => $this->loadModel($id),
         ));
+    }
+
+    public function actionCreate()
+    {
+        $request = Yii::app()->request;
+
+        $model = new Comments('create_hover');
+        $model->x = $request->getParam('x');
+        $model->y = $request->getParam('y');
+
+        if(isset($_POST['Comments']))
+        {
+
+        }
+
+        $this->renderPartial('_ajax_form',array('model'=>$model));
     }
 
     /**

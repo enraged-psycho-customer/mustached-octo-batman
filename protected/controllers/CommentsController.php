@@ -29,7 +29,7 @@ class CommentsController extends Controller
         return array(
             array(
                 'allow',
-                'actions'=>array('create'),
+                'actions'=>array('create', 'refresh'),
                 'users'=>array('*')
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -40,6 +40,23 @@ class CommentsController extends Controller
                 'users' => array('*'),
             ),
         );
+    }
+
+    public function actionRefresh()
+    {
+        $id     = (int)Yii::app()->request->getParam('id');
+        $criteria = new CDbCriteria();
+        $criteria->compare('item_id', $id);
+
+        $comments = Comments::model()->findAll($criteria);
+
+        if($comments==null)
+            echo 'error';
+        else {
+            $this->renderPartial('_image_comment', array(
+                'comments'=>$comments
+            ));
+        }
     }
 
     /**

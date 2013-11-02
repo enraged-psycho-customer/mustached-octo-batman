@@ -61,22 +61,22 @@
 
 <script>
     $(document).ready(function(){
-
-        $('.hm').hover(
-            function(){
+        $(".hm").live({
+            mouseenter: function () {
                 if($("#commentForm").length==0)
                 {
                     $('.hm').addClass('hm-off');
                     $(this).removeClass('hm-off').find('.com-text').fadeIn();
                 }
             },
-            function(){
+            mouseleave: function () {
                 if($("#commentForm").length==0)
                 {
                     $(this).find('.com-text').hide();
                     $('.hm').removeClass('hm-off');
                 }
             }
-        )
+        });
+
     });
 </script>

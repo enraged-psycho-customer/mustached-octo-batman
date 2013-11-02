@@ -11,7 +11,7 @@
     echo $string;
     ?>
 <?php elseif ($model->category == Items::CATEGORY_IMAGES): ?>
-    <div class="image-block">
+    <div class="image-block" >
         <?php
         $thumbnail = $model->getImageDir() . 'thumb_' . $model->image;
         $fullsize = $model->getImageDir() . $model->image;
@@ -28,6 +28,9 @@
                 'class' => 'pivot',
             ));
 
+            ?>
+            <div id="block_<?php echo $model->id?>">
+            <?php
             if($model->comments)
                 foreach($model->comments as $comment) {
                     if($comment->x!=null&&$comment->y!=null) {
@@ -44,8 +47,9 @@
                             </i>
                         </div>
                     </div>
-                <?php }}
-
+                <?php }}?>
+            </div>
+        <?php
             Yii::app()->clientScript->registerScript('init_com_add','
             $("#image_'.$model->id.'").live("click",function(e){
                 $(".hm").addClass("hm-off");
@@ -94,14 +98,15 @@
                             if(data==true)
                             {
                                 $.ajax({
-                                    url: "/"+$("#Comments_item_id").val()+"?modal",
+                                    url: "/comments/refresh",
+                                    data: {id: '.$model->id.'},
                                     success: function(data)
                                     {
-                                        var activeItem = $(".items .active");
-                                        $(activeItem).addClass("item_old").removeClass("active").fadeOut();
-                                        $(activeItem).after(data);
-                                        $(activeItem).next().addClass("active");
-                                        $(activeItem).remove();
+                                        if(data!="error") {
+                                            $("#commentForm").fadeOut(function(){$(this).remove()});
+                                            $(".hm").removeClass("hm-off");
+                                            $("#block_'.$model->id.'").html(data);
+                                        }
                                     }
                                 });
                             }
@@ -117,7 +122,7 @@
                 else
                     return parseInt((100 / image.height) * pixel);
             }
-            ',CClientScript::POS_READY);
+            ');
         }
         ?>
     </div>

@@ -704,3 +704,7 @@
 .hm-off {
     opacity: 0.4;
 }
+.image-block img.image_item {
+    cursor: url(../images/cursor-add-annotation.png),pointer;
+    cursor: -webkit-image-set(url("../images/cursor-add-annotation.png") 1x, url("../images/cursor-add-annotation@2x.png") 2x),auto;
+}

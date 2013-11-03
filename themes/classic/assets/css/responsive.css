@@ -98,12 +98,12 @@
 
     .shade {
         z-index: 200;
-        top: 226px;
+        top: 162px;
         left: 10px;
     }
 
     .shade.active {
-        top: 141px;
+        top: 77px;
         left: 10px;
     }
 

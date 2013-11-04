@@ -678,7 +678,7 @@
     min-width: 80px;
     min-height: 70px;
     top: -10px;
-    left: 52px;
+    left: 50px;
     z-index: 150;
     box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
     border-radius: 2px;
@@ -692,6 +692,8 @@
     min-width:100px;
     max-width: 350px;
     white-space: normal;
+    max-height: 150px;
+    overflow-y: auto;
 }
 .com-arr {
     background: url(../images/tooltip_left.png);

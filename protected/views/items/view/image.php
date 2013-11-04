@@ -86,7 +86,7 @@
             $(this).val($(this).val().substr(0, maxLength));
             var remaning = maxLength - curLength;
             if (remaning < 0) remaning = 0;
-            $('.text-box .form .limit').html(remaning + ' осталось символов');//(4)
+            $('.text-box .form .limit').html(remaning);//(4)
         });
     });
 </script>

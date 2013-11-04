@@ -714,3 +714,13 @@
     cursor: url(../images/cursor-add-annotation.png),pointer;
     cursor: -webkit-image-set(url("../images/cursor-add-annotation.png") 1x, url("../images/cursor-add-annotation@2x.png") 2x),auto;
 }
+.limit {
+    position: absolute;
+    width: 237px;
+    left: 0;
+    font-size: 12px;
+    text-align: center;
+    height: 15px;
+    line-height: 15px;
+    margin-top: -9px;
+}

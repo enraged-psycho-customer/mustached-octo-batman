@@ -669,6 +669,7 @@
 /**/
 .image-block {
     position: relative;
+    display: inline-block;
 }
 .com-text {
     display: none;

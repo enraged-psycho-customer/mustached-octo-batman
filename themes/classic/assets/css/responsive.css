@@ -98,12 +98,12 @@
 
     .shade {
         z-index: 200;
-        top: 226px;
+        top: 162px;
         left: 10px;
     }
 
     .shade.active {
-        top: 141px;
+        top: 77px;
         left: 10px;
     }
 
@@ -674,20 +674,24 @@
     display: none;
     position: absolute;
     background: #F2F2F2;
-    min-width: 350px;
-    max-width: 350px;
-    min-height: 80px;
+    width: auto;
+    min-width: 80px;
+    min-height: 70px;
     top: -10px;
     left: 52px;
     z-index: 150;
     box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
     border-radius: 2px;
     cursor: default;
+    float: left;
 }
 .com-text .text {
     padding: 5px 10px;
     font-size: 16px;
     line-height: 22px;
+    min-width:100px;
+    max-width: 350px;
+    white-space: normal;
 }
 .com-arr {
     background: url(../images/tooltip_left.png);
@@ -703,4 +707,8 @@
 }
 .hm-off {
     opacity: 0.4;
+}
+.image-block img.image_item {
+    cursor: url(../images/cursor-add-annotation.png),pointer;
+    cursor: -webkit-image-set(url("../images/cursor-add-annotation.png") 1x, url("../images/cursor-add-annotation@2x.png") 2x),auto;
 }

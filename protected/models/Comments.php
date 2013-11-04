@@ -79,7 +79,7 @@ class Comments extends CActiveRecord
         if($this->isNewRecord)
         {
             $this->x = round((100 / $this->imgWidth) * ($this->x + 6));
-            $this->y = round((100 / $this->imgHeight) * ($this->y + 18));
+            $this->y = round((100 / $this->imgHeight) * ($this->y + 14));
         }
         return parent::beforeSave();
     }

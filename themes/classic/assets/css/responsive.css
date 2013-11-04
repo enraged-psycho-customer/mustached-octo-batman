@@ -675,7 +675,7 @@
     position: absolute;
     background: #F2F2F2;
     width: auto;
-    top: -10px;
+    top: 00px;
     left: 50px;
     z-index: 150;
     box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
@@ -687,12 +687,11 @@
     padding: 5px 10px;
     font-size: 16px;
     line-height: 22px;
-    min-width:140px;
+    min-width:100px;
     max-width: 350px;
     white-space: normal;
     max-height: 150px;
     overflow-y: auto;
-    min-height: 80px;
 }
 .com-arr {
     background: url(../images/tooltip_left.png);
@@ -700,7 +699,8 @@
     height: 14px;
     position: absolute;
     left: -8px;
-    top: 30px;
+    top: 50%;
+    margin-top: -4px;
 }
 .hm {
     cursor: pointer;

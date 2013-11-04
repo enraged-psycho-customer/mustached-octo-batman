@@ -54,8 +54,8 @@
             $("#image_'.$model->id.'").live("click",function(e){
                 $(".hm").addClass("hm-off");
 
-                var xClick = e.pageX - $(this).offset().left - 10;
-                var yClick = e.pageY - $(this).offset().top - 40;
+                var xClick = e.pageX - $(this).offset().left - 19;
+                var yClick = e.pageY - $(this).offset().top - 52;
 
                 xClick = pxToPercent(xClick,this,"width");
                 yClick = pxToPercent(yClick,this,"height");

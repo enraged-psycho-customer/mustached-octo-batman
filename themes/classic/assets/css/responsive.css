@@ -675,7 +675,7 @@
     position: absolute;
     background: #F2F2F2;
     width: auto;
-    top: 20px;
+    top: 10px;
     left: 50px;
     z-index: 150;
     box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
@@ -699,8 +699,7 @@
     height: 14px;
     position: absolute;
     left: -8px;
-    top: 50%;
-    margin-top: -8px;
+    top: 9px;
 }
 .hm {
     cursor: pointer;

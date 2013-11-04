@@ -80,7 +80,7 @@
         position: relative;
     }
     #commentForm .buttons a.save-note{
-        bottom: -32px;
+        bottom: -17px;
         right: 2px;
     }
 </style>

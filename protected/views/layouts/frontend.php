@@ -25,6 +25,7 @@
     <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/common.js"></script>
     <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/imagesloaded.js"></script>
     <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/jquery.ias.js"></script>
+    <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/jquery.hoverIntent.minified.js"></script>
 
     <!-- Plugins -->
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/plugins/jquery-notes/style.css"/>

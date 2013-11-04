@@ -51,7 +51,7 @@
         position: relative;
         border-radius: 2px;
         box-shadow: 3px 3px 10px rgba(0,0,0, 0.5);
-        height: 105px;
+        height: 90px;
     }
     #commentForm .com-arr {
         top: 50%;
@@ -80,7 +80,7 @@
         position: relative;
     }
     #commentForm .buttons a.save-note{
-        bottom: -23px;
+        bottom: -32px;
         right: 2px;
     }
 </style>
@@ -123,7 +123,7 @@
                         <a href="javascript:void(0);" class="save-note" title="Сохранить"><i class="icon icon-checkbox"></i></a>
                     </div>
                     <div class="com-arr"></div>
-                    <div class="limit"></div>
+                    <div class="limit">140</div>
                 </div>
                 <?php $this->endWidget(); ?>
             </div>

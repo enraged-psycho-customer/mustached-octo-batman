@@ -714,13 +714,14 @@
     cursor: -webkit-image-set(url("../images/cursor-add-annotation.png") 1x, url("../images/cursor-add-annotation@2x.png") 2x),auto;
 }
 .limit {
+    color: #777;
+    font-style: italic;
     position: absolute;
-    width: 230px;
-    left: 0;
+    width: 30px;
+    right: 2px;
     font-size: 12px;
     height: 15px;
     line-height: 15px;
-    margin-top: -9px;
-    text-align: right;
-    padding-right: 7px;
+    margin-top: -10px;
+    text-align: center;
 }

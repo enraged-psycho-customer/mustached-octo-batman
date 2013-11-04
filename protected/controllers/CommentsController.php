@@ -77,6 +77,8 @@ class CommentsController extends Controller
         $model = new Comments('create_hover');
         $model->x = $request->getParam('x');
         $model->y = $request->getParam('y');
+        $model->imgWidth = $request->getParam('imgWidth');
+        $model->imgHeight = $request->getParam('imgHeight');
         $model->item_id = $request->getParam('id');
         $model->width = 6;
         $model->height = 10;

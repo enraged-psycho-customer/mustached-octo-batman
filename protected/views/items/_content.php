@@ -54,15 +54,15 @@
             $("#image_'.$model->id.'").live("click",function(e){
                 $(".hm").addClass("hm-off");
 
-                var xClick = e.pageX - $(this).offset().left - 17;
-                var yClick = e.pageY - $(this).offset().top - 25;
+                var xClick = e.pageX - $(this).offset().left - 22;
+                var yClick = e.pageY - $(this).offset().top - 48;
 
-                xClick = pxToPercent(xClick,this,"width");
-                yClick = pxToPercent(yClick,this,"height");
+//                xClick = pxToPercent(xClick,this,"width");
+//                yClick = pxToPercent(yClick,this,"height");
 
                 if($("#commentForm").length==1)
                 {
-                    $("#commentForm").css({left:xClick+"%",top:yClick+"%"});
+                    $("#commentForm").css({left:xClick+"px",top:yClick+"px"});
                     $("#Comments_x").val(xClick);
                     $("#Comments_y").val(yClick);
                 }
@@ -71,11 +71,17 @@
                     $.ajax({
                         url: "/comments/create",
                         type: "post",
-                        data: ({id:'.$model->id.',x:xClick,y:yClick}),
+                        data: ({
+                            id:'.$model->id.',
+                            x:xClick,
+                            y:yClick,
+                            imgWidth:this.width,
+                            imgHeight:this.height,
+                        }),
                         success: function(data)
                         {
                             $("#item_'.$model->id.' .image-block").append(data);
-                            $("#commentForm").css({left:xClick+"%",top:yClick+"%"}).fadeIn();
+                            $("#commentForm").css({left:xClick+"px",top:yClick+"px"}).fadeIn();
                         }
                     });
                 }

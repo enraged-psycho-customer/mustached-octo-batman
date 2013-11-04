@@ -112,6 +112,8 @@
                 <?php echo $form->hiddenField($model, 'parent_id', array('class' => 'parent_id')); ?>
                 <?php echo $form->hiddenField($model, 'x',array('class'=>'x_field')); ?>
                 <?php echo $form->hiddenField($model, 'y',array('class'=>'y_field')); ?>
+                <?php echo $form->hiddenField($model, 'imgWidth'); ?>
+                <?php echo $form->hiddenField($model, 'imgHeight'); ?>
 
                 <div class="controls">
                     <div class="textarea">

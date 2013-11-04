@@ -22,6 +22,8 @@ class Comments extends CActiveRecord
 {
     public $parent_id = 0;
     public $captcha;
+    public $imgWidth;
+    public $imgHeight;
 
     /**
      * Returns the static model of the specified AR class.
@@ -50,7 +52,7 @@ class Comments extends CActiveRecord
         // will receive user inputs.
         return array(
             array('mode, item_id, is_admin', 'numerical', 'integerOnly' => true),
-            array('content, created_at, updated_at, avatar, x, y, width, height', 'safe'),
+            array('content, created_at, updated_at, avatar, x, y, width, height, imgWidth, imgHeight', 'safe'),
 
             // Create scenario
             array('content', 'length', 'min' => 1, 'max'=>'145', 'allowEmpty' => false, 'on' => 'create, create_hover'),
@@ -74,7 +76,11 @@ class Comments extends CActiveRecord
         else if ($this->avatar > Stages::getStage() || $this->avatar == 0) {
             $this->avatar = 1;
         }
-
+        if($this->isNewRecord)
+        {
+            $this->x = round((100 / $this->imgWidth) * ($this->x + 6));
+            $this->y = round((100 / $this->imgHeight) * ($this->y + 18));
+        }
         return parent::beforeSave();
     }
 
@@ -155,10 +161,5 @@ class Comments extends CActiveRecord
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
         ));
-    }
-
-    public function pixelToPercent()
-    {
-
     }
 }

@@ -670,6 +670,7 @@
 .image-block {
     position: relative;
     display: inline-block;
+    max-width: 100%;
 }
 .com-text {
     display: none;

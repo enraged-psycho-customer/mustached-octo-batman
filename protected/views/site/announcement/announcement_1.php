@@ -4,33 +4,35 @@ $this->pageTitle = Yii::app()->name . ' - День рождения';
 ?>
 
 <style>
-    #sidebar, #contest_mobile, #companion, #balloon {
-        display: none;
-    }
+    /*#sidebar, #contest_mobile, #companion, #balloon {*/
+        /*display: none;*/
+    /*}*/
 
-    #wrapper, #container, #content {
-        height: 100%;
-    }
+    /*#wrapper, #container, #content {*/
+        /*height: 100%;*/
+    /*}*/
 
-    #content {
-        margin: 0 !important;
-        padding: 0;
-        width: 100%;
-        text-align: center;
-    }
+    /*#content {*/
+        /*margin: 0 !important;*/
+        /*padding: 0;*/
+        /*width: 100%;*/
+        /*text-align: center;*/
+    /*}*/
 
-    #wrapper, #container, #content {
-        height: 100%;
-    }
+    /*#wrapper, #container, #content {*/
+        /*height: 100%;*/
+    /*}*/
 
-    #content {
-        text-align: center;
-        padding-bottom: 0px;
-    }
+    /*#content {*/
+        /*text-align: center;*/
+        /*padding-bottom: 0px;*/
+    /*}*/
 
     .announcement {
         position: relative;
         top: 10%;
+        text-align: center;
+        z-index: 1;
     }
 
     .achievement {
@@ -58,16 +60,17 @@ $this->pageTitle = Yii::app()->name . ' - День рождения';
         'closeUrl' => $this->createUrl('/items/quotes')
     )); ?>
 
+    <map name="achievement">
+        <area shape="rect" coords="274,69,329,84" href="<?php echo $this->createUrl('/items/quotes'); ?>" alt="Цитаты">
+        <area shape="rect" coords="333,69,401,84" href="<?php echo $this->createUrl('/items/images'); ?>" alt="Картинки">
+    </map>
 </div>
-<map name="achievement">
-    <area shape="rect" coords="274,69,329,84" href="<?php echo $this->createUrl('/items/quotes'); ?>" alt="Цитаты">
-    <area shape="rect" coords="333,69,401,84" href="<?php echo $this->createUrl('/items/images'); ?>" alt="Картинки">
-</map>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.social-special a.close').click(function(e) {
-            window.location.href = $(this).attr('href');
-        });
-    })
-</script>
+
+<!--<script type="text/javascript">-->
+<!--    $(document).ready(function() {-->
+<!--        $('.social-special a.close').click(function(e) {-->
+<!--            window.location.href = $(this).attr('href');-->
+<!--        });-->
+<!--    })-->
+<!--</script>-->

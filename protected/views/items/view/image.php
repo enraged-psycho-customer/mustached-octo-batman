@@ -37,10 +37,12 @@
                 </div>
 
                 <div class="quote">
+
                     <?php $this->renderPartial('_content', array('model' => $model, 'modal' => $modal, 'list' => false)); ?>
                     <?php if ($modal): ?>
                         <?php $this->renderPartial('_social', array('shareUrl' => $this->createAbsoluteUrl('/' . $model->id), 'class' => 'social')); ?>
                     <?php endif; ?>
+
                 </div>
 
                 <div class="clear"></div>
@@ -57,53 +59,34 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    renderClips = function(object)
-    {
-        var propWidth = parseInt(object.width());
-        var propHeight = parseInt(object.height());
+<script>
+    $(document).ready(function(){
+        $(".hm").hoverIntent(
+            function () {
+            if($("#commentForm").length==0)
+            {
+                $('.hm').addClass('hm-off');
+                $(this).removeClass('hm-off').find('.com-text').fadeIn();
+            }
+        },
+        function () {
+            if($("#commentForm").length==0)
+            {
+                $(this).find('.com-text').hide();
+                $('.hm').removeClass('hm-off');
+            }
+        }
+        );
 
-        var delta = parseInt($('.pivot').width()) / propWidth;
-        $('.clip img').css('width', propWidth).css('height', propHeight);
+        $('.text-box .form textarea').live('keyup', function(){
 
-        // Create clips
-        $.each($('.clip'), function(index, item){
-            var leftPercent = parseInt($(item).attr("data-left"));
-            var topPercent = parseInt($(item).attr("data-top"));
+            var maxLength = 140;
 
-            var clipLeft = -1 * Math.ceil(leftPercent * (propWidth / 100));
-            var clipTop = -1 * Math.ceil(topPercent * (propHeight / 100));
-
-            //console.log(clipLeft + " " + clipTop);
-            $(item).find('img').css("left", clipLeft + "px").css("top", clipTop + "px")
+            var curLength = $(this).val().length;
+            $(this).val($(this).val().substr(0, maxLength));
+            var remaning = maxLength - curLength;
+            if (remaning < 0) remaning = 0;
+            $('.text-box .form .limit').html(remaning);//(4)
         });
-    }
-
-    imagesLoaded($('.image_item_<?php echo $model->id; ?>'), function(instance) {
-        // Load notes
-        $('.image_item_<?php echo $model->id; ?>').jQueryNotes({
-            minWidth: 48,
-            minHeight: 48,
-            maxWidth: 48,
-            maxHeight: 48,
-            aspectRatio: true,
-            allowAdd: true,
-            allowHide: false,
-            allowReload: true,
-            allowLink: false,
-            allowAuthor: false,
-            dateFormat: '',
-            hideNotes: false,
-            loadNotes: true,
-            helper: '',
-            maxNotes: null,
-            operator: '<?php echo $this->createAbsoluteUrl('/items/notes/', array('id' => $model->id)) ?>'
-        });
-
-        renderClips($('.image_item_<?php echo $model->id; ?>'));
-    });
-
-    $(window).resize(function() {
-        $('.image_item_<?php echo $model->id; ?> a.reload-notes').trigger('click');
     });
 </script>

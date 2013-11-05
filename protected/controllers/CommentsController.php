@@ -27,14 +27,36 @@ class CommentsController extends Controller
     public function accessRules()
     {
         return array(
+            array(
+                'allow',
+                'actions'=>array('create', 'refresh'),
+                'users'=>array('*')
+            ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('update', 'view', 'admin', 'delete'),
+                'actions' => array('create', 'view', 'admin', 'delete'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
                 'users' => array('*'),
             ),
         );
+    }
+
+    public function actionRefresh()
+    {
+        $id     = (int)Yii::app()->request->getParam('id');
+        $criteria = new CDbCriteria();
+        $criteria->compare('item_id', $id);
+
+        $comments = Comments::model()->findAll($criteria);
+
+        if($comments==null)
+            echo 'error';
+        else {
+            $this->renderPartial('_image_comment', array(
+                'comments'=>$comments
+            ));
+        }
     }
 
     /**
@@ -46,6 +68,31 @@ class CommentsController extends Controller
         $this->render('view', array(
             'model' => $this->loadModel($id),
         ));
+    }
+
+    public function actionCreate()
+    {
+        $request = Yii::app()->request;
+
+        $model = new Comments('create_hover');
+        $model->x = $request->getParam('x');
+        $model->y = $request->getParam('y');
+        $model->imgWidth = $request->getParam('imgWidth');
+        $model->imgHeight = $request->getParam('imgHeight');
+        $model->item_id = $request->getParam('id');
+        $model->width = 6;
+        $model->height = 10;
+
+        if(isset($_POST['Comments']))
+        {
+            $model->attributes = $_POST['Comments'];
+            if($model->save())
+            {
+                echo true;
+            }
+        }
+        else
+            $this->renderPartial('_ajax_form',array('model'=>$model));
     }
 
     /**

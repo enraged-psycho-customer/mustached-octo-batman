@@ -98,12 +98,12 @@
 
     .shade {
         z-index: 200;
-        top: 226px;
+        top: 162px;
         left: 10px;
     }
 
     .shade.active {
-        top: 141px;
+        top: 77px;
         left: 10px;
     }
 
@@ -616,4 +616,112 @@
     .pad {
         padding-left: 65px;
     }
+}
+
+#preview {
+    background: #F2F2F2;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 150;
+    display: none;
+}
+@media screen and (min-width: 150px) and  (max-width: 400px) {
+    #preview {
+        padding-left: 0;
+        padding-top: 300px;
+    }
+}
+@media screen and (min-width: 401px)  {
+#preview {
+    z-index: 150;
+    padding-left: 8%;
+}
+}
+#preview a.close {
+    display: block;
+    position: fixed;
+    right: 20px;
+    top: 40%;
+    width: 14px;
+    height: 14px;
+    background: url(../images/close.png);
+    z-index: 300;
+}
+#preview a.close:hover {
+    background: url(../images/close_hover.png);
+}
+#preview a.like {
+    display: block;
+    position: fixed;
+    right: 19px;
+    top: 44%;
+    width: 16px;
+    height: 16px;
+    background: url(../images/like.png);
+    z-index: 300;
+}
+#preview a.like:hover {
+    background: url(../images/like_hover.png);
+}
+/**/
+.image-block {
+    position: relative;
+    display: inline-block;
+}
+.com-text {
+    display: none;
+    position: absolute;
+    background: #F2F2F2;
+    width: auto;
+    top: 10px;
+    left: 50px;
+    z-index: 150;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+    border-radius: 2px;
+    cursor: default;
+    float: left;
+}
+.com-text .text {
+    padding: 5px 10px;
+    font-size: 16px;
+    line-height: 22px;
+    /*min-width:100px;*/
+    max-width: 350px;
+    white-space: normal;
+    max-height: 150px;
+    overflow-y: auto;
+}
+.com-arr {
+    background: url(../images/tooltip_left.png);
+    width: 8px;
+    height: 14px;
+    position: absolute;
+    left: -8px;
+    top: 9px;
+}
+.hm {
+    cursor: pointer;
+    width: 50px;
+}
+.hm-off {
+    opacity: 0.4;
+}
+.image-block img.image_item {
+    cursor: url(../images/cursor-add-annotation.png),pointer;
+    cursor: -webkit-image-set(url("../images/cursor-add-annotation.png") 1x, url("../images/cursor-add-annotation@2x.png") 2x),auto;
+}
+.limit {
+    bottom: 3px;
+    color: #777;
+    font-style: italic;
+    position: absolute;
+    width: 30px;
+    right: 2px;
+    font-size: 12px;
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
 }

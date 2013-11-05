@@ -200,7 +200,7 @@
 
             $('#jquery-notes_' + pointer + ' img').wrap('<div class="notes clearfix" />');
 
-            $('#jquery-notes_' + pointer + ' .notes').append('<div class="layer"></div><div class="loading"><div class="message"></div></div>');
+            $('#jquery-notes_' + pointer + ' .notes').append('<div class="layer"></div>');
 
             $('#jquery-notes_' + pointer + ' .notes .loading').css({
                 marginTop: ((ID.height / 2) - 13) + 'px'
@@ -389,7 +389,7 @@
 
             html += (note.LINK != '' && settings.allowLink) ? '<a href="' + note.LINK + '"></a>' : '';
 
-            html += '</i></div></div><div id="t_' + pointer + '-' + note.ID + '" class="text"><div class="text-box"><div class="inner"><textarea readonly="readonly">';
+            html += '</i></div><div id="t_' + pointer + '-' + note.ID + '" class="text"><div class="text-box" style="width: auto; min-width: 150px; height: auto;"><div class="inner"><textarea style="resize: none; border: none; width: 180px;" readonly="readonly">';
 
             html += (note.NOTE != '') ? note.NOTE : note.LINK;
 
@@ -399,7 +399,7 @@
 
             html += (note.DATE != '' && settings.dateFormat != '') ? '<span class="date">' + _formatDate(note.DATE) + '</span>' : '';
 
-            html += '</div>';
+            html += '</div></div>';
 
             $('#jquery-notes_' + pointer + ' .notes').append(html);
 
@@ -448,8 +448,10 @@
             }
 
             $('#jquery-notes_' + pointer + ' .notes #t_' + pointer + '-' + note.ID).css({
-                left: (parseFloat(position.left) + parseFloat(position.width) + delta) + 'px',
-                top: (parseFloat(position.top) - 5) + 'px'
+                width: 250 + 'px',
+                height: 100 + 'px'
+//                left: (parseFloat(position.left) + parseFloat(position.width) + delta) + 'px',
+//                top: (parseFloat(position.top) - 5) + 'px'
             });
 
         }

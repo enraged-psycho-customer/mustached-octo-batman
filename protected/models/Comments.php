@@ -13,11 +13,17 @@
  * @property integer $is_admin
  * @property integer $avatar
  * @property integer $parent_id
+ * @property integer $x
+ * @property integer $y
+ * @property integer $width
+ * @property integer $height
  */
 class Comments extends CActiveRecord
 {
     public $parent_id = 0;
     public $captcha;
+    public $imgWidth;
+    public $imgHeight;
 
     /**
      * Returns the static model of the specified AR class.
@@ -46,10 +52,10 @@ class Comments extends CActiveRecord
         // will receive user inputs.
         return array(
             array('mode, item_id, is_admin', 'numerical', 'integerOnly' => true),
-            array('content, created_at, updated_at, avatar', 'safe'),
+            array('content, created_at, updated_at, avatar, x, y, width, height, imgWidth, imgHeight', 'safe'),
 
             // Create scenario
-            array('content', 'length', 'min' => 1, 'max' => 500, 'allowEmpty' => false, 'on' => 'create, create_hover'),
+            array('content', 'length', 'min' => 1, 'max'=>'145', 'allowEmpty' => false, 'on' => 'create, create_hover'),
             array('created_at', 'default', 'value' => new CDbExpression('NOW()'), 'on' => 'create, create_hover'),
             array('parent_id', 'default', 'value' => 0, 'setOnEmpty' => true, 'on' => 'create, create_hover'),
 
@@ -70,7 +76,11 @@ class Comments extends CActiveRecord
         else if ($this->avatar > Stages::getStage() || $this->avatar == 0) {
             $this->avatar = 1;
         }
-
+        if($this->isNewRecord)
+        {
+            $this->x = round((100 / $this->imgWidth) * ($this->x + 6));
+            $this->y = round((100 / $this->imgHeight) * ($this->y + 14));
+        }
         return parent::beforeSave();
     }
 

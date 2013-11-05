@@ -25,6 +25,7 @@
     <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/common.js"></script>
     <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/imagesloaded.js"></script>
     <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/jquery.ias.js"></script>
+    <script type="text/javascript" src="<?php echo $this->assetsUrl; ?>/js/jquery.hoverIntent.minified.js"></script>
 
     <!-- Plugins -->
     <link rel="stylesheet" type="text/css" href="<?php echo $this->assetsUrl; ?>/plugins/jquery-notes/style.css"/>
@@ -118,19 +119,9 @@
 
     <!-- Announcements -->
     <?php if ($this->action->id != 'announcement' && $this->showAnnouncement == 1): ?>
-        <a class="announcement iframe" href="<?php echo $this->createUrl('/site/announcement'); ?>">&nbsp;</a>
-        <?php
-        $this->widget('application.extensions.fancybox.EFancyBox', array(
-            'target' => 'a.announcement',
-            'config' => array(
-                'width' => '99%',
-                'height' => '99%'
-            ),
-        ));
-        ?>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('a.announcement').fancybox({width: '99%', height: '99%'}).trigger('click');
+        <script>
+            $(document).ready(function(){
+                loadPreview();
             });
         </script>
     <?php endif; ?>
@@ -140,7 +131,7 @@
     <i class="icon icon-age"></i>
 </div>
 <div id="companion"></div>
-<a href="<?php echo $this->createUrl('/site/announcement'); ?>">
+<a href="<?php echo $this->createUrl('/site/announcement'); ?>" class="balloon-link">
     <div id="balloon">
         <div id="balloon_text"></div>
     </div>
@@ -148,5 +139,32 @@
 
 <?php echo $this->renderPartial('application.views.partials.metrika'); ?>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#preview a.close').live('click', function(){
+            $('#preview').fadeOut(400, function(){
+                $(this).remove();
+            });
+            return false;
+        });
+        $('a.balloon-link').live('click', function(){
+            loadPreview();
+            return false;
+        });
+
+    });
+
+    function loadPreview (){
+        $.ajax({
+            type: "GET",
+            url: "<?php echo $this->createUrl('/site/announcement', array('currentAnnouncement'=>1)); ?>",
+            success: function(data)
+            {
+                $('body').append('<div id="preview"></div>');
+                $('#preview').html(data).append('<a href="#" class="close"></a><a href="#" class="like"></a>').fadeIn('slow');
+            }
+        });
+    }
+</script>
 </body>
 </html>

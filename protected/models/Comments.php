@@ -22,8 +22,8 @@ class Comments extends CActiveRecord
 {
     public $parent_id = 0;
     public $captcha;
-    public $imgWidth;
-    public $imgHeight;
+    public $imgWidth = 1;
+    public $imgHeight = 1;
 
     /**
      * Returns the static model of the specified AR class.

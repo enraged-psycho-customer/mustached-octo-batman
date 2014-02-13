@@ -7,7 +7,7 @@
 <div id="createForm" class="form_quote">
 
     <?php $form = $this->beginWidget('CActiveForm', array(
-        'enableClientValidation' => true,
+        'enableClientValidation'=>true,
     )); ?>
 
     <div class="category">
@@ -80,6 +80,8 @@
     </div>
 
     <div class="clear"></div>
+
+        <?php echo $form->hiddenField($model, 'check', array('class'=>'check-field')); ?>
 
     <?php $this->endWidget(); ?>
 

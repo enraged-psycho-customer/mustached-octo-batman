@@ -18,6 +18,8 @@
  */
 class Items extends CActiveRecord
 {
+    public $check;
+
     const SPOILER_LIMIT = 500;
 
     const CATEGORY_QUOTES = 1;
@@ -126,6 +128,7 @@ class Items extends CActiveRecord
             array('state', 'default', 'value' => self::STATE_PUBLISHED, 'setOnEmpty' => false, 'on' => 'create, create_image'),
             array('created_at', 'default', 'value' => new CDbExpression('NOW()'), 'on' => 'create, create_image'),
             array('rating', 'default', 'value' => 0, 'on' => 'create, create_image'),
+            array('check', 'compare', 'compareValue'=>base64_encode(date('Y-m-d')), 'message'=>'Error #702', 'skipOnError'=>true, 'on'=>'create'),
 
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.

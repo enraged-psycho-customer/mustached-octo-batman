@@ -5,16 +5,16 @@ return CMap::mergeArray(
         'modules' => array(
             'gii' => array(
                 'class' => 'system.gii.GiiModule',
-                'password' => 'asphyx1a',
+                'password' => '1234',
                 'ipFilters' => array('127.0.0.1', '::1'),
             ),
         ),
         'components' => array(
             'db' => array(
-                'connectionString' => 'mysql:host=localhost;dbname=clfh_org',
+                'connectionString' => 'mysql:host=localhost;dbname=clfh',
                 'emulatePrepare' => true,
-                'username' => 'clfh_org',
-                'password' => '=9A*eIZGd"dWN$ze#Nf2',
+                'username' => 'root',
+                'password' => '',
                 'charset' => 'utf8',
                 'tablePrefix' => '',
                 'enableProfiling' => true,

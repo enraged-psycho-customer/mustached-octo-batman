@@ -84,12 +84,16 @@ if (isset($model->category)) {
     <?php $this->renderPartial('forms/_inquisition', array('model' => $model)); ?>
 <?php endif; ?>
 
-<?php
-$this->widget('application.extensions.fancybox.EFancyBox', array(
+<?php $this->widget('application.extensions.fancybox.EFancyBox', array(
     'target' => 'a.rules',
     'config' => array(
         'width' => '99%',
         'height' => '99%'
     ),
-));
-?>
+)); ?>
+
+<script>
+    $(function() {
+        $('.check-field').val('<?php echo base64_encode(date('Y-m-d')); ?>');
+    });
+</script>

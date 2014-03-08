@@ -405,4 +405,9 @@ class Items extends CActiveRecord
 
         return $this;
     }
+
+    public function getTitle()
+    {
+        return mb_strcut(strip_tags($this->content), 0, 40).'...';
+    }
 }

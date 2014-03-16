@@ -290,7 +290,7 @@ class EFeed extends CComponent{
 	 * Generates the Feed
 	 */
 	public function generateFeed(){
-		header("Content-type: text/xml");
+		header("Content-type: text/xml; charset=utf-8");
 		$this->renderHead();
 		$this->renderChannels();
 		$this->renderItems();
@@ -312,7 +312,8 @@ class EFeed extends CComponent{
 			$head .= CHtml::openTag('rss',array(
 						"version"=>"2.0",
 						"xmlns:content"=>"http://purl.org/rss/1.0/modules/content/",
-						"xmlns:wfw"=>"http://wellformedweb.org/CommentAPI/")).PHP_EOL;	
+						"xmlns:wfw"=>"http://wellformedweb.org/CommentAPI/",
+                        "xmlns:atom"=>"http://www.w3.org/2005/Atom")).PHP_EOL;
 		}    
 		elseif($this->type == self::RSS1)
 		{
@@ -441,7 +442,7 @@ class EFeed extends CComponent{
 		{
 			if($this->type == self::ATOM)
 				$attributes['type']="html";
-			$node .= CHtml::openTag($tagName,$attributes). '<![CDATA[';
+			$node .= CHtml::openTag($tagName,$attributes). '<![CDATA['.PHP_EOL;
 		}
 		else
 			$node .= CHtml::openTag($tagName, $attributes);

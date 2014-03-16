@@ -1,7 +1,7 @@
 <?php
 
 // Base paths
-define('YII_SOURCE_BASEPATH', '/framework/');
+define('YII_SOURCE_BASEPATH', '/yii/');
 define('YII_CONFIG_BASEPATH', '/protected/config/environment/');
 
 // Environments

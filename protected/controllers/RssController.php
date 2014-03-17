@@ -16,7 +16,7 @@ class RssController extends CController
         $criteria->order = 'created_at DESC';
 
         if ($month == null) {
-            $criteria->limit = 15;
+            $criteria->limit = 5;
         } else {
             $criteria->addCondition('MONTH(created_at) = :month');
             $criteria->params['month'] = (int) $month;

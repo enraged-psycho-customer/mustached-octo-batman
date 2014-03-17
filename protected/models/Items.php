@@ -408,6 +408,6 @@ class Items extends CActiveRecord
 
     public function getTitle()
     {
-        return mb_substr(strip_tags($this->content), 0, 50).'...';
+        return mb_substr(strip_tags($this->content), 0, 50, Yii::app()->charset).'...';
     }
 }

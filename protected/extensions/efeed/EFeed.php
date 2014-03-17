@@ -416,7 +416,8 @@ class EFeed extends CComponent{
 	private function renderItems()
 	{    
 		if(null === $this->feedElements->itemAt('items'))
-			throw new CException( Yii::t('EFeed', 'No feed items configured') );
+            return;
+            //throw new CException( Yii::t('EFeed', 'No feed items configured') );
 			
 		foreach ($this->feedElements->itemAt('items') as $item)
 			echo $item->getNode();

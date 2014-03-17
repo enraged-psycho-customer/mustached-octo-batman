@@ -28,9 +28,15 @@ class RssController extends CController
 
         $feed->title= 'Адовые клиенты';
         $feed->description = 'Лента адовых клиентов';
-        $feed->addChannelTag('pubDate', date_create($models[0]->created_at)->format(DATE_RSS));
+
         $feed->addChannelTag('link', Yii::app()->createAbsoluteUrl('/'));
         //$feed->addChannelTag('atom:link', Yii::app()->createAbsoluteUrl('rss/feed'));
+
+        if (count($models)) {
+            $feed->addChannelTag('pubDate', date_create($models[0]->created_at)->format(DATE_RSS));
+        } else {
+            $feed->addChannelTag('pubDate', date(DATE_RSS));
+        }
 
         foreach($models as $model) { /* @var Items $model */
             /* @var EFeedItemRSS2 $item */

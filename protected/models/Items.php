@@ -408,6 +408,6 @@ class Items extends CActiveRecord
 
     public function getTitle()
     {
-        return mb_strcut(strip_tags($this->content), 0, 40).'...';
+        return mb_substr(strip_tags($this->content), 0, 50).'...';
     }
 }

@@ -11,7 +11,8 @@ class RssController extends CController
     public function actionFeed($month = null)
     {
         $criteria = new CDbCriteria();
-        $criteria->condition = 'YEAR(created_at) = YEAR(CURDATE())';
+        $criteria->condition = 'state = :state AND YEAR(created_at) = YEAR(CURDATE())';
+        $criteria->params[':state'] = Items::STATE_PUBLISHED;
         $criteria->order = 'created_at DESC';
 
         if ($month == null) {

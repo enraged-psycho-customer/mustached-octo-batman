@@ -1,5 +1,7 @@
 <?php
 
+define('DS', DIRECTORY_SEPARATOR);
+
 // Base paths
 define('YII_SOURCE_BASEPATH', '/yii/');
 define('YII_CONFIG_BASEPATH', '/protected/config/environment/');

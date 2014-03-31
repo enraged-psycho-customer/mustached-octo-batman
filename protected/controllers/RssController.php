@@ -48,7 +48,14 @@ class RssController extends CController
             $item->title = trim($model->getTitle());
             $item->link = trim($url);
             $item->date = date_create($model->created_at)->format(DATE_RSS);
-            $item->description = $model->content;
+
+            $image = $this->getRandomImage();
+
+            if ($image) {
+                $item->description = sprintf('<table><tr><td>%s</td><td>%s</td></tr></table>', $image, $model->content);
+            } else {
+                $item->description = $model->content;
+            }
 
             $feed->addItem($item);
         }
@@ -56,4 +63,21 @@ class RssController extends CController
         $feed->generateFeed();
         //Yii::app()->end();
     }
-} 
+
+    public function actionTest()
+    {
+        echo $this->getRandomImage();
+    }
+
+    private function getRandomImage()
+    {
+        $path = Yii::getPathOfAlias('webroot');
+        $file = sprintf('images/share/%s.png', rand(1,6));
+
+        if (is_file($path .DS. $file)) {
+            return Yii::app()->createAbsoluteUrl(Yii::app()->homeUrl).'/'.$file;
+        }
+
+        return null;
+    }
+}

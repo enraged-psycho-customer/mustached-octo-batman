@@ -49,6 +49,11 @@ class RssController extends CController
             $item->link = trim($url);
             $item->date = date_create($model->created_at)->format(DATE_RSS);
 
+            /*if ($model->image) {
+                $model->content .= '<img src="/uploads/item/image/'.$model->id.'/'.$model->image.'">';
+                $item->title = 'Картинка с Адовых';
+            }*/
+
             $image = $this->getRandomImage();
 
             if ($image) {

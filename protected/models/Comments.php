@@ -55,7 +55,7 @@ class Comments extends CActiveRecord
             array('content, created_at, updated_at, avatar, x, y, width, height, imgWidth, imgHeight', 'safe'),
 
             // Create scenario
-            array('content', 'length', 'min' => 1, 'max'=>'145', 'allowEmpty' => false, 'on' => 'create, create_hover'),
+            array('content', 'length', 'min' => 1, 'max'=>'1450', 'allowEmpty' => false, 'on' => 'create, create_hover'),
             array('created_at', 'default', 'value' => new CDbExpression('NOW()'), 'on' => 'create, create_hover'),
             array('parent_id', 'default', 'value' => 0, 'setOnEmpty' => true, 'on' => 'create, create_hover'),
 

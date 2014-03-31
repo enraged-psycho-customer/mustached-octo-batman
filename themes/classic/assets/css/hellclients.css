@@ -6,13 +6,13 @@
 
 body {
     background: #F2F2F2;
-    font-family: 'corporate-web';
+    font-family: serif;
     color: #272727;
     height: 100%;
 }
 
 input, textarea, div.quote {
-    font-family: 'corporate-web';
+    font-family: serif;
     color: #272727;
 }
 
@@ -224,10 +224,18 @@ a.scrollbar {
 
 #hall_of_fame {
     position: absolute;
-    top: 90%;
+    top: 80%;
     width: 100%;
     text-align: center;
     padding-bottom: 10px;
+}
+
+#copy {
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	font-size: 10px;
+	top: 90%;
 }
 
 div.menu ul {

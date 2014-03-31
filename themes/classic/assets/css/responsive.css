@@ -195,6 +195,10 @@
     div#createForm input {
         width: 280px;
     }
+	
+	div#copy {
+		display: none; 
+	}
 
 
     /* Font sizes */
@@ -670,6 +674,9 @@
 .image-block {
     position: relative;
     display: inline-block;
+    max-width: 100%;
+}
+.image-block img {
     max-width: 100%;
 }
 .com-text {

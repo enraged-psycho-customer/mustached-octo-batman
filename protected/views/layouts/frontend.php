@@ -55,7 +55,7 @@
     <?php if ($this->stage >= Stages::STAGE_CONTEST): ?>
         <a id="contest_mobile" href="<?php echo $this->createUrl('/contest'); ?>" title="Конкурс">&nbsp;</a>
     <?php else: ?>
-        <a id="contest_mobile" href="javascript:void(0)" title="Coming soon ;)">&nbsp;</a>
+        
     <?php endif; ?>
 
     <div id="sidebar">
@@ -103,6 +103,7 @@
                     ),
                 )); ?>
             </div>
+			<div id="copy" class="menu">&copy; 2010&mdash;2014 ООО «Арткадабра»<br>Используйте любые материалы<br>только со ссылкой на нас!</div>
         </div>
     </div>
 

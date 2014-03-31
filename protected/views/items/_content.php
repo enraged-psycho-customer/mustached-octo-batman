@@ -17,7 +17,7 @@
         $fullsize = $model->getImageDir() . $model->image;
 
         if ($list) {    // In list
-            echo CHtml::image($thumbnail);
+            echo CHtml::image($fullsize);
         } else {        // Single item
             echo CHtml::image($fullsize, '', array(
                 'id' => 'image_' . $model->id,

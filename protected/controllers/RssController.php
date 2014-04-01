@@ -57,7 +57,7 @@ class RssController extends CController
             $image = $this->getRandomImage();
 
             if ($image) {
-                $item->description = sprintf('<table><tr><td>%s</td><td>%s</td></tr></table>', $image, $model->content);
+                $item->description = sprintf('<table><tr><td><img src="%s" /></td><td>%s</td></tr></table>', $image, $model->content);
             } else {
                 $item->description = $model->content;
             }

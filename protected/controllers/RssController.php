@@ -77,10 +77,10 @@ class RssController extends CController
     private function getRandomImage()
     {
         $path = Yii::getPathOfAlias('webroot');
-        $file = sprintf('images/share/%s.png', rand(1,6));
+        $file = sprintf('/themes/images/share/%s.png', rand(1,6));
 
         if (is_file($path .DS. $file)) {
-            return Yii::app()->createAbsoluteUrl(Yii::app()->homeUrl).'/'.$file;
+            return Yii::app()->createAbsoluteUrl(Yii::app()->homeUrl).$file;
         }
 
         return null;
